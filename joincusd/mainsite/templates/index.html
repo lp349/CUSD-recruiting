@@ -1,0 +1,95 @@
+<body>
+<div class="cover-video">
+  <div class="cover-video__overlay">
+    <div class="cover-video__overlay__controls">
+      <h1>Learn what CUSD is all about</h1>
+      <a href="#" data-reveal-id="videoModal1"></a>
+    </div>
+  </div>
+</div>
+
+<section class="main-content">
+
+  <section class="homepage-blurb">
+    <h3>Where Technology Meets Impact</h3>
+    <p>
+      Founded in 2009, Cornell University Sustainable Design (CUSD) is a student run, interdisciplinary project team with a bias towards impact. We bring together students from across all seven colleges to work alongside renowned faculty and knowledgeable professionals in our mission to create a network of proactively sustainable communities.
+    </p>
+    <p>
+      Utilizing a participatory design approach, as well as a healthy skepticism towards what outputs truly create value for our users, our projects result in a symbiosis of social, ecological, and economic sustainability. Providing opportunities for students from any major, our diversity &mdash; of both perspective and project offerings &mdash; allows us to continuously push the envelope of innovation and resilience.
+    </p>
+    <p>
+      Whether you’re an award winning graphic designer, a freshman electrical engineering student, or anything in between, we’ll set you up with an opportunity to make a real difference in a community that needs it.
+    </p>
+  </section>
+
+  <aside class="homepage-videos">
+
+    <article class="video-preview">
+      <h3>How We Began</h3>
+      <div class="video-preview__thubnail" style="background-image: url(<%= image_path 'videos/video-2.jpg' %>)">
+        <div class="video-preview__overlay">
+          <div class="video-preview__overlay__controls"><a href="#" data-reveal-id="videoModal2"></a></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="video-preview">
+      <h3>One of Our Recent Projects</h3>
+      <div class="video-preview__thubnail" style="background-image: url(<%= image_path 'videos/video-3.jpg' %>)">
+        <div class="video-preview__overlay">
+          <div class="video-preview__overlay__controls"><a href="#" data-reveal-id="videoModal3"></a></div>
+        </div>
+      </div>
+    </article>
+
+  </aside>
+</section>
+
+<aside class="homepage-callouts">
+  <h3>Get Involved</h3>
+  <article>
+    <div class="homepage-callouts__panel">
+      <div class="icon icon--role-engineering--colored"></div>
+      <h4>Engineering</h4>
+      <p>Research, development and building for a better world.</p>
+      <%= link_to 'See Openings', '/roles/engineering', class: 'button button--inverse' %>
+    </div>
+  </article>
+  <article>
+    <div class="homepage-callouts__panel">
+      <div class="icon icon--role-design--colored"></div>
+      <h4>Design</h4>
+      <p>Putting the human touch on our projects and communications.</p>
+      <%= link_to 'See Openings', '/roles/design', class: 'button button--inverse' %>
+    </div>
+  </article>
+  <article>
+    <div class="homepage-callouts__panel">
+      <div class="icon icon--role-strategy--colored"></div>
+      <h4>Strategy</h4>
+      <p>Making sure our world changing projects actually get built.</p>
+      <%= link_to 'See Openings', '/roles/strategy', class: 'button button--inverse' %>
+    </div>
+    </article>
+</aside>
+
+<div id="videoModal1" class="video-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <div class="video-modal__video" data-video-id="126048968">
+  </div>
+  <a class="video-modal__close-button" aria-label="Close">&#215;</a>
+</div>
+
+<div id="videoModal2" class="video-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <div class="video-modal__video" data-video-id="33386651">
+  </div>
+  <a class="video-modal__close-button" aria-label="Close">&#215;</a>
+</div>
+
+<div id="videoModal3" class="video-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <div class="video-modal__video" data-video-id="57348704">
+  </div>
+  <a class="video-modal__close-button" aria-label="Close">&#215;</a>
+</div>
+</body>
+
