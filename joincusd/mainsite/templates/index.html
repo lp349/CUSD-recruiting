@@ -1,5 +1,6 @@
 {% include 'common/header.html' %}
 <body>
+{% load staticfiles %}
 <div class="cover-video">
   <div class="cover-video__overlay">
     <div class="cover-video__overlay__controls">
@@ -28,7 +29,8 @@
 
     <article class="video-preview">
       <h3>How We Began</h3>
-      <div class="video-preview__thubnail" style="background-image: url(<% static 'images/videos/video-2.jpg' %>)">
+      <!--<div class="video-preview__thubnail" style="background-image: url({% static 'images/videos/video-2.jpg' %});">-->
+      <img src="{% static 'images/videos/video-2.jpg' %}">
         <div class="video-preview__overlay">
           <div class="video-preview__overlay__controls"><a href="#" data-reveal-id="videoModal2"></a></div>
         </div>
@@ -37,7 +39,8 @@
 
     <article class="video-preview">
       <h3>One of Our Recent Projects</h3>
-      <div class="video-preview__thubnail" style="background-image: url(<% static 'images/videos/video-3.jpg' %>)">
+      <!--<div class="video-preview__thubnail" style="background-image: url({% static 'images/videos/video-3.jpg' %});">-->
+      <img src="{% static 'images/videos/video-3.jpg' %}">      
         <div class="video-preview__overlay">
           <div class="video-preview__overlay__controls"><a href="#" data-reveal-id="videoModal3"></a></div>
         </div>

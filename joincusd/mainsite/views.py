@@ -6,3 +6,9 @@ def index(request):
 
 def projects(request):
   return render_to_response('projects.html', {'title': 'Projects'})
+
+def about(request):
+  return render_to_response('about.html', {'title':'About'})
+
+def footer_test(request):
+  return render_to_response('common/footer.html')
