@@ -14,29 +14,37 @@
         </div>
         <div class="site-footer__links-wrapper__link-list">
           <h5>Roles</h5>
-          <!--<ul>
-            <% data.roles.each do |role| %>
-              <li><%= link_to role[1].name, "/roles/#{role[0]}" %></li>
-            <% end %>
-          </ul>-->
+           <ul>
+            {% if role_list %}
+	      {% for role in role_list %}
+	         <li><a href="/roles/{{role.id}}">{{role.role_name}}</a></li>
+	      {% endfor %}
+            {% else %}
+               <li>Sorry, we have no role descriptions at this time.</li>
+	    {% endif %}
+           </ul>
         </div>
-        <!-- <div class="site-footer__links-wrapper__link-list">
+        <div class="site-footer__links-wrapper__link-list">
           <h5>Students</h5>
-          <ul>
+          <!--<ul>
             <% sitemap.resources.each do |resource| %>
               <% if resource.path =~ /^students\// %>
                 <li><%= link_to resource.data.title, resource %></li>
               <% end %>
             <% end %>
-          </ul>
-        </div> -->
+          </ul>-->
+        </div> 
         <div class="site-footer__links-wrapper__link-list site-footer__links-wrapper__link-list--extended">
           <h5>Projects</h5>
-          <!--<ul>
-            <% data.projects.each do |project| %>
-              <li><%= link_to project[1].name, "/projects/#{project[0]}" %></li>
-            <% end %>
-          </ul>-->
+	  <ul>
+	    {% if project_list %}
+	      {% for project in project_list %}
+	         <li><a href="/projects/{{project.id}}">{{project.project_name}}</a></li>
+	      {% endfor %}
+            {% else %}
+               <li>Sorry, we have no projects at this time.</li>
+	    {% endif %}
+	  </ul>
         </div>
         <div class="site-footer__links-wrapper__link-list">
           <h5>Connect</h5>
