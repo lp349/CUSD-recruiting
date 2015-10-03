@@ -1,0 +1,23 @@
+@import "cusd-settings";
+@import "foundation/scss/foundation";
+
+@import "components/buttons";
+@import "components/icons";
+@import "components/modals";
+@import "components/panels";
+@import "components/typography";
+@import "components/videos";
+
+@import "pages/header";
+@import "pages/footer";
+
+@import "pages/about";
+@import "pages/home";
+@import "pages/project";
+@import "pages/projects";
+@import "pages/role";
+
+.main-content {
+  @include grid-row();
+  padding-top: rem-calc(32);
+}

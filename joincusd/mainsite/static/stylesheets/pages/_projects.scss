@@ -1,0 +1,114 @@
+.current-projects, .past-projects {
+  @include grid-column(12);
+}
+
+.current-projects {
+  h1 {
+    @include grid-column(12);
+    margin-bottom: rem-calc(24);
+  }
+
+  .project {
+    @include grid-column(12);
+    margin-bottom: rem-calc(40);
+
+    @media #{$medium-up} {
+      @include grid-column(4);
+    }
+
+    h3 {
+      line-height: 1.2;
+      margin-bottom: rem-calc(8);
+    }
+  }
+
+  .icon {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    margin-bottom: rem-calc(32);
+
+    &--project-seg {
+      background-size: rem-calc(180);
+      @media #{$medium-up} {
+        background-size: rem-calc(155);
+      }
+      @media #{$large-up} {
+        background-size: rem-calc(175);
+      }
+    }
+    &--project-ord {
+      background-size: rem-calc(210);
+      @media #{$medium-up} {
+        background-size: rem-calc(180);
+      }
+      @media #{$large-up} {
+        background-size: rem-calc(210);
+      }
+    }
+    &--project-gbmp {
+      background-size: rem-calc(180);
+      @media #{$medium-up} {
+        background-size: rem-calc(160);
+      }
+      @media #{$large-up} {
+        background-size: rem-calc(177);
+      }
+    }
+    &--project-tech {
+      background-size: rem-calc(200);
+      @media #{$medium-up} {
+        background-size: rem-calc(160);
+      }
+      @media #{$large-up} {
+        background-size: rem-calc(180);
+      }
+    }
+    &--project-cap {
+      background-size: rem-calc(180);
+      @media #{$medium-up} {
+        background-size: rem-calc(140);
+      }
+      @media #{$large-up} {
+        background-size: rem-calc(165);
+      }
+    }
+    &--project-futures {
+      background-size: rem-calc(180);
+      @media #{$medium-up} {
+        background-size: rem-calc(150);
+      }
+      @media #{$large-up} {
+        background-size: rem-calc(170);
+      }
+    }
+  }
+}
+
+.past-projects {
+  .project {
+    @include grid-row();
+
+    &:not(:first-child) {
+      margin-top: rem-calc(44);
+    }
+
+    &__image {
+      @include grid-column($columns: 12);
+      margin-bottom: rem-calc(16);
+
+      @media #{$medium-up} {
+        @include grid-column($columns: 3);
+        padding: rem-calc(0 20);
+      }
+    }
+
+    &__description {
+      @include grid-column($columns: 12);
+
+      @media #{$medium-up} {
+        @include grid-column($columns: 8, $offset: 1);
+      }
+    }
+  }
+}

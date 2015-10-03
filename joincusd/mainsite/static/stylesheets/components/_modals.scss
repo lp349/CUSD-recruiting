@@ -1,0 +1,22 @@
+.video-modal {
+  @include reveal-modal-base($width: 100%, $max-width: 100%);
+  @include reveal-modal-style($bg: #000, $border-style: 0);
+  max-height: 100vh;
+  height: 100vh;
+
+  &__close-button {
+    @include reveal-close();
+  }
+
+  &__video {
+    height: 100vh;
+    max-width: calc((100vh / 9) * 16);
+    display:block;
+    margin: auto;
+  }
+}
+
+.reveal-modal-bg {
+  @include reveal-bg();
+}
+
