@@ -1,0 +1,199 @@
+// These styles are also re-used for the role pages
+
+.project-description {
+  @include grid-row();
+  padding-top: rem-calc(32);
+
+  &__logo {
+    @include grid-column($columns: 12);
+
+    @media #{$medium-up} {
+      @include grid-column($columns: 4);
+    }
+
+    @media #{$large-up} {
+      @include grid-column($columns: 3);
+    }
+
+    .icon {
+      width: 100%;
+      height: 0;
+      padding-bottom: 100%;
+      margin-bottom: rem-calc(32);
+
+      &.medium-up {
+        display: none;
+      }
+
+      @media #{$medium-up} {
+
+        &.small-only{
+          display: none;
+        }
+
+        &.medium-up {
+          display: block;
+        }
+
+      }
+      &--role-engineering--role-page {
+        background-size: rem-calc(190);
+        @media #{$medium-up} {
+          background-size: rem-calc(180);
+        }
+      }
+      &--role-design--role-page {
+        background-size: rem-calc(1200);
+        @media #{$medium-up} {
+          background-size: rem-calc(160);
+        }
+      }
+      &--role-strategy--role-page {
+        background-size: rem-calc(180);
+      }
+      &--project-seg {
+        background-size: rem-calc(180);
+      }
+      &--project-ord {
+        background-size: rem-calc(220);
+        @media #{$medium-up} {
+          background-size: rem-calc(210);
+        }
+      }
+      &--project-gbmp {
+        background-size: rem-calc(180);
+      }
+      &--project-tech {
+        background-size: rem-calc(190);
+        @media #{$medium-up} {
+          background-size: rem-calc(160);
+        }
+      }
+      &--project-cap {
+        background-size: rem-calc(180);
+        @media #{$medium-up} {
+          background-size: rem-calc(140);
+        }
+      }
+      &--project-futures {
+        background-size: rem-calc(180);
+        @media #{$medium-up} {
+          background-size: rem-calc(100);
+        }
+      }
+    }
+  }
+
+  &__main {
+    @include grid-column($columns: 12);
+
+    @media #{$medium-up} {
+      @include grid-column($columns: 8);
+    }
+
+    @media #{$large-up} {
+      @include grid-column($columns: 8, $offset: 1);
+    }
+
+    h1 {
+      line-height: 1;
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-size: rem-calc(27);
+      margin-bottom: rem-calc(12);
+    }
+
+    p {
+      display: none;
+    }
+
+    p.lede, input[type=checkbox].see-more__checkbox:checked ~ p {
+      display: block;
+    }
+  }
+
+  &__text {
+    margin-bottom: rem-calc(32);
+  }
+
+  &__gallery {
+    @include block-grid($per-row: 2, $base-style: true);
+
+    @media #{$medium-up} {
+      @include block-grid($per-row: 3, $base-style: true);
+    }
+
+    img {
+      // box-shadow: $subtle-shadow;
+      // border-radius: $global-radius;
+    }
+  }
+}
+
+.see-more{
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__label {
+    color: $anchor-font-color;
+    text-decoration: $anchor-text-decoration;
+    cursor: pointer;
+    display: block;
+    margin: rem-calc(0 0 12);
+    
+    &:hover {
+      color: $anchor-font-color-hover;
+      text-decoration: $anchor-text-decoration-hover;
+    }
+
+    &--open, input[type=checkbox].see-more__checkbox:checked ~ & > &--closed {
+      display: none;
+    }
+
+    &--closed, input[type=checkbox].see-more__checkbox:checked ~ & > &--open {
+      display: inline;
+    }
+  }
+}
+
+.project-openings {
+  @include grid-row();
+  padding-top: rem-calc(48);
+
+  &__wrapper {
+    @include grid-column($columns: 12);
+  }
+
+  h3 {
+    margin-bottom: rem-calc(24);
+  }
+
+  &__list {
+    @include block-grid($per-row: 1, $base-style: true);
+
+    @media #{$medium-up} {
+      @include block-grid($per-row: 2, $base-style: true);
+    }
+
+    @media #{$large-up} {
+      @include block-grid($per-row: 3, $base-style: true);
+    }
+
+    .panel {
+      @include callout-panel();
+    }
+  }
+
+  &__no-openings {
+    width: 100% !important;
+    padding: 0 !important;
+    
+    .panel {
+      padding-bottom: rem-calc(24);
+    }
+  }
+}

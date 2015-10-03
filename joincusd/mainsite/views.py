@@ -1,8 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, render_to_response
 
 # Create your views here.
 def index(request):
-	template=loader.get_template('index.html')
-	return HttpResponse()
+  return render_to_response('index.html', {'title': 'Cornell University Sustainable Design'})
 
+def projects(request):
+  return render_to_response('projects.html', {'title': 'Projects'})

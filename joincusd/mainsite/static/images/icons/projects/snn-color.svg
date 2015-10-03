@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="861px" height="721px" viewBox="0 0 861 721" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>snn-color</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Artboard" sketch:type="MSArtboardGroup" transform="translate(0.000000, -70.000000)">
+            <g id="snn-color" sketch:type="MSLayerGroup" transform="translate(0.000000, 70.000000)">
+                <path d="M756.157,639.955 L549.36,720.983 L549.36,392.954 L4.895,110.923 L225.123,37.569 L756.157,309.618" id="Shape" fill="#2E67B2" sketch:type="MSShapeGroup"></path>
+                <path d="M225.979,264.374 L0,147.329 L0,625.488 L225.412,552.977 L225.979,264.374 Z" id="Shape" fill="#89C545" sketch:type="MSShapeGroup"></path>
+                <path d="M860.492,600.009 L787.213,627.077 L787.213,295.845 L263.238,25.045 L338.397,0.011 L860.492,267.174" id="Shape" fill="#2E67B2" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

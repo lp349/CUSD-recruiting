@@ -1,0 +1,71 @@
+.site-footer {
+  background: $primary-color;
+  margin-top: rem-calc(72);
+  padding: rem-calc(32 0);
+
+  @media #{$medium-up} {
+    padding: rem-calc(72 0 32);
+  }
+
+  &__mobile-cta {
+    padding: rem-calc(0 10);
+
+    @media #{$medium-up} {
+      display: none;
+    }
+  }
+
+  &__links-wrapper {
+    @include grid-row();
+
+    &__link-list {
+      @include grid-column($columns: 12);
+
+      @media #{$medium-up} {
+        @include grid-column($columns: 2);
+      }
+
+      &--extended {
+        @include grid-column($columns: 12);
+
+        @media #{$medium-up} {
+          @include grid-column($columns: 3);
+        }
+      }
+
+      h5 {
+        color: $body-background;
+        font-weight: $font-weight-book;
+        text-decoration: underline;
+      }
+
+      > ul {
+        list-style: none;
+        margin-left: 0;
+
+        a, a:hover, a:visited {
+          color: $body-background;
+          font-size: rem-calc(14);
+          line-height: rem-calc(19);
+          font-weight: $font-weight-regular;
+        }
+      }
+    }
+  }
+
+  &__copyright-wrapper {
+    @include grid-row();
+
+    &__text {
+      @include grid-column($columns: 12);
+      margin-top: rem-calc(36);
+      color: rgba($body-background, 0.75);
+      font-size: rem-calc(14);
+      line-height: rem-calc(16);
+      
+      span {
+        font-size: rem-calc(12);
+      }
+    }
+  }
+}

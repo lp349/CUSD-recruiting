@@ -1,0 +1,126 @@
+.icon {
+  &--role-engineering {
+    background: image-url('icons/roles/engineering.svg') center center no-repeat;
+    background-size: rem-calc(157 122);
+    &--colored {
+      background: image-url('icons/roles/engineering-color.svg') center center no-repeat;
+      background-size: rem-calc(157 122);
+    }
+    &--role-page {
+      background: image-url('icons/roles/engineering-color.svg') top center no-repeat;
+      @media #{$large-up} {
+        background: image-url('icons/roles/engineering-color.svg') top right no-repeat;
+      }
+    }
+    &--colored-bg {
+      background-color: $primary-color;
+    }
+  }
+  &--role-design {
+    background: image-url('icons/roles/design.svg') center center no-repeat;
+    background-size: rem-calc(123 123);
+    &--colored {
+      background: image-url('icons/roles/design-color.svg') center center no-repeat;
+      background-size: rem-calc(123 123);
+    }
+    &--role-page {
+      background: image-url('icons/roles/design-color.svg') top center no-repeat;
+      @media #{$large-up} {
+        background: image-url('icons/roles/design-color.svg') top right no-repeat;
+      }
+    }
+    &--colored-bg {
+      background-color: $primary-color;
+    }
+  }
+  &--role-strategy {
+    background: image-url('icons/roles/strategy.svg') center center no-repeat;
+    background-size: rem-calc(151 114);
+    &--colored {
+      background: image-url('icons/roles/strategy-color.svg') center center no-repeat;
+      background-size: rem-calc(151 114);
+    }
+    &--role-page {
+      background: image-url('icons/roles/strategy-color.svg') top center no-repeat;
+      @media #{$large-up} {
+        background: image-url('icons/roles/strategy-color.svg') top right no-repeat;
+      }
+    }
+    &--colored-bg {
+      background-color: $primary-color;
+    }
+  }
+
+  &--project-seg {
+    background: image-url('icons/projects/seg.svg') center center no-repeat;
+    &--colored {
+      background: image-url('icons/projects/seg-color.svg') top center no-repeat;
+      @media #{$large-up} {
+        background: image-url('icons/projects/seg-color.svg') top right no-repeat;
+      }
+    }
+    &--colored-bg {
+      background-color: $seg;
+    }
+  }
+  &--project-ord {
+    background: image-url('icons/projects/ord.svg') center center no-repeat;
+    &--colored {
+      background: image-url('icons/projects/ord-color.svg') top center no-repeat;
+      @media #{$large-up} {
+        background: image-url('icons/projects/ord-color.svg') top right no-repeat;
+      }
+    }
+    &--colored-bg {
+      background-color: $ord;
+    }
+  }
+  &--project-gbmp {
+    background: image-url('icons/projects/gbmp.svg') center center no-repeat;
+    &--colored {
+      background: image-url('icons/projects/gbmp-color.svg') top center no-repeat;
+      @media #{$large-up} {
+        background: image-url('icons/projects/gbmp-color.svg') top right no-repeat;
+      }
+    }
+    &--colored-bg {
+      background-color: $gbmp;
+    }
+  }
+  &--project-tech {
+    background: image-url('icons/projects/tech.svg') center center no-repeat;
+    &--colored {
+      background: image-url('icons/projects/tech-color.svg') top center no-repeat;
+      @media #{$large-up} {
+        background: image-url('icons/projects/tech-color.svg') top right no-repeat;
+      }
+    }
+    &--colored-bg {
+      background-color: $tech;
+    }
+  }
+  &--project-cap {
+    background: image-url('icons/projects/cap.svg') center center no-repeat;
+    &--colored {
+      background: image-url('icons/projects/cap-color.svg') top center no-repeat;
+      @media #{$large-up} {
+        background: image-url('icons/projects/cap-color.svg') top right no-repeat;
+      }
+    }
+    &--colored-bg {
+      background-color: $cap;
+    }
+  }
+  &--project-futures {
+    background: image-url('icons/projects/futures.svg') center center no-repeat;
+    &--colored {
+      background: image-url('icons/projects/futures-color.svg') top center no-repeat;
+      @media #{$large-up} {
+        background: image-url('icons/projects/futures-color.svg') top right no-repeat;
+      }
+    }
+    &--colored-bg {
+      background-color: $futures;
+    }
+  }
+}

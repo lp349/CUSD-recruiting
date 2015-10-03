@@ -1,0 +1,28 @@
+@mixin callout-panel {
+  background: $white;
+  border-radius: $global-radius;
+  box-shadow: $subtle-shadow;
+  padding: rem-calc(24 24 64);
+  position: relative;
+
+  > h4 {
+    text-align: center;
+    margin-top: rem-calc(20 0 0);
+  }
+
+  > p {
+    text-align: center;
+    margin-bottom: rem-calc(24);
+    color: $header-font-color;
+  }
+
+  > .button {
+    display: block;
+    width: grid-calc(2,4);
+    margin: auto;
+    position: absolute;
+    bottom: rem-calc(24);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

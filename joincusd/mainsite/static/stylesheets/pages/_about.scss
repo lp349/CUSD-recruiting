@@ -1,0 +1,35 @@
+.about-blurb {
+  @include grid-column($columns: 12);
+
+  @media #{$medium-up} {
+    @include grid-column($columns: 7);
+  }
+
+  h1, h3 {
+    margin-bottom: rem-calc(8);
+  }
+
+  h3 {
+    margin-top: rem-calc(20);
+  }
+}
+
+.about-downloads {
+  @include grid-column($columns: 12);
+
+  @media #{$medium-up} {
+    @include grid-column($columns: 4, $offset: 1);
+  }
+
+  h3 {
+    margin-top: rem-calc(16);
+  }
+  
+  &__panel {
+    @include callout-panel();
+    
+    &:not(:last-child) {
+      margin-bottom: rem-calc(24);
+    }
+  }
+}
