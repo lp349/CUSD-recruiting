@@ -1,11 +1,24 @@
 from django.db import models
 
+#from the data section on github, projects and roles are completely identical
+#in all fields, so our initial definition:
+#
+# 1) reuses the same Posting table for name, tagline, and description
+# 2) Photo and Opening are separate tables
+# 3) both Photo and Opening have many-to-many relationships to a given Posting
 
-#very rough definition of models based on what is used in footer.html
-class Project(models.Model):
-  project_name = models.CharField(max_length=256)
-  #may not be needed; the id is used.
-  #project_link_id = models.IntegerField(default=0)
+class Photo(models.Model):
+  image_path = models.FilePathField("/home/images", max_length=255)
 
-class Role(models.Model):
-  role_name = models.CharField(max_length=256)
+class Opening(models.Model):
+  title = models.CharField(max_length=500)
+  description = models.TextField()
+
+class Posting(models.Model):
+  type = models.CharField(max_length=255)
+  name = models.CharField(max_length=500)
+  tagline = models.CharField(max_length=4096)
+  description = models.TextField()
+  photos = models.ManyToManyField(Photo)
+  openings = models.ManyToManyField(Opening)
+

@@ -17,7 +17,7 @@
            <ul>
             {% if role_list %}
 	      {% for role in role_list %}
-	         <li><a href="/roles/{{role.id}}">{{role.role_name}}</a></li>
+	         <li><a href="/roles/{{role.id}}">{{role.name}}</a></li>
 	      {% endfor %}
             {% else %}
                <li>Sorry, we have no role descriptions at this time.</li>
@@ -39,7 +39,7 @@
 	  <ul>
 	    {% if project_list %}
 	      {% for project in project_list %}
-	         <li><a href="/projects/{{project.id}}">{{project.project_name}}</a></li>
+	         <li><a href="/projects/{{project.id}}">{{project.name}}</a></li>
 	      {% endfor %}
             {% else %}
                <li>Sorry, we have no projects at this time.</li>
