@@ -1,0 +1,28 @@
+.button { 
+  @include button($full-width: true, $radius: true);
+  box-shadow: $subtle-shadow;
+
+  &--disabled {
+    @include button($full-width: true, $radius: true, $disabled: true);
+  }
+
+  &--secondary {
+    @include button($full-width: true, $radius: true, $bg: $secondary-color);
+  }
+
+  &--inverse {
+    @include button($full-width: true, $radius: true, $bg: #fff);
+    font-weight: $font-weight-bold;
+    border: 2px solid $primary-color;
+
+    &:hover {
+      background: $primary-color;
+      color: #fff;
+    }
+  }
+
+  &--inverse-footer {
+    @include button($full-width: true, $radius: true, $bg: $body-background);
+    font-weight: $font-weight-bold;
+  }
+}

@@ -1,0 +1,93 @@
+@mixin video-thumbnail($image) {
+  background: image_url($image) no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
+@mixin play-button($size) {
+  display: block;
+  background: $primary-color;
+  border-radius: 50%;
+  height: rem-calc($size);
+  width: rem-calc($size);
+  box-shadow: $subtle-shadow;
+  margin: rem-calc(32) 45%;
+  margin: rem-calc(32) calc(50% - #{$size/2}px);
+
+  &:after {
+    content:'';
+    display: block;
+    width: 0; 
+    height: 0; 
+    border-top: rem-calc($size/3) solid transparent;
+    border-bottom: rem-calc($size/3) solid transparent;
+    border-left: rem-calc($size/3) solid $body-background;
+
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-30%) translateY(-50%);
+    -webkit-transform: translateX(-30%) translateY(-50%);
+    -o-transform: translateX(-30%) translateY(-50%);
+    -ms-transform: translateX(-30%) translateY(-50%);
+    transform: translateX(-30%) translateY(-50%);
+  }
+}
+
+@mixin video-controls($text:false) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+
+  @if $text == true {
+    width: 90%;
+
+    > h1 {
+      font-weight: $font-weight-bold;
+      color: $body-background;
+      text-align: center;
+      text-shadow: 0 0 0.125rem rgba(0, 0, 0, 0.2);
+
+      @media #{$medium-up} {
+        font-size: rem-calc(86);
+        line-height: rem-calc(104);
+      }
+    }
+  }
+}
+
+.video-preview {
+
+  &__thubnail {
+    @include video-thumbnail(null);
+    height: 0;
+    padding-top: 56.25%;
+    margin-top: rem-calc(4);
+  }
+
+  &__overlay {
+    background-color: rgba(0,0,0,0.4);
+    display: block;
+    width: 100%;
+    padding-top: 56.25%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &__controls {
+      @include video-controls();
+
+      > a {
+        @include play-button($size:60)
+      }
+    }
+  }
+}

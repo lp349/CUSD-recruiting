@@ -1,0 +1,106 @@
+.site-header {
+  max-height: rem-calc(120);
+  overflow: hidden;
+  background: $header-background;
+  box-shadow: $subtle-shadow;
+  
+  &__wrapper {
+    @include grid-row();
+  }
+}
+
+.site-logo {
+  @include grid-column($columns:5);
+
+  @media #{$medium-up} {
+    @include grid-column($columns:2);
+  }
+  
+  @media #{$large-up} {
+    @include grid-column($columns:5);
+  }
+  
+  &__image {
+    float: left;
+    max-height: rem-calc(78);
+    margin: rem-calc(21 0);
+  }
+
+  &__text {
+    float: left;
+    margin: rem-calc(22 0 22 10);
+    font-size: rem-calc(34);
+    line-height: rem-calc(38);
+    font-weight: $font-weight-light;
+    color: $logo-text-gray;
+    display: none;
+
+    @media #{$large-up} {
+      display: block;
+    }
+  }
+}
+
+.main-nav {
+  display: none;
+
+  @media #{$medium-up} {
+    display: block;
+    height: 100%;
+    @include grid-column($columns:10);
+
+    &__menu { 
+      list-style: none;
+      float: right;
+
+      > li { 
+        float: right;
+        margin: rem-calc(0 6);
+
+        &:first-child {
+          width: rem-calc(152);
+          margin-right: 0;
+          margin-left: rem-calc(35);
+        }
+
+        > a:not(.button) {
+          display: block;
+          height: 100%;
+          width: 100%;
+          line-height: rem-calc(120);
+          padding: rem-calc(0 30);
+          font-weight: $font-weight-regular;
+          font-size: rem-calc(18);
+          text-align: center;
+          color: $logo-text-gray;
+
+          &:hover {
+            background: #f8f8f8;
+          }
+        }
+
+        > .button { 
+          margin: rem-calc(40 0);
+        }
+      }
+    }
+  }
+
+  @media #{$large-up} {
+    @include grid-column($columns:7);
+  }
+}
+
+.mobile-nav {
+  float: right;
+  margin-right: rem-calc(10);
+  width: rem-calc(120);
+
+  .button { 
+    margin: rem-calc(40 0);
+  }
+
+  @media #{$medium-up} {
+    display: none;
+  }
+}
