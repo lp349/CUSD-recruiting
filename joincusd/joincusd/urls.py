@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^$', 'mainsite.views.index'),
     url(r'^about/$', 'mainsite.views.about'),
     url(r'^projects/$', 'mainsite.views.projects'),
+    url(r'^footer_test/$', 'mainsite.views.footer_test'),
     url(r'^admin/', include(admin.site.urls)),
 ]
