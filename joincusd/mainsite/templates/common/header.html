@@ -31,7 +31,7 @@
     <!--%= javascript_include_tag  "head" %-->
 
     <link rel="stylesheet" type="text/css" href="{% static "stylesheets/cusd.css" %}" />
-    <script type="text/javascript" src="{% static "javascripts/head.css" %}"></script>
+    <script type="text/javascript" src="{% static "javascripts/head.js" %}"></script>
 
     
 
@@ -44,7 +44,7 @@
       <div class="site-header__wrapper">
 
         <!--% link_to '/index.html' do %-->
-        <a href="/index.html">
+        <a href="">
           <div class="site-logo">
             <!--%= image_tag "CUSD-logo.svg", class: "site-logo__image" %-->
             <img src="{% static "images/CUSD-logo.svg" %}" class="site-logo__image"/>
@@ -57,10 +57,10 @@
             <li> 
               <a href="https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform" class="button">Apply</a>
             </li>
-            <!--li><%= link_to 'About', '/about.html' %></li-->
-            <li><a href="/about.html">About</a></li>
+           
+            <li><a href="/about/">About</a></li>
             
-            <li><a href="/projects.html">Projects</a></li>
+            <li><a href="/projects/">Projects</a></li>
           </ul>
         </div>
 
