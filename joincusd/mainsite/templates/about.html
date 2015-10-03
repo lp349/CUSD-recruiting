@@ -1,100 +1,51 @@
 {% include 'common/header.html' %}
 {% load staticfiles %}
 <section class="main-content">
-  <section class="current-projects">
-    <h1>Current Projects</h1>
-    <article class="project">
-      <a href='projects/seg'>
-        <div class="icon icon--project-seg icon--project-seg--colored-bg"></div>
-        <h3>Sustainable Education Ghana</h3>
-      </a>
-      <p>
-        This team partners with Voices of African Mothers to develop a sustainable school for girls in an ecological hub outside of Sogakope, Ghana.
-      </p>
-    </article>
-    <article class="project">
-      <a href='projects/ord'>
-        <div class="icon icon--project-ord icon--project-ord--colored-bg"></div>
-        <h3>Overlook Ridge Development</h3>
-      </a>
-      <p>
-        This team is collaborating with a local developer to create a net-zero housing development and world class leadership development center in NY.
-      </p>
-    </article>
-    <article class="project">
-      <a href='projects/gbmp'>
-        <div class="icon icon--project-gbmp icon--project-gbmp--colored-bg"></div>
-        <h3>Green Building Metrics Project</h3>
-      </a>
-      <p>
-        The Green Building Metrics Project is designing a metric that will allow consumers to determine how sustainable a product is so that they can make informed purchases.
-      </p>
-    </article>
+  <section class="about-blurb">
+    <h1>Our Story</h1>
+    <p>
+      Cornell University Sustainable Design (CUSD) is a student run, interdisciplinary project team with a tendency towards impact. Hailing from the successful Cornell University Solar Decathlon team, we were inspired to seek out projects that could provide the same compelling and hands on learning experience, while simultaneously creating a lasting impact within a local community. Since our founding in 2009, we’ve undergone or are currently in the process of developing 11 projects in Ithaca, as part of the NYC Tech Campus, and abroad in South Africa, Nicaragua, and Ghana.
+    </p>
+    <h3>A Diverse Community</h3>
+    <p>
+      We bring together students from across all seven colleges to work alongside renowned faculty and knowledgeable professionals in our mission to create a network of proactively sustainable communities. You’ll find each team and project made up of Architects, Structural Engineers, Landscape Architects, Financial Analysts, and everything in between. Our interdisciplinary approach, both in our personnel and our problem identification and solving methodology, makes providing triple pillar sustainable solutions possible.
+    </p>
+    <h3>Holistic Sustainability</h3>
+    <p>
+      Sustainability transcends carbon dioxide emission numbers and electricity bills. We believe sustainability must meet the following three core pillars.
+    </p>
+    <ul>
+      <li>
+        Economic: Any decision and design must be finically feasible for our stakeholders and provide both short and long term value.
+      </li>
+      <li>
+        Social: Any project must promote proactivity within the given community, identifying and building a solution for a community otherwise underserved.
+      </li>
+      <li>
+        Ecological: Preserving and maintaining our planets diverse and fragile ecosystems.
+      </li>
+    </ul>
   </section>
-  <section class="current-projects">
-    <article class="project">
-      <a href='projects/tech'>
-        <div class="icon icon--project-tech icon--project-tech--colored-bg"></div>
-        <h3>Cornell Tech</h3>
-      </a>
-      <p>
-        Our members work as consultants to the Cornell Tech Facilities staff engineering new and innovative sustainable energy systems.
-      </p>
+
+  <aside class="about-downloads">
+    <h3>Want More CUSD?</h3>
+    <article class="about-downloads__panel">
+      <h4>Info Packet</h4>
+      <p>PDF, 6 Pages</p>
+      <!--<%= link_to 'Download', 'static-documents/info%20packet_2015_08_28.pdf', class: 'button' %>-->
+      <a href='static-documents/info%20packet_2015_08_28.pdf' class='button'>Download</a>
     </article>
-    <article class="project">
-      <a href='projects/cap'>
-        <div class="icon icon--project-cap icon--project-cap--colored-bg"></div>
-        <h3>Climate Action Plan</h3>
-      </a>
-      <p>
-        CUSD teams cooperate with University staff to advance Cornell’s goal of Net-Zero energy by 2035 through sustainable innovations.
-      </p>
+    <article class="about-downloads__panel">
+      <h4>Brochure</h4>
+      <p>PDF, 2 Pages</p>
+       <!--<%= link_to 'Download', 'static-documents/brochure_2015_08_28.pdf', class: 'button' %>-->
+      <a href='static-documents/brochure_2015_08_28.pdf' class='button'>Download</a>
     </article>
-    <article class="project">
-      <a href='projects/futures'>
-        <div class="icon icon--project-futures icon--project-futures--colored-bg"></div>
-        <h3>CUSD Futures</h3>
-      </a>
-      <p>
-        This team works to identify and develop the future of sustainability on campus and beyond.
-      </p>
+    <article class="about-downloads__panel">
+      <h4>Press Kit</h4>
+      <p>ZIP</p>
+      <a class="button button--disabled">Download</a>
     </article>
-  </section>
-  <section class="past-projects">
-    <h1>Past Projects</h1>
-    <article class="project">
-      <div class="project__image"><img src='{% static "icons/projects/snn-color.svg" %}' /></div>
-      <div class="project__description">
-        <h3>Sustainable Neighborhoods Nicaragua</h3>
-        <p>
-          Sustainable Neighborhoods Nicaragua (SNN) worked to change the face of housing in the country by designing and building a healthy, sustainable, and low-cost home model in Nagarote, Nicaragua. Based in San Diego, Nicaragua, and grown out of the need to find solutions to address Nicaragua’s housing shortage problem, the SNN project utilized community-based design, low-tech building technologies, local materials, education, and capacity building to create a replicable model for future low-income housing developments in Nicaragua.
-        </p>
-        <p>
-          Since our development of the model home, the Nicaraguan government has heralded our design as a practical, innovative, and applicable solution to the nation’s housing issues. Today, the nonprofit Sostenica continues to construct our designs throughout the country.
-        </p>
-      </div>
-    </article>
-    <article class="project">
-      <div class="project__image"><img src='{% static "icons/projects/srf-color.svg" %}' /></div>
-      <div class="project__description">
-        <h3>Sustainable Research Facility</h3>
-        <p>
-          This long-term project aimed to design a first-of-its-kind facility for interdisciplinary sustainability research on Cornell’s Ithaca Campus. The project brought together 150 students, faculty members, researchers, and organizations from across eleven different departments at Cornell in an unprecedented interdisciplinary effort, establishing the connections and relationships that led to CUSD’s involvement on the Cornell Tech project, the solar energy study of the Ithaca campus, and the Upson and Rice Hall renovation projects. The SRF project also set the standard on campus for the cross-college collaboration and engaged learning that is today such a central aspect of Cornell’s academic mission.
-        </p>
-      </div>
-    </article>
-    <article class="project">
-      <div class="project__image"><img src='{% static "icons/projects/ssa-color.svg" %}' /></div>
-      <div class="project__description">
-        <h3>Schoolhouse South Africa</h3>
-        <p>
-          Schoolhouse South Africa was a two-year project to design and construct a 6,000 square foot early childhood development center and teacher training facility in Cosmo City, South Africa. Grown out of collaboration with local groups and residents, the schoolhouse is a landmark and source of pride for the developing community. With classes held throughout all hours of the day, SSA is a beacon for education and passive sustainable technologies both in the local community and around the world. The building leverages low-maintenance, sustainable, passive heating and cooling technologies, and includes four classrooms, a dining area, kitchen, indoor and outdoor play areas, and an office. Interactive spaces provide sanctuaries for group learning, creative play, and social development.
-        </p>
-        <p>
-          Developed over the course of two years, the project consisted of two semesters of scoping and research, a semester of design development in coordination with the second year architecture comprehensive design studio, and three months of construction. Students collaborated with local partners and stakeholders to develop, refine, promote, and construct the schoolhouse. The project has been recognized by Architizer, Engineering News Record, and Global Best Project Awards.
-        </p>
-      </div>
-    </article>
-  </section>
+  </aside>
 </section>
 {% include 'common/footer.html' %}
