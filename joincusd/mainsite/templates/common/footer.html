@@ -1,0 +1,62 @@
+    <footer class="site-footer" id="mobileMenu">
+      <div class="site-footer__mobile-cta">
+        <%= link_to 'Apply Now', 'https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform', class: 'button button--inverse' %>
+      </div>
+      <div class="site-footer__links-wrapper">     
+        <div class="site-footer__links-wrapper__link-list">
+          <h5>CUSD</h5>
+          <ul>
+            <li><%= link_to 'Home', '/index.html' %></li>
+            <li><%= link_to 'About', '/about.html' %></li>
+            <li><%= link_to 'Projects', '/projects.html' %></li>
+            <li><a href="https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform">Apply</a></li>
+          </ul>
+        </div>
+        <div class="site-footer__links-wrapper__link-list">
+          <h5>Roles</h5>
+          <ul>
+            <% data.roles.each do |role| %>
+              <li><%= link_to role[1].name, "/roles/#{role[0]}" %></li>
+            <% end %>
+          </ul>
+        </div>
+        <!-- <div class="site-footer__links-wrapper__link-list">
+          <h5>Students</h5>
+          <ul>
+            <% sitemap.resources.each do |resource| %>
+              <% if resource.path =~ /^students\// %>
+                <li><%= link_to resource.data.title, resource %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div> -->
+        <div class="site-footer__links-wrapper__link-list site-footer__links-wrapper__link-list--extended">
+          <h5>Projects</h5>
+          <ul>
+            <% data.projects.each do |project| %>
+              <li><%= link_to project[1].name, "/projects/#{project[0]}" %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="site-footer__links-wrapper__link-list">
+          <h5>Connect</h5>
+          <ul>
+            <li><a href="http://cusd.cornell.edu">CUSD Website</a></li>
+            <li><a href="https://www.facebook.com/CUSustainableDesign">Facebook</a></li>
+            <li><a href="https://twitter.com/CUSD">Twitter</a></li>
+            <li><a href="https://vimeo.com/cusd">Vimeo</a></li>
+            <li><a href="https://www.flickr.com/photos/cusd">Flickr</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__copyright-wrapper">
+        <div class="site-footer__copyright-wrapper__text">
+          This website was created exclusively by CUSD student members.<br>
+          <span>&copy; 2015 Cornell University Sustainable Design</span>
+        </div>
+      </div>
+    </footer>
+
+    <%= javascript_include_tag  "cusd" %>
+  </body>
+</html>
