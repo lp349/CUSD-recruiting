@@ -37,11 +37,30 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mainsite'
+    'compressor',
+    'djangobower',
+    'mainsite',
 )
 
+BOWER_INSTALLED_APPS = (
+    'fastclick',
+    'foundation',
+    'jquery',
+    'modernizr',
+)
+
+STATICFILES_FINDERS = (
+    'djangobower.finders.BowerFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+BOWER_COMPONENTS_ROOT = os.path.join(PROJECT_PATH, "../")
+
 COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
+    ('text/x-scss', 'sass --scss --compass -l -I "%s/bower_components/foundation/scss" "{infile}" "{outfile}"' % BOWER_COMPONENTS_ROOT),
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,3 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+COMPRESS_ENABLED = True
+
+STATIC_ROOT = 'static/'
