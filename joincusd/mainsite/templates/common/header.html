@@ -27,16 +27,16 @@
 
     <title>{% if title %} {{ title }} {% else %} Join CUSD {% endif %}</title>
 
-    <!--%= stylesheet_link_tag "cusd" %-->
-    <!--%= javascript_include_tag  "head" %-->
-
     {% load compress %}
       {% compress css %}
       <link rel="stylesheet" type="text/x-scss" href="{% static "scss/cusd.scss" %}" />
     {% endcompress %}
-    <script type="text/javascript" src="{% static "javascripts/head.css" %}"></script>
+    <script type="text/javascript" src="{% static "jquery/dist/jquery.js" %}"></script>
+    <script type="text/javascript" src="{% static "foundation/js/foundation.js" %}"></script>
+    <script type="text/javascript" src="{% static "foundation/js/foundation/foundation.equalizer.js" %}"></script>
+    <script type="text/javascript" src="{% static "foundation/js/foundation/foundation.reveal.js" %}"></script>
 
-    
+    <script type="text/javascript" src="{% static "javascripts/head.js" %}"></script>
 
   </head>
 
