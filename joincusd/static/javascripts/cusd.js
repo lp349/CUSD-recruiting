@@ -16,8 +16,8 @@ $(document).on('opened.fndtn.reveal', '[data-reveal]', function () {
 
   videoContainer.innerHTML = '<iframe src="//player.vimeo.com/video/'
   + videoContainer.attributes['data-video-id'].nodeValue
-  + '?autoplay=1" frameborder="0" height=' 
-  + videoContainer.offsetHeight 
+  + '?autoplay=1" frameborder="0" height='
+  + videoContainer.offsetHeight
   + '" width="'
   + videoContainer.offsetWidth
   + '" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';

@@ -1,0 +1,2117 @@
+/* line 364, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+meta.foundation-version {
+  font-family: "/5.5.2/"; }
+
+/* line 368, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+meta.foundation-mq-small {
+  font-family: "/only screen/";
+  width: 0; }
+
+/* line 373, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+meta.foundation-mq-small-only {
+  font-family: "/only screen and (max-width: 40em)/";
+  width: 0; }
+
+/* line 378, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+meta.foundation-mq-medium {
+  font-family: "/only screen and (min-width:40.0625em)/";
+  width: 40.0625em; }
+
+/* line 383, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+meta.foundation-mq-medium-only {
+  font-family: "/only screen and (min-width:40.0625em) and (max-width:64em)/";
+  width: 40.0625em; }
+
+/* line 388, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+meta.foundation-mq-large {
+  font-family: "/only screen and (min-width:64.0625em)/";
+  width: 64.0625em; }
+
+/* line 393, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+meta.foundation-mq-large-only {
+  font-family: "/only screen and (min-width:64.0625em) and (max-width:90em)/";
+  width: 64.0625em; }
+
+/* line 398, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+meta.foundation-mq-xlarge {
+  font-family: "/only screen and (min-width:90.0625em)/";
+  width: 90.0625em; }
+
+/* line 403, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+meta.foundation-mq-xlarge-only {
+  font-family: "/only screen and (min-width:90.0625em) and (max-width:120em)/";
+  width: 90.0625em; }
+
+/* line 408, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+meta.foundation-mq-xxlarge {
+  font-family: "/only screen and (min-width:120.0625em)/";
+  width: 120.0625em; }
+
+/* line 413, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+meta.foundation-data-attribute-namespace {
+  font-family: false; }
+
+/* line 422, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+html, body {
+  height: 100%; }
+
+/* line 425, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+html {
+  box-sizing: border-box; }
+
+/* line 428, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit; }
+
+/* line 434, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+html,
+body {
+  font-size: 100%; }
+
+/* line 438, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+body {
+  background: #f2f3f3;
+  color: #666666;
+  cursor: auto;
+  font-family: "glober", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  position: relative; }
+
+/* line 451, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+a:hover {
+  cursor: pointer; }
+
+/* line 454, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+img {
+  max-width: 100%;
+  height: auto; }
+
+/* line 456, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+img {
+  -ms-interpolation-mode: bicubic; }
+
+/* line 461, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+#map_canvas img,
+#map_canvas embed,
+#map_canvas object,
+.map_canvas img,
+.map_canvas embed,
+.map_canvas object,
+.mqa-display img,
+.mqa-display embed,
+.mqa-display object {
+  max-width: none !important; }
+
+/* line 468, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+.left {
+  float: left !important; }
+
+/* line 469, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+.right {
+  float: right !important; }
+
+/* line 172, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table; }
+/* line 173, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+.clearfix:after {
+  clear: both; }
+
+/* line 473, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+.hide {
+  display: none; }
+
+/* line 478, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+.invisible {
+  visibility: hidden; }
+
+/* line 484, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+/* line 487, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+img {
+  display: inline-block;
+  vertical-align: middle; }
+
+/* line 497, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+textarea {
+  height: auto;
+  min-height: 50px; }
+
+/* line 500, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+select {
+  width: 100%; }
+
+/* line 155, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+.text-left {
+  text-align: left !important; }
+
+/* line 156, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+.text-right {
+  text-align: right !important; }
+
+/* line 157, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+.text-center {
+  text-align: center !important; }
+
+/* line 158, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+.text-justify {
+  text-align: justify !important; }
+
+@media only screen and (max-width: 40em) {
+  /* line 162, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .small-only-text-left {
+    text-align: left !important; }
+
+  /* line 163, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .small-only-text-right {
+    text-align: right !important; }
+
+  /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .small-only-text-center {
+    text-align: center !important; }
+
+  /* line 165, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .small-only-text-justify {
+    text-align: justify !important; } }
+@media only screen {
+  /* line 162, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .small-text-left {
+    text-align: left !important; }
+
+  /* line 163, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .small-text-right {
+    text-align: right !important; }
+
+  /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .small-text-center {
+    text-align: center !important; }
+
+  /* line 165, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .small-text-justify {
+    text-align: justify !important; } }
+@media only screen and (min-width: 40.0625em) and (max-width: 64em) {
+  /* line 162, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .medium-only-text-left {
+    text-align: left !important; }
+
+  /* line 163, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .medium-only-text-right {
+    text-align: right !important; }
+
+  /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .medium-only-text-center {
+    text-align: center !important; }
+
+  /* line 165, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .medium-only-text-justify {
+    text-align: justify !important; } }
+@media only screen and (min-width: 40.0625em) {
+  /* line 162, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .medium-text-left {
+    text-align: left !important; }
+
+  /* line 163, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .medium-text-right {
+    text-align: right !important; }
+
+  /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .medium-text-center {
+    text-align: center !important; }
+
+  /* line 165, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .medium-text-justify {
+    text-align: justify !important; } }
+@media only screen and (min-width: 64.0625em) and (max-width: 90em) {
+  /* line 162, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .large-only-text-left {
+    text-align: left !important; }
+
+  /* line 163, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .large-only-text-right {
+    text-align: right !important; }
+
+  /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .large-only-text-center {
+    text-align: center !important; }
+
+  /* line 165, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .large-only-text-justify {
+    text-align: justify !important; } }
+@media only screen and (min-width: 64.0625em) {
+  /* line 162, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .large-text-left {
+    text-align: left !important; }
+
+  /* line 163, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .large-text-right {
+    text-align: right !important; }
+
+  /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .large-text-center {
+    text-align: center !important; }
+
+  /* line 165, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .large-text-justify {
+    text-align: justify !important; } }
+@media only screen and (min-width: 90.0625em) and (max-width: 120em) {
+  /* line 162, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xlarge-only-text-left {
+    text-align: left !important; }
+
+  /* line 163, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xlarge-only-text-right {
+    text-align: right !important; }
+
+  /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xlarge-only-text-center {
+    text-align: center !important; }
+
+  /* line 165, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xlarge-only-text-justify {
+    text-align: justify !important; } }
+@media only screen and (min-width: 90.0625em) {
+  /* line 162, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xlarge-text-left {
+    text-align: left !important; }
+
+  /* line 163, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xlarge-text-right {
+    text-align: right !important; }
+
+  /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xlarge-text-center {
+    text-align: center !important; }
+
+  /* line 165, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xlarge-text-justify {
+    text-align: justify !important; } }
+@media only screen and (min-width: 120.0625em) and (max-width: 6249999.9375em) {
+  /* line 162, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xxlarge-only-text-left {
+    text-align: left !important; }
+
+  /* line 163, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xxlarge-only-text-right {
+    text-align: right !important; }
+
+  /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xxlarge-only-text-center {
+    text-align: center !important; }
+
+  /* line 165, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xxlarge-only-text-justify {
+    text-align: justify !important; } }
+@media only screen and (min-width: 120.0625em) {
+  /* line 162, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xxlarge-text-left {
+    text-align: left !important; }
+
+  /* line 163, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xxlarge-text-right {
+    text-align: right !important; }
+
+  /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xxlarge-text-center {
+    text-align: center !important; }
+
+  /* line 165, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .xxlarge-text-justify {
+    text-align: justify !important; } }
+/* Typography resets */
+/* line 193, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0; }
+
+/* Default Link Styles */
+/* line 217, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+a {
+  color: #3FAB6D;
+  line-height: inherit;
+  text-decoration: none; }
+  /* line 222, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  a:hover, a:focus {
+    color: #36935e; }
+  /* line 230, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  a img {
+    border: none; }
+
+/* Default paragraph styles */
+/* line 234, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+p {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  text-rendering: optimizeLegibility; }
+  /* line 242, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  p.lead {
+    font-size: 1.21875rem;
+    line-height: 1.6; }
+  /* line 244, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  p aside {
+    font-size: 0.875rem;
+    font-style: italic;
+    line-height: 1.35; }
+
+/* Default header styles */
+/* line 252, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+h1, h2, h3, h4, h5, h6 {
+  color: #333333;
+  font-family: "glober", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  margin-top: 0.2rem;
+  text-rendering: optimizeLegibility; }
+  /* line 262, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+    color: #7a7a7a;
+    font-size: 60%;
+    line-height: 0; }
+
+/* line 269, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+h1 {
+  font-size: 2.125rem; }
+
+/* line 270, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+h2 {
+  font-size: 1.6875rem; }
+
+/* line 271, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+h3 {
+  font-size: 1.375rem; }
+
+/* line 272, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+h4 {
+  font-size: 1.125rem; }
+
+/* line 273, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+h5 {
+  font-size: 1.125rem; }
+
+/* line 274, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+h6 {
+  font-size: 1rem; }
+
+/* line 276, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+.subheader {
+  line-height: 1.4;
+  color: #7a7a7a;
+  font-weight: normal;
+  margin-top: 0.2rem;
+  margin-bottom: 0.5rem; }
+
+/* line 278, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+hr {
+  border: solid #DDDDDD;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+  margin: 1.25rem 0 1.1875rem; }
+
+/* Helpful Typography Defaults */
+/* line 287, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+em,
+i {
+  font-style: italic;
+  line-height: inherit; }
+
+/* line 293, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+strong,
+b {
+  font-weight: bold;
+  line-height: inherit; }
+
+/* line 299, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+small {
+  font-size: 60%;
+  line-height: inherit; }
+
+/* line 304, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+code {
+  background-color: #daedeb;
+  border-color: #bcdeda;
+  border-style: solid;
+  border-width: 1px;
+  color: #333333;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  font-weight: normal;
+  padding: 0.125rem 0.3125rem 0.0625rem; }
+
+/* Lists */
+/* line 316, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+ul,
+ol,
+dl {
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.6;
+  list-style-position: outside;
+  margin-bottom: 0.75rem; }
+
+/* line 326, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+ul {
+  margin-left: 1.1rem; }
+  /* line 328, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  ul.no-bullet {
+    margin-left: 0; }
+    /* line 331, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+    ul.no-bullet li ul,
+    ul.no-bullet li ol {
+      margin-left: 1.25rem;
+      margin-bottom: 0;
+      list-style: none; }
+
+/* Unordered Lists */
+/* line 344, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+ul li ul,
+ul li ol {
+  margin-left: 1.25rem;
+  margin-bottom: 0; }
+/* line 353, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+ul.square li ul, ul.circle li ul, ul.disc li ul {
+  list-style: inherit; }
+/* line 356, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+ul.square {
+  list-style-type: square;
+  margin-left: 1.1rem; }
+/* line 357, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+ul.circle {
+  list-style-type: circle;
+  margin-left: 1.1rem; }
+/* line 358, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+ul.disc {
+  list-style-type: disc;
+  margin-left: 1.1rem; }
+/* line 359, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+ul.no-bullet {
+  list-style: none; }
+
+/* Ordered Lists */
+/* line 363, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+ol {
+  margin-left: 1.4rem; }
+  /* line 366, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  ol li ul,
+  ol li ol {
+    margin-left: 1.25rem;
+    margin-bottom: 0; }
+
+/* Definition Lists */
+/* line 376, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+dl dt {
+  margin-bottom: 0.3rem;
+  font-weight: bold; }
+/* line 380, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+dl dd {
+  margin-bottom: 0.75rem; }
+
+/* Abbreviations */
+/* line 384, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+abbr,
+acronym {
+  text-transform: uppercase;
+  font-size: 90%;
+  color: #666666;
+  cursor: help; }
+
+/* line 391, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+abbr {
+  text-transform: none; }
+  /* line 393, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  abbr[title] {
+    border-bottom: 1px dotted #DDDDDD; }
+
+/* Blockquotes */
+/* line 399, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+blockquote {
+  margin: 0 0 0.75rem;
+  padding: 0.5625rem 1.25rem 0 1.1875rem;
+  border-left: 1px solid #DDDDDD; }
+  /* line 404, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  blockquote cite {
+    display: block;
+    font-size: 0.8125rem;
+    color: #626262; }
+    /* line 408, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+    blockquote cite:before {
+      content: "\2014 \0020"; }
+    /* line 412, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+    blockquote cite a,
+    blockquote cite a:visited {
+      color: #626262; }
+
+/* line 418, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+blockquote,
+blockquote p {
+  line-height: 1.6;
+  color: #7a7a7a; }
+
+/* Microformats */
+/* line 425, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+.vcard {
+  display: inline-block;
+  margin: 0 0 1.25rem 0;
+  border: 1px solid #DDDDDD;
+  padding: 0.625rem 0.75rem; }
+  /* line 431, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .vcard li {
+    margin: 0;
+    display: block; }
+  /* line 435, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  .vcard .fn {
+    font-weight: bold;
+    font-size: 0.9375rem; }
+
+/* line 442, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+.vevent .summary {
+  font-weight: bold; }
+/* line 444, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+.vevent abbr {
+  cursor: default;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  padding: 0 0.0625rem; }
+
+@media only screen and (min-width: 40.0625em) {
+  /* line 455, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.4; }
+
+  /* line 456, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  h1 {
+    font-size: 2.75rem; }
+
+  /* line 457, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  h2 {
+    font-size: 2.3125rem; }
+
+  /* line 458, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  h3 {
+    font-size: 1.6875rem; }
+
+  /* line 459, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  h4 {
+    font-size: 1.4375rem; }
+
+  /* line 460, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  h5 {
+    font-size: 1.125rem; }
+
+  /* line 461, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_type.scss */
+  h6 {
+    font-size: 1rem; } }
+/* line 1, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_buttons.scss */
+.button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 0.0625rem;
+  cursor: pointer;
+  font-family: "glober", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-weight: normal;
+  line-height: normal;
+  margin: 0 0 1.25rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.625rem 1.25rem 0.6875rem 1.25rem;
+  font-size: 0.875rem;
+  padding-bottom: 0.6875rem;
+  padding-top: 0.625rem;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  background-color: #3FAB6D;
+  border-color: #328957;
+  color: #f2f3f3;
+  border-radius: 3px;
+  transition: background-color 300ms ease-out;
+  box-shadow: 0 0 0.125rem 0 rgba(0, 0, 0, 0.2); }
+  /* line 158, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_buttons.scss */
+  .button:hover, .button:focus {
+    background-color: #328957; }
+  /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_buttons.scss */
+  .button:hover, .button:focus {
+    color: #f2f3f3; }
+  /* line 5, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_buttons.scss */
+  .button--disabled {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 0.0625rem;
+    cursor: pointer;
+    font-family: "glober", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0 0 1.25rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.625rem 1.25rem 0.6875rem 1.25rem;
+    font-size: 0.875rem;
+    padding-bottom: 0.6875rem;
+    padding-top: 0.625rem;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    background-color: #3FAB6D;
+    border-color: #328957;
+    color: #f2f3f3;
+    box-shadow: none;
+    cursor: default;
+    opacity: 0.7;
+    border-radius: 3px;
+    transition: background-color 300ms ease-out; }
+    /* line 158, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_buttons.scss */
+    .button--disabled:hover, .button--disabled:focus {
+      background-color: #328957; }
+    /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_buttons.scss */
+    .button--disabled:hover, .button--disabled:focus {
+      color: #f2f3f3; }
+    /* line 175, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_buttons.scss */
+    .button--disabled:hover, .button--disabled:focus {
+      background-color: #3FAB6D; }
+  /* line 9, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_buttons.scss */
+  .button--secondary {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 0.0625rem;
+    cursor: pointer;
+    font-family: "glober", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0 0 1.25rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.625rem 1.25rem 0.6875rem 1.25rem;
+    font-size: 0.875rem;
+    padding-bottom: 0.6875rem;
+    padding-top: 0.625rem;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    background-color: #84C3BB;
+    border-color: #58aea3;
+    color: #f2f3f3;
+    border-radius: 3px;
+    transition: background-color 300ms ease-out; }
+    /* line 158, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_buttons.scss */
+    .button--secondary:hover, .button--secondary:focus {
+      background-color: #58aea3; }
+    /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_buttons.scss */
+    .button--secondary:hover, .button--secondary:focus {
+      color: #f2f3f3; }
+  /* line 13, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_buttons.scss */
+  .button--inverse {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 0.0625rem;
+    cursor: pointer;
+    font-family: "glober", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0 0 1.25rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.625rem 1.25rem 0.6875rem 1.25rem;
+    font-size: 0.875rem;
+    padding-bottom: 0.6875rem;
+    padding-top: 0.625rem;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    background-color: #fff;
+    border-color: #cccccc;
+    color: #3FAB6D;
+    border-radius: 3px;
+    transition: background-color 300ms ease-out;
+    font-weight: bold;
+    border: 2px solid #3FAB6D; }
+    /* line 158, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_buttons.scss */
+    .button--inverse:hover, .button--inverse:focus {
+      background-color: #cccccc; }
+    /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_buttons.scss */
+    .button--inverse:hover, .button--inverse:focus {
+      color: #3FAB6D; }
+    /* line 18, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_buttons.scss */
+    .button--inverse:hover {
+      background: #3FAB6D;
+      color: #fff; }
+  /* line 24, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_buttons.scss */
+  .button--inverse-footer {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+    border-style: solid;
+    border-width: 0.0625rem;
+    cursor: pointer;
+    font-family: "glober", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0 0 1.25rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.625rem 1.25rem 0.6875rem 1.25rem;
+    font-size: 0.875rem;
+    padding-bottom: 0.6875rem;
+    padding-top: 0.625rem;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    background-color: #f2f3f3;
+    border-color: #c0c4c4;
+    color: #3FAB6D;
+    border-radius: 3px;
+    transition: background-color 300ms ease-out;
+    font-weight: bold; }
+    /* line 158, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_buttons.scss */
+    .button--inverse-footer:hover, .button--inverse-footer:focus {
+      background-color: #c0c4c4; }
+    /* line 164, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_buttons.scss */
+    .button--inverse-footer:hover, .button--inverse-footer:focus {
+      color: #3FAB6D; }
+
+/* line 2, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+.icon--role-engineering {
+  background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/roles/engineering.svg') center center no-repeat;
+  background-size: 9.8125rem 7.625rem; }
+  /* line 6, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--role-engineering--colored {
+    background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/roles/engineering-color.svg') center center no-repeat;
+    background-size: 9.8125rem 7.625rem; }
+  /* line 10, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--role-engineering--role-page {
+    background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/roles/engineering-color.svg') top center no-repeat; }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 10, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+      .icon--role-engineering--role-page {
+        background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/roles/engineering-color.svg') top right no-repeat; } }
+  /* line 16, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--role-engineering--colored-bg {
+    background-color: #3FAB6D; }
+/* line 20, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+.icon--role-design {
+  background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/roles/design.svg') center center no-repeat;
+  background-size: 7.6875rem 7.6875rem; }
+  /* line 23, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--role-design--colored {
+    background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/roles/design-color.svg') center center no-repeat;
+    background-size: 7.6875rem 7.6875rem; }
+  /* line 27, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--role-design--role-page {
+    background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/roles/design-color.svg') top center no-repeat; }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 27, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+      .icon--role-design--role-page {
+        background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/roles/design-color.svg') top right no-repeat; } }
+  /* line 33, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--role-design--colored-bg {
+    background-color: #3FAB6D; }
+/* line 37, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+.icon--role-strategy {
+  background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/roles/strategy.svg') center center no-repeat;
+  background-size: 9.4375rem 7.125rem; }
+  /* line 40, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--role-strategy--colored {
+    background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/roles/strategy-color.svg') center center no-repeat;
+    background-size: 9.4375rem 7.125rem; }
+  /* line 44, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--role-strategy--role-page {
+    background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/roles/strategy-color.svg') top center no-repeat; }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 44, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+      .icon--role-strategy--role-page {
+        background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/roles/strategy-color.svg') top right no-repeat; } }
+  /* line 50, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--role-strategy--colored-bg {
+    background-color: #3FAB6D; }
+/* line 55, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+.icon--project-seg {
+  background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/seg.svg') center center no-repeat; }
+  /* line 57, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--project-seg--colored {
+    background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/seg-color.svg') top center no-repeat; }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 57, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+      .icon--project-seg--colored {
+        background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/seg-color.svg') top right no-repeat; } }
+  /* line 63, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--project-seg--colored-bg {
+    background-color: #E04D25; }
+/* line 67, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+.icon--project-ord {
+  background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/ord.svg') center center no-repeat; }
+  /* line 69, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--project-ord--colored {
+    background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/ord-color.svg') top center no-repeat; }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 69, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+      .icon--project-ord--colored {
+        background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/ord-color.svg') top right no-repeat; } }
+  /* line 75, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--project-ord--colored-bg {
+    background-color: #8590B7; }
+/* line 79, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+.icon--project-gbmp {
+  background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/gbmp.svg') center center no-repeat; }
+  /* line 81, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--project-gbmp--colored {
+    background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/gbmp-color.svg') top center no-repeat; }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 81, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+      .icon--project-gbmp--colored {
+        background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/gbmp-color.svg') top right no-repeat; } }
+  /* line 87, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--project-gbmp--colored-bg {
+    background-color: #E47B75; }
+/* line 91, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+.icon--project-tech {
+  background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/tech.svg') center center no-repeat; }
+  /* line 93, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--project-tech--colored {
+    background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/tech-color.svg') top center no-repeat; }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 93, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+      .icon--project-tech--colored {
+        background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/tech-color.svg') top right no-repeat; } }
+  /* line 99, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--project-tech--colored-bg {
+    background-color: #A92523; }
+/* line 103, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+.icon--project-cap {
+  background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/cap.svg') center center no-repeat; }
+  /* line 105, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--project-cap--colored {
+    background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/cap-color.svg') top center no-repeat; }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 105, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+      .icon--project-cap--colored {
+        background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/cap-color.svg') top right no-repeat; } }
+  /* line 111, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--project-cap--colored-bg {
+    background-color: #225D2F; }
+/* line 115, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+.icon--project-futures {
+  background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/futures.svg') center center no-repeat; }
+  /* line 117, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--project-futures--colored {
+    background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/futures-color.svg') top center no-repeat; }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 117, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+      .icon--project-futures--colored {
+        background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/icons/projects/futures-color.svg') top right no-repeat; } }
+  /* line 123, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_icons.scss */
+  .icon--project-futures--colored-bg {
+    background-color: #FCD83F; }
+
+/* line 1, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_modals.scss */
+.video-modal {
+  border-radius: 3px;
+  display: none;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 1005;
+  left: 0;
+  background-color: #000;
+  max-height: 100vh;
+  height: 100vh; }
+  @media only screen and (max-width: 40em) {
+    /* line 1, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_modals.scss */
+    .video-modal {
+      min-height: 100vh; } }
+  /* line 89, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_reveal.scss */
+  .video-modal .column, .video-modal .columns {
+    min-width: 0; }
+  /* line 92, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_reveal.scss */
+  .video-modal > :first-child {
+    margin-top: 0; }
+  /* line 94, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_reveal.scss */
+  .video-modal > :last-child {
+    margin-bottom: 0; }
+  @media only screen and (min-width: 40.0625em) {
+    /* line 1, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_modals.scss */
+    .video-modal {
+      left: 0;
+      margin: 0 auto;
+      max-width: 100%;
+      right: 0;
+      width: 100%; } }
+  /* line 7, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_modals.scss */
+  .video-modal__close-button {
+    color: #AAAAAA;
+    cursor: pointer;
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1;
+    position: absolute;
+    top: 0.625rem;
+    right: 1.375rem; }
+  /* line 11, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_modals.scss */
+  .video-modal__video {
+    height: 100vh;
+    max-width: calc((100vh / 9) * 16);
+    display: block;
+    margin: auto; }
+
+/* line 19, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_modals.scss */
+.reveal-modal-bg {
+  background: #000000;
+  background: rgba(0, 0, 0, 0.45);
+  bottom: 0;
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1004;
+  left: 0; }
+
+@font-face {
+  font-family: 'glober';
+  src: url('/static/fonts/glober_book-webfont-webfont.eot?65378fd19551');
+  src: url('/static/fonts/glober_book-webfont-webfont.eot?&65378fd19551#iefix') format("embedded-opentype"), url('/static/fonts/glober_book-webfont-webfont.woff2?65378fd19551') format("woff2"), url('/static/fonts/glober_book-webfont-webfont.woff?65378fd19551') format("woff"), url('/static/fonts/glober_book-webfont-webfont.ttf?65378fd19551') format("truetype");
+  font-weight: 300;
+  font-style: normal; }
+@font-face {
+  font-family: 'glober';
+  src: url('/static/fonts/glober_regular-webfont-webfont.eot?65378fd19551');
+  src: url('/static/fonts/glober_regular-webfont-webfont.eot?&65378fd19551#iefix') format("embedded-opentype"), url('/static/fonts/glober_regular-webfont-webfont.woff2?65378fd19551') format("woff2"), url('/static/fonts/glober_regular-webfont-webfont.woff?65378fd19551') format("woff"), url('/static/fonts/glober_regular-webfont-webfont.ttf?65378fd19551') format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'glober';
+  src: url('/static/fonts/glober_semibold_free-webfont.eot?65378fd19551');
+  src: url('/static/fonts/glober_semibold_free-webfont.eot?&65378fd19551#iefix') format("embedded-opentype"), url('/static/fonts/glober_semibold_free-webfont.woff2?65378fd19551') format("woff2"), url('/static/fonts/glober_semibold_free-webfont.woff?65378fd19551') format("woff"), url('/static/fonts/glober_semibold_free-webfont.ttf?65378fd19551') format("truetype");
+  font-weight: bold;
+  font-style: normal; }
+/* line 69, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_videos.scss */
+.video-preview__thubnail {
+  background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images') no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+  height: 0;
+  padding-top: 56.25%;
+  margin-top: 0.25rem; }
+/* line 76, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_videos.scss */
+.video-preview__overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  display: block;
+  width: 100%;
+  padding-top: 56.25%;
+  position: absolute;
+  top: 0;
+  left: 0; }
+  /* line 85, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_videos.scss */
+  .video-preview__overlay__controls {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%); }
+    /* line 88, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_videos.scss */
+    .video-preview__overlay__controls > a {
+      display: block;
+      background: #3FAB6D;
+      border-radius: 50%;
+      height: 3.75rem;
+      width: 3.75rem;
+      box-shadow: 0 0 0.125rem 0 rgba(0, 0, 0, 0.2);
+      margin: 2rem 45%;
+      margin: 2rem calc(50% - 30px); }
+      /* line 20, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_videos.scss */
+      .video-preview__overlay__controls > a:after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 1.25rem solid transparent;
+        border-bottom: 1.25rem solid transparent;
+        border-left: 1.25rem solid #f2f3f3;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        -moz-transform: translateX(-30%) translateY(-50%);
+        -webkit-transform: translateX(-30%) translateY(-50%);
+        -o-transform: translateX(-30%) translateY(-50%);
+        -ms-transform: translateX(-30%) translateY(-50%);
+        transform: translateX(-30%) translateY(-50%); }
+
+/* line 1, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+.site-header {
+  max-height: 7.5rem;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 0 0.125rem 0 rgba(0, 0, 0, 0.2); }
+  /* line 7, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+  .site-header__wrapper {
+    margin: 0 auto;
+    max-width: 64rem;
+    width: 100%; }
+    /* line 172, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+    .site-header__wrapper:before, .site-header__wrapper:after {
+      content: " ";
+      display: table; }
+    /* line 173, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+    .site-header__wrapper:after {
+      clear: both; }
+
+/* line 12, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+.site-logo {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  width: 41.66667%;
+  float: left; }
+  @media only screen and (min-width: 40.0625em) {
+    /* line 12, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+    .site-logo {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      width: 16.66667%;
+      float: left; } }
+  @media only screen and (min-width: 64.0625em) {
+    /* line 12, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+    .site-logo {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      width: 41.66667%;
+      float: left; } }
+  /* line 23, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+  .site-logo__image {
+    float: left;
+    max-height: 4.875rem;
+    margin: 1.3125rem 0; }
+  /* line 29, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+  .site-logo__text {
+    float: left;
+    margin: 1.375rem 0 1.375rem 0.625rem;
+    font-size: 2.125rem;
+    line-height: 2.375rem;
+    font-weight: 300;
+    color: #7a7a7a;
+    display: none; }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 29, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+      .site-logo__text {
+        display: block; } }
+
+/* line 44, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+.main-nav {
+  display: none; }
+  @media only screen and (min-width: 40.0625em) {
+    /* line 44, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+    .main-nav {
+      display: block;
+      height: 100%;
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      width: 83.33333%;
+      float: left; }
+      /* line 52, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+      .main-nav__menu {
+        list-style: none;
+        float: right; }
+        /* line 56, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+        .main-nav__menu > li {
+          float: right;
+          margin: 0 0.375rem; }
+          /* line 60, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+          .main-nav__menu > li:first-child {
+            width: 9.5rem;
+            margin-right: 0;
+            margin-left: 2.1875rem; }
+          /* line 66, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+          .main-nav__menu > li > a:not(.button) {
+            display: block;
+            height: 100%;
+            width: 100%;
+            line-height: 7.5rem;
+            padding: 0 1.875rem;
+            font-weight: normal;
+            font-size: 1.125rem;
+            text-align: center;
+            color: #7a7a7a; }
+            /* line 77, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+            .main-nav__menu > li > a:not(.button):hover {
+              background: #f8f8f8; }
+          /* line 82, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+          .main-nav__menu > li > .button {
+            margin: 2.5rem 0; } }
+  @media only screen and (min-width: 64.0625em) {
+    /* line 44, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+    .main-nav {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      width: 58.33333%;
+      float: left; } }
+
+/* line 94, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+.mobile-nav {
+  float: right;
+  margin-right: 0.625rem;
+  width: 7.5rem; }
+  /* line 99, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+  .mobile-nav .button {
+    margin: 2.5rem 0; }
+  @media only screen and (min-width: 40.0625em) {
+    /* line 94, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_header.scss */
+    .mobile-nav {
+      display: none; } }
+
+/* line 1, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+.site-footer {
+  background: #3FAB6D;
+  margin-top: 4.5rem;
+  padding: 2rem 0; }
+  @media only screen and (min-width: 40.0625em) {
+    /* line 1, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+    .site-footer {
+      padding: 4.5rem 0 2rem; } }
+  /* line 10, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+  .site-footer__mobile-cta {
+    padding: 0 0.625rem; }
+    @media only screen and (min-width: 40.0625em) {
+      /* line 10, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+      .site-footer__mobile-cta {
+        display: none; } }
+  /* line 18, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+  .site-footer__links-wrapper {
+    margin: 0 auto;
+    max-width: 64rem;
+    width: 100%; }
+    /* line 172, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+    .site-footer__links-wrapper:before, .site-footer__links-wrapper:after {
+      content: " ";
+      display: table; }
+    /* line 173, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+    .site-footer__links-wrapper:after {
+      clear: both; }
+    /* line 21, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+    .site-footer__links-wrapper__link-list {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      width: 100%;
+      float: left; }
+      @media only screen and (min-width: 40.0625em) {
+        /* line 21, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+        .site-footer__links-wrapper__link-list {
+          padding-left: 0.625rem;
+          padding-right: 0.625rem;
+          width: 16.66667%;
+          float: left; } }
+      /* line 28, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+      .site-footer__links-wrapper__link-list--extended {
+        padding-left: 0.625rem;
+        padding-right: 0.625rem;
+        width: 100%;
+        float: left; }
+        @media only screen and (min-width: 40.0625em) {
+          /* line 28, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+          .site-footer__links-wrapper__link-list--extended {
+            padding-left: 0.625rem;
+            padding-right: 0.625rem;
+            width: 25%;
+            float: left; } }
+      /* line 36, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+      .site-footer__links-wrapper__link-list h5 {
+        color: #f2f3f3;
+        font-weight: 300;
+        text-decoration: underline; }
+      /* line 42, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+      .site-footer__links-wrapper__link-list > ul {
+        list-style: none;
+        margin-left: 0; }
+        /* line 46, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+        .site-footer__links-wrapper__link-list > ul a, .site-footer__links-wrapper__link-list > ul a:hover, .site-footer__links-wrapper__link-list > ul a:visited {
+          color: #f2f3f3;
+          font-size: 0.875rem;
+          line-height: 1.1875rem;
+          font-weight: normal; }
+  /* line 56, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+  .site-footer__copyright-wrapper {
+    margin: 0 auto;
+    max-width: 64rem;
+    width: 100%; }
+    /* line 172, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+    .site-footer__copyright-wrapper:before, .site-footer__copyright-wrapper:after {
+      content: " ";
+      display: table; }
+    /* line 173, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+    .site-footer__copyright-wrapper:after {
+      clear: both; }
+    /* line 59, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+    .site-footer__copyright-wrapper__text {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      width: 100%;
+      float: left;
+      margin-top: 2.25rem;
+      color: rgba(242, 243, 243, 0.75);
+      font-size: 0.875rem;
+      line-height: 1rem; }
+      /* line 66, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_footer.scss */
+      .site-footer__copyright-wrapper__text span {
+        font-size: 0.75rem; }
+
+/* line 1, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_about.scss */
+.about-blurb {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  width: 100%;
+  float: left; }
+  @media only screen and (min-width: 40.0625em) {
+    /* line 1, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_about.scss */
+    .about-blurb {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      width: 58.33333%;
+      float: left; } }
+  /* line 8, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_about.scss */
+  .about-blurb h1, .about-blurb h3 {
+    margin-bottom: 0.5rem; }
+  /* line 12, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_about.scss */
+  .about-blurb h3 {
+    margin-top: 1.25rem; }
+
+/* line 17, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_about.scss */
+.about-downloads {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  width: 100%;
+  float: left; }
+  @media only screen and (min-width: 40.0625em) {
+    /* line 17, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_about.scss */
+    .about-downloads {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      width: 33.33333%;
+      float: left;
+      margin-left: 8.33333% !important; } }
+  /* line 24, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_about.scss */
+  .about-downloads h3 {
+    margin-top: 1rem; }
+  /* line 28, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_about.scss */
+  .about-downloads__panel {
+    background: #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0 0 0.125rem 0 rgba(0, 0, 0, 0.2);
+    padding: 1.5rem 1.5rem 4rem;
+    position: relative; }
+    /* line 8, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_panels.scss */
+    .about-downloads__panel > h4 {
+      text-align: center;
+      margin-top: 1.25rem 0 0; }
+    /* line 13, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_panels.scss */
+    .about-downloads__panel > p {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333333; }
+    /* line 19, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_panels.scss */
+    .about-downloads__panel > .button {
+      display: block;
+      width: 50%;
+      margin: auto;
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%); }
+    /* line 31, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_about.scss */
+    .about-downloads__panel:not(:last-child) {
+      margin-bottom: 1.5rem; }
+
+/* line 1, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+.cover-video {
+  min-height: 28.125rem;
+  height: calc(100vh - 180px);
+  width: 100%;
+  background: url('/Users/Linda/CUSD-recruiting/joincusd/mainsite/static/images/videos/video-1.jpg') no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative; }
+  /* line 7, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+  .cover-video__overlay {
+    background-color: rgba(63, 171, 109, 0.5);
+    display: block;
+    width: 100%;
+    height: 100%; }
+    /* line 13, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+    .cover-video__overlay__controls {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      -o-transform: translateX(-50%) translateY(-50%);
+      -ms-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      width: 90%; }
+      /* line 53, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_videos.scss */
+      .cover-video__overlay__controls > h1 {
+        font-weight: bold;
+        color: #f2f3f3;
+        text-align: center;
+        text-shadow: 0 0 0.125rem rgba(0, 0, 0, 0.2); }
+        @media only screen and (min-width: 40.0625em) {
+          /* line 53, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_videos.scss */
+          .cover-video__overlay__controls > h1 {
+            font-size: 5.375rem;
+            line-height: 6.5rem; } }
+      /* line 17, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+      .cover-video__overlay__controls > a {
+        display: block;
+        background: #3FAB6D;
+        border-radius: 50%;
+        height: 6.875rem;
+        width: 6.875rem;
+        box-shadow: 0 0 0.125rem 0 rgba(0, 0, 0, 0.2);
+        margin: 2rem 45%;
+        margin: 2rem calc(50% - 55px); }
+        /* line 20, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_videos.scss */
+        .cover-video__overlay__controls > a:after {
+          content: '';
+          display: block;
+          width: 0;
+          height: 0;
+          border-top: 2.29167rem solid transparent;
+          border-bottom: 2.29167rem solid transparent;
+          border-left: 2.29167rem solid #f2f3f3;
+          position: relative;
+          top: 50%;
+          left: 50%;
+          -moz-transform: translateX(-30%) translateY(-50%);
+          -webkit-transform: translateX(-30%) translateY(-50%);
+          -o-transform: translateX(-30%) translateY(-50%);
+          -ms-transform: translateX(-30%) translateY(-50%);
+          transform: translateX(-30%) translateY(-50%); }
+
+/* line 26, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+.homepage-blurb {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  width: 100%;
+  float: left; }
+  @media only screen and (min-width: 40.0625em) {
+    /* line 26, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+    .homepage-blurb {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      width: 58.33333%;
+      float: left; } }
+
+/* line 34, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+.homepage-videos {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  width: 100%;
+  float: left; }
+  @media only screen and (min-width: 40.0625em) {
+    /* line 34, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+    .homepage-videos {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      width: 33.33333%;
+      float: left;
+      margin-left: 8.33333% !important; } }
+  /* line 41, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+  .homepage-videos .video-preview:not(:last-child) .video-preview__thubnail {
+    margin-bottom: 3rem; }
+
+/* line 46, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+.homepage-callouts {
+  padding-top: 4.5rem;
+  margin: 0 auto;
+  max-width: 64rem;
+  width: 100%; }
+  /* line 172, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+  .homepage-callouts:before, .homepage-callouts:after {
+    content: " ";
+    display: table; }
+  /* line 173, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+  .homepage-callouts:after {
+    clear: both; }
+  /* line 50, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+  .homepage-callouts .icon {
+    width: 100%;
+    height: 150px; }
+  /* line 55, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+  .homepage-callouts > h3 {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 100%;
+    float: left; }
+    /* line 58, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+    .homepage-callouts > h3:not(:last-child) {
+      margin-bottom: 2rem; }
+  /* line 64, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+  .homepage-callouts > article {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 100%;
+    float: left; }
+    @media only screen and (max-width: 40em) {
+      /* line 68, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+      .homepage-callouts > article:not(:last-child) {
+        margin-bottom: 2rem; } }
+    @media only screen and (min-width: 40.0625em) {
+      /* line 64, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+      .homepage-callouts > article {
+        padding-left: 0.625rem;
+        padding-right: 0.625rem;
+        width: 33.33333%;
+        float: left; } }
+  /* line 78, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_home.scss */
+  .homepage-callouts__panel {
+    background: #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0 0 0.125rem 0 rgba(0, 0, 0, 0.2);
+    padding: 1.5rem 1.5rem 4rem;
+    position: relative; }
+    /* line 8, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_panels.scss */
+    .homepage-callouts__panel > h4 {
+      text-align: center;
+      margin-top: 1.25rem 0 0; }
+    /* line 13, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_panels.scss */
+    .homepage-callouts__panel > p {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333333; }
+    /* line 19, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_panels.scss */
+    .homepage-callouts__panel > .button {
+      display: block;
+      width: 50%;
+      margin: auto;
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%); }
+
+/* line 3, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+.project-description {
+  margin: 0 auto;
+  max-width: 64rem;
+  width: 100%;
+  padding-top: 2rem; }
+  /* line 172, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+  .project-description:before, .project-description:after {
+    content: " ";
+    display: table; }
+  /* line 173, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+  .project-description:after {
+    clear: both; }
+  /* line 7, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+  .project-description__logo {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 100%;
+    float: left; }
+    @media only screen and (min-width: 40.0625em) {
+      /* line 7, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__logo {
+        padding-left: 0.625rem;
+        padding-right: 0.625rem;
+        width: 33.33333%;
+        float: left; } }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 7, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__logo {
+        padding-left: 0.625rem;
+        padding-right: 0.625rem;
+        width: 25%;
+        float: left; } }
+    /* line 18, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+    .project-description__logo .icon {
+      width: 100%;
+      height: 0;
+      padding-bottom: 100%;
+      margin-bottom: 2rem; }
+      /* line 24, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__logo .icon.medium-up {
+        display: none; }
+      @media only screen and (min-width: 40.0625em) {
+        /* line 30, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+        .project-description__logo .icon.small-only {
+          display: none; }
+        /* line 34, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+        .project-description__logo .icon.medium-up {
+          display: block; } }
+      /* line 39, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__logo .icon--role-engineering--role-page {
+        background-size: 11.875rem; }
+        @media only screen and (min-width: 40.0625em) {
+          /* line 39, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+          .project-description__logo .icon--role-engineering--role-page {
+            background-size: 11.25rem; } }
+      /* line 45, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__logo .icon--role-design--role-page {
+        background-size: 75rem; }
+        @media only screen and (min-width: 40.0625em) {
+          /* line 45, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+          .project-description__logo .icon--role-design--role-page {
+            background-size: 10rem; } }
+      /* line 51, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__logo .icon--role-strategy--role-page {
+        background-size: 11.25rem; }
+      /* line 54, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__logo .icon--project-seg {
+        background-size: 11.25rem; }
+      /* line 57, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__logo .icon--project-ord {
+        background-size: 13.75rem; }
+        @media only screen and (min-width: 40.0625em) {
+          /* line 57, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+          .project-description__logo .icon--project-ord {
+            background-size: 13.125rem; } }
+      /* line 63, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__logo .icon--project-gbmp {
+        background-size: 11.25rem; }
+      /* line 66, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__logo .icon--project-tech {
+        background-size: 11.875rem; }
+        @media only screen and (min-width: 40.0625em) {
+          /* line 66, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+          .project-description__logo .icon--project-tech {
+            background-size: 10rem; } }
+      /* line 72, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__logo .icon--project-cap {
+        background-size: 11.25rem; }
+        @media only screen and (min-width: 40.0625em) {
+          /* line 72, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+          .project-description__logo .icon--project-cap {
+            background-size: 8.75rem; } }
+      /* line 78, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__logo .icon--project-futures {
+        background-size: 11.25rem; }
+        @media only screen and (min-width: 40.0625em) {
+          /* line 78, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+          .project-description__logo .icon--project-futures {
+            background-size: 6.25rem; } }
+  /* line 87, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+  .project-description__main {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 100%;
+    float: left; }
+    @media only screen and (min-width: 40.0625em) {
+      /* line 87, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__main {
+        padding-left: 0.625rem;
+        padding-right: 0.625rem;
+        width: 66.66667%;
+        float: left; } }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 87, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__main {
+        padding-left: 0.625rem;
+        padding-right: 0.625rem;
+        width: 66.66667%;
+        float: left;
+        margin-left: 8.33333% !important; } }
+    /* line 98, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+    .project-description__main h1 {
+      line-height: 1;
+      margin-bottom: 0; }
+    /* line 103, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+    .project-description__main h2 {
+      font-size: 1.6875rem;
+      margin-bottom: 0.75rem; }
+    /* line 108, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+    .project-description__main p {
+      display: none; }
+    /* line 112, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+    .project-description__main p.lede, .project-description__main input[type=checkbox].see-more__checkbox:checked ~ p {
+      display: block; }
+  /* line 117, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+  .project-description__text {
+    margin-bottom: 2rem; }
+  /* line 121, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+  .project-description__gallery {
+    display: block;
+    padding: 0;
+    margin: 0; }
+    /* line 172, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+    .project-description__gallery:before, .project-description__gallery:after {
+      content: " ";
+      display: table; }
+    /* line 173, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+    .project-description__gallery:after {
+      clear: both; }
+    /* line 51, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+    .project-description__gallery > li {
+      display: block;
+      float: left;
+      height: auto;
+      padding: 0 0.625rem 1.25rem; }
+    /* line 62, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+    .project-description__gallery > li {
+      list-style: none;
+      padding: 0 0.625rem 1.25rem;
+      width: 50%; }
+      /* line 69, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+      .project-description__gallery > li:nth-of-type(1n) {
+        clear: none; }
+      /* line 70, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+      .project-description__gallery > li:nth-of-type(2n+1) {
+        clear: both; }
+      /* line 85, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+      .project-description__gallery > li:nth-of-type(2n+1) {
+        padding-left: 0rem;
+        padding-right: 0.625rem; }
+      /* line 85, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+      .project-description__gallery > li:nth-of-type(2n) {
+        padding-left: 0.625rem;
+        padding-right: 0rem; }
+    @media only screen and (min-width: 40.0625em) {
+      /* line 121, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-description__gallery {
+        display: block;
+        padding: 0;
+        margin: 0; }
+        /* line 172, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+        .project-description__gallery:before, .project-description__gallery:after {
+          content: " ";
+          display: table; }
+        /* line 173, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+        .project-description__gallery:after {
+          clear: both; }
+        /* line 51, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+        .project-description__gallery > li {
+          display: block;
+          float: left;
+          height: auto;
+          padding: 0 0.625rem 1.25rem; }
+        /* line 62, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+        .project-description__gallery > li {
+          list-style: none;
+          padding: 0 0.625rem 1.25rem;
+          width: 33.33333%; }
+          /* line 69, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+          .project-description__gallery > li:nth-of-type(1n) {
+            clear: none; }
+          /* line 70, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+          .project-description__gallery > li:nth-of-type(3n+1) {
+            clear: both; }
+          /* line 85, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+          .project-description__gallery > li:nth-of-type(3n+1) {
+            padding-left: 0rem;
+            padding-right: 0.83333rem; }
+          /* line 85, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+          .project-description__gallery > li:nth-of-type(3n+2) {
+            padding-left: 0.41667rem;
+            padding-right: 0.41667rem; }
+          /* line 85, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+          .project-description__gallery > li:nth-of-type(3n) {
+            padding-left: 0.83333rem;
+            padding-right: 0rem; } }
+
+/* line 137, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+.see-more__checkbox {
+  display: none; }
+/* line 141, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+.see-more__label {
+  color: #3FAB6D;
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+  margin: 0 0 0.75rem; }
+  /* line 148, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+  .see-more__label:hover {
+    color: #36935e;
+    text-decoration: none; }
+  /* line 153, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+  .see-more__label--open, input[type=checkbox].see-more__checkbox:checked ~ .see-more__label > .see-more__label--closed {
+    display: none; }
+  /* line 157, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+  .see-more__label--closed, input[type=checkbox].see-more__checkbox:checked ~ .see-more__label > .see-more__label--open {
+    display: inline; }
+
+/* line 163, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+.project-openings {
+  margin: 0 auto;
+  max-width: 64rem;
+  width: 100%;
+  padding-top: 3rem; }
+  /* line 172, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+  .project-openings:before, .project-openings:after {
+    content: " ";
+    display: table; }
+  /* line 173, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+  .project-openings:after {
+    clear: both; }
+  /* line 167, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+  .project-openings__wrapper {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 100%;
+    float: left; }
+  /* line 171, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+  .project-openings h3 {
+    margin-bottom: 1.5rem; }
+  /* line 175, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+  .project-openings__list {
+    display: block;
+    padding: 0;
+    margin: 0; }
+    /* line 172, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+    .project-openings__list:before, .project-openings__list:after {
+      content: " ";
+      display: table; }
+    /* line 173, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+    .project-openings__list:after {
+      clear: both; }
+    /* line 51, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+    .project-openings__list > li {
+      display: block;
+      float: left;
+      height: auto;
+      padding: 0 0.625rem 1.25rem; }
+    /* line 62, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+    .project-openings__list > li {
+      list-style: none;
+      padding: 0 0.625rem 1.25rem;
+      width: 100%; }
+      /* line 69, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+      .project-openings__list > li:nth-of-type(1n) {
+        clear: none; }
+      /* line 70, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+      .project-openings__list > li:nth-of-type(1n+1) {
+        clear: both; }
+      /* line 85, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+      .project-openings__list > li:nth-of-type(1n) {
+        padding-left: 0rem;
+        padding-right: 0rem; }
+    @media only screen and (min-width: 40.0625em) {
+      /* line 175, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-openings__list {
+        display: block;
+        padding: 0;
+        margin: 0; }
+        /* line 172, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+        .project-openings__list:before, .project-openings__list:after {
+          content: " ";
+          display: table; }
+        /* line 173, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+        .project-openings__list:after {
+          clear: both; }
+        /* line 51, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+        .project-openings__list > li {
+          display: block;
+          float: left;
+          height: auto;
+          padding: 0 0.625rem 1.25rem; }
+        /* line 62, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+        .project-openings__list > li {
+          list-style: none;
+          padding: 0 0.625rem 1.25rem;
+          width: 50%; }
+          /* line 69, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+          .project-openings__list > li:nth-of-type(1n) {
+            clear: none; }
+          /* line 70, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+          .project-openings__list > li:nth-of-type(2n+1) {
+            clear: both; }
+          /* line 85, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+          .project-openings__list > li:nth-of-type(2n+1) {
+            padding-left: 0rem;
+            padding-right: 0.625rem; }
+          /* line 85, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+          .project-openings__list > li:nth-of-type(2n) {
+            padding-left: 0.625rem;
+            padding-right: 0rem; } }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 175, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+      .project-openings__list {
+        display: block;
+        padding: 0;
+        margin: 0; }
+        /* line 172, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+        .project-openings__list:before, .project-openings__list:after {
+          content: " ";
+          display: table; }
+        /* line 173, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+        .project-openings__list:after {
+          clear: both; }
+        /* line 51, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+        .project-openings__list > li {
+          display: block;
+          float: left;
+          height: auto;
+          padding: 0 0.625rem 1.25rem; }
+        /* line 62, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+        .project-openings__list > li {
+          list-style: none;
+          padding: 0 0.625rem 1.25rem;
+          width: 33.33333%; }
+          /* line 69, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+          .project-openings__list > li:nth-of-type(1n) {
+            clear: none; }
+          /* line 70, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+          .project-openings__list > li:nth-of-type(3n+1) {
+            clear: both; }
+          /* line 85, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+          .project-openings__list > li:nth-of-type(3n+1) {
+            padding-left: 0rem;
+            padding-right: 0.83333rem; }
+          /* line 85, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+          .project-openings__list > li:nth-of-type(3n+2) {
+            padding-left: 0.41667rem;
+            padding-right: 0.41667rem; }
+          /* line 85, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_block-grid.scss */
+          .project-openings__list > li:nth-of-type(3n) {
+            padding-left: 0.83333rem;
+            padding-right: 0rem; } }
+    /* line 186, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+    .project-openings__list .panel {
+      background: #FFFFFF;
+      border-radius: 3px;
+      box-shadow: 0 0 0.125rem 0 rgba(0, 0, 0, 0.2);
+      padding: 1.5rem 1.5rem 4rem;
+      position: relative; }
+      /* line 8, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_panels.scss */
+      .project-openings__list .panel > h4 {
+        text-align: center;
+        margin-top: 1.25rem 0 0; }
+      /* line 13, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_panels.scss */
+      .project-openings__list .panel > p {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #333333; }
+      /* line 19, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/components/_panels.scss */
+      .project-openings__list .panel > .button {
+        display: block;
+        width: 50%;
+        margin: auto;
+        position: absolute;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%); }
+  /* line 191, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+  .project-openings__no-openings {
+    width: 100% !important;
+    padding: 0 !important; }
+    /* line 195, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_project.scss */
+    .project-openings__no-openings .panel {
+      padding-bottom: 1.5rem; }
+
+/* line 1, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+.current-projects, .past-projects {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  width: 100%;
+  float: left; }
+
+/* line 6, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+.current-projects h1 {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  width: 100%;
+  float: left;
+  margin-bottom: 1.5rem; }
+/* line 11, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+.current-projects .project {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  width: 100%;
+  float: left;
+  margin-bottom: 2.5rem; }
+  @media only screen and (min-width: 40.0625em) {
+    /* line 11, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+    .current-projects .project {
+      padding-left: 0.625rem;
+      padding-right: 0.625rem;
+      width: 33.33333%;
+      float: left; } }
+  /* line 19, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+  .current-projects .project h3 {
+    line-height: 1.2;
+    margin-bottom: 0.5rem; }
+/* line 25, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+.current-projects .icon {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  margin-bottom: 2rem; }
+  /* line 31, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+  .current-projects .icon--project-seg {
+    background-size: 11.25rem; }
+    @media only screen and (min-width: 40.0625em) {
+      /* line 31, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+      .current-projects .icon--project-seg {
+        background-size: 9.6875rem; } }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 31, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+      .current-projects .icon--project-seg {
+        background-size: 10.9375rem; } }
+  /* line 40, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+  .current-projects .icon--project-ord {
+    background-size: 13.125rem; }
+    @media only screen and (min-width: 40.0625em) {
+      /* line 40, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+      .current-projects .icon--project-ord {
+        background-size: 11.25rem; } }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 40, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+      .current-projects .icon--project-ord {
+        background-size: 13.125rem; } }
+  /* line 49, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+  .current-projects .icon--project-gbmp {
+    background-size: 11.25rem; }
+    @media only screen and (min-width: 40.0625em) {
+      /* line 49, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+      .current-projects .icon--project-gbmp {
+        background-size: 10rem; } }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 49, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+      .current-projects .icon--project-gbmp {
+        background-size: 11.0625rem; } }
+  /* line 58, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+  .current-projects .icon--project-tech {
+    background-size: 12.5rem; }
+    @media only screen and (min-width: 40.0625em) {
+      /* line 58, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+      .current-projects .icon--project-tech {
+        background-size: 10rem; } }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 58, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+      .current-projects .icon--project-tech {
+        background-size: 11.25rem; } }
+  /* line 67, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+  .current-projects .icon--project-cap {
+    background-size: 11.25rem; }
+    @media only screen and (min-width: 40.0625em) {
+      /* line 67, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+      .current-projects .icon--project-cap {
+        background-size: 8.75rem; } }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 67, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+      .current-projects .icon--project-cap {
+        background-size: 10.3125rem; } }
+  /* line 76, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+  .current-projects .icon--project-futures {
+    background-size: 11.25rem; }
+    @media only screen and (min-width: 40.0625em) {
+      /* line 76, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+      .current-projects .icon--project-futures {
+        background-size: 9.375rem; } }
+    @media only screen and (min-width: 64.0625em) {
+      /* line 76, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+      .current-projects .icon--project-futures {
+        background-size: 10.625rem; } }
+
+/* line 89, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+.past-projects .project {
+  margin: 0 auto;
+  max-width: 64rem;
+  width: 100%; }
+  /* line 172, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+  .past-projects .project:before, .past-projects .project:after {
+    content: " ";
+    display: table; }
+  /* line 173, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+  .past-projects .project:after {
+    clear: both; }
+  /* line 92, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+  .past-projects .project:not(:first-child) {
+    margin-top: 2.75rem; }
+  /* line 96, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+  .past-projects .project__image {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 100%;
+    float: left;
+    margin-bottom: 1rem; }
+    @media only screen and (min-width: 40.0625em) {
+      /* line 96, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+      .past-projects .project__image {
+        padding-left: 0.625rem;
+        padding-right: 0.625rem;
+        width: 25%;
+        float: left;
+        padding: 0 1.25rem; } }
+  /* line 106, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+  .past-projects .project__description {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 100%;
+    float: left; }
+    @media only screen and (min-width: 40.0625em) {
+      /* line 106, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/pages/_projects.scss */
+      .past-projects .project__description {
+        padding-left: 0.625rem;
+        padding-right: 0.625rem;
+        width: 66.66667%;
+        float: left;
+        margin-left: 8.33333% !important; } }
+
+/* line 21, ../../../../../Users/Linda/CUSD-recruiting/joincusd/static/scss/cusd.scss */
+.main-content {
+  margin: 0 auto;
+  max-width: 64rem;
+  width: 100%;
+  padding-top: 2rem; }
+  /* line 172, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+  .main-content:before, .main-content:after {
+    content: " ";
+    display: table; }
+  /* line 173, ../../../../../Users/Linda/CUSD-recruiting/joincusd/bower_components/foundation/scss/foundation/components/_global.scss */
+  .main-content:after {
+    clear: both; }
+
+/*# sourceMappingURL=tmp5kCPiD.css.map */
