@@ -1,0 +1,31 @@
+name: Engineering
+tagline: "Research, development and building for a better world."
+description:
+  "<p class=\"lede\">Engineering is the backbone of what CUSD does on a day-to-day basis. As a design-build organization, we pride ourselves on not just imagining a better future, but being able to implement it as well.</p>
+  <p>Engineers in CUSD tackle challenging problems in a variety of fields. On any given day, our engineering teams may be doing broad research into alternative energy models, CADing out a village-scale solar array, building a physical simulation model in the machine shop, programming microcontrollers for an educational display or helping construct a building on another continent.</p>
+  <p>While tangible hardware can be fun, many of our projects involve large software engineering or data science components as well. CUSD is constantly pushing the envelope in finding new ways to leverage technology to gain quantitative insights that will benefit our projects or the organization as a whole.</p>
+  <p>If you're looking for a way to work on meaningful, tangible projects, as well as take your engineering skills to the next level, CUSD is the place to do it.</p>
+  "
+photos:
+  - role-photos/engineering-1.jpg
+  - role-photos/engineering-2.jpg
+  - role-photos/engineering-3.jpg
+openings:
+  - title: Software Engineer
+    desc: "Leverage the latest technologies to increase the project&#8217;s impact."
+  - title: Power Engineer
+    desc: Scope out the needs and requirements for a new residential development.
+  - title: Embeded/Firmware Engineer
+    desc: Work with various embeded systems to create physical computing interfaces.
+  - title: Full-Stack Engineer
+    desc: "Leverage the latest technologies to increase the project&#8217;s impact."
+  - title: Mobile Developer
+    desc: "Leverage the latest technologies to increase the project&#8217;s impact."
+  - title: Motivated Engineer
+    desc: A proven go-getter with the technical chops to back it up.
+  - title: Data Scientist
+    desc: "An analytical mind who&#8217;s always on the lookout for some new data insight."
+  - title: Mapping/GIS Technician
+    desc: A tech-savvy individual with an eye for the bird’s eye view.
+  - title: Data Strategist
+    desc: Use data to identify key actions to support the project and organization.

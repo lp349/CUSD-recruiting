@@ -1,0 +1,22 @@
+name: CUSD Futures
+tagline: Defining the next generation of sustainable design.
+description:
+  "<p class=\"lede\">CUSD Futures is the incubator arm of CUSD. Rather than focusing on projects which have the most immediate impact, Futures has the leeway to make bets that will pay off in the longer term. By making strategic investments of time, effort and material resources into interesting pilot projects, our hope is to provide a pipeline for our larger design-build activities.</p>
+  <p>In the past, our teams have helped put solar panels up on Snee Hall, done a feasibility study for a Net-Zero Energy historic renovation, and done sustainable business consulting for a local credit union. In addition, past teams have designed educational exhibits, conducted outreach activities with the local community and even developed innovative lighting technology in conjunction with the National Science Foundation&#8217;s P3 grant.</p>
+  <p>The current focus of the Futures project is the Upson Hall rennovation. The Upson Hall team is working on high-efficiency HVAC (heating, ventilation, and air conditioning) sensors using various tracking technologies and machine learning that will be implemented during the upcoming renovation.</p>
+  "
+photos:
+  - project-photos/futures-1.jpg
+  - project-photos/futures-2.jpg
+  - project-photos/futures-3.jpg
+openings:
+  - title: Embeded/Firmware Engineer
+    desc: Work with various embeded systems to create physical computing interfaces.
+  - title: Full-Stack Engineer
+    desc: "Leverage the latest technologies to increase the project&#8217;s impact."
+  - title: Mobile Developer
+    desc: "Leverage the latest technologies to increase the project&#8217;s impact."
+  - title: UX/Product Designer
+    desc: Help build a product full-stack; from brand to research to user interaction.
+  - title: Data Scientist
+    desc: Model complex systems and look for insights in energy usage data.
