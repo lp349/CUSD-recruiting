@@ -21,4 +21,6 @@ class Posting(models.Model):
   description = models.TextField()
   photos = models.ManyToManyField(Photo)
   openings = models.ManyToManyField(Opening)
-
+  detail_icon_path = models.FilePathField("/home/images", max_length=255)
+  list_thumbnail_path = models.FilePathField("/home/images", max_length=255)
+  rank = models.IntegerField()
