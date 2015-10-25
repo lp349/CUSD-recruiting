@@ -1,0 +1,67 @@
+<!--<% content_for(:title, project.name) %>-->
+{% include 'common/header.html' %}
+{% load staticfiles %}
+<section class="project-description">
+  <div class="project-description__logo">
+    <div class="medium-up icon icon--project-<%= short_name %> icon--project-<%= short_name %>--colored"></div>
+    <div class="small-only icon icon--project-<%= short_name %> icon--project-<%= short_name %>--colored-bg"></div>
+  </div>
+  <div class="project-description__main">
+    <h1>{{name}}</h1>
+    <h2>{{tagline}}</h2>
+    <div class="project-description__text">
+      <input type="checkbox" class="see-more__checkbox" id="seeMore">
+      {{description}}
+      <label for="seeMore" class="see-more__label">Read <span class="see-more__label--closed">More</span><span  class="see-more__label--open">Less</span></label>
+    </div>
+    <ul class="project-description__gallery">
+      <!--<% project.photos.each do |p| %>-->
+        {% for photo in photos %}
+      <li>
+        {{photo.image_path}}
+        <!--<%= image_tag p %>-->
+      </li>
+        {% endfor %}
+    <!--<% end %>-->
+    </ul>
+  </div>
+
+</section>
+
+<section class="project-openings">
+  <div class="project-openings__wrapper">
+    <h3>What We're Looking For</h3>
+    <ul class="project-openings__list" data-equalizer data-equalizer-mq="medium-up">
+      <!--<% if project.openings %>-->
+        {% if openings %}}
+        <!--<% project.openings.each do |o| %>-->
+        {% for opening in openings %}
+          <li>
+            <div class="panel" data-equalizer-watch>
+              <!--<h4><%= o.title %></h4>-->
+                {{opening.title}}
+              <!--<p><%= o.desc %></p>-->
+                {{opening.description}}
+              <%= link_to "Apply Now", o.link || 'https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform', class: 'button' %>
+            </div>
+          </li>
+        {% endfor %}
+        <li>
+          <div class="panel" data-equalizer-watch>
+            <h4>Missing Something?</h4>
+            <p>Don’t see that perfect fit? No worries, apply as a wildcard!</p>
+            <%= link_to "Apply Now", 'https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform', class: 'button' %>
+          </div>
+        </li>
+      {% else %}
+        <li class="project-openings__no-openings">
+          <div class="panel">
+            <h4>Nobody :'(</h4>
+            <p>We're not actively recruiting for this project right now. Feel free to <a href="mailto:cu.sustainabledesign@gmail.com">email us</a> and tell us why we should be though.</p>
+          </div>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</section>
+{% include 'common/footer.html' %}
