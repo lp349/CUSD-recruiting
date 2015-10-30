@@ -1,0 +1,33 @@
+name: Green Building Metrics Project 
+tagline: "Empowering consumers to make informed, sustainable purchases."
+description:
+  "<p class=\"lede\">
+      The Green Building Metrics Project (GBMP) is a project focused on the design of a metric that will drive consumers to easily gauge how sustainable products and appliances are and allow them to make the most informed decisions about their purchases. By joining a dynamic metric with attention to consumer interaction and design, the project aims to redefine the sustainable metric and positively influence consumer behavior every day.
+    </p>
+    <p>
+      GBMP seeks to drive sustainable consumer behavior by empowering consumers with specific, informative, and accurate data about the products they buy. In the conventional retail experience, consumers can easily walk into a store and gauge the appearance of a product or its initial cost, but consumers rarely have complete information about the life cycle cost, environmental impact, maintenance requirements, and safety of the product. This is where we come in.
+    </p>
+    <p>
+      The GBMP team has created an indicator metric &mdash; a tool to measure and communicate these unseen components of a product &mdash; in order to help solve the information deficit the traditional consumer is confronted with. The metric consists of four categories: well-developed formulas score products regarding cost and payback, environmental impact, maintenance and installation, and health and safety. The result is a visual indicator tag, designed to be applied to all products from building construction materials, to appliances and furnishings &mdash; essentially any product that can be installed in a building.
+    </p>
+    <p>
+      So far the team has worked to extract data from consumer reporting resources, develop mathematical formulas to indicate sustainability in the four categories, and design a consumer-friendly tag that effectively communicates the four metric indicators. Moving forward, the project aims to cement these aspects and validate the overall metric design in a real-world environment.
+    </p>
+    <p>
+      In the coming months, the team seeks to test their results in closed experiments and partner with local retailers to assess the results in the field.
+    </p>"
+photos:
+  - project-photos/gbmp-1.jpg
+  - project-photos/gbmp-2.jpg
+  - project-photos/gbmp-3.jpg
+openings:
+  - title: Entrepreneur-In-Chief
+    desc: Someone with entreprenurial vision to help take the project to new heights.
+  - title: Business Developer
+    desc: "A person who&#8217;s not afraid to pick up a phone and (kick) open some doors."
+  - title: Software Engineer
+    desc: "Leverage the latest technologies to increase the project&#8217;s impact."
+  - title: Data Scientist
+    desc: "An analytical mind who&#8217;s always on the lookout for some new data insight."
+  - title: UX/Product Designer
+    desc: "Help build a product full-stack; from brand to research to user interaction."

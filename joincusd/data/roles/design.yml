@@ -1,0 +1,33 @@
+name: Design
+tagline: Putting the human touch on our projects and communications.
+description:
+  "<p class=\"lede\">Design is a huge part of CUSD's culture, and our designers work hand in hand eith engineering to make our projects amazing. CUSD gives architectural, interior, graphic, and UX designers the ability to work on real projects for real people.</p>
+  <p>CUSD holds people-centric design as a pillar for our sustainable practices.  Sustainability, being just as much a social and economic measure an environmental one, requires both a deep understanding of the problems we're solving and a broad understanding of the effects our solutions will have. Empathy and participatory design are two of our main tools in developing this understanding, to guide and support our work.</p>
+  <p>In addition to the role that design plays in our individual projects, we have two design support teams which serve the organization as a whole: the Operations team and the Marketing and Communications (MarComm) team. Operations uses design thinking and data analysis to identify and address the largest issues facing CUSD. Their solutions-based approach often results in explorations of new and exciting technologies and operating methods. The MarComm team is focused on how CUSD presents itself, both internally and to the world. They're responsible for the voice and brand of CUSD, producing a wide range of print and digital deliverables over the course of the year.</p>
+  <p>If you want to work on projects with a truly meaningful impact, in an environment of supportive and talented designers, then CUSD is the place for you.</p>
+  "
+photos:
+  - role-photos/design-1.jpg
+  - role-photos/design-2.jpg
+  - role-photos/design-3.jpg
+openings:
+  - title: Visual/Graphic Designer
+    desc: A strong eye for aesthetics and a working knowledge of print or web media.
+  - title: Communication Designer
+    desc: "A craftsperson of words, points, pixels and public perception."
+  - title: UX/Product Designer
+    desc: Help build a product full-stack; from brand to research to user interaction.
+  - title: Architect
+    desc: A team player who combines inspiring vision with healthy practicality.
+  - title: Landscape Architect
+    desc: Bring a knowledge of landscape or agriculture to the team.
+  - title: Interior Designer
+    desc: Ensure the envrionment we create is as healthy and safe as it is efficient.
+  - title: Photographer
+    desc: "Capture the essence of what we do and what it&#8217;s like to be in CUSD."
+  - title: Videographer
+    desc: A budding documentatarian to help us tell the world our story.
+  - title: Motion Designer
+    desc: Work with a team to turn raw footage into something extraordinary.
+  - title: Design Strategist
+    desc: A master of the Human-Centered Design process who wants to make a difference.

@@ -11,6 +11,30 @@ def projects(request):
 def about(request):
   return render_to_response('about.html', {'title':'About'})
 
+def project(request, pid):
+  posting = Posting.objects.get(id=pid)
+  context = {
+    'type': posting.type,
+    'name': posting.name,
+    'tagline': posting.tagline,
+    'description': posting.description,
+    'photos':posting.photos,
+    'openings': posting.openings
+    }
+  return render(request, 'posting.html', context)
+
+def role(request, pid):
+  posting = Posting.objects.get(id=pid)
+  context = {
+    'type': posting.type,
+    'name': posting.name,
+    'tagline': posting.tagline,
+    'description': posting.description,
+    'photos':posting.photos,
+    'openings': posting.openings
+    }
+  render(request, 'posting.html, context')
+
 def footer_test(request):
   role_list = Posting.objects.filter(type="role")
   project_list = Posting.objects.filter(type="project")
@@ -18,3 +42,4 @@ def footer_test(request):
              'role_list'    : role_list,
             }
   return render(request, 'common/footer.html', context)
+
