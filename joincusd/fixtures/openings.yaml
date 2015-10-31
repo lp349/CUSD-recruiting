@@ -1,0 +1,136 @@
+- model: mainsite.Opening
+  pk: 1
+  fields:
+    title: Visual/Graphic Designer
+    description: A strong eye for aesthetics and a working knowledge of print or web media.
+- model: mainsite.Opening
+  pk: 2
+  fields:
+    title: Communication Designer
+    description: A craftsperson of words, points, pixels and public perception.
+- model: mainsite.Opening
+  pk: 3
+  fields:
+    title: UX/Product Designer
+    description: Help build a product full-stack; from brand to research to user interaction.
+- model: mainsite.Opening
+  pk: 4
+  fields:
+    title: Architect
+    description: A team player who combines inspiring vision with healthy practicality.
+- model: mainsite.Opening
+  pk: 5
+  fields:
+    title: Landscape Architect
+    description: Bring a knowledge of landscape or agriculture to the team.
+- model: mainsite.Opening
+  pk: 6
+  fields:
+    title: Interior Designer
+    description: Ensure the envrionment we create is as healthy and safe as it is efficient.
+- model: mainsite.Opening
+  pk: 7
+  fields:
+    title: Photographer
+    description: "Capture the essence of what we do and what it&#8217;s like to be in CUSD."
+- model: mainsite.Opening
+  pk: 8
+  fields:
+    title: Videographer
+    description: A budding documentatarian to help us tell the world our story.
+- model: mainsite.Opening
+  pk: 9
+  fields:
+    title: Motion Designer
+    description: Work with a team to turn raw footage into something extraordinary.
+- model: mainsite.Opening
+  pk: 10
+  fields:
+    title: Design Strategist
+    description: A master of the Human-Centered Design process who wants to make a difference.
+- model: mainsite.Opening
+  pk: 11
+  fields:
+    title: Software Engineer
+    description: "Leverage the latest technologies to increase the project&#8217;s impact."
+- model: mainsite.Opening
+  pk: 12
+  fields:
+    title: Power Engineer
+    description: Scope out the needs and requirements for a new residential development.
+- model: mainsite.Opening
+  pk: 13
+  fields:
+    title: Embeded/Firmware Engineer
+    description: Work with various embeded systems to create physical computing interfaces.
+- model: mainsite.Opening
+  pk: 14
+  fields:
+    title: Full-Stack Engineer
+    description: "Leverage the latest technologies to increase the project&#8217;s impact."
+- model: mainsite.Opening
+  pk: 15
+  fields:
+    title: Mobile Developer
+    description: "Leverage the latest technologies to increase the project&#8217;s impact."
+- model: mainsite.Opening
+  pk: 16
+  fields:
+    title: Motivated Engineer
+    description: A proven go-getter with the technical chops to back it up.
+- model: mainsite.Opening
+  pk: 17
+  fields:
+    title: Data Scientist
+    description: "An analytical mind who&#8217;s always on the lookout for some new data insight."
+- model: mainsite.Opening
+  pk: 18
+  fields:
+    title: Mapping/GIS Technician
+    description: A tech-savvy individual with an eye for the bird’s eye view.
+- model: mainsite.Opening
+  pk: 19
+  fields:
+    title: Data Strategist
+    description: Use data to identify key actions to support the project and organization.
+- model: mainsite.Opening
+  pk: 20
+  fields:
+    title: Entrepreneur In Chief
+    description: Someone with entreprenurial vision to help take the project to new heights.
+- model: mainsite.Opening
+  pk: 21
+  fields:
+    title: Entrepreneurial Analyst
+    description: Someone who thrives on open-ended projects and responsibility.
+- model: mainsite.Opening
+  pk: 22
+  fields:
+    title: Business Developer
+    description: "A person who&#8217;s not afraid to pick up a phone and (kick) open some doors."
+- model: mainsite.Opening
+  pk: 23
+  fields:
+    title: Business Analyst
+    description: "A detail-oriented master of costs, logistics and research."
+- model: mainsite.Opening
+  pk: 24
+  fields:
+    title: Research Analyst (Energy)
+    description: "Research innovative systems for feasibility and desirability."
+- model: mainsite.Opening
+  pk: 25
+  fields:
+    title: Research Analyst (Cost)
+    description: Dive into the numbers to ensure the feasibility of various proposals.
+- model: mainsite.Opening
+  pk: 26
+  fields:
+    title: Content Strategist
+    description: "A craftsperson of words, points, pixels and public perception."
+- model: mainsite.Opening
+  pk: 27
+  fields:
+    title: Political Strategist
+    description: Someone with a knack for identifying what needs to be done and doing it.
+

@@ -15,12 +15,12 @@ class Opening(models.Model):
   description = models.TextField()
 
 class Posting(models.Model):
-  type = models.CharField(max_length=255)
+  posting_type = models.CharField(max_length=255, default='project')
   name = models.CharField(max_length=500)
   tagline = models.CharField(max_length=4096)
   description = models.TextField()
   photos = models.ManyToManyField(Photo)
   openings = models.ManyToManyField(Opening)
-  detail_icon_path = models.FilePathField("/home/images", max_length=255)
-  list_thumbnail_path = models.FilePathField("/home/images", max_length=255)
-  rank = models.IntegerField()
+  detail_icon_path = models.FilePathField("/home/images", max_length=255, default="/home/images")
+  list_thumbnail_path = models.FilePathField("/home/images", max_length=255, default="/home/images")
+  rank = models.IntegerField(default=0)

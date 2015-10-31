@@ -15,4 +15,15 @@ To get the latest build working, run the following commands for dependencies:
 
 Followed by python manage.py runserver 
 
+To set up local db:
+- Install postgresql using your app manager (brew for Mac / apt-get for Ubuntu)
+
+To set up joincusd_db
+- Start postgres if not currently running
+- Run the following commands:
+    psql
+    CREATE DATABASE joincusd_db
+    CREATE USER joincusd_dev WITH PASSWORD ‘cusd’;
+- Run python manage.py runserver and ensure everything’s working
+
 
