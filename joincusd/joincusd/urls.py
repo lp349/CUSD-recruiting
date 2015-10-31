@@ -24,5 +24,5 @@ urlpatterns = [
     url(r'^projects/([0-9]){4}/$', 'mainsite.views.project'),
     url(r'^roles/([0-9]){4}/$', 'mainsite.views.role'),
     url(r'^footer_test/$', 'mainsite.views.footer_test'),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include('admin_portal.urls')),
 ]

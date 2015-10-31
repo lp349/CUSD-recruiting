@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'compressor',
     'djangobower',
     'mainsite',
+
 )
 
 BOWER_INSTALLED_APPS = (
@@ -76,10 +77,12 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'joincusd.urls'
 
+ADMIN_PORTAL_TEMPLATE_PATH = os.path.join(os.path.join(BASE_DIR, 'admin_portal'), 'templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ADMIN_PORTAL_TEMPLATE_PATH],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
