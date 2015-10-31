@@ -15,7 +15,7 @@ class Opening(models.Model):
   description = models.TextField()
 
 class Posting(models.Model):
-  type = models.CharField(max_length=255)
+  posting_type = models.CharField(max_length=255)
   name = models.CharField(max_length=500)
   tagline = models.CharField(max_length=4096)
   description = models.TextField()

@@ -95,6 +95,10 @@ TEMPLATES = [
     },
 ]
 
+STATIC_URL = '/static/'
+JS_STATIC_PATH = os.path.join(os.path.join(BASE_DIR, 'static'), 'js')
+STATICFILES_DIRS = (JS_STATIC_PATH, )
+
 WSGI_APPLICATION = 'joincusd.wsgi.application'
 
 
