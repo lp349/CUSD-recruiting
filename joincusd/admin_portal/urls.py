@@ -3,4 +3,4 @@ from admin_portal import views
 
 urlpatterns = [
     url(r'^$', views.index),
-    url(r'^ajax/(?P<posting_type>[a-z_]+)/$', views.posting_list)]
+    url(r'^ajax/(?P<posting_type>[a-z]+)/$', views.posting_list)]
