@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="dummy.js"></script>
+    <title></title>
+</head>
+<body>
+    <div class="h">
+        <h3>CUSD Admin Portal</h3>
+        <a href = "">Log Out</a>
+    </div>
+
+    <section id="nav-bar">
+        <div id="projects-tab" class="tab">Projects</div>
+        <div id="roletypes-tab" class="tab">Role Types</div>
+        <div id="roles-tab" class="tab">Roles</div>
+    </section> <br>
+
+
+    <section id="content">
+    <a href="posting.html" class="add">
+        <svg>
+            <circle fill="#ffffff" stroke="#3FAB6D" stroke-width="3px" cx="50%" cy="50%" r="0.9em"></circle>
+            <text fill="#3FAB6D" x="50%" y="50%" text-anchor="middle" dominant-baseline="central">+</text>
+        </svg>
+    </a><br>
+
+    </section>
+
+    <!-- Modal
+    <div class="modal" id="modal-one" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+
+                    <h2>Add a New <span> </span> </h2>
+
+                <a href="#close" class="btn-close" aria-hidden="true">×</a>
+            </div>
+            <div class="modal-body">
+                <p>One modal example here! :D</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#close" class="btn">Nice!</a>
+            </div>
+        </div>
+    </div>-->
+
+
+    <script>
+        var projects = "", roletypes = "", roles = "";
+        $.each(postings, function(index, posting) {
+            if (posting.Type == "Project") {
+                var p = "<div class='project elem' id='"+ posting.Id + "'>"
+                        + "<span class='elem-name'>" + posting.Name + "</span>"
+                        + "<div class='edit button'>Edit</div>"
+                        + "<div class='remove button'>Remove</div>"
+                        + "</div>";
+                projects += p;
+            }else if ((posting.Type == "RoleType") ){
+                var rt = "<div class='role-type elem' id='"+ posting.Id + "'>"
+                        + "<span class='elem-name'>" + posting.Name + "</span>"
+                        + "<div class='edit button'>Edit</div>"
+                        + "<div class='remove button'>Remove</div>"
+                        + "</div>";
+
+                roletypes += rt;
+            }else if ((posting.Type == "Opening")){
+                var r = "<div class='role elem' id='"+ posting.Id + "'>"
+                        + "<span class='elem-name'>" + posting.Name + "</span>"
+                        + "<div class='edit button'>Edit</div>"
+                        + "<div class='remove button'>Remove</div>"
+                        + "</div>";
+
+                roles += r;
+            }
+        });
+
+        $("#content").append(projects).append(roletypes).append(roles);
+
+    </script>
+
+    <script>
+        var activeTab = "";
+
+        var toggle = function(id) {
+            if (id === "projects-tab") {
+                $(".elem").hide();
+                $(".project").show();
+                $(".add").attr("href", "posting.html");
+            }else if (id === "roletypes-tab") {
+                $(".elem").hide();
+                $(".role-type").show();
+                $(".add").attr("href", "posting.html");
+            }else if (id === "roles-tab") {
+                $(".elem").hide();
+                $(".role").show();
+                $(".add").attr("href", "role.html");
+            }
+        };
+
+        $( document ).ready( function(){
+            $('#nav-bar').on('click','.tab',function () {
+                $('.tab').removeClass('selected-tab');
+                $(this).addClass('selected-tab');
+                activeTab = $(this).attr("id");
+
+
+                toggle(activeTab);
+            });
+
+            $('#content').on('click','.elem',function () {
+                $('.elem').removeClass('selected-elem');
+                $(this).addClass('selected-elem');
+            });
+
+            $('.remove.button').on('click', function() {
+                var parent = $(this).parent();
+                var name = $("#" + parent.attr("id") + " span").html();
+                var conf = confirm("Are you sure you want to remove " + name + "?");
+                if (conf) parent.remove();
+            });
+
+
+            $('.edit.button').on('click', function() {
+                var parent = $(this).parent();
+                var name = $("#" + parent.attr("id") + " span").html();
+                alert(name + ": DoStuffs xD")
+
+            });
+
+
+        });
+
+    </script>
+</body>
+</html>
