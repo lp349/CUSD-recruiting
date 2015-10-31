@@ -52,24 +52,24 @@
     <script>
         var projects = "", roletypes = "", roles = "";
         $.each(postings, function(index, posting) {
-            if (posting.Type == "Project") {
-                var p = "<div class='project elem' id='"+ posting.Id + "'>"
-                        + "<span class='elem-name'>" + posting.Name + "</span>"
+            if (posting.posting_type == "Project") {
+                var p = "<div class='project elem' id='"+ posting.id + "'>"
+                        + "<span class='elem-name'>" + posting.name + "</span>"
                         + "<div class='edit button'>Edit</div>"
                         + "<div class='remove button'>Remove</div>"
                         + "</div>";
                 projects += p;
-            }else if ((posting.Type == "RoleType") ){
-                var rt = "<div class='role-type elem' id='"+ posting.Id + "'>"
-                        + "<span class='elem-name'>" + posting.Name + "</span>"
+            }else if ((posting.posting_type == "RoleType") ){
+                var rt = "<div class='role-type elem' id='"+ posting.id + "'>"
+                        + "<span class='elem-name'>" + posting.name + "</span>"
                         + "<div class='edit button'>Edit</div>"
                         + "<div class='remove button'>Remove</div>"
                         + "</div>";
 
                 roletypes += rt;
-            }else if ((posting.Type == "Opening")){
-                var r = "<div class='role elem' id='"+ posting.Id + "'>"
-                        + "<span class='elem-name'>" + posting.Name + "</span>"
+            }else if ((posting.posting_type == "Opening")){
+                var r = "<div class='role elem' id='"+ posting.id + "'>"
+                        + "<span class='elem-name'>" + posting.name + "</span>"
                         + "<div class='edit button'>Edit</div>"
                         + "<div class='remove button'>Remove</div>"
                         + "</div>";
@@ -130,8 +130,6 @@
                 alert(name + ": DoStuffs xD")
 
             });
-
-
         });
 
     </script>

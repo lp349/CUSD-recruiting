@@ -1,62 +1,62 @@
 var postings = [
     {
-        Id: 1,
-        Name: "Project1",
-        Type: "Project"
+        id: 1,
+        name: "Project1",
+        posting_type: "Project"
 
     },
     {
-        Id: 2,
-        Name: "Project2",
-        Type: "Project"
+        id: 2,
+        name: "Project2",
+        posting_type: "Project"
 
     },
     {
-        Id: 3,
-        Name: "Project3",
-        Type: "Project"
+        id: 3,
+        name: "Project3",
+        posting_type: "Project"
 
     },
     {
-        Id: 4,
-        Name: "Project4",
-        Type: "Project"
+        id: 4,
+        name: "Project4",
+        posting_type: "Project"
 
     },
     {
-        Id: 5,
-        Name: "Project5",
-        Type: "Project"
+        id: 5,
+        name: "Project5",
+        posting_type: "Project"
 
     },
     {
-        Id: 6,
-        Name: "RT1",
-        Type: "RoleType"
+        id: 6,
+        name: "RT1",
+        posting_type: "RoleType"
     },
     {
-        Id: 7,
-        Name: "RT2",
-        Type: "RoleType"
+        id: 7,
+        name: "RT2",
+        posting_type: "RoleType"
     },
     {
-        Id: 8,
-        Name: "RT3",
-        Type: "RoleType"
+        id: 8,
+        name: "RT3",
+        posting_type: "RoleType"
     },
     {
-        Id: 9,
-        Name: "Role1",
-        Type: "Opening"
+        id: 9,
+        name: "Role1",
+        posting_type: "Opening"
     },
     {
-        Id: 10,
-        Name: "Role2",
-        Type: "Opening"
+        id: 10,
+        name: "Role2",
+        posting_type: "Opening"
     },
     {
-        Id: 11,
-        Name: "Role3",
-        Type: "Opening"
+        id: 11,
+        name: "Role3",
+        posting_type: "Opening"
     }
 ];

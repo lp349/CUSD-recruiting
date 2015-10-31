@@ -64,8 +64,8 @@
 
         <script>
             $.each(postings, function(index, posting) {
-                if ((posting.Type == "Opening")){
-                    var role = "<input type='checkbox' name=" + posting.Name + ">" + posting.Name;
+                if ((posting.posting_type == "Opening")){
+                    var role = "<input type='checkbox' name=" + posting.name + ">" + posting.name;
                     $(".roles.field").append(role);
                 }
             });

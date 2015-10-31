@@ -48,10 +48,10 @@
 
         <script>
             $.each(postings, function(index, posting) {
-                var p = "<div> <input type='checkbox' name=" + posting.Name + ">" + posting.Name + "</div>";
-                if (posting.Type == "Project") {
+                var p = "<div> <input type='checkbox' name=" + posting.name + ">" + posting.name + "</div>";
+                if (posting.posting_type == "Project") {
                     $(".projects.field").append(p);
-                }else if ((posting.Type == "RoleType") ){
+                }else if ((posting.posting_type == "RoleType") ){
                     $(".roletypes.field").append(p);
                 }
             });
