@@ -8,7 +8,6 @@ To get the latest build working, run the following commands for dependencies:
 	sudo pip install django_libsass
 		(if compilation terminates here with a Python.h error, run this: sudo apt-get install python2.7-dev)
 	sudo pip install django_bower
-  sudo pip install pyyaml
 
 	sudo apt-get install ruby-full
 	sudo gem install compass
@@ -25,10 +24,6 @@ To set up joincusd_db
     psql
     CREATE DATABASE joincusd_db
     CREATE USER joincusd_dev WITH PASSWORD ‘cusd’;
-- Run python manage.py syncdb
-    Create superuser? Yes
-    Username? admin
-    Email? admin@cusd.org
-    Password? cusd
+- Run python manage.py runserver and ensure everything’s working
 
 
