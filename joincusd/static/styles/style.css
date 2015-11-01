@@ -119,15 +119,7 @@ a {
     width: 2em;
 }
 
-.button {
-    /*float: right;*/
-    margin-left: 2%;
-    width: 8em;
-    text-align: center;
-    padding: 0.5em;
-    cursor: pointer;
-    display: inline-block;
-}
+
 
 .button:hover {
     background-color: white;
@@ -143,3 +135,12 @@ a {
     cursor: pointer;
 }
 
+.edit.button, .remove.button {
+    /*float: right;*/
+    margin-left: 2%;
+    width: 8em;
+    text-align: center;
+    padding: 0.5em;
+    cursor: pointer;
+    display: inline-block;
+}
