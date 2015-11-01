@@ -45,8 +45,8 @@ a {
     height: auto;
     font-size: 1.5em;
     list-style-type: none;
-    border-top: 2px solid #3FAB6D;
-    border-bottom: 2px solid #3FAB6D;
+    border-top: 3px solid #3FAB6D;
+    border-bottom: 3px solid #3FAB6D;
 
 }
 
@@ -75,10 +75,12 @@ a {
 
 .elem {
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 3px;
     display: block;
-    border: 3px solid #3FAB6D;
-    color: #3FAB6D;
+    /*border: 3px solid #3FAB6D;*/
+    box-shadow: 1px 1px 1px 1px lightgray;
+    /*color: #3FAB6D;*/
+    color: #7A7A7A;
     width: 100%;
     padding: 2%;
     text-align: right;;
@@ -104,7 +106,7 @@ a {
 }
 
 .elem-name {
-    font-weight: bold;
+    font-weight: normal;
     font-size: 1.2em;
     float: left;
 }
