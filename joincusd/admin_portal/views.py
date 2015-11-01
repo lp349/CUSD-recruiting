@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
-=======
-from django.http import HttpResponse
-from django.shortcuts import render
->>>>>>> 7cf5c9682ff690c5ca9efd8bc324e89aa2766347
 from mainsite.models import Posting
 
 import json
