@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
-from mainsite.models import Posting
+from mainsite.models import Posting, Opening
 
 import json
 
@@ -24,7 +24,7 @@ def admin_login(request):
 
 @login_required(login_url='/admin/login/')
 def index(request):
-     return render(request, "js_test.html")
+     return render(request, "list.html")
 
 # arguments:
 #   posting_type is a string indicating the type of
@@ -33,6 +33,7 @@ def index(request):
 # returns:
 #   a JSON object representing the following Python object
 #   [Posting object, Posting object...]
+#   with the name, id, and posting_type fields exposed
 def posting_list(request, posting_type):
 
      postings = Posting.objects.filter(posting_type=posting_type)
@@ -77,3 +78,23 @@ def posting(request):
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
     return render(request, 'admin_portal/[Temp] templates and css/posting.html', {'form': form})
+
+# arguments:
+#   none except required HttpRequest
+#
+# returns:
+#   a JSON object representing the following Python object
+#   [Opening object, Opening object...]
+#   with title, description fields exposed
+def role_list(request):
+     roles = Opening.objects.all()
+     result_list = []
+
+     for role in roles:
+         role_object = {}
+         role_object["title"] = role.title
+         role_object["description"] = role.description
+         result_list.append(role_object)
+
+     response = json.dumps(result_list)
+     return HttpResponse(response)
