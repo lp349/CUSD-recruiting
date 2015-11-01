@@ -140,3 +140,5 @@ STATIC_URL = '/static/'
 COMPRESS_ENABLED = True
 
 STATIC_ROOT = 'static/'
+
+MEDIA_ROOT = 'uploads/'

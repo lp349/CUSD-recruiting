@@ -8,7 +8,12 @@ from django.db import models
 # 3) both Photo and Opening have many-to-many relationships to a given Posting
 
 class Photo(models.Model):
-  image_path = models.FilePathField("/home/images", max_length=255)
+  image = models.ImageField(upload_to="images/", default=None)
+
+  @classmethod
+  def create(cls, image):
+    image = cls(image=image)
+    return image
 
 class Opening(models.Model):
   title = models.CharField(max_length=500)
@@ -21,6 +26,6 @@ class Posting(models.Model):
   description = models.TextField()
   photos = models.ManyToManyField(Photo)
   openings = models.ManyToManyField(Opening)
-  detail_icon_path = models.FilePathField("/home/images", max_length=255, default="/home/images")
-  list_thumbnail_path = models.FilePathField("/home/images", max_length=255, default="/home/images")
+  detail_icon_path = models.FileField(upload_to="images/")
+  list_thumbnail_path = models.FileField(upload_to="images/")
   rank = models.IntegerField(default=0)
