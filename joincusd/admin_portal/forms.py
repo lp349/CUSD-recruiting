@@ -1,10 +1,12 @@
 from django import forms
-from admin.models import Photo, Opening, Posting
+from mainsite.models import Photo, Opening, Posting
 
 class PostingForm(forms.ModelForm):
     
-    slug = forms.CharField(widget=forms.HiddenInput(), required=False)
-    type = forms.CharField(max_length=255)
+    #slug = forms.CharField(widget=forms.HiddenInput(), required=False)
+    #hidden forms
+    posting_type = forms.CharField(widget=forms.HiddenInput(), initial="Project")
+    #posting_type = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     name = forms.CharField(max_length=500)
     tagline = forms.CharField(max_length=4096)
     description = forms.TextField()
@@ -18,7 +20,7 @@ class PostingForm(forms.ModelForm):
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Posting
-        fields = ('name',)
+        #fields = ('name',)
 
 
 class OpeningForm(forms.ModelForm):

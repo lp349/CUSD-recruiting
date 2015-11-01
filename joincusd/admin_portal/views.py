@@ -48,3 +48,33 @@ def posting_list(request, posting_type):
 
      response = json.dumps(result_list)
      return HttpResponse(response)
+
+def posting(request):
+    # A HTTP POST?
+    if request.method == 'POST':
+        form = PostingForm(request.POST)
+        request_dict={}
+        # Have we been provided with a valid form?
+        if form.is_valid():
+            name=form.cleaned_data['posting_name'];
+            # hidden input posting type 
+            posting_type=
+            tagline=form.cleaned_data['posting_tagline'];
+            description=form.cleaned_data['posting_description'];
+            rank=form.cleaned_data['posting_rank'];
+            role=form.cleaned_data['select_roles'];
+            
+
+            # Now call the index() view.
+            # The user will be shown the homepage.
+            return index(request)
+        else:
+            # The supplied form contained errors - just print them to the terminal.
+            print form.errors
+    else:
+        # If the request was not a POST, display the form to enter details.
+        form = PostingForm()
+
+    # Bad form (or form details), no form supplied...
+    # Render the form with error messages (if any).
+    return render(request, 'admin_portal/[Temp] templates and css/posting.html', {'form': form})
