@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+    <script src ="{% static 'js/list.js' %}"></script>
+    <title>CUSD Admin Portal</title>
+</head>
+<body>
+    <div class="h">
+        <h3>CUSD Admin Portal</h3>
+        <a href = "">Log Out</a>
+    </div>
+
+    <section id="nav-bar">
+        <div id="projects-tab" class="tab">Projects</div>
+        <div id="roletypes-tab" class="tab">Role Types</div>
+        <div id="roles-tab" class="tab">Roles</div>
+    </section> <br>
+
+
+    <a href="posting.html" class="add">
+        <svg>
+            <circle fill="#ffffff" stroke="#3FAB6D" stroke-width="3px" cx="50%" cy="50%" r="0.9em"></circle>
+            <text fill="#3FAB6D" x="50%" y="50%" text-anchor="middle" dominant-baseline="central">+</text>
+        </svg>
+    </a><br>
+
+
+    <section id="content">
+
+
+    </section>
+
+    <!-- Modal
+    <div class="modal" id="modal-one" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-header">
+
+                    <h2>Add a New <span> </span> </h2>
+
+                <a href="#close" class="btn-close" aria-hidden="true">×</a>
+            </div>
+            <div class="modal-body">
+                <p>One modal example here! :D</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#close" class="btn">Nice!</a>
+            </div>
+        </div>
+    </div>-->
+</body>
+</html>

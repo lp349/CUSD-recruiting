@@ -19,8 +19,6 @@
         <div id="roles-tab" class="tab">Roles</div>
     </section> <br>
 
-
-    <section id="content">
     <a href="posting.html" class="add">
         <svg>
             <circle fill="#ffffff" stroke="#3FAB6D" stroke-width="3px" cx="50%" cy="50%" r="0.9em"></circle>
@@ -28,7 +26,7 @@
         </svg>
     </a><br>
 
-    </section>
+    <section id="content"></section>
 
     <!-- Modal
     <div class="modal" id="modal-one" aria-hidden="true">
@@ -48,10 +46,9 @@
         </div>
     </div>-->
 
-
     <script>
         var projects = "", roletypes = "", roles = "";
-        $.each(postings, function(index, posting) {
+        /**$.each(postings, function(index, posting) {
             if (posting.posting_type == "Project") {
                 var p = "<div class='project elem' id='"+ posting.id + "'>"
                         + "<span class='elem-name'>" + posting.name + "</span>"
@@ -76,16 +73,78 @@
 
                 roles += r;
             }
-        });
+        });**/
 
-        $("#content").append(projects).append(roletypes).append(roles);
+
+        function generateElem(typ, posting) {
+            if (typ === "Project") {
+                var p = "<div class='project elem' id='"+ posting.id + "'>"
+                        + "<span class='elem-name'>" + posting.name + "</span>"
+                        + "<div class='edit button'>Edit</div>"
+                        + "<div class='remove button'>Remove</div>"
+                        + "</div>";
+                return p;
+            }else if ((typ === "RoleType") ){
+                var rt = "<div class='role-type elem' id='"+ posting.id + "'>"
+                        + "<span class='elem-name'>" + posting.name + "</span>"
+                        + "<div class='edit button'>Edit</div>"
+                        + "<div class='remove button'>Remove</div>"
+                        + "</div>";
+
+                return rt;
+            }else if ((typ === "Opening")){
+                var r = "<div class='role elem' id='"+ posting.id + "'>"
+                        + "<span class='elem-name'>" + posting.title + "</span>"
+                        + "<div class='edit button'>Edit</div>"
+                        + "<div class='remove button'>Remove</div>"
+                        + "</div>";
+
+                return r;
+            }
+        }
+
+        display_project_list = function(data){
+            posts = JSON.parse(data);
+            list_div = $("#content");
+
+            list_div.empty();
+
+            for(var i = 0; i < posts.length; i++){
+                list_div.append(generateElem("Project", posts[i]));
+            }
+        };
+
+        display_roletype_list = function(data){
+            posts = JSON.parse(data);
+            list_div = $("#content");
+
+            list_div.empty();
+
+            for(var i = 0; i < posts.length; i++){
+                list_div.append(generateElem("RoleType", posts[i]));
+            }
+        };
+
+
+        display_role_list = function(data){
+            posts = JSON.parse(data);
+            list_div = $("#content");
+
+            list_div.empty();
+
+            for(var i = 0; i < posts.length; i++){
+                list_div.append(generateElem("Opening", posts[i]));
+            }
+        };
+
+//        $("#content").append(projects).append(roletypes).append(roles);
 
     </script>
 
     <script>
         var activeTab = "";
 
-        var toggle = function(id) {
+        /**var toggle = function(id) {
             if (id === "projects-tab") {
                 $(".elem").hide();
                 $(".project").show();
@@ -100,6 +159,7 @@
                 $(".add").attr("href", "role.html");
             }
         };
+**/
 
         $( document ).ready( function(){
             $('#nav-bar').on('click','.tab',function () {
@@ -107,9 +167,25 @@
                 $(this).addClass('selected-tab');
                 activeTab = $(this).attr("id");
 
-
-                toggle(activeTab);
+//                toggle(activeTab);
             });
+
+            $("#projects-tab").click(function(){
+                console.log("project tab clicked");
+                $.get("/admin/ajax/project/", display_project_list);
+            });
+
+            $("#roles-tab").click(function(){
+                console.log("roles tab clicked");
+                $.get("/admin/ajax/role", display_role_list);
+            });
+
+            $("#roletypes-tab").click(function(){
+                console.log("roletypes tab clicked");
+                $.get("/admin/ajax/role_type", display_roletype_list);
+            });
+
+
 
             $('#content').on('click','.elem',function () {
                 $('.elem').removeClass('selected-elem');
@@ -122,6 +198,8 @@
                 var conf = confirm("Are you sure you want to remove " + name + "?");
                 if (conf) parent.remove();
             });
+
+
 
 
             $('.edit.button').on('click', function() {
