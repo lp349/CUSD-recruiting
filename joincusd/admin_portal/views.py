@@ -56,14 +56,13 @@ def posting(request):
         request_dict={}
         # Have we been provided with a valid form?
         if form.is_valid():
-            name=form.cleaned_data['posting_name'];
-            # hidden input posting type 
-            posting_type=
-            tagline=form.cleaned_data['posting_tagline'];
-            description=form.cleaned_data['posting_description'];
-            rank=form.cleaned_data['posting_rank'];
-            role=form.cleaned_data['select_roles'];
-            
+            posting_rank=form.cleaned_data['rank'];
+            possible_ranks=Posting.objects.filter(rank=posting_rank);
+            if possible_ranks:
+              print "Rank Error!";
+            else:
+              form.save(commit=True)
+
 
             # Now call the index() view.
             # The user will be shown the homepage.

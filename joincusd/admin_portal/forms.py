@@ -14,8 +14,24 @@ class PostingForm(forms.ModelForm):
     openings = forms.ManyToManyField(Opening)
     detail_icon_path = forms.FilePathField("/home/images", max_length=255)
     list_thumbnail_path = forms.FilePathField("/home/images", max_length=255)
-    rank = forms.IntegerField()
+    rank = forms.PositiveIntegerField()
     
+    #validation
+    def clean(self):
+        cleaned_data=super(PostingForm, self).clean()
+        name=cleaned_data.get("name");
+        tagline=cleaned_data.get("tagline");
+        desription=cleaned_data.get("description");
+        #photos=cleaned_data.get("photos");
+        openings=cleaned_data.get("openings");
+        #also check the detail_icon_paht, list_thumbname_path
+        rank=cleaned_data.get("rank");
+        if name and tagline and description and rank:
+            if len(name)==0 or len(tagline)==0 or len(description)==0:
+                raise forms.ValidationError("At least one field is empty!");
+        else: 
+            raise forms.ValidationError("At least one field is not completed correctly!");      
+        return cleaned_data
     # An inline class to provide additional information on the form.
     class Meta:
         # Provide an association between the ModelForm and a model
