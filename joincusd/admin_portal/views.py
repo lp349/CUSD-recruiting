@@ -24,7 +24,7 @@ def admin_login(request):
 
 @login_required(login_url='/admin/login/')
 def index(request):
-     return render(request, "js_test.html")
+     return render(request, "list.html")
 
 # arguments:
 #   posting_type is a string indicating the type of
