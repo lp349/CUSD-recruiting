@@ -1,0 +1,31 @@
+#username, #password {
+    width: 15em;
+    height: 1.5em;
+    color: #333333;
+}
+
+.control-group {
+    margin: 1em;
+    margin-bottom: 0;
+}
+
+.controls input {
+    font-size: 1em;
+}
+
+#login-button {
+    margin: auto;
+}
+
+#login {
+    background: white;
+    padding: 1em;
+    margin: auto;
+    width: auto;
+    text-align: center;
+    border-radius: 5%;
+}
+
+#login-title {
+    color: #3FAB6D;
+}
