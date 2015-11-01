@@ -152,7 +152,6 @@ a {
 
 .add-button {
     padding: 0.1em;
-    cursor: pointer;
     /*float: right;*/
     font-size: 2em;
     width: 90%;
@@ -169,6 +168,7 @@ a {
 .add-button svg {
     height: 2em;
     width: 2em;
+    cursor: pointer;
 }
 
 .add-button svg text {
