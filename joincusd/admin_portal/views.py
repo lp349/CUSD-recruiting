@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from mainsite.models import Posting, Opening
+from forms import PostingForm
 
 import json
 
@@ -98,3 +99,8 @@ def role_list(request):
 
      response = json.dumps(result_list)
      return HttpResponse(response)
+
+def project_form(request):
+    form = PostingForm()
+    return render(request, 'posting.html', {'form': form})
+

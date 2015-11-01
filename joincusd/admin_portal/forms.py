@@ -9,12 +9,12 @@ class PostingForm(forms.ModelForm):
     #posting_type = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     name = forms.CharField(max_length=500)
     tagline = forms.CharField(max_length=4096)
-    description = forms.TextField()
-    photos = forms.ManyToManyField(Photo)
-    openings = forms.ManyToManyField(Opening)
-    detail_icon_path = forms.FilePathField("/home/images", max_length=255)
-    list_thumbnail_path = forms.FilePathField("/home/images", max_length=255)
-    rank = forms.PositiveIntegerField()
+    description = forms.CharField()
+    #photos = forms.ManyToManyField(Photo)
+    #openings = forms.ManyToManyField(Opening)
+    detail_icon_path = forms.FilePathField("/home/images")
+    list_thumbnail_path = forms.FilePathField("/home/images")
+    rank = forms.IntegerField()
     
     #validation
     def clean(self):
@@ -36,7 +36,7 @@ class PostingForm(forms.ModelForm):
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Posting
-        #fields = ('name',)
+        fields = ('name', 'tagline', 'description')
 
 
 class OpeningForm(forms.ModelForm):
@@ -47,4 +47,4 @@ class OpeningForm(forms.ModelForm):
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Opening
-
+        fields = ('title', 'description')
