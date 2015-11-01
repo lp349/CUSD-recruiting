@@ -12,22 +12,16 @@
     <h1> Add a Role </h1>
     <form id="role_form" method="post" action="/admin/role">
         {% csrf_token %}
-      Role Title: {{ form.title }}
-      Role Description: <input type="text" name="description"><br>
+      Role Title: {{ form.title }} <br>
+      Role Description: {{form.description}} <br>
       Select Projects:
       {{form.selected_projects}}
         <br>
-     Select Roles:
-      <select multiple name="selected_roles">
-        <!--{% for (k, v) in }-->
-        {% for (k,v) in form.role_choices %} 
-        <option value="{{k}}">{{v}}</option><br>
-        {% endfor %}
-        </select>
+      Select Roles:
+      {{form.selected_role_types}}
         <br>
-
- 
-      <input type="submit" name="submit">
+      <input class="submit-button button" type="submit" name="submit">
+      <input type="cancel" name="cancel">
     </form>
 
 <!--
@@ -80,7 +74,7 @@
         </div>
 
         <div class="submit-button button">Submit</div>
-
+-->
         <script>
             $.each(postings, function(index, posting) {
                 if ((posting.posting_type == "Opening")){
@@ -96,6 +90,6 @@
 
         </script>
 
-    </div> -->
+    </div>
 </body>
 </html>

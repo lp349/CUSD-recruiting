@@ -43,17 +43,12 @@ class OpeningForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="Please enter the title of the role.")
     description = forms.CharField(max_length=200, help_text="Please enter the description of the role.")
     project_choices=[]
-    project_choices_name=[]
     role_choices=[]
-    role_choices_name=[]
     for x in list(Posting.objects.all()):
         if x.posting_type=="role_type":
-            print x.pk
             role_choices.append((x.pk, x.name))
-            role_choices_name.append(x.name)
         else:
             project_choices.append((x.pk, x.name))
-            project_choices_name.append(x.name)
     print role_choices
     selected_projects = forms.MultipleChoiceField(choices=project_choices, required=True)
     selected_role_types = forms.MultipleChoiceField(choices=role_choices, required=False)
