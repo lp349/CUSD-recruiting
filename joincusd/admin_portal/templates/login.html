@@ -1,23 +1,35 @@
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <title>CUSD Admin Login</title>
+</head>
+<body>
+
 <div id="login">
+    <div id="login-title"><h3>CUSD Admin Portal Login</h3></div>
   <form class="form-horizontal" name="LoginForm" action="/admin/login/" method="post">
   {% csrf_token %}
   <div class="control-group">
-      <label class="control-label" for="username">Username</label>
+      <!--<label class="control-label" for="username">Username</label>-->
       <div class="controls">
           <input type="text" id="username" name="username"  placeholder="Username">
       </div>
-  </div>
+  </div><br>
   <div class="control-group">
-      <label class="control-label" for="password">Password</label>
+      <!--<label class="control-label" for="password">Password</label>-->
       <div class="controls">
           <input type="password" name="password" id="password" placeholder="Password">
       </div>
-  </div>
+  </div> <br>
   <div class="control-group">
       <div class="controls">
-          <button type="submit" class="btn">Login</button>
+          <button id="login-button" type="submit" class="button">Login</button>
       </div>
-  </div>
+  </div><br>
   <span class="err-message">{{ message }}</span>
   </form>
 </div>
+</body>
+</html>

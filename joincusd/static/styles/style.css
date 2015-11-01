@@ -1,7 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url("login.css");
 @import url("form.css");
 
-body{
+body {
     font-family: "Open Sans", "sans-serif";
     width: 85%;
     color: #7A7A7A;
@@ -13,6 +14,7 @@ body{
 a {
     text-decoration: none;
 }
+
 .h {
     width: 100%;
     padding: 0.25em;
@@ -23,10 +25,12 @@ a {
     margin-bottom: 1em;
     display: block;
 }
-.h h3{
+
+.h h3 {
     display: inline-block;
-    margin-left:2em;
+    margin-left: 2em;
 }
+
 .h a {
     display: inline-block;
     float: right;
@@ -34,6 +38,7 @@ a {
 
     /*     float: right; */
 }
+
 #nav-bar {
     text-align: center;
     width: 100%;
@@ -44,6 +49,7 @@ a {
     border-bottom: 2px solid #3FAB6D;
 
 }
+
 .tab {
     text-align: center;
     display: inline-block;
@@ -62,11 +68,11 @@ a {
     color: #ffffff;
 }
 
-
 #content {
     width: 90%;
     margin: auto;
 }
+
 .elem {
     background-color: #fff;
     border-radius: 5px;
@@ -83,9 +89,10 @@ a {
 
 .elem:hover {
     /*background-color: #1f628d;*/
-    background-color:  #3FAB6D;
+    background-color: #3FAB6D;
     color: #ffffff;
 }
+
 .add {
     padding: 0.1em;
     cursor: pointer;
@@ -102,7 +109,7 @@ a {
     float: left;
 }
 
-.add:hover{
+.add:hover {
     /*background-color: #3FAB6D;*/
     /*color: #ffffff;*/
 }
@@ -111,7 +118,6 @@ a {
     height: 2em;
     width: 2em;
 }
-
 
 .button {
     /*float: right;*/
@@ -122,72 +128,18 @@ a {
     cursor: pointer;
     display: inline-block;
 }
+
 .button:hover {
     background-color: white;
-    color:  #3FAB6D;
+    color: #3FAB6D;
 }
 
+.button {
+    background-color: #3FAB6D;
+    color: #fff;
+    border-radius: 3px;
+    border: 2px solid #3FAB6D;
+    width: 10em;
+    cursor: pointer;
+}
 
-
-/*Not my shit xD */
-
-.modal:before {
-    content: "";
-    display: none;
-    background: rgba(0, 0, 0, 0.6);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10;
-}
-.modal:target:before {
-    display: block;
-}
-.modal:target .modal-dialog {
-    -webkit-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    transform: translate(0, 0);
-    top: 20%;
-}
-.modal-dialog {
-    background: #fefefe;
-    border: #333333 solid 1px;
-    border-radius: 5px;
-    /*margin-left: -200px;*/
-    position: fixed;
-    /*left: 50%;*/
-    top: -100%;
-    z-index: 11;
-    width: 80%;
-    margin: auto;
-    -webkit-transform: translate(0, -500%);
-    -ms-transform: translate(0, -500%);
-    transform: translate(0, -500%);
-    -webkit-transition: -webkit-transform 0.3s ease-out;
-    -moz-transition: -moz-transform 0.3s ease-out;
-    -o-transition: -o-transform 0.3s ease-out;
-    transition: transform 0.3s ease-out;
-}
-.modal-body {
-    padding: 20px;
-}
-.modal-header,
-.modal-footer {
-    padding: 10px 20px;
-}
-.modal-header {
-    border-bottom: #eeeeee solid 1px;
-}
-.modal-header h2 {
-    font-size: 20px;
-}
-.modal-footer {
-    border-top: #eeeeee solid 1px;
-    text-align: right;
-}
-/*ADDED TO STOP SCROLLING TO TOP*/
-#close {
-    display: none;
-}

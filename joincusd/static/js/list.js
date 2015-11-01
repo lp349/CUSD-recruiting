@@ -27,7 +27,6 @@ function generateElem(typ, posting) {
     }
 }
 
-
 display_project_list = function (data) {
     var posts = JSON.parse(data);
     var list_div = $("#content");
