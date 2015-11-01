@@ -109,4 +109,6 @@ $(document).ready(function () {
         alert(name + ": DoStuffs xD")
 
     });
+
+    $("#projects-tab").trigger("click");
 });
