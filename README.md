@@ -12,6 +12,7 @@ To get the latest build working, run the following commands for dependencies:
 	sudo apt-get install ruby-full or brew install ruby
 	sudo gem install compass
 	sudo gem install sass
+  sudo pip instal pyyaml
 
 To set up local db:
 - Install postgresql using your app manager (brew for Mac / apt-get for Ubuntu)
@@ -29,6 +30,7 @@ To set up joincusd_db
     python manage.py migrate
 - To import fixtures
     python manage.py loaddata fixtures/[fixturename]
+
 
 
 
