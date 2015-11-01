@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/style.css">
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="../data/dummy.js"></script>
+    <title></title>
+
+</head>
+<body>
+    <h1> Add a Role </h1>
+    <form id="role_form" method="post" action="/admin/role">
+        {% csrf_token %}
+      Role Title: {{ form.title }}
+      Role Description: <input type="text" name="description"><br>
+      Select Projects:
+      {{form.selected_projects}}
+        <br>
+     Select Roles:
+      <select multiple name="selected_roles">
+        <!--{% for (k, v) in }-->
+        {% for (k,v) in form.role_choices %} 
+        <option value="{{k}}">{{v}}</option><br>
+        {% endfor %}
+        </select>
+        <br>
+
+ 
+      <input type="submit" name="submit">
+    </form>
+
+<!--
+    <div id="modal-header">
+        <h1>Add or edit a <span>{{Posting}}</span></h1>
+    </div>
+    <div id="modal-body">
+
+        <div class="name field-wrap">
+            <div class="name field-name">Name</div>
+            <div class="name field">
+                <input type="text">
+            </div>
+        </div>
+        <div class="tagline field-wrap">
+            <div class="tagline field-name">Tagline</div>
+            <div class="tagline field">
+                <input type="text">
+            </div>
+        </div>
+        <div class="description field-wrap">
+            <div class="description field-name">Description</div>
+            <div class="description field">
+                <textarea rows="5"></textarea>
+            </div>
+        </div>
+        <div class="icon field-wrap">
+            <div class="icon field-name">Icon</div>
+            <div class="icon field">
+                <input type="file">
+            </div>
+        </div>
+        <div class="photos field-wrap">
+            <div class="photos field-name">Photos</div>
+            <div class="photos field">
+                <input type="file">
+            </div>
+        </div>
+        <div class="rank field-wrap">
+            <div class="rank field-name">Rank</div>
+            <div class="rank field">
+                <input type="number" min="1">
+            </div>
+        </div>
+
+        <div class="roles field-wrap">
+            <div class="roles field-name">Select Roles</div><br>
+            <div class="roles field">
+            </div>
+        </div>
+
+        <div class="submit-button button">Submit</div>
+
+        <script>
+            $.each(postings, function(index, posting) {
+                if ((posting.posting_type == "Opening")){
+                    var role = "<input type='checkbox' name=" + posting.name + ">" + posting.name;
+                    $(".roles.field").append(role);
+                }
+            });
+
+            $(".submit-button").on('click', function() {
+                var conf= confirm("Are you sure you want to submit?");
+                if (conf) window.location.href = "index.html";
+            })
+
+        </script>
+
+    </div> -->
+</body>
+</html>
