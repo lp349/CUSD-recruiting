@@ -1,19 +1,19 @@
 .field-wrapper {
     width: 100%;
-    padding: 1%;
+    padding: 2%;
     margin: auto;
 }
 
-.field-wrap div {
-    display: inline-block;
-}
+/*.field-wrapper div {*/
+    /*display: inline-block;*/
+/*}*/
 
 .field {
     width: 80%;
 }
 
 .field-name {
-    width: 20%;
+    width: 30%;
 }
 
 textarea {
@@ -31,6 +31,7 @@ input[type=checkbox] {
     margin: 2em;
     margin-right: 0;
 }
+
 
 .form-content {
     width: 85%;
@@ -68,4 +69,10 @@ h1 {
 
 ul {
     list-style: none;
+}
+
+li {
+    display: inline-block;
+    width: 47%;
+    font-size: 0.9em;
 }

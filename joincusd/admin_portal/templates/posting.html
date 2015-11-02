@@ -27,10 +27,9 @@
       {% for field in form.visible_fields %}
         <div class="field-wrapper">
          {{ field.errors }}
-         {{ field.help_text}}
-         {{ field }}
+            <div class="field-name">{{ field.help_text}}</div>
+         <div class="field">{{ field }}</div>
         </div>
-         <br/>
       {% endfor %}
 
       <input type="hidden" name="posting_type" value="project">
