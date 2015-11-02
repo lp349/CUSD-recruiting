@@ -4,12 +4,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from mainsite.models import Posting, Opening
-<<<<<<< HEAD
 from django import forms
-from forms import PostingForm
-=======
 from forms import PostingForm, OpeningForm
->>>>>>> 97c4935440f5bda30235951e8fe416d26dd57a0e
+
 
 import json
 
