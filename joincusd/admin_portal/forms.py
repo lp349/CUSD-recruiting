@@ -13,12 +13,15 @@ class PostingForm(forms.ModelForm):
     #openings = forms.ManyToManyField(Opening)
 
     #TODO: ignore file image uploads for now
-    detail_icon_path = forms.FilePathField("/home/images", help_text="Project Detail Icon:")
-    list_thumbnail_path = forms.FilePathField("/home/images", help_text="Project Thumbnail Icon:")
+    detail_icon_path = forms.FileField(help_text="Project Detail Icon:")
+    list_thumbnail_path = forms.FileField(help_text="Project Thumbnail Icon:")
 
     #TODO: replace this with a draggable/list precedence interface
     rank = forms.IntegerField(help_text="Project Display Rank:")
     
+    all_role_choices = [(role.pk, role.title) for role in Opening.objects.all()]
+    role_multiselect = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices = all_role_choices, required=False)
+
     '''def clean(self):
         cleaned_data=super(PostingForm, self).clean()
         name=cleaned_data.get("name");

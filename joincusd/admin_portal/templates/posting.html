@@ -10,7 +10,7 @@
 </head>
 <body>
     <h1> Add a project </h1>
-    <form id="project_form" method="post" action="/admin/add_project">
+    <form id="project_form" enctype="multipart/form-data" method="post" action="/admin/add_project">
 
       {% csrf_token %}
       {% for hidden in form.hidden_fields %}
@@ -24,11 +24,6 @@
          {{ field.help_text}}
          {{ field }}
          <br/>
-      {% endfor %}
-
-      <h4> Add Roles </h4>
-      {% for role in roles %}
-          <input type="checkbox" name="checks[]" value="1"> {{ role.title }}<br> 
       {% endfor %}
 
       <input type="hidden" name="posting_type" value="project">

@@ -108,15 +108,41 @@ def role_list(request):
 def project_form_handler(request):
     if request.method == "POST":
         print "stuff posted"
-        
+        form = PostingForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = Posting()
+            #hidden field will let us tell if we are creating 
+            #a roletype or project
+            project.posting_type = request.POST.get("posting_type")
+            project.name = form.cleaned_data['name']
+            project.tagline = form.cleaned_data['tagline']
+            project.description = form.cleaned_data['description']
+            project.detail_icon_path = request.FILES['detail_icon_path']
+            project.list_thumbnail_path = request.FILES['list_thumbnail_path']
+            project.rank = form.cleaned_data['rank']
+
+            #save the object first so that the many to many field can be used
+            project.save()
+            
+            #add each role to the many set
+            for role_pk_val in form.cleaned_data['role_multiselect']:
+                role = Opening.objects.get(pk=role_pk_val)
+                if role:
+                    project.openings.add(role)
+                else:
+                    print "project_form_handler: role specified by primary key does not exist"
+
+            project.save()
+            return HttpResponseRedirect("/admin")
+        else:
+            print "project_form_handler: form was not valid"
+            print form.errors
+            return index(request)
     else:
         form = PostingForm()
         roles = Opening.objects.all()
         return render(request, 'posting.html', {'form': form, 'roles' : roles})
 
-def project_form(request):
-    form = PostingForm()
-    return render(request, 'posting.html', {'form': form})
 
 #add a new role
 def role(request):
