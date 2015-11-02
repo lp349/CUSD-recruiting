@@ -4,8 +4,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from mainsite.models import Posting, Opening
+<<<<<<< HEAD
 from django import forms
 from forms import PostingForm
+=======
+from forms import PostingForm, OpeningForm
+>>>>>>> 97c4935440f5bda30235951e8fe416d26dd57a0e
 
 import json
 
@@ -101,6 +105,7 @@ def role_list(request):
      response = json.dumps(result_list)
      return HttpResponse(response)
 
+
 # the handler function both handles form submissions if request is POST,
 # or simply displays the form on a GET page load
 def project_form_handler(request):
@@ -111,3 +116,55 @@ def project_form_handler(request):
         form = PostingForm()
         roles = Opening.objects.all()
         return render(request, 'posting.html', {'form': form, 'roles' : roles})
+
+def project_form(request):
+    form = PostingForm()
+    return render(request, 'posting.html', {'form': form})
+
+#add a new role
+def role(request):
+          # A HTTP POST?
+  if request.method == 'POST':
+      form = OpeningForm(request.POST)
+      # Have we been provided with a valid form?
+      if form.is_valid():
+          #first create a new role in the opening database
+          #and then add a record to the relation
+          title=form.cleaned_data['title']
+          description=form.cleaned_data['description']
+          new_role=Opening(title=title, description=description)
+          new_role.save()
+          postings=form.cleaned_data['selected_projects']
+          for posting_id in postings:
+            posting=Posting.objects.get(pk=posting_id)
+            print str(posting.pk)+" "+posting.name+" "
+            if posting:
+              # add the new relation into mainsite_posting_openings
+              print posting.openings.all()
+              posting.openings.add(new_role)
+            else:
+              print "No such project";
+          role_types=form.cleaned_data['selected_role_types']
+          print role_types
+          for role_id in role_types:
+            posting=Posting.objects.get(pk=role_id)
+            if posting: 
+              #add the new relation into mainsite_posting_openings
+              posting.openings.add (new_role)
+            else:
+              print "No such Role type";
+
+          # Now call the index() view.
+          # The user will be shown the homepage.
+          return index(request) #add some pop up window for confirmation of save 
+      else:
+          # The supplied form contained errors - just print them to the terminal.
+          print form.errors
+  else:
+      # If the request was not a POST, display the form to enter details.
+      form = OpeningForm()
+
+  # Bad form (or form details), no form supplied...
+  # Render the form with error messages (if any).
+  return render(request, 'role.html', {'form': form})
+

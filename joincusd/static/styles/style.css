@@ -2,13 +2,33 @@
 @import url("login.css");
 @import url("form.css");
 
+
+@font-face {
+    font-family: 'glober';
+    src: url("../fonts/glober_book-webfont-webfont.eot");
+    src: url("../fonts/glober_book-webfont-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/glober_book-webfont-webfont.woff2") format("woff2"), url("../fonts/glober_book-webfont-webfont.woff") format("woff"), url("../fonts/glober_book-webfont-webfont.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal; }
+@font-face {
+    font-family: 'glober';
+    src: url("../fonts/glober_regular-webfont-webfont.eot");
+    src: url("../fonts/glober_regular-webfont-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/glober_regular-webfont-webfont.woff2") format("woff2"), url("../fonts/glober_regular-webfont-webfont.woff") format("woff"), url("../fonts/glober_regular-webfont-webfont.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal; }
+@font-face {
+    font-family: 'glober';
+    src: url("../fonts/glober_semibold_free-webfont.eot");
+    src: url("../fonts/glober_semibold_free-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/glober_semibold_free-webfont.woff2") format("woff2"), url("../fonts/glober_semibold_free-webfont.woff") format("woff"), url("../fonts/glober_semibold_free-webfont.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal; }
+
 body {
-    font-family: "Open Sans", "sans-serif";
-    width: 85%;
+    /*font-family: "Open Sans", "sans-serif";*/
+    font-family: "glober", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     color: #7A7A7A;
     margin: auto;
     font-size: 1.2em;
-    background-color: #F2F3F3;
+
 }
 
 a {
@@ -16,37 +36,70 @@ a {
 }
 
 .h {
-    width: 100%;
-    padding: 0.25em;
-    height: 2.5em;
+    text-align: right;
+    width: 95%;
+    padding: 1em;
+    /*height: 3em;*/
+    height: auto;
     /*background-color: #fff;*/
     /*color: #ffffff;*/
     color: #3FAB6D;
     margin-bottom: 1em;
     display: block;
+    overflow: hidden;
 }
+
+.site-logo {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 50%;
+}
+
+.site-logo__image {
+    float: left;
+    max-height: 4.875rem;
+    margin: 1.3125rem 0;
+}
+.site-logo__text {
+    float: left;
+    text-align: left;
+    margin: 1.375rem 0 1.375rem 0.625rem;
+    font-size: 2.125rem;
+    line-height: 2.375rem;
+    font-weight: 300;
+    color: #7a7a7a;
+    /*display: none; */
+}
+
 
 .h h3 {
     display: inline-block;
-    margin-left: 2em;
+    margin-top: 0.25em;
+    margin-right: 0.5em;
+    width: 50%;
+    text-align: right;
 }
 
 .h a {
+    margin: 1.3125rem 0;
+    padding: 0.25em;
     display: inline-block;
-    float: right;
-    right: 2em;
+    width: 50%;
+    text-align: right;
 
-    /*     float: right; */
 }
 
 #nav-bar {
     text-align: center;
-    width: 100%;
+    width: 85%;
     height: auto;
-    font-size: 1.5em;
+    font-size: 1.3em;
     list-style-type: none;
-    border-top: 2px solid #3FAB6D;
-    border-bottom: 2px solid #3FAB6D;
+    border-top: 3px solid #3FAB6D;
+    border-bottom: 3px solid #3FAB6D;
+    background-color: white;
+    margin: auto;
+    color: #333333;
 
 }
 
@@ -69,17 +122,21 @@ a {
 }
 
 #content {
-    width: 90%;
+    width: 85%;
     margin: auto;
+    background-color: #F2F3F3;
+    padding: 2em;
 }
 
 .elem {
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 3px;
     display: block;
-    border: 3px solid #3FAB6D;
-    color: #3FAB6D;
-    width: 100%;
+    /*border: 3px solid #3FAB6D;*/
+    box-shadow: 1px 1px 1px 1px lightgray;
+    /*color: #3FAB6D;*/
+    color: #7A7A7A;
+    width: 90%;
     padding: 2%;
     text-align: right;;
     margin: auto;
@@ -93,33 +150,30 @@ a {
     color: #ffffff;
 }
 
-.add {
+.add-button {
     padding: 0.1em;
-    cursor: pointer;
+    /*float: right;*/
     font-size: 2em;
-    right: 0;
-    /*border-radius: 100%;*/
-    margin: auto;
-    margin-left: 90%;
+    width: 90%;
+    text-align: right;
 }
 
 .elem-name {
-    font-weight: bold;
+    font-weight: normal;
     font-size: 1.2em;
     float: left;
+    margin-bottom: 1em;
 }
 
-.add:hover {
-    /*background-color: #3FAB6D;*/
-    /*color: #ffffff;*/
-}
-
-.add svg {
+.add-button svg {
     height: 2em;
     width: 2em;
+    cursor: pointer;
 }
 
-
+.add-button svg text {
+    font-size: 2em;
+}
 
 .button:hover {
     background-color: white;
@@ -131,16 +185,17 @@ a {
     color: #fff;
     border-radius: 3px;
     border: 2px solid #3FAB6D;
-    width: 10em;
+    width: 8em;
     cursor: pointer;
 }
 
 .edit.button, .remove.button {
     /*float: right;*/
-    margin-left: 2%;
+
     width: 8em;
     text-align: center;
     padding: 0.5em;
     cursor: pointer;
     display: inline-block;
+    margin: 0.5em;
 }
