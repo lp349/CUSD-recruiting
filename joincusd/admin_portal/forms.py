@@ -2,22 +2,24 @@ from django import forms
 from mainsite.models import Photo, Opening, Posting
 
 class PostingForm(forms.ModelForm):
-    
-    #slug = forms.CharField(widget=forms.HiddenInput(), required=False)
-    #hidden forms
-    posting_type = forms.CharField(widget=forms.HiddenInput(), initial="Project")
-    #posting_type = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
-    name = forms.CharField(max_length=500)
-    tagline = forms.CharField(max_length=4096)
-    description = forms.CharField()
+    #this is hardcoded in the project or role type page templates
+    #posting_type = forms.IntegerField(widget=forms.HiddenInput(), initial="project")
+    name = forms.CharField(max_length=500, help_text="Project Name:")
+    tagline = forms.CharField(max_length=4096, help_text="Project Tagline:")
+    description = forms.CharField(help_text="Project Description:")
+
+    # these will have to be created by the view function
     #photos = forms.ManyToManyField(Photo)
     #openings = forms.ManyToManyField(Opening)
-    detail_icon_path = forms.FilePathField("/home/images")
-    list_thumbnail_path = forms.FilePathField("/home/images")
-    rank = forms.IntegerField()
+
+    #TODO: ignore file image uploads for now
+    detail_icon_path = forms.FilePathField("/home/images", help_text="Project Detail Icon:")
+    list_thumbnail_path = forms.FilePathField("/home/images", help_text="Project Thumbnail Icon:")
+
+    #TODO: replace this with a draggable/list precedence interface
+    rank = forms.IntegerField(help_text="Project Display Rank:")
     
-    #validation
-    def clean(self):
+    '''def clean(self):
         cleaned_data=super(PostingForm, self).clean()
         name=cleaned_data.get("name");
         tagline=cleaned_data.get("tagline");
@@ -31,7 +33,8 @@ class PostingForm(forms.ModelForm):
                 raise forms.ValidationError("At least one field is empty!");
         else: 
             raise forms.ValidationError("At least one field is not completed correctly!");      
-        return cleaned_data
+        return cleaned_data'''
+
     # An inline class to provide additional information on the form.
     class Meta:
         # Provide an association between the ModelForm and a model
