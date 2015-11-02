@@ -1,15 +1,20 @@
-<!DOCTYPE html>
+{% load staticfiles %}
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/style.css">
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="../data/dummy.js"></script>
-    <title></title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/common.css' %}">
+
+    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+
+    <script src ="{% static 'js/common.js' %}"></script>
+    <title>Add Role</title>
 
 </head>
 <body>
     <h1> Add a Role </h1>
+    <div class="form-content">
     <form id="role_form" method="post" action="/admin/role">
         {% csrf_token %}
       Role Title: {{ form.title }} <br>
@@ -21,8 +26,9 @@
       {{form.selected_role_types}}
         <br>
       <input class="submit-button button" type="submit" name="submit">
-      <input type="reset" name="Reset" value="Reset">
+      <input type="reset" class="reset-button button" name="Reset" value="Reset">
     </form>
+        </div>
 
 <!--
     <div id="modal-header">

@@ -61,6 +61,10 @@ input[type=checkbox] {
     font-weight: 300;
 }
 
+.reset-button{
+    background-color: #FFFFFF;
+}
+
 h1 {
     color: #333333;
     font-weight: normal;
