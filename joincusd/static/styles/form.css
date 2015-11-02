@@ -62,7 +62,17 @@ input[type=checkbox] {
 }
 
 .reset-button{
+    float: right;
+    font-size: inherit;
     background-color: #FFFFFF;
+    color: #3FAB6D;
+    margin-right: 2em;
+}
+
+.reset-button:hover {
+
+    background-color: #3FAB6D;
+    color: #FFFFFF;
 }
 
 h1 {

@@ -17,14 +17,20 @@
     <div class="form-content">
     <form id="role_form" method="post" action="/admin/role">
         {% csrf_token %}
-      Role Title: {{ form.title }} <br>
-      Role Description: {{form.description}} <br>
+        <div class="field-wrapper">
+      Role Title: {{ form.title }}
+        </div>
+        <div class="field-wrapper">
+      Role Description: {{form.description}}
+        </div>
+        <div class="field-wrapper">
       Select Projects:
       {{form.selected_projects}}
-        <br>
+        </div>
+        <div class="field-wrapper">
       Select Roles:
       {{form.selected_role_types}}
-        <br>
+        </div>
       <input class="submit-button button" type="submit" name="submit">
       <input type="reset" class="reset-button button" name="Reset" value="Reset">
     </form>
