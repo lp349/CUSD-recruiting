@@ -39,6 +39,7 @@ a {
     text-align: right;
     width: 95%;
     padding: 1em;
+    padding-bottom: 0.5em;
     /*height: 3em;*/
     height: auto;
     /*background-color: #fff;*/
@@ -80,13 +81,17 @@ a {
     text-align: right;
 }
 
-.h a {
+#logout {
     margin: 1.3125rem 0;
     padding: 0.25em;
     display: inline-block;
     width: 50%;
     text-align: right;
 
+}
+
+#logout a {
+    width: auto;
 }
 
 #nav-bar {

@@ -1,4 +1,4 @@
-.field-wrap {
+.field-wrapper {
     width: 100%;
     padding: 1%;
     margin: auto;
@@ -14,7 +14,6 @@
 
 .field-name {
     width: 20%;
-
 }
 
 textarea {
@@ -24,7 +23,7 @@ textarea {
 
 input[type=text] {
     width: 100%;
-    height: 100%;
+    height: 2em;
 }
 
 input[type=checkbox] {
@@ -33,23 +32,40 @@ input[type=checkbox] {
     margin-right: 0;
 }
 
-/**.button {
-    background-color: #3FAB6D;
-    color: #fff;
-    border-radius: 3px;
-    border: 3px solid #3FAB6D;
-    width: 8em;
-    cursor: pointer;
+.form-content {
+    width: 85%;
+    padding: 2em;
+    background-color: #f2f3f3;
+    margin: auto;
+    border-radius: 2px;
 }
-**/
+
+
+
+.checkboxes {
+    max-height: 10em;
+    overflow: scroll;
+    background-color: #FFFFFF;
+}
+
+
+.checkbox {
+    width: 45%;
+    display: inline-block;
+}
+
 .submit-button {
     float: right;
-    margin-right: 20%;
-    margin-bottom: 5%;
+    font-size: inherit;
+    font-weight: 300;
 }
 
 h1 {
     color: #333333;
     font-weight: normal;
     font-size: 2em;
+}
+
+ul {
+    list-style: none;
 }
