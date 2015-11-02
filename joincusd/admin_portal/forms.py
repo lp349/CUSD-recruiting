@@ -20,7 +20,7 @@ class PostingForm(forms.ModelForm):
     rank = forms.IntegerField(help_text="Project Display Rank:")
     
     all_role_choices = [(role.pk, role.title) for role in Opening.objects.all()]
-    role_multiselect = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices = all_role_choices, required=False)
+    role_multiselect = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, help_text="Select a Role", choices = all_role_choices, required=False)
 
     '''def clean(self):
         cleaned_data=super(PostingForm, self).clean()
