@@ -9,9 +9,24 @@
 
 </head>
 <body>
-    <script>
-    </script>
+    <h1> Add a project </h1>
+    <form id="project_form" method="post" action="/admin/add_project">
 
+      {% csrf_token %}
+      {% for hidden in form.hidden_fields %}
+          {% if hidden.html_name != "posting_type" %}          
+              {{ hidden }}
+          {% endif %}     
+      {% endfor %}
+
+      {% for field in form.visible_fields %}
+         {{ field }}
+      {% endfor %}
+
+      <input type="hidden" name="posting_type" value="project">
+    </form>
+
+<!--
     <div id="modal-header">
         <h1>Add or edit a <span>{{Posting}}</span></h1>
     </div>
@@ -77,6 +92,6 @@
 
         </script>
 
-    </div>
+    </div> -->
 </body>
 </html>

@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from mainsite.models import Posting, Opening
+from forms import PostingForm, OpeningForm
 
 import json
 
@@ -98,3 +99,45 @@ def role_list(request):
 
      response = json.dumps(result_list)
      return HttpResponse(response)
+
+def project_form(request):
+    form = PostingForm()
+    return render(request, 'posting.html', {'form': form})
+
+def role(request):
+          # A HTTP POST?
+  if request.method == 'POST':
+      form = OpeningForm(request.POST)
+      request_dict={}
+      # Have we been provided with a valid form?
+      if form.is_valid():
+          postings=form.cleaned_data['selected_projects'];
+          for posting_name in postings:
+            posting=Posting.objects.filter(name=posting_name);
+            if posting: 
+              posting.openings.append(form.cleaned_data['title']);
+              posting.save(update_fields=['openings']);
+            else:
+              print "No such project";
+          role_types=form.cleaned_data['selected_role_types'];
+          for role_type_name in role_types:
+            posting=Posting.objects.filter(name=role_type_name);
+            if posting: 
+              posting.openings.append(form.cleaned_data['title']);
+              posting.save(update_fields=['openings']);
+            else:
+              print "No such Role type";
+
+          # Now call the index() view.
+          # The user will be shown the homepage.
+          return index(request) #add some pop up window for confirmation of save 
+      else:
+          # The supplied form contained errors - just print them to the terminal.
+          print form.errors
+  else:
+      # If the request was not a POST, display the form to enter details.
+      form = OpeningForm()
+
+  # Bad form (or form details), no form supplied...
+  # Render the form with error messages (if any).
+  return render(request, 'role.html', {'form': form})

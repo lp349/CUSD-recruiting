@@ -9,12 +9,12 @@ class PostingForm(forms.ModelForm):
     #posting_type = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     name = forms.CharField(max_length=500)
     tagline = forms.CharField(max_length=4096)
-    description = forms.TextField()
-    photos = forms.ManyToManyField(Photo)
-    openings = forms.ManyToManyField(Opening)
-    detail_icon_path = forms.FilePathField("/home/images", max_length=255)
-    list_thumbnail_path = forms.FilePathField("/home/images", max_length=255)
-    rank = forms.PositiveIntegerField()
+    description = forms.CharField()
+    #photos = forms.ManyToManyField(Photo)
+    #openings = forms.ManyToManyField(Opening)
+    detail_icon_path = forms.FilePathField("/home/images")
+    list_thumbnail_path = forms.FilePathField("/home/images")
+    rank = forms.IntegerField()
     
     #validation
     def clean(self):
@@ -36,15 +36,26 @@ class PostingForm(forms.ModelForm):
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Posting
-        #fields = ('name',)
+        fields = ('name', 'tagline', 'description')
 
 
 class OpeningForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="Please enter the title of the role.")
     description = forms.CharField(max_length=200, help_text="Please enter the description of the role.")
+    project_choices=[]
+    role_choices=[]
+    for x in list(Posting.objects.all()):
+        if x.posting_type=="role_type":
+            role_choices.append((x.pk, x.name))
+        else:
+            project_choices.append((x.pk, x.name))
+    print role_choices
+    selected_projects = forms.MultipleChoiceField(choices=project_choices, required=True)
+    selected_role_types = forms.MultipleChoiceField(choices=role_choices, required=False)
     #views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Opening
+        fields = ('title', 'description')
 
