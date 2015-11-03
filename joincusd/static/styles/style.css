@@ -183,18 +183,19 @@ a {
 }
 
 .button {
+    font-family: inherit;
     background-color: #3FAB6D;
     color: #fff;
     border-radius: 3px;
     border: 2px solid #3FAB6D;
     width: 8em;
+    height: 2em;
     cursor: pointer;
+    font-size: 1em;
 }
 
 .edit.button, .remove.button {
     /*float: right;*/
-
-    width: 8em;
     text-align: center;
     padding: 0.5em;
     cursor: pointer;
