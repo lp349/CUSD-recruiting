@@ -19,16 +19,23 @@ To set up local db:
 
 To set up joincusd_db
 - Start postgres if not currently running
+
     launchctl load /usr/local/Cellar/postgresql/[vername]/homebrew.mxcl.postgresql.plist
+
 - Run the following commands:
+
     createdb joincusd_db
     psql joincusd_db
     CREATE USER joincusd_dev WITH PASSWORD ‘cusd’;
+
 - Run python manage.py runserver and ensure everything’s working
 - Make Migrations
+
     python manage.py makemigrations
     python manage.py migrate
+
 - To import fixtures
+
     python manage.py loaddata fixtures/[fixturename]
 
 
