@@ -210,6 +210,7 @@ def posting_form_handler(request, posting_type, is_edit, pk):
 
 #add a new role
 def role(request,pk):
+  old_role = None
   if pk:
     old_role=Opening.objects.get(pk=pk)
   
@@ -277,6 +278,7 @@ def remove_project(request,pk):
   return HttpResponseRedirect("/admin/")
 
 def edit_role(request, pk):
+  old_role = None
   if pk:
     old_role=Opening.objects.get(pk=pk)
   form = OpeningForm(instance=old_role)
