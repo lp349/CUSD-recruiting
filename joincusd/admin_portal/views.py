@@ -107,26 +107,63 @@ def role_list(request):
 # or simply displays the form on a GET page load
 #
 # posting_type can either be the string "project" or "roletype"
-def posting_form_handler(request, posting_type):
+# is_edit is a boolean value indicating whether or not the handler was
+# invoked to EDIT a project:
+#   false - the handler was invoked to add a new project
+#   true  - the handler was invoked to edit an existing project
+# pk: 
+#   if is_edit is true, then is the primary key of the posting object
+#   the user requested to edit
+#   if is_edit is false, contains a garbage value
+#
+# in addition to returning the default Django form object, posting_form_handler
+# also specifies attribute "form_submit_action_url", which indicates whether or not
+# the form was submitted for an edit or new project addition.
+# this attribute will be either:
+#     /admin/add_project/
+#     /admin/edit_project/<primary key of posting currently being edited> 
+def posting_form_handler(request, posting_type, is_edit, pk):
     if request.method == "POST":
         print "stuff posted"
+        print pk
         form = PostingForm(request.POST, request.FILES)
+
+        #BEFORE validation, since we already have images when editing 
+        #a project, the image/file upload options should be optinal
+        if is_edit:
+            form.fields['detail_icon_path'].required = False
+            form.fields['list_thumbnail_path'].required = False
+
         if form.is_valid():
-            project = Posting()
-            #hidden field will let us tell if we are creating 
-            #a roletype or project
+            project = None
+
+            if is_edit:
+                project = Posting.objects.get(pk=pk)
+                if not project:
+                    print "posting_form_handler: primary key for editing project does not point to an existing project"
+                    return HttpRedirectResponse("/admin")
+            else:
+                project = Posting()
+
             project.posting_type = posting_type
             project.name = form.cleaned_data['name']
             project.tagline = form.cleaned_data['tagline']
             project.description = form.cleaned_data['description']
-            project.detail_icon_path = request.FILES['detail_icon_path']
-            project.list_thumbnail_path = request.FILES['list_thumbnail_path']
             project.rank = form.cleaned_data['rank']
 
-            #save the object first so that the many to many field can be used
-            project.save()
+            #since file uploads may be optional due to editing, 
+            #we have to do a check before assigning files!
+            if 'detail_icon_path' in request.FILES or (not is_edit):
+                project.detail_icon_path = request.FILES['detail_icon_path']
+            if 'list_thumbnail_path' in request.FILES or (not is_edit):
+                project.list_thumbnail_path = request.FILES['list_thumbnail_path']
+
+            #if this is a new addition, we'll need to save the object first so that the many to many field can be used
+            if not is_edit:
+                project.save()
             
             #add each role to the many set
+            project.openings.clear()
             for role_pk_val in form.cleaned_data['role_multiselect']:
                 role = Opening.objects.get(pk=role_pk_val)
                 if role:
@@ -140,11 +177,33 @@ def posting_form_handler(request, posting_type):
         else:
             print "project_form_handler: form was not valid"
             print form.errors
-            return HttpResponseRedirect(request)
+            return HttpResponseRedirect("/admin")
     else:
-        form = PostingForm()
-        roles = Opening.objects.all()
-        return render(request, 'posting.html', {'form': form, 'roles' : roles})
+        form = None
+        if is_edit:
+            posting_object = Posting.objects.get(pk=pk)
+            if posting_object:
+                form = PostingForm(instance = posting_object)
+                #IMPORTANT: the submit action url must be set correctly!
+                form.form_submit_action_url = "/admin/edit_project/" + pk
+                print "yo yo: " + posting_object.detail_icon_path.url
+
+                #additionally, since there is no direct mapping from
+                #the model's openings set to the form's MultipleChoiceField,
+                #we'll need to generate the initial checked choices
+                initial_choices = []
+                for role in posting_object.openings.all():
+                    initial_choices.append(role.pk)
+
+                form.fields['role_multiselect'].initial = initial_choices                
+            else:
+                print "posting_form_handler: pk points to a nonexistent object"
+                return HttpResponseRedirect("/admin")
+        else:
+            #IMPORTANT: the submit action url must be set correctly!
+            form = PostingForm()
+            form.form_submit_action_url = "/admin/add_project/"
+        return render(request, 'posting.html', {'form': form})
 
 
 #add a new role

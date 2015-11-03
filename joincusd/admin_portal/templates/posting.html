@@ -13,9 +13,9 @@
 
 </head>
 <body>
-    <h1> Add a project </h1>
+    <h1> Add/Edit a project </h1>
     <div class="form-content">
-    <form id="project_form" enctype="multipart/form-data" method="post" action="/admin/add_project">
+    <form id="project_form" enctype="multipart/form-data" method="post" action="{{ form.form_submit_action_url }}">
 
       {% csrf_token %}
       {% for hidden in form.hidden_fields %}
