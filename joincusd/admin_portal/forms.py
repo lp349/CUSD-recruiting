@@ -6,7 +6,7 @@ class PostingForm(forms.ModelForm):
     #posting_type = forms.IntegerField(widget=forms.HiddenInput(), initial="project")
     name = forms.CharField(max_length=500, help_text="Project Name:")
     tagline = forms.CharField(max_length=4096, help_text="Project Tagline:")
-    description = forms.CharField(help_text="Project Description:")
+    description = forms.CharField(widget=forms.Textarea(attrs={'cols': 50, 'rows': 10}), help_text="Project Description:")
 
     # these will have to be created by the view function
     #photos = forms.ManyToManyField(Photo)
@@ -47,7 +47,7 @@ class PostingForm(forms.ModelForm):
 
 class OpeningForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="Please enter the title of the role.")
-    description = forms.CharField(max_length=200, help_text="Please enter the description of the role.")
+    description = forms.CharField(widget=forms.Textarea(attrs={'cols': 50, 'rows': 10}), max_length=200, help_text="Please enter the description of the role.")
     project_choices=[]
     role_choices=[]
     for x in list(Posting.objects.all()):
@@ -56,8 +56,8 @@ class OpeningForm(forms.ModelForm):
         else:
             project_choices.append((x.pk, x.name))
     print role_choices
-    selected_projects = forms.MultipleChoiceField(choices=project_choices, required=True)
-    selected_role_types = forms.MultipleChoiceField(choices=role_choices, required=False)
+    selected_projects = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=project_choices, required=True)
+    selected_role_types = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=role_choices, required=False)
     #views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     
     class Meta:
