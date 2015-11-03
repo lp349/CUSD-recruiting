@@ -201,3 +201,8 @@ a {
     display: inline-block;
     margin: 0.5em;
 }
+
+
+form {
+    margin-bottom: 0;
+}
