@@ -4,10 +4,6 @@
     margin: auto;
 }
 
-/*.field-wrapper div {*/
-    /*display: inline-block;*/
-/*}*/
-
 .field {
     width: 90%;
 }
@@ -18,7 +14,7 @@
 
 textarea {
     width: 100%;
-    height: 40%;
+    height: 20em;
 }
 
 input[type=text] {
@@ -28,10 +24,13 @@ input[type=text] {
 
 input[type=checkbox] {
     width: 2em;
-    margin: 2em;
-    margin-right: 0;
+    /*visibility: hidden;*/
+    display: none;
 }
 
+input[type=file] {
+
+}
 
 .form-content {
     width: 85%;
@@ -42,7 +41,6 @@ input[type=checkbox] {
     height: auto;
     overflow: hidden;
 }
-
 
 
 .checkboxes {
@@ -74,7 +72,6 @@ input[type=checkbox] {
 }
 
 .reset-button:hover {
-
     background-color: #3FAB6D;
     color: #FFFFFF;
 }
@@ -88,10 +85,30 @@ h1 {
 
 ul {
     list-style: none;
+    width: 98%;
+    padding: 1%;
+    margin: auto;
 }
 
 li {
+    width: 30%;
+    min-width: 12em;
     display: inline-block;
-    width: 47%;
+    margin: 0.5em;
+}
+
+li label{
+    text-align: center;
+    display: inline-block;
+    width: 94%;
     font-size: 0.9em;
+    border-radius: 3px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    padding: 3%;
+}
+
+.selected-checkbox {
+    background-color: #3FAB6D;
+    color: #FFFFFF;
 }
