@@ -1,28 +1,36 @@
 var activeTab = "";
 
+var toggle = function(id) {
+            if (id === "projects-tab") {
+                $(".add").attr("href", "/admin/add_project/");
+            }else if (id === "roletypes-tab") {
+                $(".add").attr("href", "/admin/add_role_type/");
+            }else if (id === "roles-tab") {
+                $(".add").attr("href", "/admin/add_role/");
+            }
+        };
+
 function generateElem(typ, posting) {
     if (typ === "Project") {
         var p = "<div class='project elem' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.name + "</span>"
-            + "<div class='edit button'>Edit</div>"
-            + "<div class='remove button'>Remove</div>"
+            + "<a class='edit button' href='edit_project/" + posting.id +"/'>Edit</a>"
+            + "<a class='remove button' href='remove_project/" + posting.id + "/'>Remove</a>"
             + "</div>";
         return p;
     } else if ((typ === "RoleType")) {
         var rt = "<div class='role-type elem' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.name + "</span>"
-            + "<div class='edit button'>Edit</div>"
-            + "<div class='remove button'>Remove</div>"
+            + "<a class='edit button' href='edit_role_type/" + posting.id +"/'>Edit</a>"
+            + "<a class='remove button' href='remove_role_type/" + posting.id + "/'>Remove</a>"
             + "</div>";
-
         return rt;
     } else if ((typ === "Opening")) {
         var r = "<div class='role elem' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.title + "</span>"
-            + "<div class='edit button'>Edit</div>"
-            + "<div class='remove button'>Remove</div>"
+            + "<a class='edit button' href='edit_role" + posting.id +"/'>Edit</a>"
+            + "<a class='remove button' href='remove_role/" + posting.id + "/'>Remove</a>"
             + "</div>";
-
         return r;
     }
 }
@@ -67,6 +75,7 @@ $(document).ready(function () {
         $('.tab').removeClass('selected-tab');
         $(this).addClass('selected-tab');
         activeTab = $(this).attr("id");
+        toggle(activeTab);
     });
 
 

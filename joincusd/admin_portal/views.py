@@ -242,7 +242,7 @@ def role(request):
 
           # Now call the index() view.
           # The user will be shown the homepage.
-          return index(request) #add some pop up window for confirmation of save 
+          return HttpResponseRedirect("/admin/") #add some pop up window for confirmation of save 
       else:
           # The supplied form contained errors - just print them to the terminal.
           print form.errors
@@ -253,4 +253,10 @@ def role(request):
   # Bad form (or form details), no form supplied...
   # Render the form with error messages (if any).
   return render(request, 'role.html', {'form': form})
+
+def remove_role(request,pk):
+  this_role=Opening.objects.filter(pk=pk).delete()
+  # if this_role:
+  #   this_role.remove()
+  return HttpResponseRedirect("/admin/")
 

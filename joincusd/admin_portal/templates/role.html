@@ -15,7 +15,7 @@
 <body>
     <h1> Add a Role </h1>
     <div class="form-content">
-    <form id="role_form" method="post" action="/admin/role">
+    <form id="role_form" method="post" action="">
         {% csrf_token %}
         <div class="field-wrapper">
       Role Title: {{ form.title }}
@@ -28,7 +28,7 @@
       {{form.selected_projects}}
         </div>
         <div class="field-wrapper">
-      Select Roles:
+      Select Role Types:
       {{form.selected_role_types}}
         </div>
       <input class="submit-button button" type="submit" name="submit">

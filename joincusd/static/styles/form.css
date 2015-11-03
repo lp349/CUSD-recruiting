@@ -1,5 +1,5 @@
 .field-wrapper {
-    width: 100%;
+    width: 96%;
     padding: 2%;
     margin: auto;
 }
@@ -9,7 +9,7 @@
 /*}*/
 
 .field {
-    width: 80%;
+    width: 90%;
 }
 
 .field-name {
@@ -39,6 +39,8 @@ input[type=checkbox] {
     background-color: #f2f3f3;
     margin: auto;
     border-radius: 2px;
+    height: auto;
+    overflow: hidden;
 }
 
 
@@ -59,6 +61,7 @@ input[type=checkbox] {
     float: right;
     font-size: inherit;
     font-weight: 300;
+    margin: 1em;
 }
 
 .reset-button{
@@ -66,6 +69,7 @@ input[type=checkbox] {
     font-size: inherit;
     background-color: #FFFFFF;
     color: #3FAB6D;
+    margin: 1em;
     margin-right: 2em;
 }
 
@@ -79,6 +83,7 @@ h1 {
     color: #333333;
     font-weight: normal;
     font-size: 2em;
+    padding: 2% 0 0 2%;
 }
 
 ul {
