@@ -29,11 +29,16 @@
          {{ field.errors }}
             <div class="field-name">{{ field.help_text}}</div>
             <div class="field">{{ field }}</div>
+
+	    {% if field.name == "detail_icon_path" %}
+	        <img src="{{ form.instance.detail_icon_path.url }}">
+	    {% endif %}
+
+	    {% if field.name == "list_thumbnail_path" %}
+		<img src="{{ form.instance.list_thumbnail_path.url }}">
+	    {% endif %}
         </div>
       {% endfor %}
-
-      <input type="hidden" name="posting_type" value="project">
-      <br>
       <input type="submit" class="submit-button button" name="submit" value="Add Project">
     </form>
     </div>

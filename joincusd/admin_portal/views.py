@@ -186,6 +186,7 @@ def posting_form_handler(request, posting_type, is_edit, pk):
                 form = PostingForm(instance = posting_object)
                 #IMPORTANT: the submit action url must be set correctly!
                 form.form_submit_action_url = "/admin/edit_project/" + pk
+
                 print "yo yo: " + posting_object.detail_icon_path.url
 
                 #additionally, since there is no direct mapping from
