@@ -200,7 +200,9 @@ a {
     padding: 0.5em;
     cursor: pointer;
     display: inline-block;
+    height: auto;
     margin: 0.5em;
+
 }
 
 
