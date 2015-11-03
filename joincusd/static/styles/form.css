@@ -2,12 +2,12 @@
     width: 96%;
     padding: 2%;
     margin: auto;
-    font-size: 0.85em;
+    font-size: 1em;
 }
 
 .field {
     margin-top: 0.5em;
-    width: 90%;
+    /*width: 90%;*/
 }
 
 .field-name {
@@ -120,10 +120,12 @@ li label{
     cursor: pointer;
     padding: 3%;
     border: 2px solid #FFFFFF;
+    box-shadow: 1px 1px 1px 1px lightgray;
 }
 
 .selected-checkbox {
     /*border: 2px solid #333333;*/
     border: 2px solid #3FAB6D;
-    /*color: #FFFFFF;*/
+    background-color: #3FAB6D;
+    color: #FFFFFF;
 }

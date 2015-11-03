@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $("input:checkbox:checked").parent().addClass("selected-checkbox");
 
     $("li").on("click", "label", function (e) {
         // Toggle the checkbox
@@ -10,4 +11,7 @@ $(document).ready(function () {
             $(wrapper).removeClass("selected-checkbox");
         }
     });
+
+
+
 });
