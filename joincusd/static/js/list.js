@@ -4,23 +4,23 @@ function generateElem(typ, posting) {
     if (typ === "Project") {
         var p = "<div class='project elem' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.name + "</span>"
-            + "<div class='edit button'>Edit</div>"
-            + "<div class='remove button'>Remove</div>"
+            + "<div class='edit button'><a href='edit_project/" + posting.id +"'>Edit</a></div>"
+            + "<div class='remove button'><a href='remove_role_type/" + posting.id + "'>Remove</a></div>"
             + "</div>";
         return p;
     } else if ((typ === "RoleType")) {
         var rt = "<div class='role-type elem' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.name + "</span>"
-            + "<div class='edit button'>Edit</div>"
-            + "<div class='remove button'>Remove</div>"
+            + "<div class='edit button'><a href='edit_role_type/" + posting.id +"'>Edit</a></div>"
+            + "<div class='remove button'><a href='remove_role_type/" + posting.id + "'>Remove</a></div>"
             + "</div>";
 
         return rt;
     } else if ((typ === "Opening")) {
         var r = "<div class='role elem' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.title + "</span>"
-            + "<div class='edit button'>Edit</div>"
-            + "<div class='remove button'>Remove</div>"
+            + "<div class='edit button'><a href='edit_role/" + posting.id +"'>Edit</a></div>"
+            + "<div class='remove button'><a href='remove_role/" + posting.id + "'>Remove</a></div>"
             + "</div>";
 
         return r;
@@ -110,4 +110,3 @@ $(document).ready(function () {
     });
 
     $("#projects-tab").trigger("click");
-});
