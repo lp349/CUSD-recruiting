@@ -105,7 +105,9 @@ def role_list(request):
 
 # the handler function both handles form submissions if request is POST,
 # or simply displays the form on a GET page load
-def project_form_handler(request):
+#
+# posting_type can either be the string "project" or "roletype"
+def posting_form_handler(request, posting_type):
     if request.method == "POST":
         print "stuff posted"
         form = PostingForm(request.POST, request.FILES)
@@ -113,7 +115,7 @@ def project_form_handler(request):
             project = Posting()
             #hidden field will let us tell if we are creating 
             #a roletype or project
-            project.posting_type = request.POST.get("posting_type")
+            project.posting_type = posting_type
             project.name = form.cleaned_data['name']
             project.tagline = form.cleaned_data['tagline']
             project.description = form.cleaned_data['description']
@@ -132,12 +134,13 @@ def project_form_handler(request):
                 else:
                     print "project_form_handler: role specified by primary key does not exist"
 
+            #save the role updates
             project.save()
             return HttpResponseRedirect("/admin")
         else:
             print "project_form_handler: form was not valid"
             print form.errors
-            return index(request)
+            return HttpResponseRedirect(request)
     else:
         form = PostingForm()
         roles = Opening.objects.all()
