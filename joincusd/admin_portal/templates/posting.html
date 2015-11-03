@@ -30,11 +30,11 @@
             <div class="field-name">{{ field.help_text}}</div>
             <div class="field">{{ field }}</div>
 
-	    {% if field.name == "detail_icon_path" %}
+	    {% if field.name == "detail_icon_path" and form.is_edit != true %}
 	        <img src="{{ form.instance.detail_icon_path.url }}">
 	    {% endif %}
 
-	    {% if field.name == "list_thumbnail_path" %}
+	    {% if field.name == "list_thumbnail_path" and form.is_edit != true %}
 		<img src="{{ form.instance.list_thumbnail_path.url }}">
 	    {% endif %}
         </div>

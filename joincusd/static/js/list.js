@@ -28,7 +28,7 @@ function generateElem(typ, posting) {
     } else if ((typ === "Opening")) {
         var r = "<div class='role elem' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.title + "</span>"
-            + "<a class='edit button' href='edit_role" + posting.id +"/'>Edit</a>"
+            + "<a class='edit button' href='edit_role/" + posting.id +"/'>Edit</a>"
             + "<a class='remove button' href='remove_role/" + posting.id + "/'>Remove</a>"
             + "</div>";
         return r;
