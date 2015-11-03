@@ -1,5 +1,15 @@
 var activeTab = "";
 
+var toggle = function(id) {
+            if (id === "projects-tab") {
+                $(".add").attr("href", "/admin/add_project/");
+            }else if (id === "roletypes-tab") {
+                $(".add").attr("href", "/admin/add_role_type/");
+            }else if (id === "roles-tab") {
+                $(".add").attr("href", "/admin/add_role/");
+            }
+        };
+
 function generateElem(typ, posting) {
     if (typ === "Project") {
         var p = "<div class='project elem' id='" + posting.id + "'>"
@@ -65,6 +75,7 @@ $(document).ready(function () {
         $('.tab').removeClass('selected-tab');
         $(this).addClass('selected-tab');
         activeTab = $(this).attr("id");
+        toggle(activeTab);
     });
 
 
