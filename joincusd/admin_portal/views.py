@@ -97,6 +97,7 @@ def role_list(request):
          role_object = {}
          role_object["title"] = role.title
          role_object["description"] = role.description
+         role_object["id"]=role.id
          result_list.append(role_object)
 
      response = json.dumps(result_list)
@@ -145,7 +146,10 @@ def project_form_handler(request):
 
 
 #add a new role
-def role(request):
+def role(request,pk):
+  if pk:
+    old_role=Opening.objects.get(pk=pk)
+  
           # A HTTP POST?
   if request.method == 'POST':
       form = OpeningForm(request.POST)
@@ -177,6 +181,9 @@ def role(request):
             else:
               print "No such Role type";
 
+          #TO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          if pk:
+            Opening.objects.filter(pk=pk).delete()
           # Now call the index() view.
           # The user will be shown the homepage.
           return HttpResponseRedirect("/admin/") #add some pop up window for confirmation of save 
@@ -185,15 +192,29 @@ def role(request):
           print form.errors
   else:
       # If the request was not a POST, display the form to enter details.
-      form = OpeningForm()
+      form = OpeningForm(instance=old_role)
 
   # Bad form (or form details), no form supplied...
   # Render the form with error messages (if any).
   return render(request, 'role.html', {'form': form})
 
 def remove_role(request,pk):
-  this_role=Opening.objects.filter(pk=pk).delete()
+  Opening.objects.filter(pk=pk).delete()
+  #TO DO: remove the opening from all postings that contains this opening
+  #print Posting.objects.filter(opening=pk)
+  #Posting.objects.filter(opening=pk).delete()
   # if this_role:
   #   this_role.remove()
   return HttpResponseRedirect("/admin/")
 
+def remove_project(request,pk):
+  Posting.objects.filter(pk=pk).delete()
+  # if this_role:
+  #   this_role.remove()
+  return HttpResponseRedirect("/admin/")
+
+def edit_role(request, pk):
+  if pk:
+    old_role=Opening.objects.get(pk=pk)
+  form = OpeningForm(instance=old_role)
+  return render(request, 'role.html', {'form': form})
