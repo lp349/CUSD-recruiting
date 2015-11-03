@@ -19,7 +19,7 @@
         <img class="site-logo__image" src="{% static "images/CUSD-logo.svg" %}" />
         <span class="site-logo__text">Cornell University<br>Sustainable Design</span>
         </div>
-        <div id="logout" class=""><a href = "login.html">Log Out</a></div><br>
+        <div id="logout" class=""><a href = "/admin/login/">Log Out</a></div><br>
         <h3>Admin Portal</h3><br>
         </div><br>
 
@@ -32,16 +32,13 @@
 
 
     <div class="add-button">
-        <form method="post" action="/admin/add_project">
-            {% csrf_token %}
-            <label>
-                <input type="submit" style="display: none;"/>
-                <svg>
-                    <circle fill="#FFFFFF" stroke="#3FAB6D" stroke-width="5px" cx="50%" cy="50%" r="0.9em"></circle>
-                    <text fill="#3FAB6D" stroke="#3FAB6D" x="50%" y="50%" text-anchor="middle" dominant-baseline="central">+</text>
-                </svg>
-            </label>
-        </form>
+        <a class="add" href="/admin/add_project">
+            <input type="submit" style="display: none;"/>
+            <svg>
+                <circle fill="#FFFFFF" stroke="#3FAB6D" stroke-width="5px" cx="50%" cy="50%" r="0.9em"></circle>
+                <text fill="#3FAB6D" stroke="#3FAB6D" x="50%" y="50%" text-anchor="middle" dominant-baseline="central">+</text>
+            </svg>
+        </a>
     </div>
     <section id="content">
 
