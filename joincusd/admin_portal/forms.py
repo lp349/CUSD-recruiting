@@ -42,7 +42,7 @@ class PostingForm(forms.ModelForm):
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Posting
-        fields = ('name', 'tagline', 'description')
+        fields = ('name', 'tagline', 'description', 'detail_icon_path', 'list_thumbnail_path', 'rank', 'role_multiselect')
 
 
 class OpeningForm(forms.ModelForm):
