@@ -22,6 +22,6 @@ urlpatterns = [
     url(r'^edit_role/(?P<pk>[0-9]+)/$',views.edit_role),
     # remove role
     url(r'^remove_role/(?P<pk>[0-9]+)/$', views.remove_role),
-    url(r'^remove_project/(?P<pk>[0-9]+)/$', views.remove_role)]
+    url(r'^remove_project/(?P<pk>[0-9]+)/$', views.remove_project)]
 
 
