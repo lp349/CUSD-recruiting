@@ -4,14 +4,15 @@ from mainsite.models import Photo, Opening, Posting
 class PostingForm(forms.ModelForm):
     #this is hardcoded in the project or role type page templates
     #posting_type = forms.IntegerField(widget=forms.HiddenInput(), initial="project")
-    name = forms.CharField(max_length=500, help_text="Project Name:")
-    tagline = forms.CharField(max_length=4096, help_text="Project Tagline:")
-    description = forms.CharField(widget=forms.Textarea(attrs={'cols': 50, 'rows': 10}), help_text="Project Description:")
+    name = forms.CharField(max_length=500, help_text="Name:")
+    tagline = forms.CharField(max_length=4096, help_text="Tagline:")
+    description = forms.CharField(widget=forms.Textarea(attrs={'cols': 50, 'rows': 10}), help_text="Description:")
 
     # these will have to be created by the view function
     #photos = forms.ManyToManyField(Photo)
     #openings = forms.ManyToManyField(Opening)
 
+<<<<<<< Updated upstream
     #TODO: three temporary photos for now
     #3IMAGE:photo_one = forms.FileField(help_text="Photo 1:")
     #3IMAGE:photo_two = forms.FileField(help_text="Photo 2:")
@@ -21,7 +22,7 @@ class PostingForm(forms.ModelForm):
     list_thumbnail_path = forms.FileField(help_text="Project Thumbnail Icon:")
 
     #TODO: replace this with a draggable/list precedence interface
-    rank = forms.IntegerField(help_text="Project Display Rank:")
+    rank = forms.IntegerField(help_text="Display Rank:")
     
     all_role_choices = [(role.pk, role.title) for role in Opening.objects.all()]
     role_multiselect = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, help_text="Select Roles", choices = all_role_choices, required=False)
@@ -55,6 +56,7 @@ class OpeningForm(forms.ModelForm):
     project_choices=[]
     role_choices=[]
     for x in list(Posting.objects.all()):
+        print(x.name, x.posting_type)
         if x.posting_type=="role_type":
             role_choices.append((x.pk, x.name))
         else:

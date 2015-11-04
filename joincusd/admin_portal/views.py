@@ -189,7 +189,7 @@ def posting_form_handler(request, posting_type, is_edit, pk):
             project.save()
             return HttpResponseRedirect("/admin")
         else:
-            print "project_form_handler: form was not valid"
+            print "posting_form_handler: form was not valid"
             print form.errors
             return HttpResponseRedirect("/admin")
     else:
@@ -199,7 +199,7 @@ def posting_form_handler(request, posting_type, is_edit, pk):
             if posting_object:
                 form = PostingForm(instance = posting_object)
                 #IMPORTANT: the submit action url must be set correctly!
-                form.form_submit_action_url = "/admin/edit_project/" + pk + "/"
+                form.form_submit_action_url = "/admin/edit_" + posting_type + "/" + pk + "/"
 
                 print "yo yo: " + posting_object.detail_icon_path.url
 
@@ -217,8 +217,9 @@ def posting_form_handler(request, posting_type, is_edit, pk):
         else:
             #IMPORTANT: the submit action url must be set correctly!
             form = PostingForm()
-            form.form_submit_action_url = "/admin/add_project/"
-        return render(request, 'posting.html', {'form': form, 'is_edit':is_edit})
+            form.form_submit_action_url = "/admin/" + posting_type + "/"
+        return render(request, 'posting.html', {'form': form})
+
 
 
 #add a new role
@@ -294,5 +295,34 @@ def edit_role(request, pk):
   old_role = None
   if pk:
     old_role=Opening.objects.get(pk=pk)
-  form = OpeningForm(instance=old_role)
+  if old_role:
+    form = OpeningForm(instance=old_role)
+    form.form_submit_action_url = "/admin/edit_project/" + pk + "/"
+
+    #additionally, since there is no direct mapping from
+    #the model's openings set to the form's MultipleChoiceField,
+    #we'll need to generate the initial checked choices
+    initial_roletypes = []
+    initial_projects = []
+
+    postings = list(Posting.objects.all())
+    for posting in postings:
+      print str(posting.pk)+" "+posting.name+" "
+      # add the new relation into mainsite_posting_openings
+      if old_role in posting.openings.all():
+        if posting.posting_type == "role_type":
+          initial_roletypes.append(posting.pk)
+        else:
+          initial_projects.append(posting.pk)
+
+    # for role in posting_object.openings.all():
+    #       initial_roletypes.append(role.pk)
+
+    form.fields['selected_role_types'].initial = initial_roletypes
+    form.fields['selected_projects'].initial = initial_projects
+
+  else:
+    print "posting_form_handler: pk points to a nonexistent object"
+    return HttpResponseRedirect("/admin")
+
   return render(request, 'role.html', {'form': form})
