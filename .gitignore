@@ -3,4 +3,6 @@
 
 .idea/
 
-joincusd/mainsite/migrations/__init__.py
+joincusd/mainsite/migrations/
+
+joincusd/uploads/images/
