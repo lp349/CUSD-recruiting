@@ -289,6 +289,14 @@ def remove_project(request,pk):
   #   this_role.remove()
   return HttpResponseRedirect("/admin/")
 
+
+def remove_role_type(request,pk):
+  Posting.objects.filter(pk=pk).delete()
+  # if this_role:
+  #   this_role.remove()
+  return HttpResponseRedirect("/admin/")
+
+
 def edit_role(request, pk):
   old_role = None
   if pk:
