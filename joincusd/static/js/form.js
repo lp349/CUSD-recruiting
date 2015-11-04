@@ -1,3 +1,8 @@
+var confirmation = function() {
+    return confirm("Are you sure you wish to submit?");
+};
+
+
 $(document).ready(function () {
     $("input:checkbox:checked").parent().addClass("selected-checkbox");
 

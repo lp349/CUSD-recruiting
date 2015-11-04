@@ -15,7 +15,7 @@
 <body>
     <h1> Add or Edit a Role </h1>
     <div class="form-content">
-    <form id="role_form" method="post" action="">
+    <form id="role_form" method="post" action="" onsubmit="return confirmation();">
         {% csrf_token %}
         <div class="field-wrapper">
       Role Title: {{ form.title }}
