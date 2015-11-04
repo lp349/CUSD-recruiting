@@ -80,7 +80,7 @@ def posting(request):
 
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
-    return render(request, 'admin_portal/[Temp] templates and css/posting.html', {'form': form})
+    return render(request, 'posting.html', {'form': form, 'is_edit':is_edit})
 
 # arguments:
 #   none except required HttpRequest

@@ -12,7 +12,6 @@ class PostingForm(forms.ModelForm):
     #photos = forms.ManyToManyField(Photo)
     #openings = forms.ManyToManyField(Opening)
 
-<<<<<<< Updated upstream
     #TODO: three temporary photos for now
     #3IMAGE:photo_one = forms.FileField(help_text="Photo 1:")
     #3IMAGE:photo_two = forms.FileField(help_text="Photo 2:")
