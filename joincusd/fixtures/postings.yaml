@@ -11,6 +11,8 @@
       <p>If you want to work on projects with a truly meaningful impact, in an environment of supportive and talented designers, then CUSD is the place for you.</p>
       "
     openings: [1,2,3,4,5,6,7,8,9,10]
+    detail_icon_path: "/images/fake.jpg"
+    list_thumbnail_path: "/images/fake.jpg"
 - model: mainsite.Posting
   pk: 2
   fields:
@@ -24,6 +26,8 @@
       <p>If you're looking for a way to work on meaningful, tangible projects, as well as take your engineering skills to the next level, CUSD is the place to do it.</p>
       "
     openings: [11,12,13,14,15,16,17,18,19]
+    detail_icon_path: "/images/fake.jpg"
+    list_thumbnail_path: "/images/fake.jpg"
 - model: mainsite.Posting
   pk: 3
   fields:
@@ -36,6 +40,8 @@
       <p>If you’re looking to help bring sustainability and all it entails to communities on campus, around New York State and abroad, strategy is the fit for you.</p>
       "
     openings: [20,21,22,23,24,25,26,27]
+    detail_icon_path: "/images/fake.jpg"
+    list_thumbnail_path: "/images/fake.jpg"
 - model: mainsite.Posting
   pk: 4
   fields:
@@ -49,6 +55,8 @@
       <p>Moving forward, CAP aims to continue making an impact by taking on and helping to accomplish other actions from Cornell's climate action plan.</p>
       "
     openings: [16,21]
+    detail_icon_path: "/images/fake.jpg"
+    list_thumbnail_path: "/images/fake.jpg"
 - model: mainsite.Posting
   pk: 5
   fields:
@@ -61,6 +69,8 @@
       <p>The current focus of the Futures project is the Upson Hall rennovation. The Upson Hall team is working on high-efficiency HVAC (heating, ventilation, and air conditioning) sensors using various tracking technologies and machine learning that will be implemented during the upcoming renovation.</p>
       "
     openings: [13,14,15,3,17]
+    detail_icon_path: "/images/fake.jpg"
+    list_thumbnail_path: "/images/fake.jpg"
 - model: mainsite.Posting
   pk: 6
   fields:
@@ -84,6 +94,8 @@
           In the coming months, the team seeks to test their results in closed experiments and partner with local retailers to assess the results in the field.
         </p>"
     openings: [20,22,11,17,3]
+    detail_icon_path: "/images/fake.jpg"
+    list_thumbnail_path: "/images/fake.jpg"
 - model: mainsite.Posting
   pk: 7
   fields:
@@ -97,6 +109,8 @@
       <p>Finally, students on the Public Relations team will work to engage the community and broader society in the mission of this project. The stakeholders are passionate about teaching leadership to the local leaders and corporate world. The team will integrate ideas from Dave Casullo’s book and leadership workshops with the sustainability mission of CUSD. The team will ensure the social impact aspect of this project is successful alongside the environmental and economic sustainability pillars.</p>
       "
     openings: [4,6,24,25,12,2,26]
+    detail_icon_path: "/images/fake.jpg"
+    list_thumbnail_path: "/images/fake.jpg"
 - model: mainsite.Posting
   pk: 8
   fields:
@@ -120,6 +134,8 @@
         The site for VAM Village is approximately 200 acres and rests along the Volta River in Sogakope, Ghana.  In addition to its academic purpose, roughly 100 acres of the site will be designated for farming and agricultural projects. VAM Village will be an ecological hub where students can learn to farm and understand the meaning of sustainability by growing and using their own produce. We intend to build the school using locally sourced materials, alternative energy technologies, and passive energy systems. This will not only reduce the school’s carbon footprint, but will enable it to serve as a model of ecological sustainability for the region.
       </p>"
     openings: [5,23,18,2]
+    detail_icon_path: "/images/fake.jpg"
+    list_thumbnail_path: "/images/fake.jpg"
 - model: mainsite.Posting
   pk: 9
   fields:
@@ -131,3 +147,5 @@
       <p>CUSD has been involved with the Cornell Tech Campus since the intial RFP phase in 2012. Students have played a large role in the multi-phase master plan and LEED certification of the entire campus. In producing a mast plan for the next phases of the campus, the team incorporates local and transportation and logistical constraints, while simultaneously embracing community engaged design practices.</p>
       <p>Currently, CUSD&#8217;s involvement in Cornell Tech is in a scoping phase as we determine the next major initiative to pursue.</p>
       "
+    detail_icon_path: "/images/fake.jpg"
+    list_thumbnail_path: "/images/fake.jpg"

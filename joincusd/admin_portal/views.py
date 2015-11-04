@@ -218,7 +218,7 @@ def posting_form_handler(request, posting_type, is_edit, pk):
             #IMPORTANT: the submit action url must be set correctly!
             form = PostingForm()
             form.form_submit_action_url = "/admin/" + posting_type + "/"
-        return render(request, 'posting.html', {'form': form})
+        return render(request, 'posting.html', {'form': form, 'is_edit':is_edit})
 
 
 
