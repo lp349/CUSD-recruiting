@@ -210,7 +210,10 @@ def posting_form_handler(request, posting_type, is_edit, pk):
                 for role in posting_object.openings.all():
                     initial_choices.append(role.pk)
 
-                form.fields['role_multiselect'].initial = initial_choices                
+                form.fields['role_multiselect'].initial = initial_choices  
+
+                all_role_choices = [(role.pk, role.title) for role in Opening.objects.all()]
+                form.fields['role_multiselect'].choices = all_role_choices
             else:
                 print "posting_form_handler: pk points to a nonexistent object"
                 return HttpResponseRedirect("/admin")
@@ -310,11 +313,18 @@ def edit_role(request, pk):
     #we'll need to generate the initial checked choices
     initial_roletypes = []
     initial_projects = []
+    all_roletypes = []
+    all_projects = []
 
     postings = list(Posting.objects.all())
     for posting in postings:
       print str(posting.pk)+" "+posting.name+" "
       # add the new relation into mainsite_posting_openings
+      if posting.posting_type == "role_type":
+        all_roletypes.append((posting.pk, posting.name))
+      else:
+        all_projects.append((posting.pk, posting.name))
+
       if old_role in posting.openings.all():
         if posting.posting_type == "role_type":
           initial_roletypes.append(posting.pk)
@@ -324,6 +334,8 @@ def edit_role(request, pk):
     # for role in posting_object.openings.all():
     #       initial_roletypes.append(role.pk)
 
+    form.fields['selected_role_types'].choices = all_roletypes
+    form.fields['selected_projects'].choices = all_projects
     form.fields['selected_role_types'].initial = initial_roletypes
     form.fields['selected_projects'].initial = initial_projects
 
