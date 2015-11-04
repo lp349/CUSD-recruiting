@@ -196,7 +196,7 @@ def posting_form_handler(request, posting_type, is_edit, pk):
         form = None
         if is_edit:
             posting_object = Posting.objects.get(pk=pk)
-            if posting_object:
+            if posting_object and posting_object.posting_type == posting_type:
                 form = PostingForm(instance = posting_object)
                 #IMPORTANT: the submit action url must be set correctly!
                 form.form_submit_action_url = "/admin/edit_" + posting_type + "/" + pk + "/"
@@ -210,7 +210,7 @@ def posting_form_handler(request, posting_type, is_edit, pk):
                 for role in posting_object.openings.all():
                     initial_choices.append(role.pk)
 
-                form.fields['role_multiselect'].initial = initial_choices  
+                form.fields['role_multiselect'].initial = initial_choices
 
                 all_role_choices = [(role.pk, role.title) for role in Opening.objects.all()]
                 form.fields['role_multiselect'].choices = all_role_choices
