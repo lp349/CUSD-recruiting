@@ -134,6 +134,11 @@ def posting_form_handler(request, posting_type, is_edit, pk):
         if is_edit:
             form.fields['detail_icon_path'].required = False
             form.fields['list_thumbnail_path'].required = False
+            
+            #3IMAGE
+            #'''form.fields['photo_one'].required = False
+            #form.fields['photo_two'].required = False
+            #form.fields['photo_three'].required = False'''
 
         if form.is_valid():
             project = None
@@ -158,6 +163,14 @@ def posting_form_handler(request, posting_type, is_edit, pk):
                 project.detail_icon_path = request.FILES['detail_icon_path']
             if 'list_thumbnail_path' in request.FILES or (not is_edit):
                 project.list_thumbnail_path = request.FILES['list_thumbnail_path']
+            
+            #3IMAGE
+            '''if 'photo_one' in request.FILES or (not is_edit):
+                project.photo_one = request.FILES['photo_one']
+            if 'photo_two' in request.FILES or (not is_edit):
+                project.photo_two = request.FILES['photo_two']
+            if 'photo_three' in request.FILES or (not is_edit):
+                project.photo_three = request.FILES['photo_three']'''
 
             #if this is a new addition, we'll need to save the object first so that the many to many field can be used
             if not is_edit:
@@ -205,7 +218,7 @@ def posting_form_handler(request, posting_type, is_edit, pk):
             #IMPORTANT: the submit action url must be set correctly!
             form = PostingForm()
             form.form_submit_action_url = "/admin/add_project/"
-        return render(request, 'posting.html', {'form': form})
+        return render(request, 'posting.html', {'form': form, 'is_edit':is_edit})
 
 
 #add a new role

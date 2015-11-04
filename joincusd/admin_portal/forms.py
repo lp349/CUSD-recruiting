@@ -12,7 +12,11 @@ class PostingForm(forms.ModelForm):
     #photos = forms.ManyToManyField(Photo)
     #openings = forms.ManyToManyField(Opening)
 
-    #TODO: ignore file image uploads for now
+    #TODO: three temporary photos for now
+    #3IMAGE:photo_one = forms.FileField(help_text="Photo 1:")
+    #3IMAGE:photo_two = forms.FileField(help_text="Photo 2:")
+    #3IMAGE:photo_three = forms.FileField(help_text="Photo 3:")
+
     detail_icon_path = forms.FileField(help_text="Project Detail Icon:")
     list_thumbnail_path = forms.FileField(help_text="Project Thumbnail Icon:")
 

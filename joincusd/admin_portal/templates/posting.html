@@ -30,13 +30,26 @@
             <div class="field-name">{{ field.help_text}}</div>
             <div class="field">{{ field }}</div>
 
-	    {% if field.name == "detail_icon_path" and form.is_edit == true %}
+	    {% if field.name == "detail_icon_path" and is_edit == True %}
 	        <img src="{% static form.instance.detail_icon_path.name %}">
 	    {% endif %}
 
-	    {% if field.name == "list_thumbnail_path" and form.is_edit == true %}
+	    {% if field.name == "list_thumbnail_path" and is_edit == True %}
 		<img src="{% static form.instance.list_thumbnail_path.url %}">
 	    {% endif %}
+
+            {% if field.name == "photo_one" and form.is_edit == True %}
+	        <img src="{% static form.instance.photo_one.name %}">
+	    {% endif %}
+
+            {% if field.name == "photo_two" and form.is_edit == True %}
+	        <img src="{% static form.instance.photo_two.name %}">
+	    {% endif %}
+
+	    {% if field.name == "photo_three" and form.is_edit == True %}
+	        <img src="{% static form.instance.photo_three.name %}">
+	    {% endif %}
+
         </div>
       {% endfor %}
       <input type="submit" class="submit-button button" name="submit" value="Submit">
