@@ -26,9 +26,12 @@
 
       {% for field in form.visible_fields %}
         <div class="field-wrapper">
-         {{ field.errors }}
+
+            {%if field.name != "role_multiselect"%}
+            {{ field.errors }}
             <div class="field-name">{{ field.help_text}}</div>
             <div class="field">{{ field }}</div>
+            {% endif %}
 
 	    {% if field.name == "detail_icon_path" and is_edit == True %}
 	        <img src="{% static form.instance.detail_icon_path.name %}">
@@ -38,20 +41,22 @@
 		<img src="{% static form.instance.list_thumbnail_path.url %}">
 	    {% endif %}
 
-            {% if field.name == "photo_one" and form.is_edit == True %}
+            {% if field.name == "photo_one" and is_edit == True %}
 	        <img src="{% static form.instance.photo_one.name %}">
 	    {% endif %}
 
-            {% if field.name == "photo_two" and form.is_edit == True %}
+            {% if field.name == "photo_two" and is_edit == True %}
 	        <img src="{% static form.instance.photo_two.name %}">
 	    {% endif %}
 
-	    {% if field.name == "photo_three" and form.is_edit == True %}
+	    {% if field.name == "photo_three" and is_edit == True %}
 	        <img src="{% static form.instance.photo_three.name %}">
 	    {% endif %}
 
         </div>
       {% endfor %}
+
+       {{ form.role_multiselect }}
       <input type="submit" class="submit-button button" name="submit" value="Submit">
     </form>
     </div>

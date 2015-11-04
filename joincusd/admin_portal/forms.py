@@ -13,9 +13,9 @@ class PostingForm(forms.ModelForm):
     #openings = forms.ManyToManyField(Opening)
 
     #TODO: three temporary photos for now
-    #3IMAGE:photo_one = forms.FileField(help_text="Photo 1:")
-    #3IMAGE:photo_two = forms.FileField(help_text="Photo 2:")
-    #3IMAGE:photo_three = forms.FileField(help_text="Photo 3:")
+    photo_one = forms.FileField(help_text="Photo 1:")
+    photo_two = forms.FileField(help_text="Photo 2:")
+    photo_three = forms.FileField(help_text="Photo 3:")
 
     detail_icon_path = forms.FileField(help_text="Project Detail Icon:")
     list_thumbnail_path = forms.FileField(help_text="Project Thumbnail Icon:")
@@ -46,7 +46,7 @@ class PostingForm(forms.ModelForm):
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Posting
-        fields = ('name', 'tagline', 'description', 'detail_icon_path', 'list_thumbnail_path', 'rank', 'role_multiselect')
+        fields = ('name', 'tagline', 'description', 'detail_icon_path', 'list_thumbnail_path', 'rank', 'role_multiselect', 'photo_one', 'photo_two', 'photo_three')
 
 
 class OpeningForm(forms.ModelForm):

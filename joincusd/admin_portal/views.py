@@ -136,9 +136,9 @@ def posting_form_handler(request, posting_type, is_edit, pk):
             form.fields['list_thumbnail_path'].required = False
             
             #3IMAGE
-            #'''form.fields['photo_one'].required = False
-            #form.fields['photo_two'].required = False
-            #form.fields['photo_three'].required = False'''
+            form.fields['photo_one'].required = False
+            form.fields['photo_two'].required = False
+            form.fields['photo_three'].required = False
 
         if form.is_valid():
             project = None
@@ -165,12 +165,12 @@ def posting_form_handler(request, posting_type, is_edit, pk):
                 project.list_thumbnail_path = request.FILES['list_thumbnail_path']
             
             #3IMAGE
-            '''if 'photo_one' in request.FILES or (not is_edit):
+            if 'photo_one' in request.FILES or (not is_edit):
                 project.photo_one = request.FILES['photo_one']
             if 'photo_two' in request.FILES or (not is_edit):
                 project.photo_two = request.FILES['photo_two']
             if 'photo_three' in request.FILES or (not is_edit):
-                project.photo_three = request.FILES['photo_three']'''
+                project.photo_three = request.FILES['photo_three']
 
             #if this is a new addition, we'll need to save the object first so that the many to many field can be used
             if not is_edit:
