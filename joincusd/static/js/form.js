@@ -11,7 +11,4 @@ $(document).ready(function () {
             $(wrapper).removeClass("selected-checkbox");
         }
     });
-
-
-
 });

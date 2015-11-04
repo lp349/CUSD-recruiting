@@ -67,7 +67,7 @@ input[type=file] {
     float: right;
     font-size: inherit;
     font-weight: 300;
-    margin: 2%;
+    margin: 3em;
 }
 
 .reset-button{
@@ -75,8 +75,8 @@ input[type=file] {
     font-size: inherit;
     background-color: #FFFFFF;
     color: #3FAB6D;
-    margin: 2%;
-    margin-right: 2em;
+    margin: 3em;
+    margin-right: 1.5em;
 }
 
 .upload-button {
