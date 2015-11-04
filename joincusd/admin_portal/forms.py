@@ -17,8 +17,8 @@ class PostingForm(forms.ModelForm):
     photo_two = forms.FileField(help_text="Photo 2:")
     photo_three = forms.FileField(help_text="Photo 3:")
 
-    detail_icon_path = forms.FileField(help_text="Project Detail Icon:")
-    list_thumbnail_path = forms.FileField(help_text="Project Thumbnail Icon:")
+    detail_icon_path = forms.FileField(help_text="Detail Icon:")
+    list_thumbnail_path = forms.FileField(help_text="Thumbnail Icon:")
 
     #TODO: replace this with a draggable/list precedence interface
     rank = forms.IntegerField(help_text="Display Rank:")
