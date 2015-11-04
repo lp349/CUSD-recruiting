@@ -13,7 +13,7 @@
 
 </head>
 <body>
-    <h1> Add or Edit a Role </h1>
+    <h1> {% if is_edit %} Edit {% else %} Add {% endif %} a Role </h1>
     <div class="form-content">
     <form id="role_form" method="post" action="{{ form.form_submit_action_url }}" onsubmit="return confirmation();">
         {% csrf_token %}

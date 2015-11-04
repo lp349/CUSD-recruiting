@@ -218,7 +218,7 @@ def posting_form_handler(request, posting_type, is_edit, pk):
             #IMPORTANT: the submit action url must be set correctly!
             form = PostingForm()
             form.form_submit_action_url = "/admin/add_" + posting_type + "/"
-        return render(request, 'posting.html', {'form': form, 'is_edit':is_edit})
+        return render(request, 'posting.html', {'form': form, 'is_edit':is_edit, 'posting_type': posting_type})
 
 #add a new role
 def role(request,pk):
@@ -323,4 +323,4 @@ def edit_role(request, pk):
     print "posting_form_handler: pk points to a nonexistent object"
     return HttpResponseRedirect("/admin")
 
-  return render(request, 'role.html', {'form': form})
+  return render(request, 'role.html', {'form': form, 'is_edit': True})
