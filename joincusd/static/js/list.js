@@ -22,14 +22,18 @@ function generateElem(typ, posting) {
         var rt = "<div class='role-type elem' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.name + "</span>"
             + "<a class='edit button' href='edit_role_type/" + posting.id +"/'>Edit</a>"
-            + "<a class='remove button' href='remove_role_type/" + posting.id + "/'>Remove</a>"
+            + "<a class='remove button'"
+            + " onclick= deleteConfirmation(" + posting.name + ")"
+            +" href='remove_role_type/" + posting.id + "/'>Remove</a>"
             + "</div>";
         return rt;
     } else if ((typ === "Opening")) {
         var r = "<div class='role elem' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.title + "</span>"
             + "<a class='edit button' href='edit_role/" + posting.id +"/'>Edit</a>"
-            + "<a class='remove button' href='remove_role/" + posting.id + "/'>Remove</a>"
+            + "<a class='remove button'"
+            + " onclick= 'return deleteConfirmation(" + posting.title + ");'"
+            +" href='remove_role/" + posting.id + "/'>Remove</a>"
             + "</div>";
         return r;
     }
@@ -69,29 +73,28 @@ display_role_list = function (data) {
 };
 
 $(document).ready(function () {
-
     //tab click styling
     $('#nav-bar').on('click', '.tab', function () {
         $('.tab').removeClass('selected-tab');
         $(this).addClass('selected-tab');
         activeTab = $(this).attr("id");
+        sessionStorage['active'] = activeTab;
         toggle(activeTab);
     });
 
-
     //render postings and roles elements
     $("#projects-tab").click(function () {
-        console.log("project tab clicked");
+        console.log("clicked");
         $.get("/admin/ajax/project/", display_project_list);
     });
 
     $("#roles-tab").click(function () {
-        console.log("roles tab clicked");
+        console.log("clicked");
         $.get("/admin/ajax/roles", display_role_list);
     });
 
     $("#roletypes-tab").click(function () {
-        console.log("role types tab clicked");
+        console.log("clicked");
         $.get("/admin/ajax/role_type", display_roletype_list);
     });
 
@@ -101,6 +104,11 @@ $(document).ready(function () {
         $(this).addClass('selected-elem');
     });
 
+    function deleteConfirmation(name) {
+        console.log("in delete conf");
+        var conf = confirmation("Are you sure you want to delete?");
+        return conf;
+    }
 
     //edit and remove buttons
     $('.remove.button').on('click', function () {
@@ -118,5 +126,10 @@ $(document).ready(function () {
 
     });
 
-    $("#projects-tab").trigger("click");
+    if (sessionStorage['active']) {
+        $("#" + sessionStorage['active']).trigger("click");
+    }else {
+        $("#projects-tab").trigger("click");
+    }
+
 });
