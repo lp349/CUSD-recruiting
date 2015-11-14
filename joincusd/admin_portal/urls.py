@@ -14,11 +14,8 @@ urlpatterns = [
     # remove project/role_type url
     # url(r'^remove_project/(?P<pk>[0-9]+)/$',)
     url(r'^remove_role_type/(?P<pk>[0-9]+)/$',views.remove_role_type),
-    
-    #url(r'^add_role/(?P<pk>[0-9]+)/$', views.role),
     url(r'^add_role/$', views.role, {'pk':None}),
     # edit role
-    #url(r'^edit_role/(?P<pk>[0-9]+)/$',views.edit_role),
     url(r'^edit_role/(?P<pk>[0-9]+)/$',views.edit_role),
     # remove role
     url(r'^remove_role/(?P<pk>[0-9]+)/$', views.remove_role),
