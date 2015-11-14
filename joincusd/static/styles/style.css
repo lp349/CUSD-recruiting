@@ -143,14 +143,15 @@ a {
     text-align: right;;
     margin: auto;
     margin-bottom: 1em;
-    /*cursor: pointer;*/
+    cursor: pointer;
+    list-style: none;
 }
 
-.elem:hover {
-    /*background-color: #1f628d;*/
-    background-color: #3FAB6D;
-    color: #ffffff;
-}
+/*.elem:hover {*/
+
+    /*background-color: #3FAB6D;*/
+    /*color: #ffffff;*/
+/*}*/
 
 .add-button {
     padding: 0.1em;
@@ -205,7 +206,39 @@ a {
 
 }
 
+.rank {
+    /*background-color: #3F9A8E;*/
+    /*border: 2px solid #3F9A8E;*/
+    /*color: white;*/
+
+    background-color: #FFFFFF;
+    border: 2px solid #3FAB6D;
+    color: #3FAB6D;
+/**/
+    /*background-color: #FFFFFF;*/
+    /*border: 2px solid #3F9A8E;*/
+    /*color: #3F9A8E;*/
+
+    text-align: center;
+    cursor: pointer;
+    width: 6em;
+    height: 1em;
+    padding: 0.5em;
+    display: inline-block;
+    margin: 0.5em;
+    margin-left: 1.7em;
+    margin-bottom: 1em;
+
+}
+
+.rank:hover {
+    /*background-color: white;*/
+    /*color: #3F9A8E;*/
+}
+
 
 form {
     margin-bottom: 0;
 }
+
+
