@@ -1,5 +1,6 @@
 var activeTab = "";
 
+
 var toggle = function(id) {
             if (id === "projects-tab") {
                 $(".add").attr("href", "/admin/add_project/");
@@ -12,11 +13,11 @@ var toggle = function(id) {
 
 function generateElem(typ, posting) {
     if (typ === "Project") {
-        var p = "<div class='project elem' id='" + posting.id + "'>"
+        var p = "<li class='project elem ui-state-default' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.name + "</span>"
             + "<a class='edit button' href='edit_project/" + posting.id +"/'>Edit</a>"
             + "<a class='remove button' href='remove_project/" + posting.id + "/'>Remove</a>"
-            + "</div>";
+            + "</li>";
         return p;
     } else if ((typ === "RoleType")) {
         var rt = "<div class='role-type elem' id='" + posting.id + "'>"
@@ -44,10 +45,27 @@ display_project_list = function (data) {
     var list_div = $("#content");
     list_div.empty();
 
+    var displayString = "<ul id='sortable'>";
+
     for (var i = 0; i < posts.length; i++) {
         console.log(posts[i].name);
-        list_div.append(generateElem("Project", posts[i]));
+
+        //list_div.append(generateElem("Project", posts[i]));
+        displayString += generateElem("Project", posts[i])
+
     }
+
+    displayString += "</ul>";
+
+    list_div.append(displayString);
+
+
+    $(function() {
+        $( "#sortable" ).sortable();
+        $( "#sortable" ).disableSelection();
+    });
+
+
 };
 
 display_roletype_list = function (data) {
