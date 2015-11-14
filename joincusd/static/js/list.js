@@ -11,6 +11,8 @@ var toggle = function(id) {
             }
         };
 
+
+
 function generateElem(typ, posting) {
     if (typ === "Project") {
         var p = "<li class='project elem ui-state-default' id='" + posting.id + "'>"
@@ -45,7 +47,11 @@ display_project_list = function (data) {
     var list_div = $("#content");
     list_div.empty();
 
-    var displayString = "<ul id='sortable'>";
+    var displayString = "";
+    displayString += "<div class='rank edit-rank'>Edit Rank</div>";
+    displayString += "<div class='rank save-rank'>Save</div>";
+    displayString += "<div class='rank cancel-rank'>Cancel</div>";
+    displayString += "<ul id='sortable'>";
 
     for (var i = 0; i < posts.length; i++) {
         console.log(posts[i].name);
@@ -60,10 +66,50 @@ display_project_list = function (data) {
     list_div.append(displayString);
 
 
+    //from:
+    // http://stackoverflow.com/questions/2442232/getting-the-position-of-the-element-in-a-list-when-its-drag-dropped-ui-sortabl/2443081#2443081
+
     $(function() {
-        $( "#sortable" ).sortable();
+        $('#sortable').sortable({
+            start: function(event, ui) {
+                var startPosition = ui.item.index();
+                ui.item.data('starting_position', startPosition);
+                console.log(startPosition);
+            },
+            update: function(event, ui) {
+                var startPosition = ui.item.data('starting_position');
+                var endPosition = ui.item.index();
+                console.log(startPosition + ' - ' +endPosition);
+            }
+        });
+        $( ".selector" ).on( "sortstart", function( event, ui ) {} );
+
         $( "#sortable" ).disableSelection();
+        $( ".rank").hide();
+        $( ".edit-rank").show();
+        $( "#sortable" ).sortable("disable");
+
     });
+
+    $(".edit-rank").click( function() {
+        console.log("rank clicked");
+        $(".rank").show();
+        $(this).hide();
+        $( "#sortable" ).sortable("enable");
+        $(".sort-icon").show();
+        $("#sortable li").css("cursor", "move");
+    });
+
+    $(".cancel-rank").click( function() {
+        console.log("rank clicked");
+        $( ".rank").hide();
+        $( ".edit-rank").show();
+        $( "#sortable" ).sortable("cancel").sortable("disable");
+        $(".sort-icon").hide();
+        $("#sortable li").css("cursor", "pointer");
+    });
+
+
 
 
 };
@@ -149,5 +195,6 @@ $(document).ready(function () {
     }else {
         $("#projects-tab").trigger("click");
     }
+
 
 });
