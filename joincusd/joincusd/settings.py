@@ -98,8 +98,7 @@ TEMPLATES = [
 
 STATIC_URL = '/static/'
 JS_STATIC_PATH = os.path.join(os.path.join(BASE_DIR, 'static'), 'js')
-IMAGE_UPLOAD_PATH = os.path.join(BASE_DIR, 'uploads')
-STATICFILES_DIRS = (JS_STATIC_PATH, IMAGE_UPLOAD_PATH)
+STATICFILES_DIRS = [JS_STATIC_PATH]
 
 WSGI_APPLICATION = 'joincusd.wsgi.application'
 
@@ -142,4 +141,6 @@ COMPRESS_ENABLED = True
 
 STATIC_ROOT = 'static/'
 
-MEDIA_ROOT = 'uploads/'
+PROJECT_DIR = os.path.join(os.path.dirname( __file__ ), '..')
+MEDIA_ROOT = os.path.join(PROJECT_DIR, "uploads")
+MEDIA_URL = '/uploads/'
