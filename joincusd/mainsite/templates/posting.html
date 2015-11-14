@@ -15,14 +15,11 @@
       <label for="seeMore" class="see-more__label">Read <span class="see-more__label--closed">More</span><span  class="see-more__label--open">Less</span></label>
     </div>
     <ul class="project-description__gallery">
-      <!--<% project.photos.each do |p| %>-->
-        {% for photo in photos %}
-      <li>
-        {{photo.image_path}}
-        <!--<%= image_tag p %>-->
-      </li>
-        {% endfor %}
-    <!--<% end %>-->
+      {% for photo in photos %}
+        <li>
+          <img src="{{ photo.url }}" />
+        </li>
+      {% endfor %}
     </ul>
   </div>
 
@@ -32,17 +29,13 @@
   <div class="project-openings__wrapper">
     <h3>What We're Looking For</h3>
     <ul class="project-openings__list" data-equalizer data-equalizer-mq="medium-up">
-      <!--<% if project.openings %>-->
-        {% if openings %}}
-        <!--<% project.openings.each do |o| %>-->
+      {% if openings %}
         {% for opening in openings %}
           <li>
             <div class="panel" data-equalizer-watch>
-              <!--<h4><%= o.title %></h4>-->
-                {{opening.title}}
-              <!--<p><%= o.desc %></p>-->
-                {{opening.description}}
-              <%= link_to "Apply Now", o.link || 'https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform', class: 'button' %>
+              <h4>{{opening.title}}</h4>
+              <p>{{opening.description}}</p>
+              <a href='https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform' class='button'>Apply Now</a>
             </div>
           </li>
         {% endfor %}
@@ -50,7 +43,7 @@
           <div class="panel" data-equalizer-watch>
             <h4>Missing Something?</h4>
             <p>Don’t see that perfect fit? No worries, apply as a wildcard!</p>
-            <%= link_to "Apply Now", 'https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform', class: 'button' %>
+            <a href='https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform' class='button'>Apply Now</a>
           </div>
         </li>
       {% else %}

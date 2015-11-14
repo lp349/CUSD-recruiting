@@ -12,7 +12,6 @@ urlpatterns = [
     url(r'^edit_project/(?P<pk>[0-9]+)/$', views.posting_form_handler, {'posting_type':'project', 'is_edit':True}),
     url(r'^edit_role_type/(?P<pk>[0-9]+)/$', views.posting_form_handler, {'posting_type':'role_type', 'is_edit':True}),
     # remove project/role_type url
-    # url(r'^remove_project/(?P<pk>[0-9]+)/$',)
     url(r'^remove_role_type/(?P<pk>[0-9]+)/$',views.remove_role_type),
     url(r'^add_role/$', views.role, {'pk':None}),
     # edit role

@@ -52,34 +52,16 @@
 
 <aside class="homepage-callouts">
   <h3>Get Involved</h3>
-  <article>
-    <div class="homepage-callouts__panel">
-      <div class="icon icon--role-engineering--colored"></div>
-      <h4>Engineering</h4>
-      <p>Research, development and building for a better world.</p>
-      
-      <!--<%= link_to 'See Openings', '/roles/engineering', class: 'button button--inverse' %>-->
-      <a href="/roles/engineering" class='button button--inverse'>See Openings</a>
-    </div>
-  </article>
-  <article>
-    <div class="homepage-callouts__panel">
-      <div class="icon icon--role-design--colored"></div>
-      <h4>Design</h4>
-      <p>Putting the human touch on our projects and communications.</p>
-      <!--<%= link_to 'See Openings', '/roles/design', class: 'button button--inverse' %>-->
-      <a href="/roles/design" class='button button--inverse'>See Openings</a>
-    </div>
-  </article>
-  <article>
-    <div class="homepage-callouts__panel">
-      <div class="icon icon--role-strategy--colored"></div>
-      <h4>Strategy</h4>
-      <p>Making sure our world changing projects actually get built.</p>
-      <!--<%= link_to 'See Openings', '/roles/strategy', class: 'button button--inverse' %>-->
-      <a href="/roles/strategy" class='button button--inverse'>See Openings</a>
-    </div>
+  {% for role_type in role_types %}
+    <article>
+      <div class="homepage-callouts__panel">
+        <div class="icon icon--role-engineering--colored"></div>
+        <h4>{{role_type.name}}</h4>
+        <p>{{role_type.tagline}}</p>
+        <a href="/postings/{{role_type.pk}}" class='button button--inverse'>See Openings</a>
+      </div>
     </article>
+  {% endfor %}
 </aside>
 
 <div id="videoModal1" class="video-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">

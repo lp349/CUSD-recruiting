@@ -39,15 +39,15 @@
             {% endif %}
 
             {% if field.name == "photo_one" and is_edit == True %}
-            <img src="{% static form.instance.photo_one.name %}">
+              <img src="{{ form.instance.photo_one.url }}" />
             {% endif %}
 
             {% if field.name == "photo_two" and is_edit == True %}
-            <img src="{% static form.instance.photo_two.name %}">
+              <img src="{{ form.instance.photo_two.url }}" />
             {% endif %}
 
             {% if field.name == "photo_three" and is_edit == True %}
-            <img src="{% static form.instance.photo_three.name %}">
+              <img src="{{ form.instance.photo_three.url }}" />
             {% endif %}
 
             <div class="field">{{ field }}</div>

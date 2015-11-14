@@ -3,43 +3,40 @@ from .models import Posting, Photo, Opening
 
 # Create your views here.
 def index(request):
-  return render_to_response('index.html', {'title': 'Cornell University Sustainable Design'})
+  context = {
+    'title': 'Cornell University Sustainable Design',
+    'projects': Posting.objects.filter(posting_type='project'),
+    'role_types': Posting.objects.filter(posting_type='role_type')
+  }
+  return render_to_response('index.html', context)
 
 def projects(request):
-  return render_to_response('projects.html', {'title': 'Projects'})
+  context = {
+    'title': 'Projects',
+    'projects': Posting.objects.filter(posting_type='project'),
+    'role_types': Posting.objects.filter(posting_type='role_type')
+  }
+  return render_to_response('projects.html', context)
 
 def about(request):
+  context = {
+    'title': 'About',
+    'projects': Posting.objects.filter(posting_type='project'),
+    'role_types': Posting.objects.filter(posting_type='role_type')
+  }
   return render_to_response('about.html', {'title':'About'})
 
-def project(request, pid):
-  posting = Posting.objects.get(id=pid)
+def posting(request, pk):
+  posting = Posting.objects.get(pk=pk)
   context = {
-    'type': posting.type,
+    'title': 'About',
+    'projects': Posting.objects.filter(posting_type='project'),
+    'role_types': Posting.objects.filter(posting_type='role_type'),
+    'type': posting.posting_type,
     'name': posting.name,
     'tagline': posting.tagline,
     'description': posting.description,
-    'photos':posting.photos,
-    'openings': posting.openings
+    'photos': [posting.photo_one, posting.photo_two, posting.photo_three],
+    'openings': posting.openings.all()
     }
   return render(request, 'posting.html', context)
-
-def role(request, pid):
-  posting = Posting.objects.get(id=pid)
-  context = {
-    'type': posting.type,
-    'name': posting.name,
-    'tagline': posting.tagline,
-    'description': posting.description,
-    'photos':posting.photos,
-    'openings': posting.openings
-    }
-  render(request, 'posting.html, context')
-
-def footer_test(request):
-  role_list = Posting.objects.filter(type="role")
-  project_list = Posting.objects.filter(type="project")
-  context = {'project_list' : project_list,
-             'role_list'    : role_list,
-            }
-  return render(request, 'common/footer.html', context)
-
