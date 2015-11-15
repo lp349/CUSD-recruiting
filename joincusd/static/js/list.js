@@ -84,6 +84,8 @@ function generateElem(typ, posting) {
             + " onclick= deleteConfirmation(" + posting.name + ")"
             +" href='remove_role_type/" + posting.id + "/'>Remove</a>"
             + roles
+            + Icons.expand
+            + Icons.retract
             + "</div>";
         return rt;
     } else if ((typ === "Opening")) {
@@ -270,6 +272,8 @@ var display_roletype_list = function (data) {
     }
 
     $(".roles-quick-view").hide();
+    $(".drag-icon").hide();
+    $(".retract-icon").hide();
 };
 
 var display_role_list = function (data) {
