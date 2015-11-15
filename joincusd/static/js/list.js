@@ -8,6 +8,26 @@ var activeTab = "";
 //maps project ids to the original and new rankings
 var projectRankObj = {};
 
+
+var Icons = {
+
+    drag : '<svg class="drag-icon" viewBox="0 0 100 100"> ' +
+    '<path d="M 50 85 l 20 20 l -40 0 z" transform="rotate(180,50,85)"></path>' +
+    '<path d="M 50 15 l 20 20 l -40 0 z"></path>' +
+    '<rect width="15" height="45" x="42.5" y="30" fill="#000"></rect>' +
+    '</svg>',
+
+    expand :
+    '<svg class="expand-icon" viewBox="0 0 100 100"> ' +
+    '<path d="M 50 85 l 20 20 l -40 0 z" transform="rotate(180,50,85)"></path>' +
+    '</svg>',
+
+    retract:
+    '<svg class="retract-icon" viewBox="0 0 100 100"> ' +
+    '<path d="M 50 85 l 20 20 l -40 0 z"></path>' +
+    '</svg>'
+};
+
 /**
  * Changes the link of the add button based on the active tab
  */
@@ -34,12 +54,6 @@ function generateElem(typ, posting) {
 
     if (typ === "Project") {
 
-        var dragIcon = '<svg class="drag-icon" viewBox="0 0 100 100"> ' +
-            '<path d="M 50 85 l 20 20 l -40 0 z" transform="rotate(180,50,85)"></path>' +
-            '<path d="M 50 15 l 20 20 l -40 0 z"></path>' +
-            '<rect width="15" height="45" x="42.5" y="30" fill="#000"></rect>' +
-            '</svg>';
-
         var roles = "<ul class='roles-quick-view'>";
         for (var i=0; i< posting.roles.length; i++) {
             roles += "<li class='quick-view-elem'>" + posting.roles[i] +"</li>"
@@ -47,11 +61,13 @@ function generateElem(typ, posting) {
         roles += "</ul>";
 
         var p = "<li class='project elem ui-state-default' id='" + posting.id + "'>"
-                + dragIcon
+                + Icons.drag
             + "<span class='elem-name'>" + posting.name + "</span>"
             + "<a class='edit button' href='edit_project/" + posting.id +"/'>Edit</a>"
             + "<a class='remove button' href='remove_project/" + posting.id + "/'>Remove</a>"
             + roles
+                + Icons.expand
+                + Icons.retract
             + "</li>";
         return p;
     } else if ((typ === "RoleType")) {
@@ -239,6 +255,7 @@ var display_project_list = function (data) {
     list_div.append(displayString);
     $(".roles-quick-view").hide();
     $(".drag-icon").hide();
+    $(".retract-icon").hide();
     display_project_helper();
 
 };
@@ -295,13 +312,22 @@ $(document).ready(function () {
 
     //element click styling
     $('#content').on('click', '.elem', function () {
-        $('.elem').removeClass('selected-elem');
-        $(this).addClass('selected-elem');
+
         if ($(this).children(".roles-quick-view").is(":hidden")){
             $(".roles-quick-view").slideUp();
+            $(".retract-icon").hide();
+            $(".expand-icon").show();
+
+
             $(this).children(".roles-quick-view").slideDown();
+            $(this).children(".retract-icon").show();
+            $(this).children(".expand-icon").hide();
+
+
         }else {
             $(this).children(".roles-quick-view").slideUp();
+            $(this).children(".expand-icon").show();
+            $(this).children("retract-icon").hide();
         }
 
     });

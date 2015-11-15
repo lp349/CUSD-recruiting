@@ -271,7 +271,17 @@ form {
 }
 
 .drag-icon rect, .drag-icon path{
-
     fill: gray;
 }
 
+
+.expand-icon path, .retract-icon path{
+    fill: #A1A1A1;
+}
+
+.expand-icon, .retract-icon {
+    height: 1.6em;
+    margin: auto;
+    display: block;
+    width: 100%;
+}
