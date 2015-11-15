@@ -91,9 +91,9 @@ function generateElem(typ, posting) {
         var p = "<li class='project elem ui-state-default elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
             + Icons.drag
             + "<span class='elem-name'>" + posting.name + "</span>"
-            + "<a class='edit button' href='edit_project/" + posting.id + "/'>Edit</a>"
-            + "<div class='publish "+ published.toLowerCase() +" button'>" + published + "</div>"
-            //+ "<a class='remove button' href='remove_project/" + posting.id + "/'>Remove</a>"
+            + "<a class='elem-button edit button' href='edit_project/" + posting.id + "/'>Edit</a>"
+            + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
+            //+ "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>Remove</a>"
             + roles
             + Icons.expand
             + Icons.retract
@@ -112,9 +112,9 @@ function generateElem(typ, posting) {
 
         var rt = "<div class='role-type elem elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.name + "</span>"
-            + "<a class='edit button' href='edit_role_type/" + posting.id + "/'>Edit</a>"
-            + "<div class='publish "+ published.toLowerCase() +" button'>" + published + "</div>"
-            //+ "<a class='remove button' href='remove_role_type/" + posting.id + "/'>Remove</a>"
+            + "<a class='elem-button edit button' href='edit_role_type/" + posting.id + "/'>Edit</a>"
+            + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
+            //+ "<a class='elem-button remove button' href='remove_role_type/" + posting.id + "/'>Remove</a>"
             + roles
             + Icons.expand
             + Icons.retract
@@ -123,8 +123,8 @@ function generateElem(typ, posting) {
     } else if ((typ === "Opening")) {
         var r = "<div class='role elem' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.title + "</span>"
-            + "<a class='edit button' href='edit_role/" + posting.id + "/'>Edit</a>"
-            + "<a class='remove button'"
+            + "<a class='elem-button edit button' href='edit_role/" + posting.id + "/'>Edit</a>"
+            + "<a class='elem-button remove button'"
             + " onclick= 'return deleteConfirmation(" + posting.title + ");'"
             + " href='remove_role/" + posting.id + "/'>Remove</a>"
             + "</div>";
@@ -151,6 +151,20 @@ function getCookie(name) {
     return cookieValue;
 }
 
+var toggleElements = function() {
+    if ($(".elem-button").is(":hidden")) {
+        $(".elem-button").css("visibility", "visible");
+    }else {
+        $(".elem-button").css("visibility", "hidden");
+    }
+
+    if ($(".expand-icon").is(":hidden")) {
+        $(".expand-icon").css("visibility", "visible");
+    }else {
+        $(".expand-icon").css("visibility", "hidden");
+    }
+
+};
 
 /**
  * Toggles and handles sortable project list
@@ -174,7 +188,9 @@ var display_project_helper = function () {
         $("#sortable").sortable("enable");
         $("#sortable li").css("cursor", "move");
         $(".drag-icon").show();
+        toggleElements();
     });
+
 
     $(".cancel-rank").click(function () {
         console.log(getNewRanks());
@@ -183,14 +199,18 @@ var display_project_helper = function () {
     });
 
     $(".save-rank").click(function () {
+        $(".elem-button").removeClass("button-disabled");
         //console.log(JSON.stringify(getNewRanks()));
-	var rank_changes = JSON.stringify(getNewRanks()); 
+        var rank_changes = JSON.stringify(getNewRanks());
         var csrftoken = getCookie('csrftoken');
-        $.post("/admin/ajax/update_ranks", {csrfmiddlewaretoken:csrftoken, rank_string:rank_changes}, function(){
-	    $(".cancel-rank").hide();
-	    $(".save-rank").hide();
-            $(".edit-rank").show();
-	    display_project_list();});
+        $.post("/admin/ajax/update_ranks", {csrfmiddlewaretoken: csrftoken, rank_string: rank_changes}, function () {
+            //$(".cancel-rank").hide();
+            //$(".save-rank").hide();
+            //$(".edit-rank").show();
+            //toggleElements();
+            //display_project_list();
+            $.get("/admin/ajax/project/", display_project_list);
+        });
     });
 
 };
@@ -302,9 +322,8 @@ var display_project_list = function (data) {
         projectRankObj[posts[i].id] = {};
         projectRankObj[posts[i].id]["originalRank"] = i;
         projectRankObj[posts[i].id]["newRank"] = i;
-
-        $("#" + i).data("roles", posts[i].roles);
     }
+
 
     //hide relevant buttons
     $(".roles-quick-view").hide();
@@ -313,7 +332,6 @@ var display_project_list = function (data) {
 
 
     $(".publish.button").click( function() {
-
         console.log($(this).parent().attr("id"));
         togglePublish("project", $(this).parent().attr("id"));
 
@@ -404,30 +422,36 @@ $(document).ready(function () {
         $.get("/admin/ajax/role_type", display_roletype_list);
     });
 
+    var isChangingRanks = function() {
+        return !($("#sortable").hasClass("ui-sortable-disabled") || activeTab !== "projects-tab");
+    };
 
     //toggle roles preview for projects and role types
     $('#content').on('click', '.elem', function () {
+        if (!isChangingRanks()) {
+            if ($(this).children(".roles-quick-view").is(":hidden")) {
+                //listing was not expanded
+                //hide all previews first
+                $(".roles-quick-view").slideUp();
+                $(".retract-icon").hide();
+                $(".expand-icon").show();
 
-        if ($(this).children(".roles-quick-view").is(":hidden")) {
-            //listing was not expanded
-            //hide all previews first
-            $(".roles-quick-view").slideUp();
-            $(".retract-icon").hide();
-            $(".expand-icon").show();
+                //show the roles associated with clicked listing
+                $(this).children(".roles-quick-view").slideDown();
+                $(this).children(".retract-icon").show();
+                $(this).children(".expand-icon").hide();
 
-            //show the roles associated with clicked listing
-            $(this).children(".roles-quick-view").slideDown();
-            $(this).children(".retract-icon").show();
-            $(this).children(".expand-icon").hide();
-
-        } else {
-            //clicked listing is already expanded,
-            // hide the roles associated with clicked listing
-            $(this).children(".roles-quick-view").slideUp();
-            $(this).children(".expand-icon").show();
-            $(this).children(".retract-icon").hide();
+            } else {
+                //clicked listing is already expanded,
+                // hide the roles associated with clicked listing
+                $(this).children(".roles-quick-view").slideUp();
+                $(this).children(".expand-icon").show();
+                $(this).children(".retract-icon").hide();
+            }
         }
     });
+
+
 
 
     //go to last active tab (the tab that was last accessed, if any)

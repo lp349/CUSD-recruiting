@@ -203,7 +203,7 @@ a {
     font-size: 1em;
 }
 
-.edit.button, .remove.button, .publish.button, .unpublish.button {
+.elem-button {
     /*float: right;*/
     text-align: center;
     padding: 0.5rem;
@@ -303,3 +303,9 @@ form {
     /*border: 2px solid #83C2BA;*/
     /*color: #FFF;*/
 /*}*/
+
+
+.button-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
