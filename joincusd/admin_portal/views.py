@@ -6,10 +6,14 @@ from django.template import RequestContext
 from mainsite.models import Posting, Opening
 from django import forms
 from forms import PostingForm, OpeningForm
-
-
 import json
 
+'''
+function to handle admin log in. 
+User will suplly username and password.
+If the user is able to authenticate, they will be directed to the admin page.
+If not, a error message will be displayed.
+'''
 def admin_login(request):
   logout(request)
   username = password = ''
@@ -25,6 +29,10 @@ def admin_login(request):
       data['message'] = 'Invalid Username or Password'
   return render_to_response('login.html', context_instance=RequestContext(request, data))
 
+'''
+Will be able to access this page if it is logged in. If not, will be directed to login page.
+If logged in, the admin user sees the current project listings that are displayed on the main joincusd mainsite.
+'''
 @login_required(login_url='/admin/login/')
 def index(request):
      return render(request, "list.html")
@@ -41,6 +49,7 @@ def toggle_publish(request, model_type, pk):
   if model:
     model.published = not model.published
     print model.published
+    model.save()
     return HttpResponse(status=201)
   return HttpResponse(status=404)
 
@@ -65,6 +74,7 @@ def posting_list(request, posting_type):
           post_object["id"] = post.id
           post_object["roles"] = [opening.title for opening in post.openings.all()]
           post_object["rank"] = post.rank
+          post_object["published"] = post.published
 
           result_list.append(post_object)
 
@@ -246,7 +256,7 @@ def edit_posting_handler(request, posting_type, pk):
 
             if not project:
                 print "edit_posting_handler: primary key for editing project does not point to an existing project"
-                return HttpRedirectResponse("/admin")
+                return HttpResponseRedirect("/admin")
 
             project.posting_type = posting_type
             project.name = form.cleaned_data['name']
@@ -320,47 +330,45 @@ def edit_posting_handler(request, posting_type, pk):
         #impossible case
         return HttpResponse(response)
 
-#add a new role
+'''
+Required: The user has logged in.
+This function displays a form that allows user to add a new role, and is also able to add this new role under role types and projects that has such role.
+argument: 
+    request - Django HttpRequest Object
+'''
 @login_required(login_url='/admin/login/')
-def role(request,pk):
-  old_role = None
-  if pk:
-    old_role=Opening.objects.get(pk=pk)
-
-          # A HTTP POST?
+def add_role(request):
+    # A HTTP POST?
   if request.method == 'POST':
       form = OpeningForm(request.POST)
       # Have we been provided with a valid form?
       if form.is_valid():
           #first create a new role in the opening database
-          #and then add a record to the relation
           title=form.cleaned_data['title']
           description=form.cleaned_data['description']
           new_role=Opening(title=title, description=description)
           new_role.save()
+          # get the projects the user wants to connect with this role
           postings=form.cleaned_data['selected_projects']
+          # consider multiple projects that may be related to such opening.
           for posting_id in postings:
             posting=Posting.objects.get(pk=posting_id)
-            print str(posting.pk)+" "+posting.name+" "
             if posting:
-              # add the new relation into mainsite_posting_openings
+              # add the new relation (projects - roles related to the projects) into mainsite_posting_openings
               print posting.openings.all()
               posting.openings.add(new_role)
             else:
-              print "No such project";
+              print "No such project"
+          #get the role types that the role is under
           role_types=form.cleaned_data['selected_role_types']
-          print role_types
+          #allow one role to be under multiple role types
           for role_id in role_types:
             posting=Posting.objects.get(pk=role_id)
             if posting:
               #add the new relation into mainsite_posting_openings
               posting.openings.add (new_role)
             else:
-              print "No such Role type";
-
-          #TO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-          if pk:
-            Opening.objects.filter(pk=pk).delete()
+              print "No such Role type"
           # Now call the index() view.
           # The user will be shown the homepage.
           return HttpResponseRedirect("/admin/") #add some pop up window for confirmation of save
@@ -369,35 +377,67 @@ def role(request,pk):
           print form.errors
   else:
       # If the request was not a POST, display the form to enter details.
-      form = OpeningForm(instance=old_role)
-
+      form = OpeningForm()
   # Bad form (or form details), no form supplied...
   # Render the form with error messages (if any).
   return render(request, 'change_role.html', {'form': form})
 
+'''
+function to remove a role from the mainsite_openings database
+It will cascade the changes in the postings table. (The relationship between posting and this opening will be deleted)
+In otherwords, if a role is deleted, the projects that originally has this role will not display this role any more.
+In addition, this role will also not be displayed any more under any role typles. 
+  arguments:
+    request - Django HttpRequest Object
+    pk - a string containing the primary key of the postings object chosen for removal
+'''
 @login_required(login_url='/admin/login/')
 def remove_role(request,pk):
-  thisrole=Opening.objects.filter(pk=pk)
-  postings=Posting.objects.filter(openings=thisrole[0]).delete()
-  thisrole.delete()
-
+  #find this role that is to be removed
+  thisrole=Opening.objects.get(pk=pk)
+  #If we can find this role, find all postings that has this opening under it
+  if thisrole:
+    postings=Posting.objects.filter(openings=thisrole)
+    #for each such posting, remove the relationship
+    for anypost in postings:
+      anypost.openings.delete(thisrole)
+    thisrole.delete()
+  else:
+    print "Cannot find this role"
   return HttpResponseRedirect("/admin/")
 
+'''
+function to remove a project. The relationship between the project and the roles that are linked to the project will
+be automatically deleted as well.
+  arguments:
+    request - Django HttpRequest Object
+    pk - a string containing the primary key of the postings object chosen for removal
+'''
 @login_required(login_url='/admin/login/')
 def remove_project(request,pk):
   Posting.objects.filter(pk=pk).delete()
-  # if this_role:
-  #   this_role.remove()
   return HttpResponseRedirect("/admin/")
 
-
+'''
+function to remove a role type. The relationship between the role type and the roles that are linked to the project will
+be automatically deleted as well. (Essentially same as remove_project)
+  arguments:
+    request - Django HttpRequest Object
+    pk - a string containing the primary key of the postings object chosen for removal
+'''
 @login_required(login_url='/admin/login/')
 def remove_role_type(request,pk):
   Posting.objects.filter(pk=pk).delete()
-  # if this_role:
-  #   this_role.remove()
   return HttpResponseRedirect("/admin/")
 
+'''
+This function displays a form that allows user to edit a new role.
+It displays the original role on the page and allow the user to edit each field (title, description, projects/role types
+  linked to the role)
+arguments:
+    request - Django HttpRequest Object
+    pk - a string containing the primary key of the openings object chosen for edit
+'''
 @login_required(login_url='/admin/login/')
 def edit_role(request, pk):
   old_role = None

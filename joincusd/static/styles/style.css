@@ -151,6 +151,12 @@ a {
     /*color: #ffffff;*/
 /*}*/
 
+
+.elem-publish {
+    opacity: 0.5;
+}
+
+
 .role.elem {
     cursor: default;
 }
@@ -197,7 +203,7 @@ a {
     font-size: 1em;
 }
 
-.edit.button, .remove.button, .publish.button {
+.edit.button, .remove.button, .publish.button, .unpublish.button {
     /*float: right;*/
     text-align: center;
     padding: 0.5rem;
@@ -283,3 +289,17 @@ form {
     display: block;
     width: 100%;
 }
+
+
+
+.publish, .unpublish {
+    background-color: #3F9A8E;
+    border: 2px solid #3F9A8E;
+    color: #FFF;
+}
+
+/*.unpublish {*/
+    /*background-color: #83C2BA;*/
+    /*border: 2px solid #83C2BA;*/
+    /*color: #FFF;*/
+/*}*/
