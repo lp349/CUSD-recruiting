@@ -57,8 +57,10 @@
 
         </div>
       {% endfor %}
-
-       {{ form.role_multiselect }}
+        <div class="field-wrapper">
+        <div class="field-name">Select Roles</div>
+            <div class="field">{{ form.role_multiselect }}</div>
+            </div>
       <input type="submit" class="submit-button button" name="submit" value="Save">
     </form>
     </div>
