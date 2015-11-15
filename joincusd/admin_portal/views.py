@@ -41,6 +41,7 @@ def toggle_publish(request, model_type, pk):
   if model:
     model.published = not model.published
     print model.published
+    model.save()
     return HttpResponse(status=201)
   return HttpResponse(status=404)
 
@@ -65,6 +66,7 @@ def posting_list(request, posting_type):
           post_object["id"] = post.id
           post_object["roles"] = [opening.title for opening in post.openings.all()]
           post_object["rank"] = post.rank
+          post_object["published"] = post.published
 
           result_list.append(post_object)
 
@@ -235,7 +237,7 @@ def edit_posting_handler(request, posting_type, pk):
 
             if not project:
                 print "edit_posting_handler: primary key for editing project does not point to an existing project"
-                return HttpRedirectResponse("/admin")
+                return HttpResponseRedirect("/admin")
 
             project.posting_type = posting_type
             project.name = form.cleaned_data['name']
