@@ -74,7 +74,7 @@ def posting(request):
             # The user will be shown the homepage.
             return index(request)
         else:
-            # The supplied form contained errors - just print them to the terminal.
+          # The supplied form contained errors - just print them to the terminal.
             print form.errors
     else:
         # If the request was not a POST, display the form to enter details.
@@ -104,6 +104,150 @@ def role_list(request):
 
      response = json.dumps(result_list)
      return HttpResponse(response)
+
+'''
+  this function displays the website form on a page GET, and
+  handles adding NEW postings for either projects or role types.
+
+  arguments:
+    request - Django HttpRequest Object
+    posting_type - a string containing either the value "project" or "roletype"
+
+'''
+def add_posting_handler(request, posting_type):
+    if request.method == "POST":
+        form = PostingForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            project = Posting()
+
+            project.posting_type = posting_type
+            project.name = form.cleaned_data['name']
+            project.tagline = form.cleaned_data['tagline']
+            project.description = form.cleaned_data['description']
+            project.rank = form.cleaned_data['rank']
+
+            #passing validation guarantees existence of these files (their required attribute is set)
+            project.detail_icon_path = request.FILES['detail_icon_path']
+            project.list_thumbnail_path = request.FILES['list_thumbnail_path']
+            project.photo_one = request.FILES['photo_one']
+            project.photo_two = request.FILES['photo_two']
+            project.photo_three = request.FILES['photo_three']
+
+            #because this is a new addition, we'll need to save the object first so that the many to many field can be used
+            project.save()
+
+            #add each role to the many set
+            project.openings.clear()
+            for role_pk_val in form.cleaned_data['role_multiselect']:
+                role = Opening.objects.get(pk=role_pk_val)
+                if role:
+                    project.openings.add(role)
+                else:
+                    print "add_posting_handler: role specified by primary key does not exist"
+
+            #save the role updates
+            project.save()
+            return HttpResponseRedirect("/admin")
+        
+    elif request.method == "GET":
+        form = PostingForm()
+        form_submit_action_url = "/admin/add_" + posting_type + "/"
+        return render(request, 'add_posting.html', {'form': form, 'form_submit_action_url':form_submit_action_url, 'posting_type': posting_type})
+    else:
+        #impossible case
+        return HttpResponse(response)
+
+'''
+  this function displays the website form on a page GET, and
+  handles editing EXISTING postings for either projects or role types.
+
+  arguments:
+    request - Django HttpRequest Object
+    posting_type - a string containing either the value "project" or "roletype"
+    pk - a string containing the primary key of the postings object chosen for editing
+'''
+def edit_posting_handler(request, posting_type, pk):
+    if request.method == "POST":
+        form = PostingForm(request.POST, request.FILES)
+
+        #since existing posting objects passed validation at time of creation,
+        #image/file upload fields should be optional
+        form.fields['detail_icon_path'].required = False
+        form.fields['list_thumbnail_path'].required = False
+        form.fields['photo_one'].required = False
+        form.fields['photo_two'].required = False
+        form.fields['photo_three'].required = False
+
+        if form.is_valid():
+            project = Posting.objects.get(pk=pk)
+
+            if not project:
+                print "edit_posting_handler: primary key for editing project does not point to an existing project"
+                return HttpRedirectResponse("/admin")
+
+            project.posting_type = posting_type
+            project.name = form.cleaned_data['name']
+            project.tagline = form.cleaned_data['tagline']
+            project.description = form.cleaned_data['description']
+            project.rank = form.cleaned_data['rank']
+
+            #since file uploads may be optional,
+            #we have to check that they exist!
+            if 'detail_icon_path' in request.FILES:
+                project.detail_icon_path = request.FILES['detail_icon_path']
+            if 'list_thumbnail_path' in request.FILES:
+                project.list_thumbnail_path = request.FILES['list_thumbnail_path']
+            if 'photo_one' in request.FILES:
+                project.photo_one = request.FILES['photo_one']
+            if 'photo_two' in request.FILES:
+                project.photo_two = request.FILES['photo_two']
+            if 'photo_three' in request.FILES:
+                project.photo_three = request.FILES['photo_three']
+
+            #add each role to the many set
+            project.openings.clear()
+            for role_pk_val in form.cleaned_data['role_multiselect']:
+                role = Opening.objects.get(pk=role_pk_val)
+                if role:
+                    project.openings.add(role)
+                else:
+                    print "edit_posting_handler: role specified by primary key does not exist"
+
+            #save the role updates
+            project.save()
+            return HttpResponseRedirect("/admin")
+        else:
+            print "edit_posting_handler: form was not valid"
+            print form.errors
+            return HttpResponseRedirect("/admin")
+    elif request.method == "GET":
+        posting_object = Posting.objects.get(pk=pk)
+        if posting_object and posting_object.posting_type == posting_type:
+            form = PostingForm(instance = posting_object)
+
+            #IMPORTANT: the submit action url must be set correctly!
+            form_submit_action_url = "/admin/edit_" + posting_type + "/" + pk + "/"
+
+            #additionally, since there is no direct mapping from
+            #the model's openings set to the form's MultipleChoiceField,
+            #we'll need to generate the initial checked choices
+            initial_choices = []
+            for role in posting_object.openings.all():
+                initial_choices.append(role.pk)
+                form.fields['role_multiselect'].initial = initial_choices
+                all_role_choices = [(role.pk, role.title) for role in Opening.objects.all()]
+                form.fields['role_multiselect'].choices = all_role_choices
+
+            return render(request, 'edit_posting.html', {'form': form, 'form_submit_action_url':form_submit_action_url, 'posting_type': posting_type})
+
+        else:
+            print "edit_posting_handler: pk points to a nonexistent object"
+            return HttpResponseRedirect("/admin")
+    else:
+        #impossible case
+        return HttpResponse(response)
+
 
 
 # the handler function both handles form submissions if request is POST,
