@@ -10,7 +10,6 @@ from django.db import models
 class Opening(models.Model):
   title = models.CharField(max_length=500)
   description = models.TextField()
-  published = models.BooleanField(default=False)
 
 class Posting(models.Model):
   posting_type = models.CharField(max_length=255, default="project")

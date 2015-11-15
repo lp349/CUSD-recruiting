@@ -400,10 +400,11 @@ def remove_role(request,pk):
     postings=Posting.objects.filter(openings=thisrole)
     #for each such posting, remove the relationship
     for anypost in postings:
-      anypost.openings.delete(thisrole)
+      anypost.openings.remove(thisrole)
     thisrole.delete()
   else:
     print "Cannot find this role"
+    print form.errors
   return HttpResponseRedirect("/admin/")
 
 '''
@@ -445,9 +446,9 @@ def edit_role(request, pk):
     old_role=Opening.objects.get(pk=pk)
   if old_role:
     form = OpeningForm(instance=old_role)
-    form.form_submit_action_url = "/admin/edit_project/" + pk + "/"
+    form.form_submit_action_url = "/admin/edit_role/" + pk + "/"
 
-    #additionally, since there is no direct mapping from
+   #additionally, since there is no direct mapping from
     #the model's openings set to the form's MultipleChoiceField,
     #we'll need to generate the initial checked choices
     initial_roletypes = []
@@ -485,20 +486,21 @@ def edit_role(request, pk):
         old_role.title=title
         old_role.description=description
         old_role.save()
-        postings=form.cleaned_data['selected_projects']
+        postings=map(int, form.cleaned_data['selected_projects'])
         deselect_id=set(initial_projects)-set(postings)
         newselect_id=set(postings)-set(initial_projects)
         updateselect_id=set(postings) & set(initial_projects)
-        print(deselect_id)
 
         for posting_id in deselect_id:
-          posting=Posting.objects.filter(pk=posting_id)
+          posting=Posting.objects.get(pk=posting_id)
           if posting:
-            posting.openings.delete(old_role)
+            print posting.openings
+            posting.openings.remove(old_role)
         for posting_id in newselect_id:
-          posting=Posting.objects.filter(pk=posting_id)
+          posting=Posting.objects.get(pk=posting_id)
           if posting:
             posting.openings.add(old_role)
+      return HttpResponseRedirect("/admin")
     else:
         # The supplied form contained errors - just print them to the terminal.
         print form.errors
