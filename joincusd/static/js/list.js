@@ -19,12 +19,13 @@ var Icons = {
 
     expand :
     '<svg class="expand-icon" viewBox="0 0 100 100"> ' +
-    '<path d="M 50 85 l 20 20 l -40 0 z" transform="rotate(180,50,85)"></path>' +
+    '<path d="M 50 75 l 50 50 l -100 0 z" transform="rotate(180,50,75)"></path>' +
+
     '</svg>',
 
     retract:
     '<svg class="retract-icon" viewBox="0 0 100 100"> ' +
-    '<path d="M 50 85 l 20 20 l -40 0 z"></path>' +
+    '<path d="M 50 25 l 50 50 l -100 0 z"></path>' +
     '</svg>'
 };
 
