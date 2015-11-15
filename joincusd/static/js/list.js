@@ -52,8 +52,13 @@ var changeAddButtonLink = function (activeTab) {
  */
 var togglePublish = function(posting_type, pk) {
     console.log("toggling publish");
+
     $.get("ajax/toggle_publish/" + posting_type + "/" + pk + "/" , function() {
-        $.get("/admin/ajax/project/", display_project_list);
+        if (posting_type === "project") {
+            $.get("/admin/ajax/"+ posting_type + "/", display_project_list);
+        }else if (posting_type === "role_type") {
+            $.get("/admin/ajax/"+ posting_type + "/", display_roletype_list);
+        }
     });
 };
 
@@ -309,7 +314,6 @@ var display_roletype_list = function (data) {
     $(".publish.button").click( function() {
         console.log($(this).parent().attr("id"));
         togglePublish("role_type", $(this).parent().attr("id"));
-        $.get("/admin/ajax/project/", display_project_list);
     });
 
 };
