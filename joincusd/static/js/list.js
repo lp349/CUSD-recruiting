@@ -1,18 +1,35 @@
+/**
+ * This file contains the scripts for list.html
+ */
+
+//the active tab
 var activeTab = "";
 
+//maps project ids to the original and new rankings
+var projectRankObj = {};
 
-var toggle = function(id) {
-            if (id === "projects-tab") {
+/**
+ * Changes the link of the add button based on the active tab
+ */
+var changeAddButtonLink = function(activeTab) {
+            if (activeTab === "projects-tab") {
                 $(".add").attr("href", "/admin/add_project/");
-            }else if (id === "roletypes-tab") {
+            }else if (activeTab === "roletypes-tab") {
                 $(".add").attr("href", "/admin/add_role_type/");
-            }else if (id === "roles-tab") {
+            }else if (activeTab === "roles-tab") {
                 $(".add").attr("href", "/admin/add_role/");
             }
         };
 
-
-
+/**
+ * Generate a listing
+ * @param typ : the type of listing (i.e. Project, RoleType, or Role)
+ * @param posting : an object representation of the listing from the db,
+ * containing an id and either
+ *  1. a name (project or role type) or
+ *  2. a title (role)
+ * @returns {string}: the html for the listing, to add to the page
+ */
 function generateElem(typ, posting) {
     if (typ === "Project") {
         var p = "<li class='project elem ui-state-default' id='" + posting.id + "'>"
@@ -42,46 +59,31 @@ function generateElem(typ, posting) {
     }
 }
 
-display_project_list = function (data) {
-    var posts = JSON.parse(data);
-    var list_div = $("#content");
-    list_div.empty();
 
-    var displayString = "";
-    displayString += "<div class='rank edit-rank'>Edit Rank</div>";
-    displayString += "<div class='rank save-rank'>Save</div>";
-    displayString += "<div class='rank cancel-rank'>Cancel</div>";
-    displayString += "<ul id='sortable'>";
-
-    for (var i = 0; i < posts.length; i++) {
-        console.log(posts[i].name);
-
-        //list_div.append(generateElem("Project", posts[i]));
-        displayString += generateElem("Project", posts[i])
-
-    }
-
-    displayString += "</ul>";
-
-    list_div.append(displayString);
-
-
+var display_project_helper = function() {
     //from:
     // http://stackoverflow.com/questions/2442232/getting-the-position-of-the-element-in-a-list-when-its-drag-dropped-ui-sortabl/2443081#2443081
 
     $(function() {
-        $('#sortable').sortable({
+        $('#sortable').sortable(
+            /**{
             start: function(event, ui) {
                 var startPosition = ui.item.index();
-                ui.item.data('starting_position', startPosition);
-                console.log(startPosition);
+                ui.item.data('startingPosition', startPosition);
+                console.log( startPosition);
             },
             update: function(event, ui) {
-                var startPosition = ui.item.data('starting_position');
+                var startPosition = ui.item.data('startingPosition');
                 var endPosition = ui.item.index();
+                var projectId = $(($(ui.item)[0])).attr("id");
+                projectRankObj[projectId]["newRank"] = endPosition;
+                console.log(projectRankObj);
                 console.log(startPosition + ' - ' +endPosition);
+
             }
-        });
+        }**/
+        );
+
         $( ".selector" ).on( "sortstart", function( event, ui ) {} );
 
         $( "#sortable" ).disableSelection();
@@ -92,26 +94,124 @@ display_project_list = function (data) {
     });
 
     $(".edit-rank").click( function() {
-        console.log("rank clicked");
         $(".rank").show();
         $(this).hide();
         $( "#sortable" ).sortable("enable");
-        $(".sort-icon").show();
         $("#sortable li").css("cursor", "move");
     });
 
     $(".cancel-rank").click( function() {
-        console.log("rank clicked");
-        $( ".rank").hide();
-        $( ".edit-rank").show();
-        $( "#sortable" ).sortable("cancel").sortable("disable");
-        $(".sort-icon").hide();
-        $("#sortable li").css("cursor", "pointer");
+        //$( ".rank").hide();
+        //$( ".edit-rank").show();
+        //$( "#sortable" ).sortable("cancel").sortable("disable");
+        //$("#sortable li").css("cursor", "pointer");
+
+        $.get("/admin/ajax/project/", display_project_list);
+
+    });
+};
+
+
+/**
+ *
+ * @param displayRank : project rank on page (lower "rank" = higher priority)
+ * @param numProjects : number of projects
+ * @return number: DB rank (higher the rank, the greater the priority)
+ */
+var convertToDBRank = function(displayRank, numProjects) {
+    return numProjects - displayRank;
+}
+
+
+/**
+ * @param dbRank : project rank in db (higher the rank, the greater the priority)
+ * @param numProjects : number of projects
+ * @return number : display rank ( project rank on page (lower "rank" = higher priority) )
+ */
+var convertToDisplayRank = function(displayRank, numProjects) {
+    return numProjects - displayRank;
+}
+
+/**
+ * This method requires that:
+ * 1. project listings have unique integer ids
+ * 2. projects tab is active (projects are being displayed and not roles or role types
+ * If these requirements are satisfied, then the method will
+ * fetch the current ranks of the projects on the page and populate
+ * the new display ranks of the projectRankObj.
+ */
+var populateProjectRanks = function() {
+    //get order of ids
+    var idOrder = $("#sortable").sortable("toArray");
+    $.each(idOrder, function(index, id) {
+        var prevNewRank = projectRankObj[id]["newRank"];
+        if (index !== prevNewRank) {
+            projectRankObj[id]["newRank"] = index;
+        }
+    });
+};
+
+/**
+ * Returns an array of objects of the following format:
+ * {id: [project_id], rank: [new_rank]}
+ * that correspond to objects with rank changes
+ */
+var getNewRanks = function() {
+    populateProjectRanks();
+    var changes = [];
+    //iterate through all projects
+    $.each(Object.keys(projectRankObj), function (index, projectId) {
+        var newRank = projectRankObj[projectId]["newRank"];
+        var originalRank = projectRankObj[projectId]["originalRank"];
+        //if rank changed
+        if ( newRank !== originalRank) {
+            //add to array
+           changes.push({
+               projectId: projectId,
+               newRank: convertToDBRank(newRank, Object.keys(projectRankObj).length)
+           });
+        }
     });
 
+    return changes;
+};
+
+/**
+ * 1. Sorts the given projects by rank
+ * 2. Populates projectRankObj with ids and original rankings
+ * 3. Adds project listings as sortable "li" elements
+ * 4. Calls a helper method to toggle the sortable list
+ * @param data : JSON representation of projects with relevant project info,
+ *              retrieved from ajax call
+ */
+display_project_list = function (data) {
+    var posts = JSON.parse(data);
+    //@todo: sort posts by rank
+    var list_div = $("#content");
+    list_div.empty();
+    projectRankObj = {};
 
 
+    var displayString = "";
+    displayString += "<div class='rank edit-rank'>Edit Rank</div>";
+    displayString += "<div class='rank save-rank'>Save</div>";
+    displayString += "<div class='rank cancel-rank'>Cancel</div>";
+    displayString += "<ul id='sortable'>";
 
+    for (var i = 0; i < posts.length; i++) {
+
+        //list_div.append(generateElem("Project", posts[i]));
+        displayString += generateElem("Project", posts[i]);
+        projectRankObj[posts[i].id] = {};
+        projectRankObj[posts[i].id]["originalRank"] = i;
+        projectRankObj[posts[i].id]["newRank"] = i;
+    }
+
+    displayString += "</ul>";
+
+    list_div.append(displayString);
+
+    display_project_helper();
 };
 
 display_roletype_list = function (data) {
@@ -120,7 +220,6 @@ display_roletype_list = function (data) {
     list_div.empty();
 
     for (var i = 0; i < posts.length; i++) {
-        console.log(posts[i].name);
         list_div.append(generateElem("RoleType", posts[i]));
     }
 };
@@ -131,7 +230,6 @@ display_role_list = function (data) {
     list_div.empty();
 
     for (var i = 0; i < posts.length; i++) {
-        console.log(posts[i].title);
         list_div.append(generateElem("Opening", posts[i]));
     }
 };
@@ -143,22 +241,19 @@ $(document).ready(function () {
         $(this).addClass('selected-tab');
         activeTab = $(this).attr("id");
         sessionStorage['active'] = activeTab;
-        toggle(activeTab);
+        changeAddButtonLink(activeTab);
     });
 
     //render postings and roles elements
     $("#projects-tab").click(function () {
-        console.log("clicked");
         $.get("/admin/ajax/project/", display_project_list);
     });
 
     $("#roles-tab").click(function () {
-        console.log("clicked");
         $.get("/admin/ajax/roles", display_role_list);
     });
 
     $("#roletypes-tab").click(function () {
-        console.log("clicked");
         $.get("/admin/ajax/role_type", display_roletype_list);
     });
 
@@ -168,20 +263,10 @@ $(document).ready(function () {
         $(this).addClass('selected-elem');
     });
 
-    function deleteConfirmation(name) {
-        console.log("in delete conf");
-        var conf = confirmation("Are you sure you want to delete?");
-        return conf;
-    }
-
     //edit and remove buttons
     $('.remove.button').on('click', function () {
-        var parent = $(this).parent();
-        var name = $("#" + parent.attr("id") + " span").html();
-        var conf = confirm("Are you sure you want to remove " + name + "?");
         if (conf) parent.remove();
     });
-
 
     $('.edit.button').on('click', function () {
         var parent = $(this).parent();
