@@ -109,10 +109,10 @@ function generateElem(typ, posting) {
     }
 }
 
-
+/**
+ * Deals with events associated with sortable list
+ */
 var display_project_helper = function() {
-    //from:
-    // http://stackoverflow.com/questions/2442232/getting-the-position-of-the-element-in-a-list-when-its-drag-dropped-ui-sortabl/2443081#2443081
 
     $(function() {
         $('#sortable').sortable(
@@ -206,6 +206,7 @@ var populateProjectRanks = function() {
 /**
  * Returns an array of objects of the following format:
  * {id: [project_id], rank: [new_rank]}
+ * where new_rank is a DB rank (higher rank = greater priority)
  * that correspond to objects with rank changes
  */
 var getNewRanks = function() {
