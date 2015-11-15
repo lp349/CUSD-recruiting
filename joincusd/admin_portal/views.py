@@ -371,13 +371,16 @@ def add_role(request):
   # Render the form with error messages (if any).
   return render(request, 'change_role.html', {'form': form})
 
-@login_required(login_url='/admin/login/')
 '''
 function to remove a role from the mainsite_openings database
 It will cascade the changes in the postings table. (The relationship between posting and this opening will be deleted)
 In otherwords, if a role is deleted, the projects that originally has this role will not display this role any more.
 In addition, this role will also not be displayed any more under any role typles. 
+  arguments:
+    request - Django HttpRequest Object
+    pk - a string containing the primary key of the postings object chosen for removal
 '''
+@login_required(login_url='/admin/login/')
 def remove_role(request,pk):
   #find this role that is to be removed
   thisrole=Opening.objects.get(pk=pk)
@@ -392,21 +395,38 @@ def remove_role(request,pk):
     print "Cannot find this role"
   return HttpResponseRedirect("/admin/")
 
+'''
+function to remove a project. The relationship between the project and the roles that are linked to the project will
+be automatically deleted as well.
+  arguments:
+    request - Django HttpRequest Object
+    pk - a string containing the primary key of the postings object chosen for removal
+'''
 @login_required(login_url='/admin/login/')
 def remove_project(request,pk):
   Posting.objects.filter(pk=pk).delete()
-  # if this_role:
-  #   this_role.remove()
   return HttpResponseRedirect("/admin/")
 
-
+'''
+function to remove a role type. The relationship between the role type and the roles that are linked to the project will
+be automatically deleted as well. (Essentially same as remove_project)
+  arguments:
+    request - Django HttpRequest Object
+    pk - a string containing the primary key of the postings object chosen for removal
+'''
 @login_required(login_url='/admin/login/')
 def remove_role_type(request,pk):
   Posting.objects.filter(pk=pk).delete()
-  # if this_role:
-  #   this_role.remove()
   return HttpResponseRedirect("/admin/")
 
+'''
+This function displays a form that allows user to edit a new role.
+It displays the original role on the page and allow the user to edit each field (title, description, projects/role types
+  linked to the role)
+arguments:
+    request - Django HttpRequest Object
+    pk - a string containing the primary key of the openings object chosen for edit
+'''
 @login_required(login_url='/admin/login/')
 def edit_role(request, pk):
   old_role = None
