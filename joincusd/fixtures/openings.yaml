@@ -32,7 +32,7 @@
   pk: 7
   fields:
     title: Photographer
-    description: "Capture the essence of what we do and what it&#8217;s like to be in CUSD."
+    description: "Capture the essence of what we do and what it's like to be in CUSD."
 - model: mainsite.Opening
   pk: 8
   fields:
@@ -52,7 +52,7 @@
   pk: 11
   fields:
     title: Software Engineer
-    description: "Leverage the latest technologies to increase the project&#8217;s impact."
+    description: "Leverage the latest technologies to increase the project's impact."
 - model: mainsite.Opening
   pk: 12
   fields:
@@ -67,12 +67,12 @@
   pk: 14
   fields:
     title: Full-Stack Engineer
-    description: "Leverage the latest technologies to increase the project&#8217;s impact."
+    description: "Leverage the latest technologies to increase the project's impact."
 - model: mainsite.Opening
   pk: 15
   fields:
     title: Mobile Developer
-    description: "Leverage the latest technologies to increase the project&#8217;s impact."
+    description: "Leverage the latest technologies to increase the project's impact."
 - model: mainsite.Opening
   pk: 16
   fields:
@@ -82,7 +82,7 @@
   pk: 17
   fields:
     title: Data Scientist
-    description: "An analytical mind who&#8217;s always on the lookout for some new data insight."
+    description: "An analytical mind who's always on the lookout for some new data insight."
 - model: mainsite.Opening
   pk: 18
   fields:
@@ -107,7 +107,7 @@
   pk: 22
   fields:
     title: Business Developer
-    description: "A person who&#8217;s not afraid to pick up a phone and (kick) open some doors."
+    description: "A person who's not afraid to pick up a phone and (kick) open some doors."
 - model: mainsite.Opening
   pk: 23
   fields:
