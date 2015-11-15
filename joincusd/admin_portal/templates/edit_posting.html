@@ -22,7 +22,7 @@
       {% for field in form.visible_fields %}
         <div class="field-wrapper">
 
-            {%if field.name != "role_multiselect"%}
+            {%if field.name != "role_multiselect" %}
             {{ field.errors }}
             <div class="field-name">{{ field.help_text}}</div>
             
