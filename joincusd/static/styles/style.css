@@ -145,6 +145,7 @@ a {
     margin-bottom: 1em;
     cursor: pointer;
     list-style: none;
+    overflow: hidden;
 }
 
 /*.elem:hover {*/
@@ -235,11 +236,16 @@ a {
 
 }
 
+/*.save-rank.rank {*/
+    /*background-color:#3FAB6D;*/
+    /*color: #FFF;*/
+/**/
+/*}*/
+
 .rank:hover {
     /*background-color: white;*/
     /*color: #3F9A8E;*/
 }
-
 
 .roles-quick-view {
     height: auto;
@@ -254,4 +260,18 @@ form {
     margin-bottom: 0;
 }
 
+.drag-icon {
+    height: 1.2em;
+    float: left;
+    padding: 0.25em;
+    padding-left: 0;
+    margin-right: 0.7em;
+
+    transform: translateY(10%);
+}
+
+.drag-icon rect, .drag-icon path{
+
+    fill: gray;
+}
 

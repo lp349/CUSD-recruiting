@@ -31,7 +31,14 @@ var changeAddButtonLink = function(activeTab) {
  * @returns {string}: the html for the listing, to add to the page
  */
 function generateElem(typ, posting) {
+
     if (typ === "Project") {
+
+        var dragIcon = '<svg class="drag-icon" viewBox="0 0 100 100"> ' +
+            '<path d="M 50 85 l 20 20 l -40 0 z" transform="rotate(180,50,85)"></path>' +
+            '<path d="M 50 15 l 20 20 l -40 0 z"></path>' +
+            '<rect width="15" height="45" x="42.5" y="30" fill="#000"></rect>' +
+            '</svg>';
 
         var roles = "<ul class='roles-quick-view'>";
         for (var i=0; i< posting.roles.length; i++) {
@@ -40,6 +47,7 @@ function generateElem(typ, posting) {
         roles += "</ul>";
 
         var p = "<li class='project elem ui-state-default' id='" + posting.id + "'>"
+                + dragIcon
             + "<span class='elem-name'>" + posting.name + "</span>"
             + "<a class='edit button' href='edit_project/" + posting.id +"/'>Edit</a>"
             + "<a class='remove button' href='remove_project/" + posting.id + "/'>Remove</a>"
@@ -113,9 +121,11 @@ var display_project_helper = function() {
         $(this).hide();
         $( "#sortable" ).sortable("enable");
         $("#sortable li").css("cursor", "move");
+        $(".drag-icon").show();
     });
 
     $(".cancel-rank").click( function() {
+        //$(".drag-icon").hide();
         //$( ".rank").hide();
         //$( ".edit-rank").show();
         //$( "#sortable" ).sortable("cancel").sortable("disable");
@@ -228,7 +238,9 @@ var display_project_list = function (data) {
 
     list_div.append(displayString);
     $(".roles-quick-view").hide();
+    $(".drag-icon").hide();
     display_project_helper();
+
 };
 
 var display_roletype_list = function (data) {
