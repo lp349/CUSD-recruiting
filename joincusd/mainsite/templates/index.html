@@ -53,14 +53,16 @@
 <aside class="homepage-callouts">
   <h3>Get Involved</h3>
   {% for role_type in role_types %}
-    <article>
-      <div class="homepage-callouts__panel">
-        <div class="icon icon--role-engineering--colored"></div>
-        <h4>{{role_type.name}}</h4>
-        <p>{{role_type.tagline}}</p>
-        <a href="/postings/{{role_type.pk}}" class='button button--inverse'>See Openings</a>
-      </div>
-    </article>
+    {% if role_type.published %}
+      <article>
+        <div class="homepage-callouts__panel">
+          <div class="icon icon--role-engineering--colored"></div>
+          <h4>{{role_type.name}}</h4>
+          <p>{{role_type.tagline}}</p>
+          <a href="/postings/{{role_type.pk}}" class='button button--inverse'>See Openings</a>
+        </div>
+      </article>
+    {% endif %}
   {% endfor %}
 </aside>
 
