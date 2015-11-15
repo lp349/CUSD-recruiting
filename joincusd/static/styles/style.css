@@ -153,6 +153,10 @@ a {
     /*color: #ffffff;*/
 /*}*/
 
+.role.elem {
+    cursor: default;
+}
+
 .add-button {
     padding: 0.1em;
     /*float: right;*/
