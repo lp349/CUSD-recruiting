@@ -287,6 +287,12 @@ var display_roletype_list = function (data) {
 
 var display_role_list = function (data) {
     var posts = JSON.parse(data);
+
+    posts.sort(function(post1, post2) {
+        if (post1.title  < post2.title) return -1;
+        return post1.title > post2.title;
+    });
+
     var list_div = $("#content");
     list_div.empty();
 
