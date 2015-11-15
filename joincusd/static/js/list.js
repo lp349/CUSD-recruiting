@@ -238,7 +238,13 @@ var getNewRanks = function() {
  */
 var display_project_list = function (data) {
     var posts = JSON.parse(data);
-    //@todo: sort posts by rank
+
+    //@todo: sort posts by rank, assume higher rank, greater priority
+    posts.sort(function(post1, post2) {
+        if (post1.rank  > post2.rank) return -1;
+        return post1.rank < post2.rank;
+    });
+
     var list_div = $("#content");
     list_div.empty();
     projectRankObj = {};
@@ -303,8 +309,6 @@ var display_role_list = function (data) {
 
 $(document).ready(function () {
 
-
-
     //tab click styling
     $('#nav-bar').on('click', '.tab', function () {
         $('.tab').removeClass('selected-tab');
@@ -368,6 +372,5 @@ $(document).ready(function () {
     }else {
         $("#projects-tab").trigger("click");
     }
-
 
 });
