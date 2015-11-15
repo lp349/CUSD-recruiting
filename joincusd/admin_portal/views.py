@@ -139,14 +139,20 @@ def add_posting_handler(request, posting_type):
     if request.method == "POST":
         form = PostingForm(request.POST, request.FILES)
 
+        #although the field was deleted in the GET request, 
+        #it must be nonrequired to pass validation when adding a role type
+        if posting_type == "role_type":
+            form.fields['short_project_description'].required = False
+            #del form.fields['short_project_description']
+
         if form.is_valid():
             project = Posting()
 
             project.posting_type = posting_type
             project.name = form.cleaned_data['name']
             project.tagline = form.cleaned_data['tagline']
-            project.description = form.cleaned_data['description']
-            project.rank = form.cleaned_data['rank']
+            #internally assigned to be the last!
+            project.rank = len(Posting.objects.all())
 
             #passing validation guarantees existence of these files (their required attribute is set)
             project.detail_icon_path = request.FILES['detail_icon_path']
@@ -154,6 +160,14 @@ def add_posting_handler(request, posting_type):
             project.photo_one = request.FILES['photo_one']
             project.photo_two = request.FILES['photo_two']
             project.photo_three = request.FILES['photo_three']
+
+            project.description = form.cleaned_data['description']
+            project.additional_description = form.cleaned_data['additional_description']       
+            if posting_type == "project":
+                project.short_project_description = form.cleaned_data['short_project_description']
+            else:
+                project.short_project_description = ""
+
             
             #because this is a new addition, we'll need to save the object first so that the many to many field can be used
             project.save()
@@ -170,9 +184,15 @@ def add_posting_handler(request, posting_type):
             #save the role updates
             project.save()
             return HttpResponseRedirect("/admin")
-        
+        else:
+            print "add_posting_handler: invalid form"
+            return HttpResponseRedirect("/admin")
     elif request.method == "GET":
         form = PostingForm()
+
+        if posting_type == "role_type":
+           del form.fields['short_project_description']
+
         form_submit_action_url = "/admin/add_" + posting_type + "/"
         return render(request, 'add_posting.html', {'form': form, 'form_submit_action_url':form_submit_action_url, 'posting_type': posting_type})
     else:
@@ -204,6 +224,12 @@ def edit_posting_handler(request, posting_type, pk):
         form.fields['photo_two'].required = False
         form.fields['photo_three'].required = False
 
+        #although the field was deleted in the GET request, 
+        #it must be nonrequired to pass validation when adding a role type
+        if posting_type == "role_type":
+            form.fields['short_project_description'].required = False
+            #del form.fields['short_project_description']
+
         if form.is_valid():
             project = Posting.objects.get(pk=pk)
 
@@ -214,8 +240,8 @@ def edit_posting_handler(request, posting_type, pk):
             project.posting_type = posting_type
             project.name = form.cleaned_data['name']
             project.tagline = form.cleaned_data['tagline']
-            project.description = form.cleaned_data['description']
-            project.rank = form.cleaned_data['rank']
+            #NOTE A RANK IS NO LONGER CHANGED BY THE FORM
+            #project.rank = form.cleaned_data['rank']
 
             #since file uploads may be optional,
             #we have to check that they exist!
@@ -229,6 +255,13 @@ def edit_posting_handler(request, posting_type, pk):
                 project.photo_two = request.FILES['photo_two']
             if 'photo_three' in request.FILES:
                 project.photo_three = request.FILES['photo_three']
+
+            project.description = form.cleaned_data['description']
+            project.additional_description = form.cleaned_data['additional_description']       
+            if posting_type == "project":
+                project.short_project_description = form.cleaned_data['short_project_description']
+            else:
+                project.short_project_description = ""
 
             #add each role to the many set
             project.openings.clear()
@@ -250,6 +283,9 @@ def edit_posting_handler(request, posting_type, pk):
         posting_object = Posting.objects.get(pk=pk)
         if posting_object and posting_object.posting_type == posting_type:
             form = PostingForm(instance = posting_object)
+
+            if posting_type == "role_type":
+               del form.fields['short_project_description']
 
             #IMPORTANT: the submit action url must be set correctly!
             form_submit_action_url = "/admin/edit_" + posting_type + "/" + pk + "/"
