@@ -59,6 +59,10 @@ function generateElem(typ, posting) {
         for (var i=0; i< posting.roles.length; i++) {
             roles += "<li class='quick-view-elem'>" + posting.roles[i] +"</li>"
         };
+
+        if (posting.roles.length === 0)
+            roles += "<li class='quick-view-elem'>This project is not hiring.</li>";
+
         roles += "</ul>";
 
         var p = "<li class='project elem ui-state-default' id='" + posting.id + "'>"
@@ -76,6 +80,10 @@ function generateElem(typ, posting) {
         for (var i=0; i< posting.roles.length; i++) {
             roles += "<li class='quick-view-elem'>" + posting.roles[i] +"</li>"
         };
+
+        if (posting.roles.length === 0)
+            roles += "<li class='quick-view-elem'>There are no roles under this category.</li>";
+
         roles += "</ul>";
 
         var rt = "<div class='role-type elem' id='" + posting.id + "'>"
