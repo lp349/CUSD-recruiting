@@ -29,6 +29,21 @@ def admin_login(request):
 def index(request):
      return render(request, "list.html")
 
+@login_required(login_url='/admin/login/')
+def toggle_publish(request, model_type, pk):
+  model = None
+  if model_type == "role":
+    model = Opening.objects.get(pk=pk)
+  elif model_type == "role_type":
+    model = Posting.objects.filter(posting_type=model_type).get(pk=pk)
+  elif model_type == "project":
+    model = Posting.objects.filter(posting_type=model_type).get(pk=pk)
+  if model:
+    model.published = not model.published
+    print model.published
+    return HttpResponse(status=201)
+  return HttpResponse(status=404)
+
 # arguments:
 #   posting_type is a string indicating the type of
 #   posting to fetch: 'role_type', 'project', or 'all'
@@ -37,6 +52,7 @@ def index(request):
 #   a JSON object representing the following Python object
 #   [Posting object, Posting object...]
 #   with the name, id, and posting_type fields exposed
+@login_required(login_url='/admin/login/')
 def posting_list(request, posting_type):
 
      postings = Posting.objects.filter(posting_type=posting_type)
@@ -55,6 +71,7 @@ def posting_list(request, posting_type):
      response = json.dumps(result_list)
      return HttpResponse(response)
 
+@login_required(login_url='/admin/login/')
 def posting(request):
     # A HTTP POST?
     if request.method == 'POST':
@@ -68,7 +85,6 @@ def posting(request):
               print "Rank Error!";
             else:
               form.save(commit=True)
-
 
             # Now call the index() view.
             # The user will be shown the homepage.
@@ -91,6 +107,7 @@ def posting(request):
 #   a JSON object representing the following Python object
 #   [Opening object, Opening object...]
 #   with title, description fields exposed
+@login_required(login_url='/admin/login/')
 def role_list(request):
      roles = Opening.objects.all()
      result_list = []
@@ -137,7 +154,7 @@ def add_posting_handler(request, posting_type):
             project.photo_one = request.FILES['photo_one']
             project.photo_two = request.FILES['photo_two']
             project.photo_three = request.FILES['photo_three']
-
+            
             #because this is a new addition, we'll need to save the object first so that the many to many field can be used
             project.save()
 
@@ -257,6 +274,7 @@ def edit_posting_handler(request, posting_type, pk):
         return HttpResponse(response)
 
 #add a new role
+@login_required(login_url='/admin/login/')
 def role(request,pk):
   old_role = None
   if pk:
@@ -308,17 +326,17 @@ def role(request,pk):
 
   # Bad form (or form details), no form supplied...
   # Render the form with error messages (if any).
-  return render(request, 'role.html', {'form': form})
+  return render(request, 'change_role.html', {'form': form})
 
+@login_required(login_url='/admin/login/')
 def remove_role(request,pk):
-  Opening.objects.filter(pk=pk).delete()
-  #TO DO: remove the opening from all postings that contains this opening
-  #print Posting.objects.filter(opening=pk)
-  #Posting.objects.filter(opening=pk).delete()
-  # if this_role:
-  #   this_role.remove()
+  thisrole=Opening.objects.filter(pk=pk)
+  postings=Posting.objects.filter(openings=thisrole[0]).delete()
+  thisrole.delete()
+
   return HttpResponseRedirect("/admin/")
 
+@login_required(login_url='/admin/login/')
 def remove_project(request,pk):
   Posting.objects.filter(pk=pk).delete()
   # if this_role:
@@ -326,13 +344,14 @@ def remove_project(request,pk):
   return HttpResponseRedirect("/admin/")
 
 
+@login_required(login_url='/admin/login/')
 def remove_role_type(request,pk):
   Posting.objects.filter(pk=pk).delete()
   # if this_role:
   #   this_role.remove()
   return HttpResponseRedirect("/admin/")
 
-
+@login_required(login_url='/admin/login/')
 def edit_role(request, pk):
   old_role = None
   if pk:
@@ -364,16 +383,40 @@ def edit_role(request, pk):
         else:
           initial_projects.append(posting.pk)
 
-    # for role in posting_object.openings.all():
-    #       initial_roletypes.append(role.pk)
-
     form.fields['selected_role_types'].choices = all_roletypes
     form.fields['selected_projects'].choices = all_projects
     form.fields['selected_role_types'].initial = initial_roletypes
     form.fields['selected_projects'].initial = initial_projects
+    if request.method == 'POST':
+      form = OpeningForm(request.POST)
+      # Have we been provided with a valid form?
+      if form.is_valid():
+        #first create a new role in the opening database
+        #and then add a record to the relation
+        title=form.cleaned_data['title']
+        description=form.cleaned_data['description']
+        old_role.title=title
+        old_role.description=description
+        old_role.save()
+        postings=form.cleaned_data['selected_projects']
+        deselect_id=set(initial_projects)-set(postings)
+        newselect_id=set(postings)-set(initial_projects)
+        updateselect_id=set(postings) & set(initial_projects)
+        print(deselect_id)
 
+        for posting_id in deselect_id:
+          posting=Posting.objects.filter(pk=posting_id)
+          if posting:
+            posting.openings.delete(old_role)
+        for posting_id in newselect_id:
+          posting=Posting.objects.filter(pk=posting_id)
+          if posting:
+            posting.openings.add(old_role)
+    else:
+        # The supplied form contained errors - just print them to the terminal.
+        print form.errors
   else:
     print "posting_form_handler: pk points to a nonexistent object"
     return HttpResponseRedirect("/admin")
 
-  return render(request, 'role.html', {'form': form, 'is_edit': True})
+  return render(request, 'change_role.html', {'form': form, 'is_edit': True})

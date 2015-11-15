@@ -15,7 +15,7 @@
 <body>
     <h1> {% if is_edit %} Edit {% else %} Add {% endif %} a Role </h1>
     <div class="form-content">
-    <form id="role_form" method="post" action="{{ form.form_submit_action_url }}">
+    <form id="role_form" method="post" action="{{ form.form_submit_action_url }}" onsubmit="return confirmation();">
         {% csrf_token %}
         <div class="field-wrapper">
       Role Title: {{ form.title }}

@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'djangobower',
     'mainsite',
     'admin_portal',
+    'application',
 
 )
 

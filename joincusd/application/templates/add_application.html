@@ -9,27 +9,27 @@
     <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
     <script src ="{% static 'js/form.js' %}"></script>
     <script src ="{% static 'js/common.js' %}"></script>
-    <title>Add or Edit A Role</title>
+    <title>New Application</title>
 
 </head>
 <body>
-    <h1> {% if is_edit %} Edit {% else %} Add {% endif %} a Role </h1>
+    <h1> Application Part II </h1>
     <div class="form-content">
-    <form id="role_form" method="post" action="{{ form.form_submit_action_url }}">
+    <form id="application_form" method="post" action="{{ form.form_submit_action_url }}" onsubmit="return confirmation();">
         {% csrf_token %}
-        <div class="field-wrapper">
-      Role Title: {{ form.title }}
+       <div class="field-wrapper">
+      netID: {{ form.netID }}
         </div>
         <div class="field-wrapper">
-      Role Description: {{form.description}}
+      Resume Upload: {{form.resume}}
         </div>
         <div class="field-wrapper">
       Select Projects:
-      {{form.selected_projects}}
+      {{form.project_multiselect}}
         </div>
         <div class="field-wrapper">
-      Select Role Types:
-      {{form.selected_role_types}}
+      Select Roles:
+      {{form.role_multiselect}}
         </div>
       <input class="submit-button button" type="submit" name="submit" value="Save">
     </form>
