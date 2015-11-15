@@ -37,7 +37,7 @@ def add_application(request):
             application.save()
           else:
             print "The size is too big!"
-            break
+
         for role_id in form.cleaned_data['role_multiselect']:
           role=Opening.objects.get(pk=role_id)
           if role:
@@ -58,7 +58,8 @@ def add_application(request):
         return HttpResponseRedirect("/application/") #add some pop up window for confirmation of save 
     else:
         # The supplied form contained errors - just print them to the terminal.
-        form.errors
+        print form.errors
+
   else:
       # If the request was not a POST, display the form to enter details.
       form = ApplicationForm()
@@ -68,7 +69,5 @@ def add_application(request):
   # Render the form with error messages (if any).
   return render(request, 'add_application.html', {'form': form})
 
-def validate_file_extensions(value):
-  if not (value.name.endswith('.pdf') or value.name.endswith('.doc') or value.name.endswith('.docx')):
-    raise ValidationError(u'Invalid file extension')
-    
+
+

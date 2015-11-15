@@ -1,8 +1,12 @@
 from django import forms
 from mainsite.models import Application, Posting, Opening
+from django.core import validators
 MAX_UPLOAD_SIZE= 1048576
 
 class ApplicationForm(forms.ModelForm):
+    def validate_file_extensions(value):
+      if not (value.name.endswith('.pdf') or value.name.endswith('.doc') or value.name.endswith('.docx')):
+        raise forms.ValidationError(u'Invalid file extension')
     #this is hardcoded in the project or role type page templates
     #posting_type = forms.IntegerField(widget=forms.HiddenInput(), initial="project")
     netID = forms.CharField(max_length=10, help_text="Your Cornell netID:")
@@ -38,6 +42,4 @@ class ApplicationForm(forms.ModelForm):
         model = Application
         fields = ('netID', 'resume', 'role_multiselect', 'project_multiselect')
 
-def validate_file_extensions(value):
-  if not (value.name.endswith('.pdf') or value.name.endswith('.doc') or value.name.endswith('.docx')):
-    raise ValidationError(u'Invalid file extension')
+    
