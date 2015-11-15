@@ -22,37 +22,36 @@
 
       {% for field in form.visible_fields %}
         <div class="field-wrapper">
+            {%if field.name != "role_multiselect" %}
 
-            {%if field.name != "role_multiselect"%}
-            {{ field.errors }}
-            <div class="field-name">{{ field.help_text}}</div>
-            {% if field.name == "detail_icon_path" and is_edit == True %}
-            <img src="{% static form.instance.detail_icon_path.url %}">
+              {{ field.errors }}
+              <div class="field-name">{{ field.help_text}}</div>
+                {% if field.name == "detail_icon_path" and is_edit == True %}
+                 <img src="{% static form.instance.detail_icon_path.url %}">
+                {% endif %}
+
+                {% if field.name == "list_thumbnail_path" and is_edit == True %}
+                <img src="{% static form.instance.list_thumbnail_path.url %}">
+                {% endif %}
+
+                {% if field.name == "photo_one" and is_edit == True %}
+                <img src="{{ form.instance.photo_one.url }}" />
+                {% endif %}
+
+                {% if field.name == "photo_two" and is_edit == True %}
+                <img src="{{ form.instance.photo_two.url }}" />
+                {% endif %}
+
+                {% if field.name == "photo_three" and is_edit == True %}
+                 <img src="{{ form.instance.photo_three.url }}" />
+                 {% endif %}
+
+                <div class="field">{{ field }}</div>
             {% endif %}
-
-            {% if field.name == "list_thumbnail_path" and is_edit == True %}
-            <img src="{% static form.instance.list_thumbnail_path.url %}">
-            {% endif %}
-
-            {% if field.name == "photo_one" and is_edit == True %}
-              <img src="{{ form.instance.photo_one.url }}" />
-            {% endif %}
-
-            {% if field.name == "photo_two" and is_edit == True %}
-              <img src="{{ form.instance.photo_two.url }}" />
-            {% endif %}
-
-            {% if field.name == "photo_three" and is_edit == True %}
-              <img src="{{ form.instance.photo_three.url }}" />
-            {% endif %}
-
-            <div class="field">{{ field }}</div>
-            {% endif %}
-
-
 
         </div>
       {% endfor %}
+
         <div class="field-wrapper">
         <div class="field-name">Select Roles</div>
             <div class="field">{{ form.role_multiselect }}</div>

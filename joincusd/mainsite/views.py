@@ -36,6 +36,7 @@ def posting(request, pk):
     'name': posting.name,
     'tagline': posting.tagline,
     'description': posting.description,
+    'additional_description': posting.additional_description,
     'photos': [posting.photo_one, posting.photo_two, posting.photo_three],
     'openings': posting.openings.all()
     }

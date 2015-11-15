@@ -5,17 +5,19 @@
     name: Design
     tagline: Putting the human touch on our projects and communications.
     description:
-      "<p class=\"lede\">Design is a huge part of CUSD's culture, and our designers work hand in hand eith engineering to make our projects amazing. CUSD gives architectural, interior, graphic, and UX designers the ability to work on real projects for real people.</p>
-      <p>CUSD holds people-centric design as a pillar for our sustainable practices.  Sustainability, being just as much a social and economic measure an environmental one, requires both a deep understanding of the problems we're solving and a broad understanding of the effects our solutions will have. Empathy and participatory design are two of our main tools in developing this understanding, to guide and support our work.</p>
-      <p>In addition to the role that design plays in our individual projects, we have two design support teams which serve the organization as a whole: the Operations team and the Marketing and Communications (MarComm) team. Operations uses design thinking and data analysis to identify and address the largest issues facing CUSD. Their solutions-based approach often results in explorations of new and exciting technologies and operating methods. The MarComm team is focused on how CUSD presents itself, both internally and to the world. They're responsible for the voice and brand of CUSD, producing a wide range of print and digital deliverables over the course of the year.</p>
-      <p>If you want to work on projects with a truly meaningful impact, in an environment of supportive and talented designers, then CUSD is the place for you.</p>
+      "Design is a huge part of CUSD's culture, and our designers work hand in hand eith engineering to make our projects amazing. CUSD gives architectural, interior, graphic, and UX designers the ability to work on real projects for real people."
+    additional_description:
+      "CUSD holds people-centric design as a pillar for our sustainable practices.  Sustainability, being just as much a social and economic measure an environmental one, requires both a deep understanding of the problems we're solving and a broad understanding of the effects our solutions will have. Empathy and participatory design are two of our main tools in developing this understanding, to guide and support our work.\n
+      In addition to the role that design plays in our individual projects, we have two design support teams which serve the organization as a whole: the Operations team and the Marketing and Communications (MarComm) team. Operations uses design thinking and data analysis to identify and address the largest issues facing CUSD. Their solutions-based approach often results in explorations of new and exciting technologies and operating methods. The MarComm team is focused on how CUSD presents itself, both internally and to the world. They're responsible for the voice and brand of CUSD, producing a wide range of print and digital deliverables over the course of the year.\n
+      If you want to work on projects with a truly meaningful impact, in an environment of supportive and talented designers, then CUSD is the place for you.
       "
     openings: [1,2,3,4,5,6,7,8,9,10]
     detail_icon_path: "/images/fake.jpg"
     list_thumbnail_path: "/images/fake.jpg"
-    photo_one: "/images/fake.jpg"
-    photo_two: "/images/fake.jpg"
-    photo_three: "/images/fake.jpg"
+    photo_one: "images/photos/design-1.jpg"
+    photo_two: "images/photos/design-2.jpg"
+    photo_three: "images/photos/design-3.jpg"
+    published: True
 - model: mainsite.Posting
   pk: 2
   fields:
@@ -23,17 +25,19 @@
     name: Engineering
     tagline: "Research, development and building for a better world."
     description:
-      "<p class=\"lede\">Engineering is the backbone of what CUSD does on a day-to-day basis. As a design-build organization, we pride ourselves on not just imagining a better future, but being able to implement it as well.</p>
-      <p>Engineers in CUSD tackle challenging problems in a variety of fields. On any given day, our engineering teams may be doing broad research into alternative energy models, CADing out a village-scale solar array, building a physical simulation model in the machine shop, programming microcontrollers for an educational display or helping construct a building on another continent.</p>
-      <p>While tangible hardware can be fun, many of our projects involve large software engineering or data science components as well. CUSD is constantly pushing the envelope in finding new ways to leverage technology to gain quantitative insights that will benefit our projects or the organization as a whole.</p>
-      <p>If you're looking for a way to work on meaningful, tangible projects, as well as take your engineering skills to the next level, CUSD is the place to do it.</p>
+      "Engineering is the backbone of what CUSD does on a day-to-day basis. As a design-build organization, we pride ourselves on not just imagining a better future, but being able to implement it as well."
+    additional_description:
+      "Engineers in CUSD tackle challenging problems in a variety of fields. On any given day, our engineering teams may be doing broad research into alternative energy models, CADing out a village-scale solar array, building a physical simulation model in the machine shop, programming microcontrollers for an educational display or helping construct a building on another continent.\n
+      While tangible hardware can be fun, many of our projects involve large software engineering or data science components as well. CUSD is constantly pushing the envelope in finding new ways to leverage technology to gain quantitative insights that will benefit our projects or the organization as a whole.\n
+      If you're looking for a way to work on meaningful, tangible projects, as well as take your engineering skills to the next level, CUSD is the place to do it.
       "
     openings: [11,12,13,14,15,16,17,18,19]
     detail_icon_path: "/images/fake.jpg"
     list_thumbnail_path: "/images/fake.jpg"
-    photo_one: "/images/fake.jpg"
-    photo_two: "/images/fake.jpg"
-    photo_three: "/images/fake.jpg"
+    photo_one: "images/photos/engineering-1.jpg"
+    photo_two: "images/photos/engineering-2.jpg"
+    photo_three: "images/photos/engineering-3.jpg"
+    published: True
 - model: mainsite.Posting
   pk: 3
   fields:
@@ -41,138 +45,142 @@
     name: Strategy
     tagline: Making sure our world changing projects actually get built.
     description:
-      "<p class=\"lede\">Good business development and strategy is what brings the amazing work that our engineers and our designers to the rest of the world.  As a member of the Cornell, Greater Tompkins County, and sustainability communities, it is important that we be situationally aware and understand how our work fits within those contexts.</p>
-      <p>To accomplish this, CUSD is in the room with senior administrators, community leaders, and world class sustainability experts to insure our projects are meeting the needs of the communities around us. With our ears close to the ground, we are able to both identify and execute projects that directly address real problems. </p>
-      <p>If you’re looking to help bring sustainability and all it entails to communities on campus, around New York State and abroad, strategy is the fit for you.</p>
+      "Good business development and strategy is what brings the amazing work that our engineers and our designers to the rest of the world.  As a member of the Cornell, Greater Tompkins County, and sustainability communities, it is important that we be situationally aware and understand how our work fits within those contexts."
+    additional_description:
+      "To accomplish this, CUSD is in the room with senior administrators, community leaders, and world class sustainability experts to insure our projects are meeting the needs of the communities around us. With our ears close to the ground, we are able to both identify and execute projects that directly address real problems.\n
+      If you’re looking to help bring sustainability and all it entails to communities on campus, around New York State and abroad, strategy is the fit for you.
       "
     openings: [20,21,22,23,24,25,26,27]
     detail_icon_path: "/images/fake.jpg"
     list_thumbnail_path: "/images/fake.jpg"
-    photo_one: "/images/fake.jpg"
-    photo_two: "/images/fake.jpg"
-    photo_three: "/images/fake.jpg"
+    photo_one: "images/photos/strategy-1.jpg"
+    photo_two: "images/photos/strategy-2.jpg"
+    photo_three: "images/photos/strategy-3.jpg"
+    published: True
 - model: mainsite.Posting
   pk: 4
   fields:
     posting_type: project
     name: Climate Action Plan
     tagline: Helping Cornell achieve carbon neutrality by 2035.
+    short_project_description:
+      "CUSD teams cooperate with University staff to advance Cornell’s goal of Net-Zero energy by 2035 through sustainable innovations."
     description:
-      "<p class=\"lede\">Members of the Climate Action Plan project work closely with the Cornell Facilities department and Cornell's Campus Sustainability Office to help advance the university-wide action plan to achieve carbon neutrality by 2035. Focusing on particular actions from the plan, each team has the unique opportunity to see the value of their work has right on campus.</p>
-      <p>Past CAP teams have done a feasibility study on the placement of a wind turbine on campus property and researched ways to make the currently existing on-campus hydropower plant more modern and efficient, as well as looking into innovative ways to educate the public on alternative energy.</p>
-      <p>Currently, the CAP project is in a scoping phase as we determine the next major initiative to pursue. There are, however, a very limited number of spots on the team available to highly-autonomous students with demonstrated ability in project management who wish to take on an independent project within CAP.</p>
-      <p>Moving forward, CAP aims to continue making an impact by taking on and helping to accomplish other actions from Cornell's climate action plan.</p>
+      "Members of the Climate Action Plan project work closely with the Cornell Facilities department and Cornell's Campus Sustainability Office to help advance the university-wide action plan to achieve carbon neutrality by 2035. Focusing on particular actions from the plan, each team has the unique opportunity to see the value of their work has right on campus."
+    additional_description:
+      "Past CAP teams have done a feasibility study on the placement of a wind turbine on campus property and researched ways to make the currently existing on-campus hydropower plant more modern and efficient, as well as looking into innovative ways to educate the public on alternative energy.\n
+      Currently, the CAP project is in a scoping phase as we determine the next major initiative to pursue. There are, however, a very limited number of spots on the team available to highly-autonomous students with demonstrated ability in project management who wish to take on an independent project within CAP.\n
+      Moving forward, CAP aims to continue making an impact by taking on and helping to accomplish other actions from Cornell's climate action plan.
       "
     openings: [16,21]
     detail_icon_path: "/images/fake.jpg"
     list_thumbnail_path: "/images/fake.jpg"
-    photo_one: "/images/fake.jpg"
-    photo_two: "/images/fake.jpg"
-    photo_three: "/images/fake.jpg"
+    photo_one: "images/photos/cap-1.jpg"
+    photo_two: "images/photos/cap-2.jpg"
+    photo_three: "images/photos/cap-3.jpg"
+    published: True
 - model: mainsite.Posting
   pk: 5
   fields:
     posting_type: project
     name: CUSD Futures
     tagline: Defining the next generation of sustainable design.
+    short_project_description:
+      "This team works to identify and develop the future of sustainability on campus and beyond."
     description:
-      "<p class=\"lede\">CUSD Futures is the incubator arm of CUSD. Rather than focusing on projects which have the most immediate impact, Futures has the leeway to make bets that will pay off in the longer term. By making strategic investments of time, effort and material resources into interesting pilot projects, our hope is to provide a pipeline for our larger design-build activities.</p>
-      <p>In the past, our teams have helped put solar panels up on Snee Hall, done a feasibility study for a Net-Zero Energy historic renovation, and done sustainable business consulting for a local credit union. In addition, past teams have designed educational exhibits, conducted outreach activities with the local community and even developed innovative lighting technology in conjunction with the National Science Foundation&#8217;s P3 grant.</p>
-      <p>The current focus of the Futures project is the Upson Hall rennovation. The Upson Hall team is working on high-efficiency HVAC (heating, ventilation, and air conditioning) sensors using various tracking technologies and machine learning that will be implemented during the upcoming renovation.</p>
+      "CUSD Futures is the incubator arm of CUSD. Rather than focusing on projects which have the most immediate impact, Futures has the leeway to make bets that will pay off in the longer term. By making strategic investments of time, effort and material resources into interesting pilot projects, our hope is to provide a pipeline for our larger design-build activities."
+    additional_description:
+      "In the past, our teams have helped put solar panels up on Snee Hall, done a feasibility study for a Net-Zero Energy historic renovation, and done sustainable business consulting for a local credit union. In addition, past teams have designed educational exhibits, conducted outreach activities with the local community and even developed innovative lighting technology in conjunction with the National Science Foundation's P3 grant.\n
+      The current focus of the Futures project is the Upson Hall rennovation. The Upson Hall team is working on high-efficiency HVAC (heating, ventilation, and air conditioning) sensors using various tracking technologies and machine learning that will be implemented during the upcoming renovation.
       "
     openings: [13,14,15,3,17]
     detail_icon_path: "/images/fake.jpg"
     list_thumbnail_path: "/images/fake.jpg"
-    photo_one: "/images/fake.jpg"
-    photo_two: "/images/fake.jpg"
-    photo_three: "/images/fake.jpg"
+    photo_one: "images/photos/futures-1.jpg"
+    photo_two: "images/photos/futures-2.jpg"
+    photo_three: "images/photos/futures-3.jpg"
+    published: True
 - model: mainsite.Posting
   pk: 6
   fields:
     posting_type: project
     name: Green Building Metrics Project
     tagline: "Empowering consumers to make informed, sustainable purchases."
+    short_project_description:
+      "The Green Building Metrics Project is designing a metric that will allow consumers to determine how sustainable a product is so that they can make informed purchases."
     description:
-      "<p class=\"lede\">
-          The Green Building Metrics Project (GBMP) is a project focused on the design of a metric that will drive consumers to easily gauge how sustainable products and appliances are and allow them to make the most informed decisions about their purchases. By joining a dynamic metric with attention to consumer interaction and design, the project aims to redefine the sustainable metric and positively influence consumer behavior every day.
-        </p>
-        <p>
-          GBMP seeks to drive sustainable consumer behavior by empowering consumers with specific, informative, and accurate data about the products they buy. In the conventional retail experience, consumers can easily walk into a store and gauge the appearance of a product or its initial cost, but consumers rarely have complete information about the life cycle cost, environmental impact, maintenance requirements, and safety of the product. This is where we come in.
-        </p>
-        <p>
-          The GBMP team has created an indicator metric &mdash; a tool to measure and communicate these unseen components of a product &mdash; in order to help solve the information deficit the traditional consumer is confronted with. The metric consists of four categories: well-developed formulas score products regarding cost and payback, environmental impact, maintenance and installation, and health and safety. The result is a visual indicator tag, designed to be applied to all products from building construction materials, to appliances and furnishings &mdash; essentially any product that can be installed in a building.
-        </p>
-        <p>
-          So far the team has worked to extract data from consumer reporting resources, develop mathematical formulas to indicate sustainability in the four categories, and design a consumer-friendly tag that effectively communicates the four metric indicators. Moving forward, the project aims to cement these aspects and validate the overall metric design in a real-world environment.
-        </p>
-        <p>
-          In the coming months, the team seeks to test their results in closed experiments and partner with local retailers to assess the results in the field.
-        </p>"
+      "The Green Building Metrics Project (GBMP) is a project focused on the design of a metric that will drive consumers to easily gauge how sustainable products and appliances are and allow them to make the most informed decisions about their purchases. By joining a dynamic metric with attention to consumer interaction and design, the project aims to redefine the sustainable metric and positively influence consumer behavior every day.\n"
+    additional_description:
+      "GBMP seeks to drive sustainable consumer behavior by empowering consumers with specific, informative, and accurate data about the products they buy. In the conventional retail experience, consumers can easily walk into a store and gauge the appearance of a product or its initial cost, but consumers rarely have complete information about the life cycle cost, environmental impact, maintenance requirements, and safety of the product. This is where we come in.\n
+      The GBMP team has created an indicator metric - a tool to measure and communicate these unseen components of a product - in order to help solve the information deficit the traditional consumer is confronted with. The metric consists of four categories: well-developed formulas score products regarding cost and payback, environmental impact, maintenance and installation, and health and safety. The result is a visual indicator tag, designed to be applied to all products from building construction materials, to appliances and furnishings - essentially any product that can be installed in a building.\n
+      So far the team has worked to extract data from consumer reporting resources, develop mathematical formulas to indicate sustainability in the four categories, and design a consumer-friendly tag that effectively communicates the four metric indicators. Moving forward, the project aims to cement these aspects and validate the overall metric design in a real-world environment.
+      In the coming months, the team seeks to test their results in closed experiments and partner with local retailers to assess the results in the field."
     openings: [20,22,11,17,3]
     detail_icon_path: "/images/fake.jpg"
     list_thumbnail_path: "/images/fake.jpg"
-    photo_one: "/images/fake.jpg"
-    photo_two: "/images/fake.jpg"
-    photo_three: "/images/fake.jpg"
+    photo_one: "images/photos/gbmp-1.jpg"
+    photo_two: "images/photos/gbmp-2.jpg"
+    photo_three: "images/photos/gbmp-3.jpg"
+    published: True
 - model: mainsite.Posting
   pk: 7
   fields:
     posting_type: project
     name: Overlook Ridge Development
     tagline: Net-Zero Housing for Rural New York
+    short_project_description:
+      "This team is collaborating with a local developer to create a net-zero housing development and world class leadership development center in NY."
     description:
-      "<p class=\"lede\">The Overlook Ridge Development (ORD) project introduced affordable, sustainable housing into a vibrant community located in Little Falls, New York. The “net-zero” energy campus will be home to a Leadership Development Institute directed by David Casullo of Bates Communications as well as rental homes and private homes . The Institute will attract corporate leaders from around the world and provide a leadership center for the local community. This sustainable housing and leadership campus will be a model for similar communities in the state and nation. </p> 
-      <p>Students on the Design team will work during the fall 2015 semester to design a exterior form for 4-6 rental units which have been interiorly designed by Lewis Custom Homes. The form will utilize the most sustainable design practices and materials in order to promote the site’s mission of leadership in sustainability. Cornell’s top architecture students will research the community and cutting edge sustainability precedence in order to create aesthetically pleasing forms with unmatched practicality.</p>
-      <p>Students on the Energy team will design a solar array and other necessary alternative energy resources in order to ensure the development is “net-zero” or better in energy use. The team’s will design a solar array on the south side of the site complete with cost analysis, incentive program applications, electrical company agreements, and solar company partnerships. The team will also cost effective ways to integrate  the newest biofuel and alternative energy technologies into the energy portfolio of the campus.</p>
-      <p>Finally, students on the Public Relations team will work to engage the community and broader society in the mission of this project. The stakeholders are passionate about teaching leadership to the local leaders and corporate world. The team will integrate ideas from Dave Casullo’s book and leadership workshops with the sustainability mission of CUSD. The team will ensure the social impact aspect of this project is successful alongside the environmental and economic sustainability pillars.</p>
-      "
+      "The Overlook Ridge Development (ORD) project introduced affordable, sustainable housing into a vibrant community located in Little Falls, New York. The “net-zero” energy campus will be home to a Leadership Development Institute directed by David Casullo of Bates Communications as well as rental homes and private homes . The Institute will attract corporate leaders from around the world and provide a leadership center for the local community. This sustainable housing and leadership campus will be a model for similar communities in the state and nation."
+    additional_description:
+      "Students on the Design team will work during the fall 2015 semester to design a exterior form for 4-6 rental units which have been interiorly designed by Lewis Custom Homes. The form will utilize the most sustainable design practices and materials in order to promote the site’s mission of leadership in sustainability. Cornell’s top architecture students will research the community and cutting edge sustainability precedence in order to create aesthetically pleasing forms with unmatched practicality.\n
+      Students on the Energy team will design a solar array and other necessary alternative energy resources in order to ensure the development is “net-zero” or better in energy use. The team’s will design a solar array on the south side of the site complete with cost analysis, incentive program applications, electrical company agreements, and solar company partnerships. The team will also cost effective ways to integrate  the newest biofuel and alternative energy technologies into the energy portfolio of the campus.\n
+      Finally, students on the Public Relations team will work to engage the community and broader society in the mission of this project. The stakeholders are passionate about teaching leadership to the local leaders and corporate world. The team will integrate ideas from Dave Casullo’s book and leadership workshops with the sustainability mission of CUSD. The team will ensure the social impact aspect of this project is successful alongside the environmental and economic sustainability pillars.\n"
     openings: [4,6,24,25,12,2,26]
     detail_icon_path: "/images/fake.jpg"
     list_thumbnail_path: "/images/fake.jpg"
-    photo_one: "/images/fake.jpg"
-    photo_two: "/images/fake.jpg"
-    photo_three: "/images/fake.jpg"
+    photo_one: "images/photos/ord-1.jpg"
+    photo_two: "images/photos/ord-2.jpg"
+    photo_three: "images/photos/ord-3.jpg"
+    published: True
 - model: mainsite.Posting
   pk: 8
   fields:
     posting_type: project
     name: Sustainable Education Ghana
     tagline: CUSD x Voices of African Mothers
+    short_project_description:
+      "This team partners with Voices of African Mothers to develop a sustainable school for girls in an ecological hub outside of Sogakope, Ghana."
     description:
-      "<p class=\"lede\">
-        In a partnership introduced by recent Cornell alumni, CUSD is joining forces with Voices of African Mothers (VAM) to work on the development of a sustainable education center for girls that will service villages outside of Sogakope, Ghana, as well as students from all over West Africa.  This school will be designed by graduate and undergraduate students at Cornell, and will be built by Cornell students working with local contractors.  Through an empathetic research process and continual community engagement, this school will be technologically advanced and self-sustaining while still representing African architecture and the desires of the community.   The idea is to create a place that not only helps girls build their future, but teach them how to contribute back to their own communities, invest in their own educational system, and provide a space where they feel appreciated and safe.
-      </p>
-      <p>
-        Over the past several months, members of CUSD have been working with an NGO called Voices of African Mothers (VAM) to develop the vision for VAM Village, a self-sustaining girls’ campus in Sogakope, Ghana. The vision for VAM Village is an ecological educational center that will draw people in from all over Ghana to promote and support women’s empowerment. Its plans include schooling for girls from nursery through junior high school, conference centers, and farmland. CUSD aims to design and construct a multi-purpose academic building for this campus. Our design for the school will address the social, environmental, and cultural concerns of the people that occupy it.
-      </p>
-      <p>
-        There is enormous potential with this project to drastically improve the quality of life for girls in need of a supportive educational environment. The students that will attend this school will be girls from regions of Ghana and Togo where opportunities for quality schooling are limited. In addition to the paramount importance of having a nurturing community and strong education, VAM Village will serve as an emblem of sustainability to a region that has yet to make sustainable practices the norm.
-      </p>
-      <p>
-        We are committed to designing spaces that promote a strong community and offer an enjoyable and fulfilling experience for both students and teachers. Through use of color, communal gardens, and open classroom layout, we hope to achieve an environment that engages students and encourages active participation within the VAM Village community. The VAM Girls Academy will not only provide girls with access to quality education, but will empower young women to recognize and appreciate their potential.
-      </p>
-      <p>
-        The site for VAM Village is approximately 200 acres and rests along the Volta River in Sogakope, Ghana.  In addition to its academic purpose, roughly 100 acres of the site will be designated for farming and agricultural projects. VAM Village will be an ecological hub where students can learn to farm and understand the meaning of sustainability by growing and using their own produce. We intend to build the school using locally sourced materials, alternative energy technologies, and passive energy systems. This will not only reduce the school’s carbon footprint, but will enable it to serve as a model of ecological sustainability for the region.
-      </p>"
+      "In a partnership introduced by recent Cornell alumni, CUSD is joining forces with Voices of African Mothers (VAM) to work on the development of a sustainable education center for girls that will service villages outside of Sogakope, Ghana, as well as students from all over West Africa.  This school will be designed by graduate and undergraduate students at Cornell, and will be built by Cornell students working with local contractors.  Through an empathetic research process and continual community engagement, this school will be technologically advanced and self-sustaining while still representing African architecture and the desires of the community.   The idea is to create a place that not only helps girls build their future, but teach them how to contribute back to their own communities, invest in their own educational system, and provide a space where they feel appreciated and safe.\n"
+    additional_description:
+      "Over the past several months, members of CUSD have been working with an NGO called Voices of African Mothers (VAM) to develop the vision for VAM Village, a self-sustaining girls’ campus in Sogakope, Ghana. The vision for VAM Village is an ecological educational center that will draw people in from all over Ghana to promote and support women’s empowerment. Its plans include schooling for girls from nursery through junior high school, conference centers, and farmland. CUSD aims to design and construct a multi-purpose academic building for this campus. Our design for the school will address the social, environmental, and cultural concerns of the people that occupy it.\n
+      There is enormous potential with this project to drastically improve the quality of life for girls in need of a supportive educational environment. The students that will attend this school will be girls from regions of Ghana and Togo where opportunities for quality schooling are limited. In addition to the paramount importance of having a nurturing community and strong education, VAM Village will serve as an emblem of sustainability to a region that has yet to make sustainable practices the norm.\n
+      We are committed to designing spaces that promote a strong community and offer an enjoyable and fulfilling experience for both students and teachers. Through use of color, communal gardens, and open classroom layout, we hope to achieve an environment that engages students and encourages active participation within the VAM Village community. The VAM Girls Academy will not only provide girls with access to quality education, but will empower young women to recognize and appreciate their potential.\n
+      The site for VAM Village is approximately 200 acres and rests along the Volta River in Sogakope, Ghana.  In addition to its academic purpose, roughly 100 acres of the site will be designated for farming and agricultural projects. VAM Village will be an ecological hub where students can learn to farm and understand the meaning of sustainability by growing and using their own produce. We intend to build the school using locally sourced materials, alternative energy technologies, and passive energy systems. This will not only reduce the school’s carbon footprint, but will enable it to serve as a model of ecological sustainability for the region.\n"
     openings: [5,23,18,2]
     detail_icon_path: "/images/fake.jpg"
     list_thumbnail_path: "/images/fake.jpg"
-    photo_one: "/images/fake.jpg"
-    photo_two: "/images/fake.jpg"
-    photo_three: "/images/fake.jpg"
+    photo_one: "images/photos/seg-1.jpg"
+    photo_two: "images/photos/seg-2.jpg"
+    photo_three: "images/photos/seg-3.jpg"
+    published: True
 - model: mainsite.Posting
   pk: 9
   fields:
     posting_type: project
     name: Cornell Tech
     tagline: Designing a sustainable future for Cornell in NYC.
+    short_project_description:
+      "Our members work as consultants to the Cornell Tech Facilities staff engineering new and innovative sustainable energy systems."
     description:
-      "<p class=\"lede\">As the only student group working on the tech campus, CUSD has performed comprehensive analyses of wind, solar, hydro, and geothermal energy production for Roosevelt Island and beyond. Using sophisticated models and comprehensive research, CUSD has worked closely with Facilities to pursue a floating solar park, campus wide geothermal installations, and innovative wind power solutions. CUSD has provided strategic, technical research, and rigorous design resources to numerous parts of the Tech Campus.</p>
-      <p>CUSD has been involved with the Cornell Tech Campus since the intial RFP phase in 2012. Students have played a large role in the multi-phase master plan and LEED certification of the entire campus. In producing a mast plan for the next phases of the campus, the team incorporates local and transportation and logistical constraints, while simultaneously embracing community engaged design practices.</p>
-      <p>Currently, CUSD&#8217;s involvement in Cornell Tech is in a scoping phase as we determine the next major initiative to pursue.</p>
-      "
+      "As the only student group working on the tech campus, CUSD has performed comprehensive analyses of wind, solar, hydro, and geothermal energy production for Roosevelt Island and beyond. Using sophisticated models and comprehensive research, CUSD has worked closely with Facilities to pursue a floating solar park, campus wide geothermal installations, and innovative wind power solutions. CUSD has provided strategic, technical research, and rigorous design resources to numerous parts of the Tech Campus.\n"
+    additional_description:
+      "CUSD has been involved with the Cornell Tech Campus since the intial RFP phase in 2012. Students have played a large role in the multi-phase master plan and LEED certification of the entire campus. In producing a mast plan for the next phases of the campus, the team incorporates local and transportation and logistical constraints, while simultaneously embracing community engaged design practices.\n
+      Currently, CUSD's involvement in Cornell Tech is in a scoping phase as we determine the next major initiative to pursue."
     detail_icon_path: "/images/fake.jpg"
     list_thumbnail_path: "/images/fake.jpg"
-    photo_one: "/images/fake.jpg"
-    photo_two: "/images/fake.jpg"
-    photo_three: "/images/fake.jpg"
+    photo_one: "images/photos/tech-1.jpg"
+    photo_two: "images/photos/tech-2.jpg"
+    photo_three: "images/photos/tech-3.jpg"
+    published: True
