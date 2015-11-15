@@ -4,15 +4,17 @@
   <section class="current-projects">
     <h1>Current Projects</h1>
     {% for project in projects %}
-      <article class="project">
-        <a href='/postings/{{ project.pk }}/'>
-          <div class="icon icon--project-seg icon--project-seg--colored-bg"></div>
-          <h3>{{ project.name }}</h3>
-        </a>
-        <p>
-          {{ project.tagline }}
-        </p>
-      </article>
+      {% if project.published %}
+        <article class="project">
+          <a href='/postings/{{ project.pk }}/'>
+            <div class="icon icon--project-seg icon--project-seg--colored-bg"></div>
+            <h3>{{ project.name }}</h3>
+          </a>
+          <p>
+            {{ project.short_project_description }}
+          </p>
+        </article>
+      {% endif %}
     {% endfor %}
   </section>
   <section class="past-projects">
