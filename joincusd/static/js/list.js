@@ -32,19 +32,34 @@ var changeAddButtonLink = function(activeTab) {
  */
 function generateElem(typ, posting) {
     if (typ === "Project") {
+
+        var roles = "<ul class='roles-quick-view'>";
+        for (var i=0; i< posting.roles.length; i++) {
+            roles += "<li class='quick-view-elem'>" + posting.roles[i] +"</li>"
+        };
+        roles += "</ul>";
+
         var p = "<li class='project elem ui-state-default' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.name + "</span>"
             + "<a class='edit button' href='edit_project/" + posting.id +"/'>Edit</a>"
             + "<a class='remove button' href='remove_project/" + posting.id + "/'>Remove</a>"
+            + roles
             + "</li>";
         return p;
     } else if ((typ === "RoleType")) {
+        var roles = "<ul class='roles-quick-view'>";
+        for (var i=0; i< posting.roles.length; i++) {
+            roles += "<li class='quick-view-elem'>" + posting.roles[i] +"</li>"
+        };
+        roles += "</ul>";
+
         var rt = "<div class='role-type elem' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.name + "</span>"
             + "<a class='edit button' href='edit_role_type/" + posting.id +"/'>Edit</a>"
             + "<a class='remove button'"
             + " onclick= deleteConfirmation(" + posting.name + ")"
             +" href='remove_role_type/" + posting.id + "/'>Remove</a>"
+            + roles
             + "</div>";
         return rt;
     } else if ((typ === "Opening")) {
@@ -105,7 +120,7 @@ var display_project_helper = function() {
         //$( ".edit-rank").show();
         //$( "#sortable" ).sortable("cancel").sortable("disable");
         //$("#sortable li").css("cursor", "pointer");
-
+        console.log(getNewRanks());
         $.get("/admin/ajax/project/", display_project_list);
 
     });
@@ -184,7 +199,7 @@ var getNewRanks = function() {
  * @param data : JSON representation of projects with relevant project info,
  *              retrieved from ajax call
  */
-display_project_list = function (data) {
+var display_project_list = function (data) {
     var posts = JSON.parse(data);
     //@todo: sort posts by rank
     var list_div = $("#content");
@@ -205,16 +220,18 @@ display_project_list = function (data) {
         projectRankObj[posts[i].id] = {};
         projectRankObj[posts[i].id]["originalRank"] = i;
         projectRankObj[posts[i].id]["newRank"] = i;
+
+        $("#" + i).data("roles", posts[i].roles);
     }
 
     displayString += "</ul>";
 
     list_div.append(displayString);
-
+    $(".roles-quick-view").hide();
     display_project_helper();
 };
 
-display_roletype_list = function (data) {
+var display_roletype_list = function (data) {
     var posts = JSON.parse(data);
     var list_div = $("#content");
     list_div.empty();
@@ -222,9 +239,11 @@ display_roletype_list = function (data) {
     for (var i = 0; i < posts.length; i++) {
         list_div.append(generateElem("RoleType", posts[i]));
     }
+
+    $(".roles-quick-view").hide();
 };
 
-display_role_list = function (data) {
+var display_role_list = function (data) {
     var posts = JSON.parse(data);
     var list_div = $("#content");
     list_div.empty();
@@ -235,6 +254,9 @@ display_role_list = function (data) {
 };
 
 $(document).ready(function () {
+
+
+
     //tab click styling
     $('#nav-bar').on('click', '.tab', function () {
         $('.tab').removeClass('selected-tab');
@@ -257,10 +279,19 @@ $(document).ready(function () {
         $.get("/admin/ajax/role_type", display_roletype_list);
     });
 
+
+
     //element click styling
     $('#content').on('click', '.elem', function () {
         $('.elem').removeClass('selected-elem');
         $(this).addClass('selected-elem');
+        if ($(this).children(".roles-quick-view").is(":hidden")){
+            $(".roles-quick-view").slideUp();
+            $(this).children(".roles-quick-view").slideDown();
+        }else {
+            $(this).children(".roles-quick-view").slideUp();
+        }
+
     });
 
     //edit and remove buttons

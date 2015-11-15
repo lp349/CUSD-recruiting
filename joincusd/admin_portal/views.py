@@ -47,6 +47,8 @@ def posting_list(request, posting_type):
           post_object["name"] = post.name
           post_object["posting_type"] = post.posting_type
           post_object["id"] = post.id
+          post_object["roles"] = [opening.title for opening in post.openings.all()]
+          post_object["rank"] = post.rank
 
           result_list.append(post_object)
 

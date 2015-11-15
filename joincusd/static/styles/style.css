@@ -237,6 +237,15 @@ a {
 }
 
 
+.roles-quick-view {
+    height: auto;
+    width: auto;
+}
+
+.quick-view-elem {
+    text-align: left;
+}
+
 form {
     margin-bottom: 0;
 }
