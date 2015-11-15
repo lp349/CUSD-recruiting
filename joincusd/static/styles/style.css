@@ -72,15 +72,15 @@ a {
 
 .h h3 {
     display: inline-block;
-    margin-top: 0.25em;
-    margin-right: 0.5em;
+    margin-top: 0.25rem;
+    margin-right: 0.5rem;
     width: 50%;
     text-align: right;
 }
 
 #logout {
     margin: 1.3125rem 0;
-    padding: 0.25em;
+    padding: 0.25rem;
     display: inline-block;
     width: 50%;
     text-align: right;
@@ -127,7 +127,7 @@ a {
     width: 85%;
     margin: auto;
     background-color: #F2F3F3;
-    padding: 2em;
+    padding: 2rem;
 }
 
 .elem {
@@ -142,7 +142,7 @@ a {
     padding: 2%;
     text-align: right;;
     margin: auto;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     cursor: pointer;
     list-style: none;
     overflow: hidden;
@@ -159,7 +159,7 @@ a {
 }
 
 .add-button {
-    padding: 0.1em;
+    padding: 0.1rem;
     /*float: right;*/
     font-size: 2em;
     width: 90%;
@@ -170,17 +170,17 @@ a {
     font-weight: normal;
     font-size: 1.2em;
     float: left;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 }
 
 .add-button svg {
-    height: 2em;
-    width: 2em;
+    height: 4rem;
+    width: 4rem;
     cursor: pointer;
 }
 
 .add-button svg text {
-    font-size: 2em;
+    font-size: 4rem;
 }
 
 .button:hover {
@@ -194,8 +194,8 @@ a {
     color: #fff;
     border-radius: 3px;
     border: 2px solid #3FAB6D;
-    width: 8em;
-    height: 2.5em;
+    width: 8rem;
+    height: 2.5rem;
     cursor: pointer;
     font-size: 1em;
 }
@@ -203,11 +203,11 @@ a {
 .edit.button, .remove.button {
     /*float: right;*/
     text-align: center;
-    padding: 0.5em;
+    padding: 0.5rem;
     cursor: pointer;
     display: inline-block;
     height: auto;
-    margin: 0.5em;
+    margin: 0.5rem;
 
 }
 
@@ -226,13 +226,13 @@ a {
 
     text-align: center;
     cursor: pointer;
-    width: 6em;
-    height: 1em;
-    padding: 0.5em;
+    width: 6rem;
+    height: 1rem;
+    padding: 0.5rem;
     display: inline-block;
-    margin: 0.5em;
-    margin-left: 1.7em;
-    margin-bottom: 1em;
+    margin: 0.5rem;
+    margin-left: 1.7rem;
+    margin-bottom: 1rem;
 
 }
 
@@ -261,11 +261,11 @@ form {
 }
 
 .drag-icon {
-    height: 1.2em;
+    height: 1.2rem;
     float: left;
-    padding: 0.25em;
+    padding: 0.25rem;
     padding-left: 0;
-    margin-right: 0.7em;
+    margin-right: 0.7rem;
 
     transform: translateY(10%);
 }
@@ -280,7 +280,7 @@ form {
 }
 
 .expand-icon, .retract-icon {
-    height: 0.6em;
+    height: 0.6rem;
     margin: auto;
     display: block;
     width: 100%;
