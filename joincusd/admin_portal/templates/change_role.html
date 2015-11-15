@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/common.css' %}">
+
+    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+    <script src ="{% static 'js/form.js' %}"></script>
+    <script src ="{% static 'js/common.js' %}"></script>
+    <title>Add or Edit A Role</title>
+
+</head>
+<body>
+    <h1> {% if is_edit %} Edit {% else %} Add {% endif %} a Role </h1>
+    <div class="form-content">
+    <form id="role_form" method="post" action="{{ form.form_submit_action_url }}" onsubmit="return confirmation();">
+        {% csrf_token %}
+        <div class="field-wrapper">
+      Role Title: {{ form.title }}
+        </div>
+        <div class="field-wrapper">
+      Role Description: {{form.description}}
+        </div>
+        <div class="field-wrapper">
+      Select Projects:
+      {{form.selected_projects}}
+        </div>
+        <div class="field-wrapper">
+      Select Role Types:
+      {{form.selected_role_types}}
+        </div>
+      <input class="submit-button button" type="submit" name="submit" value="Save">
+    </form>
+        </div>
+</body>
+</html>

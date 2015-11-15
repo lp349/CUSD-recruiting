@@ -32,3 +32,9 @@ class Posting(models.Model):
   detail_icon_path = models.FileField(upload_to="images/")
   list_thumbnail_path = models.FileField(upload_to="images/")
   rank = models.IntegerField(default=0)
+
+class Application(models.Model):
+  netID=models.CharField(max_length=10)
+  resume=models.FileField(upload_to="resumes/")
+  roles=models.ManyToManyField(Opening)
+  projects=models.ManyToManyField(Posting)
