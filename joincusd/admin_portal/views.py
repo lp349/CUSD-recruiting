@@ -29,6 +29,21 @@ def admin_login(request):
 def index(request):
      return render(request, "list.html")
 
+@login_required(login_url='/admin/login/')
+def toggle_publish(request, model_type, pk):
+  model = None
+  if model_type == "role":
+    model = Opening.objects.get(pk=pk)
+  elif model_type == "role_type":
+    model = Posting.objects.filter(posting_type=model_type).get(pk=pk)
+  elif model_type == "project":
+    model = Posting.objects.filter(posting_type=model_type).get(pk=pk)
+  if model:
+    model.published = not model.published
+    print model.published
+    return HttpResponse(status=201)
+  return HttpResponse(status=404)
+
 # arguments:
 #   posting_type is a string indicating the type of
 #   posting to fetch: 'role_type', 'project', or 'all'
@@ -37,6 +52,7 @@ def index(request):
 #   a JSON object representing the following Python object
 #   [Posting object, Posting object...]
 #   with the name, id, and posting_type fields exposed
+@login_required(login_url='/admin/login/')
 def posting_list(request, posting_type):
 
      postings = Posting.objects.filter(posting_type=posting_type)
@@ -55,6 +71,7 @@ def posting_list(request, posting_type):
      response = json.dumps(result_list)
      return HttpResponse(response)
 
+@login_required(login_url='/admin/login/')
 def posting(request):
     # A HTTP POST?
     if request.method == 'POST':
@@ -68,7 +85,6 @@ def posting(request):
               print "Rank Error!";
             else:
               form.save(commit=True)
-
 
             # Now call the index() view.
             # The user will be shown the homepage.
@@ -91,6 +107,7 @@ def posting(request):
 #   a JSON object representing the following Python object
 #   [Opening object, Opening object...]
 #   with title, description fields exposed
+@login_required(login_url='/admin/login/')
 def role_list(request):
      roles = Opening.objects.all()
      result_list = []
@@ -125,6 +142,7 @@ def role_list(request):
 # this attribute will be either:
 #     /admin/add_project/
 #     /admin/edit_project/<primary key of posting currently being edited>
+@login_required(login_url='/admin/login/')
 def posting_form_handler(request, posting_type, is_edit, pk):
     if request.method == "POST":
         print "stuff posted"
@@ -226,6 +244,7 @@ def posting_form_handler(request, posting_type, is_edit, pk):
         return render(request, 'change_posting.html', {'form': form, 'is_edit':is_edit, 'posting_type': posting_type})
 
 #add a new role
+@login_required(login_url='/admin/login/')
 def role(request,pk):
   old_role = None
   if pk:
@@ -279,6 +298,7 @@ def role(request,pk):
   # Render the form with error messages (if any).
   return render(request, 'role.html', {'form': form})
 
+@login_required(login_url='/admin/login/')
 def remove_role(request,pk):
   Opening.objects.filter(pk=pk).delete()
   #TO DO: remove the opening from all postings that contains this opening
@@ -288,6 +308,7 @@ def remove_role(request,pk):
   #   this_role.remove()
   return HttpResponseRedirect("/admin/")
 
+@login_required(login_url='/admin/login/')
 def remove_project(request,pk):
   Posting.objects.filter(pk=pk).delete()
   # if this_role:
@@ -295,13 +316,14 @@ def remove_project(request,pk):
   return HttpResponseRedirect("/admin/")
 
 
+@login_required(login_url='/admin/login/')
 def remove_role_type(request,pk):
   Posting.objects.filter(pk=pk).delete()
   # if this_role:
   #   this_role.remove()
   return HttpResponseRedirect("/admin/")
 
-
+@login_required(login_url='/admin/login/')
 def edit_role(request, pk):
   old_role = None
   if pk:

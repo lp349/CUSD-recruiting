@@ -7,28 +7,29 @@ from django.db import models
 # 2) Photo and Opening are separate tables
 # 3) both Photo and Opening have many-to-many relationships to a given Posting
 
-class Photo(models.Model):
-  image = models.ImageField(upload_to="images/", default=None)
-
-  @classmethod
-  def create(cls, image):
-    image = cls(image=image)
-    return image
-
 class Opening(models.Model):
   title = models.CharField(max_length=500)
   description = models.TextField()
+  published = models.BooleanField(default=False)
 
 class Posting(models.Model):
-  posting_type = models.CharField(max_length=255, default='project')
+  posting_type = models.CharField(max_length=255, default="project")
+
   name = models.CharField(max_length=500)
-  tagline = models.CharField(max_length=4096)
-  description = models.TextField()
-  photos = models.ManyToManyField(Photo)
-  photo_one = models.FileField(upload_to="images/")
-  photo_two = models.FileField(upload_to="images/")
-  photo_three = models.FileField(upload_to="images/")
+  tagline = models.CharField(max_length=100)
+  short_project_description = models.CharField(max_length=300, default="")
+  description = models.TextField(default="")
+  additional_description = models.TextField(default="")
+
+  photo_one = models.ImageField(upload_to="images/photos/")
+  photo_two = models.ImageField(upload_to="images/photos/")
+  photo_three = models.ImageField(upload_to="images/photos/")
+
   openings = models.ManyToManyField(Opening)
-  detail_icon_path = models.FileField(upload_to="images/")
-  list_thumbnail_path = models.FileField(upload_to="images/")
+
+  detail_icon_path = models.FileField(upload_to="images/icons/")
+  list_thumbnail_path = models.FileField(upload_to="images/icons/")
+
   rank = models.IntegerField(default=0)
+
+  published = models.BooleanField(default=False)

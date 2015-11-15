@@ -1,5 +1,5 @@
 from django.shortcuts import render, render_to_response
-from .models import Posting, Photo, Opening
+from .models import Posting, Opening
 
 # Create your views here.
 def index(request):
