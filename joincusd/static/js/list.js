@@ -51,7 +51,15 @@ var changeAddButtonLink = function (activeTab) {
  * @param pk : number, posting id
  */
 var togglePublish = function(posting_type, pk) {
-    $.get("ajax/toggle_publish/" + posting_type + "/" + pk + "/" );
+    console.log("toggling publish");
+
+    $.get("ajax/toggle_publish/" + posting_type + "/" + pk + "/" , function() {
+        if (posting_type === "project") {
+            $.get("/admin/ajax/"+ posting_type + "/", display_project_list);
+        }else if (posting_type === "role_type") {
+            $.get("/admin/ajax/"+ posting_type + "/", display_roletype_list);
+        }
+    });
 };
 
 
@@ -65,6 +73,8 @@ var togglePublish = function(posting_type, pk) {
  * @returns {string}: the html for the listing, to add to the page
  */
 function generateElem(typ, posting) {
+    var published = "Unpublish";
+    if (!posting.published) published = "Publish";
 
     if (typ === "Project") {
 
@@ -82,7 +92,7 @@ function generateElem(typ, posting) {
             + Icons.drag
             + "<span class='elem-name'>" + posting.name + "</span>"
             + "<a class='edit button' href='edit_project/" + posting.id + "/'>Edit</a>"
-            + "<div class='publish button'>" + posting.published + "</div>"
+            + "<div class='publish button'>" + published + "</div>"
             //+ "<a class='remove button' href='remove_project/" + posting.id + "/'>Remove</a>"
             + roles
             + Icons.expand
@@ -103,7 +113,7 @@ function generateElem(typ, posting) {
         var rt = "<div class='role-type elem' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.name + "</span>"
             + "<a class='edit button' href='edit_role_type/" + posting.id + "/'>Edit</a>"
-            + "<div class='publish button'>" + posting.published + "</div>"
+            + "<div class='publish button'>" + published + "</div>"
             //+ "<a class='remove button' href='remove_role_type/" + posting.id + "/'>Remove</a>"
             + roles
             + Icons.expand
@@ -271,6 +281,8 @@ var display_project_list = function (data) {
 
     $(".publish.button").click( function() {
         console.log($(this).parent().attr("id"));
+        togglePublish("project", $(this).parent().attr("id"));
+
     });
 
 
@@ -301,6 +313,7 @@ var display_roletype_list = function (data) {
 
     $(".publish.button").click( function() {
         console.log($(this).parent().attr("id"));
+        togglePublish("role_type", $(this).parent().attr("id"));
     });
 
 };
