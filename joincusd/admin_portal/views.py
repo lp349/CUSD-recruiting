@@ -122,6 +122,17 @@ def role_list(request):
      response = json.dumps(result_list)
      return HttpResponse(response)
 
+def update_ranks(request):
+     print request.POST.get("rank_string", '')
+     object_list = json.loads(request.POST.get("rank_string", ''))
+
+     for obj in object_list:
+         posting = Posting.objects.get(pk = obj["projectId"])
+         posting.rank = obj["newRank"]
+         posting.save()
+
+     return HttpResponse()
+
 '''
   this function displays the website form on a page GET, and
   handles adding NEW postings for either projects or role types.

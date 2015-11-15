@@ -122,6 +122,26 @@ function generateElem(typ, posting) {
     }
 }
 
+/*
+ See: http://stackoverflow.com/questions/19333098/403-forbidden-error-when-making-an-ajax-post-request-in-django-framework
+*/
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie != '') {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = jQuery.trim(cookies[i]);
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+        }
+    }
+  }
+    return cookieValue;
+}
+
+
 /**
  * Toggles and handles sortable project list
  */
@@ -151,6 +171,18 @@ var display_project_helper = function () {
         $.get("/admin/ajax/project/", display_project_list);
 
     });
+
+    $(".save-rank").click(function () {
+        //console.log(JSON.stringify(getNewRanks()));
+	var rank_changes = JSON.stringify(getNewRanks()); 
+        var csrftoken = getCookie('csrftoken');
+        $.post("/admin/ajax/update_ranks", {csrfmiddlewaretoken:csrftoken, rank_string:rank_changes}, function(){
+	    $(".cancel-rank").hide();
+	    $(".save-rank").hide();
+            $(".edit-rank").show();
+	    display_project_list();});
+    });
+
 };
 
 
@@ -195,7 +227,7 @@ var populateProjectRanks = function () {
 
 /**
  * Returns an array of objects of the following format:
- * {id: [project_id], rank: [new_rank]}
+ * {id: [projectId], rank: [newRank]}
  * where new_rank is a DB rank (higher rank = greater priority)
  * that correspond to objects with rank changes
  */
@@ -218,6 +250,7 @@ var getNewRanks = function () {
 
     return changes;
 };
+
 
 /**
  * 1. Sorts the given projects by rank
