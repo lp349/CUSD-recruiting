@@ -47,6 +47,8 @@ def posting_list(request, posting_type):
           post_object["name"] = post.name
           post_object["posting_type"] = post.posting_type
           post_object["id"] = post.id
+          post_object["roles"] = [opening.title for opening in post.openings.all()]
+          post_object["rank"] = post.rank
 
           result_list.append(post_object)
 
@@ -80,7 +82,7 @@ def posting(request):
 
     # Bad form (or form details), no form supplied...
     # Render the form with error messages (if any).
-    return render(request, 'admin_portal/[Temp] templates and css/posting.html', {'form': form})
+    return render(request, 'admin_portal/[Temp] templates and css/change_posting.html', {'form': form})
 
 # arguments:
 #   none except required HttpRequest
@@ -112,7 +114,7 @@ def role_list(request):
 # invoked to EDIT a project:
 #   false - the handler was invoked to add a new project
 #   true  - the handler was invoked to edit an existing project
-# pk: 
+# pk:
 #   if is_edit is true, then is the primary key of the posting object
 #   the user requested to edit
 #   if is_edit is false, contains a garbage value
@@ -122,19 +124,19 @@ def role_list(request):
 # the form was submitted for an edit or new project addition.
 # this attribute will be either:
 #     /admin/add_project/
-#     /admin/edit_project/<primary key of posting currently being edited> 
+#     /admin/edit_project/<primary key of posting currently being edited>
 def posting_form_handler(request, posting_type, is_edit, pk):
     if request.method == "POST":
         print "stuff posted"
         print pk
         form = PostingForm(request.POST, request.FILES)
 
-        #BEFORE validation, since we already have images when editing 
+        #BEFORE validation, since we already have images when editing
         #a project, the image/file upload options should be optinal
         if is_edit:
             form.fields['detail_icon_path'].required = False
             form.fields['list_thumbnail_path'].required = False
-            
+
             #3IMAGE
             form.fields['photo_one'].required = False
             form.fields['photo_two'].required = False
@@ -157,13 +159,13 @@ def posting_form_handler(request, posting_type, is_edit, pk):
             project.description = form.cleaned_data['description']
             project.rank = form.cleaned_data['rank']
 
-            #since file uploads may be optional due to editing, 
+            #since file uploads may be optional due to editing,
             #we have to do a check before assigning files!
             if 'detail_icon_path' in request.FILES or (not is_edit):
                 project.detail_icon_path = request.FILES['detail_icon_path']
             if 'list_thumbnail_path' in request.FILES or (not is_edit):
                 project.list_thumbnail_path = request.FILES['list_thumbnail_path']
-            
+
             #3IMAGE
             if 'photo_one' in request.FILES or (not is_edit):
                 project.photo_one = request.FILES['photo_one']
@@ -175,7 +177,7 @@ def posting_form_handler(request, posting_type, is_edit, pk):
             #if this is a new addition, we'll need to save the object first so that the many to many field can be used
             if not is_edit:
                 project.save()
-            
+
             #add each role to the many set
             project.openings.clear()
             for role_pk_val in form.cleaned_data['role_multiselect']:
@@ -221,14 +223,14 @@ def posting_form_handler(request, posting_type, is_edit, pk):
             #IMPORTANT: the submit action url must be set correctly!
             form = PostingForm()
             form.form_submit_action_url = "/admin/add_" + posting_type + "/"
-        return render(request, 'posting.html', {'form': form, 'is_edit':is_edit, 'posting_type': posting_type})
+        return render(request, 'change_posting.html', {'form': form, 'is_edit':is_edit, 'posting_type': posting_type})
 
 #add a new role
 def role(request,pk):
   old_role = None
   if pk:
     old_role=Opening.objects.get(pk=pk)
-  
+
           # A HTTP POST?
   if request.method == 'POST':
       form = OpeningForm(request.POST)
@@ -254,7 +256,7 @@ def role(request,pk):
           print role_types
           for role_id in role_types:
             posting=Posting.objects.get(pk=role_id)
-            if posting: 
+            if posting:
               #add the new relation into mainsite_posting_openings
               posting.openings.add (new_role)
             else:
@@ -265,7 +267,7 @@ def role(request,pk):
             Opening.objects.filter(pk=pk).delete()
           # Now call the index() view.
           # The user will be shown the homepage.
-          return HttpResponseRedirect("/admin/") #add some pop up window for confirmation of save 
+          return HttpResponseRedirect("/admin/") #add some pop up window for confirmation of save
       else:
           # The supplied form contained errors - just print them to the terminal.
           print form.errors

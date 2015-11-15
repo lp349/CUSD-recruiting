@@ -32,6 +32,7 @@ input[type=checkbox] {
     width: 2em;
     /*visibility: hidden;*/
     display: none;
+    /*float: left;*/
 }
 
 input[type=file] {
@@ -124,8 +125,9 @@ li label{
 }
 
 .selected-checkbox {
-    /*border: 2px solid #333333;*/
-    border: 2px solid #3FAB6D;
-    background-color: #3FAB6D;
+    border: 2px solid #76B2AA;
+    /*border: 2px solid #3FAB6D;*/
+    /*background-color: #3FAB6D;*/
+    background-color: #76B2AA;
     color: #FFFFFF;
 }

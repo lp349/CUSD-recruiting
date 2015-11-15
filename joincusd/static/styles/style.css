@@ -72,15 +72,15 @@ a {
 
 .h h3 {
     display: inline-block;
-    margin-top: 0.25em;
-    margin-right: 0.5em;
+    margin-top: 0.25rem;
+    margin-right: 0.5rem;
     width: 50%;
     text-align: right;
 }
 
 #logout {
     margin: 1.3125rem 0;
-    padding: 0.25em;
+    padding: 0.25rem;
     display: inline-block;
     width: 50%;
     text-align: right;
@@ -127,7 +127,7 @@ a {
     width: 85%;
     margin: auto;
     background-color: #F2F3F3;
-    padding: 2em;
+    padding: 2rem;
 }
 
 .elem {
@@ -142,18 +142,24 @@ a {
     padding: 2%;
     text-align: right;;
     margin: auto;
-    margin-bottom: 1em;
-    /*cursor: pointer;*/
+    margin-bottom: 1rem;
+    cursor: pointer;
+    list-style: none;
+    overflow: hidden;
 }
 
-.elem:hover {
-    /*background-color: #1f628d;*/
-    background-color: #3FAB6D;
-    color: #ffffff;
+/*.elem:hover {*/
+
+    /*background-color: #3FAB6D;*/
+    /*color: #ffffff;*/
+/*}*/
+
+.role.elem {
+    cursor: default;
 }
 
 .add-button {
-    padding: 0.1em;
+    padding: 0.1rem;
     /*float: right;*/
     font-size: 2em;
     width: 90%;
@@ -164,17 +170,17 @@ a {
     font-weight: normal;
     font-size: 1.2em;
     float: left;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 }
 
 .add-button svg {
-    height: 2em;
-    width: 2em;
+    height: 4rem;
+    width: 4rem;
     cursor: pointer;
 }
 
 .add-button svg text {
-    font-size: 2em;
+    font-size: 4rem;
 }
 
 .button:hover {
@@ -188,8 +194,8 @@ a {
     color: #fff;
     border-radius: 3px;
     border: 2px solid #3FAB6D;
-    width: 8em;
-    height: 2.5em;
+    width: 8rem;
+    height: 2.5rem;
     cursor: pointer;
     font-size: 1em;
 }
@@ -197,15 +203,86 @@ a {
 .edit.button, .remove.button {
     /*float: right;*/
     text-align: center;
-    padding: 0.5em;
+    padding: 0.5rem;
     cursor: pointer;
     display: inline-block;
     height: auto;
-    margin: 0.5em;
+    margin: 0.5rem;
 
 }
 
+.rank {
+    /*background-color: #3F9A8E;*/
+    /*border: 2px solid #3F9A8E;*/
+    /*color: white;*/
+
+    background-color: #FFFFFF;
+    border: 2px solid #3FAB6D;
+    color: #3FAB6D;
+/**/
+    /*background-color: #FFFFFF;*/
+    /*border: 2px solid #3F9A8E;*/
+    /*color: #3F9A8E;*/
+
+    text-align: center;
+    cursor: pointer;
+    width: 6rem;
+    height: 1rem;
+    padding: 0.5rem;
+    display: inline-block;
+    margin: 0.5rem;
+    margin-left: 2.5rem;
+    margin-bottom: 1rem;
+
+}
+
+.save-rank.rank {
+    background-color:#3FAB6D;
+    color: #FFF;
+
+}
+
+.rank:hover {
+    /*background-color: white;*/
+    /*color: #3F9A8E;*/
+}
+
+.roles-quick-view {
+    height: auto;
+    width: auto;
+    text-align: left;
+}
+
+.quick-view-elem {
+    text-align: left;
+}
 
 form {
     margin-bottom: 0;
+}
+
+.drag-icon {
+    height: 1.2rem;
+    float: left;
+    padding: 0.25rem;
+    padding-left: 0;
+    margin-right: 0.7rem;
+
+    transform: translateY(10%);
+}
+
+.drag-icon rect, .drag-icon path{
+    fill: gray;
+}
+
+
+.expand-icon path, .retract-icon path{
+    fill: #A1A1A1;
+}
+
+.expand-icon, .retract-icon {
+    height: 0.6rem;
+    margin: auto;
+    display: block;
+    width: 100%;
 }
