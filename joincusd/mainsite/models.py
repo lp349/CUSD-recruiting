@@ -33,3 +33,9 @@ class Posting(models.Model):
   rank = models.IntegerField(default=0)
 
   published = models.BooleanField(default=False)
+
+class Application(models.Model):
+  netID=models.CharField(max_length=10)
+  resume=models.FileField(upload_to="resumes/")
+  roles=models.ManyToManyField(Opening)
+  projects=models.ManyToManyField(Posting)

@@ -296,16 +296,14 @@ def role(request,pk):
 
   # Bad form (or form details), no form supplied...
   # Render the form with error messages (if any).
-  return render(request, 'role.html', {'form': form})
+  return render(request, 'change_role.html', {'form': form})
 
 @login_required(login_url='/admin/login/')
 def remove_role(request,pk):
-  Opening.objects.filter(pk=pk).delete()
-  #TO DO: remove the opening from all postings that contains this opening
-  #print Posting.objects.filter(opening=pk)
-  #Posting.objects.filter(opening=pk).delete()
-  # if this_role:
-  #   this_role.remove()
+  thisrole=Opening.objects.filter(pk=pk)
+  postings=Posting.objects.filter(openings=thisrole[0]).delete()
+  thisrole.delete()
+
   return HttpResponseRedirect("/admin/")
 
 @login_required(login_url='/admin/login/')
@@ -355,16 +353,40 @@ def edit_role(request, pk):
         else:
           initial_projects.append(posting.pk)
 
-    # for role in posting_object.openings.all():
-    #       initial_roletypes.append(role.pk)
-
     form.fields['selected_role_types'].choices = all_roletypes
     form.fields['selected_projects'].choices = all_projects
     form.fields['selected_role_types'].initial = initial_roletypes
     form.fields['selected_projects'].initial = initial_projects
+    if request.method == 'POST':
+      form = OpeningForm(request.POST)
+      # Have we been provided with a valid form?
+      if form.is_valid():
+        #first create a new role in the opening database
+        #and then add a record to the relation
+        title=form.cleaned_data['title']
+        description=form.cleaned_data['description']
+        old_role.title=title
+        old_role.description=description
+        old_role.save()
+        postings=form.cleaned_data['selected_projects']
+        deselect_id=set(initial_projects)-set(postings)
+        newselect_id=set(postings)-set(initial_projects)
+        updateselect_id=set(postings) & set(initial_projects)
+        print(deselect_id)
 
+        for posting_id in deselect_id:
+          posting=Posting.objects.filter(pk=posting_id)
+          if posting:
+            posting.openings.delete(old_role)
+        for posting_id in newselect_id:
+          posting=Posting.objects.filter(pk=posting_id)
+          if posting:
+            posting.openings.add(old_role)
+    else:
+        # The supplied form contained errors - just print them to the terminal.
+        print form.errors
   else:
     print "posting_form_handler: pk points to a nonexistent object"
     return HttpResponseRedirect("/admin")
 
-  return render(request, 'role.html', {'form': form, 'is_edit': True})
+  return render(request, 'change_role.html', {'form': form, 'is_edit': True})

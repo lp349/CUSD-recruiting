@@ -24,4 +24,6 @@ urlpatterns = [
     url(r'^projects/$', 'mainsite.views.projects'),
     url(r'^postings/(?P<pk>[0-9]+)/$', 'mainsite.views.posting'),
     url(r'^admin/', include('admin_portal.urls')),
+    url(r'^application/', include('application.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
