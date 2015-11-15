@@ -44,6 +44,17 @@ var changeAddButtonLink = function (activeTab) {
     }
 };
 
+
+/**
+ * Toggles publish/unpublish
+ * @param posting_type : string, "project" or "role_type"
+ * @param pk : number, posting id
+ */
+var togglePublish = function(posting_type, pk) {
+    $.get("ajax/toggle_publish/" + posting_type + "/" + pk + "/" );
+};
+
+
 /**
  * Generate the listing html
  * @param typ : the type of listing (i.e. Project, RoleType, or Role)
@@ -60,8 +71,7 @@ function generateElem(typ, posting) {
         var roles = "<ul class='roles-quick-view'>";
         for (var i = 0; i < posting.roles.length; i++) {
             roles += "<li class='quick-view-elem'>" + posting.roles[i] + "</li>"
-        }
-        ;
+        };
 
         if (posting.roles.length === 0)
             roles += "<li class='quick-view-elem'>This project is not hiring.</li>";
@@ -72,7 +82,8 @@ function generateElem(typ, posting) {
             + Icons.drag
             + "<span class='elem-name'>" + posting.name + "</span>"
             + "<a class='edit button' href='edit_project/" + posting.id + "/'>Edit</a>"
-            + "<a class='remove button' href='remove_project/" + posting.id + "/'>Remove</a>"
+            + "<div class='publish button'>" + posting.published + "</div>"
+            //+ "<a class='remove button' href='remove_project/" + posting.id + "/'>Remove</a>"
             + roles
             + Icons.expand
             + Icons.retract
@@ -82,8 +93,7 @@ function generateElem(typ, posting) {
         var roles = "<ul class='roles-quick-view'>";
         for (var i = 0; i < posting.roles.length; i++) {
             roles += "<li class='quick-view-elem'>" + posting.roles[i] + "</li>"
-        }
-        ;
+        };
 
         if (posting.roles.length === 0)
             roles += "<li class='quick-view-elem'>There are no roles under this category.</li>";
@@ -93,9 +103,8 @@ function generateElem(typ, posting) {
         var rt = "<div class='role-type elem' id='" + posting.id + "'>"
             + "<span class='elem-name'>" + posting.name + "</span>"
             + "<a class='edit button' href='edit_role_type/" + posting.id + "/'>Edit</a>"
-            + "<a class='remove button'"
-            + " onclick= deleteConfirmation(" + posting.name + ")"
-            + " href='remove_role_type/" + posting.id + "/'>Remove</a>"
+            + "<div class='publish button'>" + posting.published + "</div>"
+            //+ "<a class='remove button' href='remove_role_type/" + posting.id + "/'>Remove</a>"
             + roles
             + Icons.expand
             + Icons.retract
@@ -235,15 +244,16 @@ var display_project_list = function (data) {
     var displayString = "";
 
     //add edit, save, cancel rank buttons
-    displayString += "<div class='rank edit-rank'>Edit Rank</div>";
-    displayString += "<div class='rank save-rank'>Save</div>";
-    displayString += "<div class='rank cancel-rank'>Cancel</div>";
-    displayString += "<ul id='sortable'>";
+    list_div
+        .append("<div class='rank edit-rank'>Edit Rank</div>")
+        .append("<div class='rank save-rank'>Save</div>")
+        .append("<div class='rank cancel-rank'>Cancel</div>")
+        .append("<ul id='sortable'>");
 
     //add the project listings
     for (var i = 0; i < posts.length; i++) {
         //list_div.append(generateElem("Project", posts[i]));
-        displayString += generateElem("Project", posts[i]);
+        $("#sortable").append(generateElem("Project", posts[i]));
 
         //populate projectRankObject with pks (project ids) and original ranks
         projectRankObj[posts[i].id] = {};
@@ -253,15 +263,16 @@ var display_project_list = function (data) {
         $("#" + i).data("roles", posts[i].roles);
     }
 
-    displayString += "</ul>";
-
-    //add to page
-    list_div.append(displayString);
-
     //hide relevant buttons
     $(".roles-quick-view").hide();
     $(".drag-icon").hide();
     $(".retract-icon").hide();
+
+
+    $(".publish.button").click( function() {
+        console.log($(this).parent().attr("id"));
+    });
+
 
     //set up and handle toggling
     display_project_helper();
@@ -286,6 +297,12 @@ var display_roletype_list = function (data) {
     $(".roles-quick-view").hide();
     $(".drag-icon").hide();
     $(".retract-icon").hide();
+
+
+    $(".publish.button").click( function() {
+        console.log($(this).parent().attr("id"));
+    });
+
 };
 
 /**
@@ -341,6 +358,15 @@ $(document).ready(function () {
     });
 
 
+    $(".publish-roletype.publish.button").click( function() {
+        console.log($(this).parent().attr("id"));
+    });
+
+
+
+
+
+
     //toggle roles preview for projects and role types
     $('#content').on('click', '.elem', function () {
 
@@ -364,6 +390,8 @@ $(document).ready(function () {
             $(this).children(".retract-icon").hide();
         }
     });
+
+
 
 
     //go to last active tab (the tab that was last accessed, if any)
