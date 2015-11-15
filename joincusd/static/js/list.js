@@ -327,7 +327,7 @@ $(document).ready(function () {
         }else {
             $(this).children(".roles-quick-view").slideUp();
             $(this).children(".expand-icon").show();
-            $(this).children("retract-icon").hide();
+            $(this).children(".retract-icon").hide();
         }
 
     });
