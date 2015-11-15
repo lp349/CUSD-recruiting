@@ -11,7 +11,12 @@
     <h2>{{tagline}}</h2>
     <div class="project-description__text">
       <input type="checkbox" class="see-more__checkbox" id="seeMore">
-      {{description}}
+      <p class="lede">
+        {{description}}
+      </p>
+      <p>
+        {{additional_description}}
+      </p>
       <label for="seeMore" class="see-more__label">Read <span class="see-more__label--closed">More</span><span  class="see-more__label--open">Less</span></label>
     </div>
     <ul class="project-description__gallery">

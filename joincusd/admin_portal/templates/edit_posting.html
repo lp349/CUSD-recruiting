@@ -13,16 +13,11 @@
 
 </head>
 <body>
-    <h1> {% if is_edit %} Edit {% else %} Add {% endif %} a {% if posting_type == "project" %} Project {% else %} Role Type {% endif %}</h1>
+    <h1> Edit a {% if posting_type == "project" %} Project {% else %} Role Type {% endif %}</h1>
     <div class="form-content">
-    <form id="project_form" enctype="multipart/form-data" method="post" action="{{ form.form_submit_action_url }}">
+    <form id="project_form" enctype="multipart/form-data" method="post" action="{{ form_submit_action_url }}" onsubmit="return confirmation();">
 
       {% csrf_token %}
-      {% for hidden in form.hidden_fields %}
-          {% if hidden.html_name != "posting_type" %}
-              {{ hidden }}
-          {% endif %}     
-      {% endfor %}
 
       {% for field in form.visible_fields %}
         <div class="field-wrapper">
@@ -30,23 +25,24 @@
             {%if field.name != "role_multiselect"%}
             {{ field.errors }}
             <div class="field-name">{{ field.help_text}}</div>
-            {% if field.name == "detail_icon_path" and is_edit == True %}
-            <img src="{% static form.instance.detail_icon_path.name %}">
+            
+            {% if field.name == "detail_icon_path" %}
+            <img src="{% static form.instance.detail_icon_path.url %}">
             {% endif %}
 
-            {% if field.name == "list_thumbnail_path" and is_edit == True %}
+            {% if field.name == "list_thumbnail_path" %}
             <img src="{% static form.instance.list_thumbnail_path.url %}">
             {% endif %}
 
-            {% if field.name == "photo_one" and is_edit == True %}
+            {% if field.name == "photo_one" %}
               <img src="{{ form.instance.photo_one.url }}" />
             {% endif %}
 
-            {% if field.name == "photo_two" and is_edit == True %}
+            {% if field.name == "photo_two" %}
               <img src="{{ form.instance.photo_two.url }}" />
             {% endif %}
 
-            {% if field.name == "photo_three" and is_edit == True %}
+            {% if field.name == "photo_three" %}
               <img src="{{ form.instance.photo_three.url }}" />
             {% endif %}
 

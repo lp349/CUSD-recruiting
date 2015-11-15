@@ -24,7 +24,7 @@ body {
     font-family: "glober", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     color: #7A7A7A;
     margin: auto;
-    font-size: 1.2em;
+    font-size: 18px;
 
 }
 
@@ -35,14 +35,11 @@ a {
 .h {
     text-align: right;
     width: 95%;
-    padding: 1em;
-    padding-bottom: 0.5em;
-    /*height: 3em;*/
+    padding: 1rem;
+    padding-bottom: 0.5rem;
     height: auto;
-    /*background-color: #fff;*/
-    /*color: #ffffff;*/
     color: #3FAB6D;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     display: block;
     overflow: hidden;
 }
