@@ -108,8 +108,8 @@ a {
     height: auto;
     font-size: 1.3em;
     list-style-type: none;
-    border-top: 3px solid  #e2e3e3;
-    border-bottom: 3px solid  #e2e3e3;
+    border-top: 3px solid #AAAAAA;
+    border-bottom: 3px solid #AAAAAA;
     /*background-color: #f2f3f3;*/
     background-color: #FFFFFF;
     margin: auto;
@@ -169,7 +169,7 @@ a {
     text-align: right;;
     margin: auto;
     margin-bottom: 1rem;
-    cursor: pointer;
+    /*cursor: pointer;*/
     list-style: none;
     overflow: hidden;
 }
