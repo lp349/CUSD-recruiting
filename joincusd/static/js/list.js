@@ -73,9 +73,10 @@ var togglePublish = function(posting_type, pk) {
  */
 var toggleElements = function() {
     if ($(".elem-button").is(":hidden")) {
-        $(".elem-button").css("visibility", "visible");
+        $(".elem-button").css("visibility", "visible").show();
+
     }else {
-        $(".elem-button").css("visibility", "hidden");
+        $(".elem-button").css("visibility", "hidden").hide();
     }
 
     if ($(".expand-icon").is(":hidden")) {

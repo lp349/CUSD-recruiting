@@ -37,6 +37,7 @@ a {
 /******************************Header******************************/
 
 /********************General********************/
+
 .h {
     text-align: right;
     width: 90%;
@@ -50,6 +51,7 @@ a {
 }
 
 /**********Logo**********/
+
 .site-logo {
     padding-left: 0.625rem;
     padding-right: 0.625rem;
@@ -57,15 +59,12 @@ a {
 }
 
 .site-logo__image {
-    /*float: left;*/
-    /*max-height: 4.875rem;*/
-    /*margin: 1.3125rem 0;*/
-
     float: left;
     max-height: 3.9rem;
     margin: 1.05rem 0;
 
 }
+
 .site-logo__text {
     float: left;
     text-align: left;
@@ -177,6 +176,7 @@ a {
     font-size: 1.2em;
     float: left;
     margin-bottom: 1rem;
+    text-align: left;
 }
 
 /***********************************Buttons*************************************/
