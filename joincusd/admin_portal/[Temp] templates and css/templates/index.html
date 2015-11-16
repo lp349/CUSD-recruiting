@@ -103,7 +103,7 @@
             }
         }
 
-        display_project_list = function(data){
+        displayProjectList = function(data){
             posts = JSON.parse(data);
             list_div = $("#content");
 
@@ -114,7 +114,7 @@
             }
         };
 
-        display_roletype_list = function(data){
+        displayRoleTypeList = function(data){
             posts = JSON.parse(data);
             list_div = $("#content");
 
@@ -126,7 +126,7 @@
         };
 
 
-        display_role_list = function(data){
+        displayRoleList = function(data){
             posts = JSON.parse(data);
             list_div = $("#content");
 
@@ -172,17 +172,17 @@
 
             $("#projects-tab").click(function(){
                 console.log("project tab clicked");
-                $.get("/admin/ajax/project/", display_project_list);
+                $.get("/admin/ajax/project/", displayProjectList);
             });
 
             $("#roles-tab").click(function(){
                 console.log("roles tab clicked");
-                $.get("/admin/ajax/role", display_role_list);
+                $.get("/admin/ajax/role", displayRoleList);
             });
 
             $("#roletypes-tab").click(function(){
                 console.log("roletypes tab clicked");
-                $.get("/admin/ajax/role_type", display_roletype_list);
+                $.get("/admin/ajax/role_type", displayRoleTypeList);
             });
 
 
