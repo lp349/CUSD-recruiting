@@ -11,7 +11,7 @@ var projectRankObj = {};
 
 /**
  * SVG Icons
- * @type {{drag: string, expand: string, retract: string}}
+ * @type {{drag: string, expand: string, retract: string, remove: string}}
  */
 var Icons = {
 
@@ -28,6 +28,11 @@ var Icons = {
 
     retract: '<svg class="retract-icon" viewBox="0 0 100 100"> ' +
     '<path d="M 50 25 l 50 50 l -100 0 z"></path>' +
+    '</svg>',
+
+    remove:  '<svg class="remove-icon" viewBox="0 0 100 100"> ' +
+    '<circle stroke-width="5px" cx="50%" cy="50%" r="48%"></circle>' +
+    '<text  x="50%" y="50%" text-anchor="middle" dominant-baseline="central">x</text> ' +
     '</svg>'
 };
 
@@ -90,10 +95,11 @@ function generateElem(typ, posting) {
 
         var p = "<li class='project elem ui-state-default elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
             + Icons.drag
+            + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
             + "<span class='elem-name'>" + posting.name + "</span>"
-            + "<a class='edit button' href='edit_project/" + posting.id + "/'>Edit</a>"
-            + "<div class='publish "+ published.toLowerCase() +" button'>" + published + "</div>"
-            //+ "<a class='remove button' href='remove_project/" + posting.id + "/'>Remove</a>"
+            + "<a class='elem-button edit button' href='edit_project/" + posting.id + "/'>Edit</a>"
+            + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
+
             + roles
             + Icons.expand
             + Icons.retract
@@ -111,10 +117,10 @@ function generateElem(typ, posting) {
         roles += "</ul>";
 
         var rt = "<div class='role-type elem elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
+            + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
             + "<span class='elem-name'>" + posting.name + "</span>"
-            + "<a class='edit button' href='edit_role_type/" + posting.id + "/'>Edit</a>"
-            + "<div class='publish "+ published.toLowerCase() +" button'>" + published + "</div>"
-            //+ "<a class='remove button' href='remove_role_type/" + posting.id + "/'>Remove</a>"
+            + "<a class='elem-button edit button' href='edit_role_type/" + posting.id + "/'>Edit</a>"
+            + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
             + roles
             + Icons.expand
             + Icons.retract
@@ -122,11 +128,10 @@ function generateElem(typ, posting) {
         return rt;
     } else if ((typ === "Opening")) {
         var r = "<div class='role elem' id='" + posting.id + "'>"
+            + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
             + "<span class='elem-name'>" + posting.title + "</span>"
-            + "<a class='edit button' href='edit_role/" + posting.id + "/'>Edit</a>"
-            + "<a class='remove button'"
-            + " onclick= 'return deleteConfirmation(" + posting.title + ");'"
-            + " href='remove_role/" + posting.id + "/'>Remove</a>"
+            + "<a class='elem-button edit button' href='edit_role/" + posting.id + "/'>Edit</a>"
+
             + "</div>";
         return r;
     }
@@ -151,6 +156,23 @@ function getCookie(name) {
     return cookieValue;
 }
 
+/**
+ * Hides/Shows icons and buttons for rank change state
+ */
+var toggleElements = function() {
+    if ($(".elem-button").is(":hidden")) {
+        $(".elem-button").css("visibility", "visible");
+    }else {
+        $(".elem-button").css("visibility", "hidden");
+    }
+
+    if ($(".expand-icon").is(":hidden")) {
+        $(".expand-icon").css("visibility", "visible");
+    }else {
+        $(".expand-icon").css("visibility", "hidden");
+    }
+
+};
 
 /**
  * Toggles and handles sortable project list
@@ -174,7 +196,9 @@ var display_project_helper = function () {
         $("#sortable").sortable("enable");
         $("#sortable li").css("cursor", "move");
         $(".drag-icon").show();
+        toggleElements();
     });
+
 
     $(".cancel-rank").click(function () {
         console.log(getNewRanks());
@@ -183,14 +207,18 @@ var display_project_helper = function () {
     });
 
     $(".save-rank").click(function () {
+        $(".elem-button").removeClass("button-disabled");
         //console.log(JSON.stringify(getNewRanks()));
-	var rank_changes = JSON.stringify(getNewRanks()); 
+        var rank_changes = JSON.stringify(getNewRanks());
         var csrftoken = getCookie('csrftoken');
-        $.post("/admin/ajax/update_ranks", {csrfmiddlewaretoken:csrftoken, rank_string:rank_changes}, function(){
-	    $(".cancel-rank").hide();
-	    $(".save-rank").hide();
-            $(".edit-rank").show();
-	    display_project_list();});
+        $.post("/admin/ajax/update_ranks", {csrfmiddlewaretoken: csrftoken, rank_string: rank_changes}, function () {
+            //$(".cancel-rank").hide();
+            //$(".save-rank").hide();
+            //$(".edit-rank").show();
+            //toggleElements();
+            //display_project_list();
+            $.get("/admin/ajax/project/", display_project_list);
+        });
     });
 
 };
@@ -262,6 +290,35 @@ var getNewRanks = function () {
 };
 
 
+var activateDeleteHover = function () {
+    $(".remove.button").css("visibility", "hidden");
+
+    $(".elem").hover(function () {
+        if (!isChangingRanks()) {
+            $(this).children(".remove.button").css("visibility", "visible");
+            $(".remove-icon").hover(function() {
+                console.log("svg hovered");
+                $(this).addClass("remove-svg-hover");
+                console.log($(this).hasClass("remove-svg-hover"))
+            })
+        }
+    }, function () {
+        $(this).children(".remove.button").css("visibility", "hidden");
+    });
+
+
+};
+
+
+/**
+ * Determines whether sorting is enabled
+ * @returns {boolean}
+ */
+var isChangingRanks = function() {
+    return !($("#sortable").hasClass("ui-sortable-disabled") || activeTab !== "projects-tab");
+};
+
+
 /**
  * 1. Sorts the given projects by rank
  * 2. Populates projectRankObj with ids and original rankings
@@ -302,9 +359,8 @@ var display_project_list = function (data) {
         projectRankObj[posts[i].id] = {};
         projectRankObj[posts[i].id]["originalRank"] = i;
         projectRankObj[posts[i].id]["newRank"] = i;
-
-        $("#" + i).data("roles", posts[i].roles);
     }
+
 
     //hide relevant buttons
     $(".roles-quick-view").hide();
@@ -312,13 +368,15 @@ var display_project_list = function (data) {
     $(".retract-icon").hide();
 
 
-    $(".publish.button").click( function() {
 
+
+    $(".publish.button").click( function() {
         console.log($(this).parent().attr("id"));
         togglePublish("project", $(this).parent().attr("id"));
 
     });
 
+    activateDeleteHover();
 
     //set up and handle toggling
     display_project_helper();
@@ -331,6 +389,13 @@ var display_project_list = function (data) {
  */
 var display_roletype_list = function (data) {
     var posts = JSON.parse(data);
+
+    //sort alphabetically before display
+    posts.sort(function (post1, post2) {
+        if (post1.name < post2.name) return -1;
+        return post1.name > post2.name;
+    });
+
     var list_div = $("#content");
     list_div.empty();
 
@@ -349,6 +414,8 @@ var display_roletype_list = function (data) {
         console.log($(this).parent().attr("id"));
         togglePublish("role_type", $(this).parent().attr("id"));
     });
+
+    activateDeleteHover();
 
 };
 
@@ -372,6 +439,8 @@ var display_role_list = function (data) {
     for (var i = 0; i < posts.length; i++) {
         list_div.append(generateElem("Opening", posts[i]));
     }
+
+    activateDeleteHover();
 };
 
 $(document).ready(function () {
@@ -404,30 +473,31 @@ $(document).ready(function () {
         $.get("/admin/ajax/role_type", display_roletype_list);
     });
 
-
     //toggle roles preview for projects and role types
     $('#content').on('click', '.elem', function () {
+        if (!isChangingRanks()) {
+            if ($(this).children(".roles-quick-view").is(":hidden")) {
+                //listing was not expanded
+                //hide all previews first
+                $(".roles-quick-view").slideUp();
+                $(".retract-icon").hide();
+                $(".expand-icon").show();
 
-        if ($(this).children(".roles-quick-view").is(":hidden")) {
-            //listing was not expanded
-            //hide all previews first
-            $(".roles-quick-view").slideUp();
-            $(".retract-icon").hide();
-            $(".expand-icon").show();
+                //show the roles associated with clicked listing
+                $(this).children(".roles-quick-view").slideDown();
+                $(this).children(".retract-icon").show();
+                $(this).children(".expand-icon").hide();
 
-            //show the roles associated with clicked listing
-            $(this).children(".roles-quick-view").slideDown();
-            $(this).children(".retract-icon").show();
-            $(this).children(".expand-icon").hide();
-
-        } else {
-            //clicked listing is already expanded,
-            // hide the roles associated with clicked listing
-            $(this).children(".roles-quick-view").slideUp();
-            $(this).children(".expand-icon").show();
-            $(this).children(".retract-icon").hide();
+            } else {
+                //clicked listing is already expanded,
+                // hide the roles associated with clicked listing
+                $(this).children(".roles-quick-view").slideUp();
+                $(this).children(".expand-icon").show();
+                $(this).children(".retract-icon").hide();
+            }
         }
     });
+
 
 
     //go to last active tab (the tab that was last accessed, if any)

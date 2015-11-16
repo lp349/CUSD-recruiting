@@ -184,6 +184,22 @@ a {
 
 .add-button svg text {
     font-size: 4rem;
+    stroke: #3FAB6D;
+    fill: #3FAB6D;
+}
+
+.add-button svg circle {
+    fill: #FFFFFF;
+    stroke: #3FAB6D;
+}
+
+.add-button svg:hover text {
+    stroke: #FFFFFF;
+    fill: #FFFFFF;
+}
+
+.add-button svg:hover circle {
+    fill: #3FAB6D;
 }
 
 .button:hover {
@@ -203,7 +219,7 @@ a {
     font-size: 1em;
 }
 
-.edit.button, .remove.button, .publish.button, .unpublish.button {
+.elem-button {
     /*float: right;*/
     text-align: center;
     padding: 0.5rem;
@@ -292,10 +308,14 @@ form {
 
 
 
-.publish, .unpublish {
+.publish {
     background-color: #3F9A8E;
     border: 2px solid #3F9A8E;
     color: #FFF;
+}
+
+.publish:hover {
+    color: #3F9A8E;
 }
 
 /*.unpublish {*/
@@ -303,3 +323,47 @@ form {
     /*border: 2px solid #83C2BA;*/
     /*color: #FFF;*/
 /*}*/
+
+
+.button-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.remove.button {
+    float: left;
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    background-color: transparent;
+    border: none;
+    height: auto;
+    width: auto;
+    margin: 0;
+    transform: translate(-1rem, -1rem);
+}
+
+.remove svg {
+    height: 2rem;
+    width: 2rem;
+    font-size: 5em;
+}
+
+.remove svg circle {
+    fill: #FFFFFF;
+}
+
+.remove svg text{
+    stroke: #E04D25;
+    fill: #E04D25;
+}
+
+.remove svg:hover circle{
+    fill: #E04D25;
+
+}
+
+.remove svg:hover text {
+    stroke: #FFFFFF;
+    fill: #FFFFFF;
+}
