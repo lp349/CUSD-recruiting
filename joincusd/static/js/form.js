@@ -1,3 +1,9 @@
+function validate() {
+    //@todo
+    return false;
+}
+
+
 $(document).ready(function () {
     $("input:checkbox:checked").parent().addClass("selected-checkbox");
 
@@ -11,4 +17,31 @@ $(document).ready(function () {
             $(wrapper).removeClass("selected-checkbox");
         }
     });
+
+    $("input").prop('required',true);
+    $("textarea").prop('required',true);
+
+    $("input:text").blur(function() {
+        var val = $(this).val().trim();
+        if (!val || val.length === 0) {
+            $(this).addClass("error-field").parent().children(".message").show();
+        }else {
+            $(this).removeClass("error-field").parent().children(".message").hide();
+        }
+    });
+
+
+    $("textarea").blur(function() {
+        var val = $(this).val().trim();
+        if (!val || val.length === 0) {
+            $(this).addClass("error-field").parent().children(".message").show();
+        }else {
+            $(this).removeClass("error-field").parent().children(".message").hide();
+        }
+    });
+
+    $("input:text").parent().append("<div class='message'>This field is required</div>");
+    $("textarea").parent().append("<div class='message'>This field is required</div>");
+    $(".message").hide();
+
 });

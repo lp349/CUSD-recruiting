@@ -25,6 +25,15 @@ h1 {
     width: 30%;
 }
 
+
+.error-field {
+    border: 2px solid #FF0033;
+}
+
+.message {
+    margin: 0.1rem 0.1rem 0.1rem 0.1rem;
+    color: #FF0033;
+}
 /**************************************Input***************************************/
 textarea {
     width: 100%;
