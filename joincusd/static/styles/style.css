@@ -184,6 +184,22 @@ a {
 
 .add-button svg text {
     font-size: 4rem;
+    stroke: #3FAB6D;
+    fill: #3FAB6D;
+}
+
+.add-button svg circle {
+    fill: #FFFFFF;
+    stroke: #3FAB6D;
+}
+
+.add-button svg:hover text {
+    stroke: #FFFFFF;
+    fill: #FFFFFF;
+}
+
+.add-button svg:hover circle {
+    fill: #3FAB6D;
 }
 
 .button:hover {
