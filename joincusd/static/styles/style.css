@@ -104,16 +104,25 @@ a {
 
 #nav-bar {
     text-align: center;
-    width: 85%;
+    width: 90%;
     height: auto;
     font-size: 1.3em;
     list-style-type: none;
-    border-top: 3px solid #3FAB6D;
-    border-bottom: 3px solid #3FAB6D;
-    background-color: white;
+    border-top: 3px solid  #f2f3f3;
+    border-bottom: 3px solid  #f2f3f3;
+    /*background-color: #f2f3f3;*/
+    background-color: #FFFFFF;
     margin: auto;
     color: #333333;
 
+}
+
+#projects-tab {
+    border-right: 2px solid white;
+}
+
+#roles-tab {
+    border-left: 2px solid white;
 }
 
 .tab {
@@ -122,16 +131,19 @@ a {
     width: 28%;
     padding: 1%;
     /*border: 2px solid #1f628d;*/
-    color: #3FAB6D;
+    color: #9A9A9A;
     /*border: 2px solid #2ba0ed;*/
     /*color: #333333;*/
     cursor: pointer;
+    font-weight: 300;
 }
 
 .selected-tab {
-    background-color: #3FAB6D;
+    /*background-color: #A1A1A1;*/
     /*background-color:  #2ba0ed;*/
-    color: #ffffff;
+    color: #2E897D;
+    /*text-decoration: underline;*/
+    font-weight: bold;
 }
 
 
