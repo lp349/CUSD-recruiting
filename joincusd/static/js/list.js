@@ -389,6 +389,13 @@ var display_project_list = function (data) {
  */
 var display_roletype_list = function (data) {
     var posts = JSON.parse(data);
+    
+    //sort alphabetically before display
+    posts.sort(function (post1, post2) {
+        if (post1.name < post2.name) return -1;
+        return post1.name > post2.name;
+    });
+
     var list_div = $("#content");
     list_div.empty();
 
