@@ -448,7 +448,7 @@ def edit_role(request, pk):
     form = OpeningForm(instance=old_role)
     form.form_submit_action_url = "/admin/edit_role/" + pk + "/"
 
-   #additionally, since there is no direct mapping from
+    #Additionally, since there is no direct mapping from
     #the model's openings set to the form's MultipleChoiceField,
     #we'll need to generate the initial checked choices
     initial_roletypes = []
@@ -464,7 +464,7 @@ def edit_role(request, pk):
         all_roletypes.append((posting.pk, posting.name))
       else:
         all_projects.append((posting.pk, posting.name))
-
+      # check if the old role is in this posting's opening 
       if old_role in posting.openings.all():
         if posting.posting_type == "role_type":
           initial_roletypes.append(posting.pk)
@@ -487,18 +487,24 @@ def edit_role(request, pk):
         old_role.description=description
         old_role.save()
         postings=map(int, form.cleaned_data['selected_projects'])
+        #deselect_id: the postings that were originally linked to the roles 
+        #but not any more 
         deselect_id=set(initial_projects)-set(postings)
+        #newselect_id: the postings that needed to be added to 
+        #the relationship table in order to link to this role
         newselect_id=set(postings)-set(initial_projects)
-        updateselect_id=set(postings) & set(initial_projects)
+        #updateselect_id: don't need to do anything for these category
+        #updateselect_id=set(postings) & set(initial_projects)
 
         for posting_id in deselect_id:
           posting=Posting.objects.get(pk=posting_id)
           if posting:
-            print posting.openings
+            #remove the relationship
             posting.openings.remove(old_role)
         for posting_id in newselect_id:
           posting=Posting.objects.get(pk=posting_id)
           if posting:
+            #add new relationship
             posting.openings.add(old_role)
       return HttpResponseRedirect("/admin")
     else:
