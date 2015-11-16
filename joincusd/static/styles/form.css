@@ -1,3 +1,14 @@
+/**************************************HTML***************************************/
+
+h1 {
+    color: #333333;
+    font-weight: normal;
+    font-size: 2em;
+    padding: 2% 0 0 2%;
+}
+
+/**************************************Fields***************************************/
+
 .field-wrapper {
     width: 96%;
     padding: 2%;
@@ -14,6 +25,7 @@
     width: 30%;
 }
 
+/**************************************Input***************************************/
 textarea {
     width: 100%;
     height: 15rem;
@@ -51,7 +63,7 @@ input[type=file] {
     overflow: hidden;
 }
 
-
+/*********************************Checkboxes (Wrappers For)******************************/
 .checkboxes {
     max-height: 10rem;
     overflow: scroll;
@@ -64,6 +76,16 @@ input[type=file] {
     display: inline-block;
 }
 
+.selected-checkbox {
+    border: 2px solid #76B2AA;
+    /*border: 2px solid #3FAB6D;*/
+    /*background-color: #3FAB6D;*/
+    background-color: #76B2AA;
+    color: #FFFFFF;
+}
+
+/**************************************Buttons**************************************/
+
 .submit-button {
     float: right;
     font-size: inherit;
@@ -71,32 +93,12 @@ input[type=file] {
     margin: 3rem;
 }
 
-.reset-button{
-    float: right;
-    font-size: inherit;
-    background-color: #FFFFFF;
-    color: #3FAB6D;
-    margin: 3rem;
-    margin-right: 1.5rem;
-}
-
 .upload-button {
     width: 8rem;
     height: 1rem;
 }
 
-.reset-button:hover {
-    background-color: #3FAB6D;
-    color: #FFFFFF;
-}
-
-h1 {
-    color: #333333;
-    font-weight: normal;
-    font-size: 2em;
-    padding: 2% 0 0 2%;
-}
-
+/**************************************Roles(List)**************************************/
 ul {
     list-style: none;
     width: 98%;
@@ -124,10 +126,3 @@ li label{
     box-shadow: 1px 1px 1px 1px lightgray;
 }
 
-.selected-checkbox {
-    border: 2px solid #76B2AA;
-    /*border: 2px solid #3FAB6D;*/
-    /*background-color: #3FAB6D;*/
-    background-color: #76B2AA;
-    color: #FFFFFF;
-}
