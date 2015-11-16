@@ -253,6 +253,15 @@ a {
     margin: 0.5rem;
 }
 
+.edit {
+    background-color: #69C26C;
+    border-color: #69C26C;
+}
+
+.edit:hover {
+    color: #69C26C;
+}
+
 .publish {
     background-color: #3F9A8E;
     border: 2px solid #3F9A8E;
@@ -262,6 +271,7 @@ a {
 .publish:hover {
     color: #3F9A8E;
 }
+
 
 /*****remove buttons*****/
 .remove.button {
