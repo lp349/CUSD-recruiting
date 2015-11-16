@@ -309,3 +309,41 @@ form {
     opacity: 0.5;
     pointer-events: none;
 }
+
+.remove.button {
+    float: left;
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    background-color: transparent;
+    border: none;
+    height: auto;
+    width: auto;
+    margin: 0;
+    transform: translate(-1rem, -1rem);
+}
+
+.remove svg {
+    height: 2rem;
+    width: 2rem;
+    font-size: 5em;
+}
+
+.remove svg circle {
+    fill: #FFFFFF;
+}
+
+.remove svg text{
+    stroke: #E04D25;
+    fill: #E04D25;
+}
+
+.remove svg:hover circle{
+    fill: #E04D25;
+
+}
+
+.remove svg:hover text {
+    stroke: #FFFFFF;
+    fill: #FFFFFF;
+}

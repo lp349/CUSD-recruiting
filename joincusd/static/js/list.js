@@ -11,7 +11,7 @@ var projectRankObj = {};
 
 /**
  * SVG Icons
- * @type {{drag: string, expand: string, retract: string}}
+ * @type {{drag: string, expand: string, retract: string, remove: string}}
  */
 var Icons = {
 
@@ -28,6 +28,11 @@ var Icons = {
 
     retract: '<svg class="retract-icon" viewBox="0 0 100 100"> ' +
     '<path d="M 50 25 l 50 50 l -100 0 z"></path>' +
+    '</svg>',
+
+    remove:  '<svg class="remove-icon" viewBox="0 0 100 100"> ' +
+    '<circle stroke-width="5px" cx="50%" cy="50%" r="48%"></circle>' +
+    '<text  x="50%" y="50%" text-anchor="middle" dominant-baseline="central">x</text> ' +
     '</svg>'
 };
 
@@ -90,10 +95,11 @@ function generateElem(typ, posting) {
 
         var p = "<li class='project elem ui-state-default elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
             + Icons.drag
+            + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
             + "<span class='elem-name'>" + posting.name + "</span>"
             + "<a class='elem-button edit button' href='edit_project/" + posting.id + "/'>Edit</a>"
             + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
-            //+ "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>Remove</a>"
+
             + roles
             + Icons.expand
             + Icons.retract
@@ -111,10 +117,10 @@ function generateElem(typ, posting) {
         roles += "</ul>";
 
         var rt = "<div class='role-type elem elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
+            + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
             + "<span class='elem-name'>" + posting.name + "</span>"
             + "<a class='elem-button edit button' href='edit_role_type/" + posting.id + "/'>Edit</a>"
             + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
-            //+ "<a class='elem-button remove button' href='remove_role_type/" + posting.id + "/'>Remove</a>"
             + roles
             + Icons.expand
             + Icons.retract
@@ -122,11 +128,10 @@ function generateElem(typ, posting) {
         return rt;
     } else if ((typ === "Opening")) {
         var r = "<div class='role elem' id='" + posting.id + "'>"
+            + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
             + "<span class='elem-name'>" + posting.title + "</span>"
             + "<a class='elem-button edit button' href='edit_role/" + posting.id + "/'>Edit</a>"
-            + "<a class='elem-button remove button'"
-            + " onclick= 'return deleteConfirmation(" + posting.title + ");'"
-            + " href='remove_role/" + posting.id + "/'>Remove</a>"
+
             + "</div>";
         return r;
     }
@@ -151,6 +156,9 @@ function getCookie(name) {
     return cookieValue;
 }
 
+/**
+ * Hides/Shows icons and buttons for rank change state
+ */
 var toggleElements = function() {
     if ($(".elem-button").is(":hidden")) {
         $(".elem-button").css("visibility", "visible");
@@ -282,6 +290,35 @@ var getNewRanks = function () {
 };
 
 
+var activateDeleteHover = function () {
+    $(".remove.button").css("visibility", "hidden");
+
+    $(".elem").hover(function () {
+        if (!isChangingRanks()) {
+            $(this).children(".remove.button").css("visibility", "visible");
+            $(".remove-icon").hover(function() {
+                console.log("svg hovered");
+                $(this).addClass("remove-svg-hover");
+                console.log($(this).hasClass("remove-svg-hover"))
+            })
+        }
+    }, function () {
+        $(this).children(".remove.button").css("visibility", "hidden");
+    });
+
+
+};
+
+
+/**
+ * Determines whether sorting is enabled
+ * @returns {boolean}
+ */
+var isChangingRanks = function() {
+    return !($("#sortable").hasClass("ui-sortable-disabled") || activeTab !== "projects-tab");
+};
+
+
 /**
  * 1. Sorts the given projects by rank
  * 2. Populates projectRankObj with ids and original rankings
@@ -331,12 +368,15 @@ var display_project_list = function (data) {
     $(".retract-icon").hide();
 
 
+
+
     $(".publish.button").click( function() {
         console.log($(this).parent().attr("id"));
         togglePublish("project", $(this).parent().attr("id"));
 
     });
 
+    activateDeleteHover();
 
     //set up and handle toggling
     display_project_helper();
@@ -368,6 +408,8 @@ var display_roletype_list = function (data) {
         togglePublish("role_type", $(this).parent().attr("id"));
     });
 
+    activateDeleteHover();
+
 };
 
 /**
@@ -390,6 +432,8 @@ var display_role_list = function (data) {
     for (var i = 0; i < posts.length; i++) {
         list_div.append(generateElem("Opening", posts[i]));
     }
+
+    activateDeleteHover();
 };
 
 $(document).ready(function () {
@@ -422,10 +466,6 @@ $(document).ready(function () {
         $.get("/admin/ajax/role_type", display_roletype_list);
     });
 
-    var isChangingRanks = function() {
-        return !($("#sortable").hasClass("ui-sortable-disabled") || activeTab !== "projects-tab");
-    };
-
     //toggle roles preview for projects and role types
     $('#content').on('click', '.elem', function () {
         if (!isChangingRanks()) {
@@ -450,7 +490,6 @@ $(document).ready(function () {
             }
         }
     });
-
 
 
 
