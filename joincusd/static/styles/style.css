@@ -39,9 +39,9 @@ a {
 /********************General********************/
 .h {
     text-align: right;
-    width: 95%;
-    padding: 1rem;
-    padding-bottom: 0.5rem;
+    width: 90%;
+    /*padding: 2rem 2rem 0.5rem 2rem;*/
+    padding: 1% 5% 1% 5%;
     height: auto;
     color: #3FAB6D;
     margin-bottom: 1rem;
@@ -57,16 +57,21 @@ a {
 }
 
 .site-logo__image {
+    /*float: left;*/
+    /*max-height: 4.875rem;*/
+    /*margin: 1.3125rem 0;*/
+
     float: left;
-    max-height: 4.875rem;
-    margin: 1.3125rem 0;
+    max-height: 3.9rem;
+    margin: 1.05rem 0;
+
 }
 .site-logo__text {
     float: left;
     text-align: left;
-    margin: 1.375rem 0 1.375rem 0.625rem;
-    font-size: 2.125rem;
-    line-height: 2.375rem;
+    margin: 1.1rem 0 1.1rem 0.5rem;
+    font-size: 1.7rem;
+    line-height: 1.9rem;
     font-weight: 300;
     color: #7a7a7a;
     /*display: none; */
