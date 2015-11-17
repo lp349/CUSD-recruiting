@@ -18,7 +18,7 @@ $(document).ready(function () {
         }
     });
 
-    $("input").prop('required',true);
+    $("input:visible").prop('required',true);
     $("textarea").prop('required',true);
 
     $("input:text").blur(function() {
@@ -40,7 +40,7 @@ $(document).ready(function () {
         }
     });
 
-    $("input:text").parent().append("<div class='message'>This field is required</div>");
+    $("input:visible:text").parent().append("<div class='message'>This field is required</div>");
     $("textarea").parent().append("<div class='message'>This field is required</div>");
     $(".message").hide();
 
