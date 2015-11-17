@@ -228,28 +228,29 @@ a {
 .add-button svg {
     height: 4rem;
     width: 4rem;
+    font-size: 1.25em;
     cursor: pointer;
 }
 
-.add-button svg text {
-    font-size: 2em;
+.add-button svg:hover text {
     stroke: #3FAB6D;
     stroke-width: 0.1rem;
     fill: #3FAB6D;
 }
 
-.add-button svg circle {
+.add-button svg:hover circle {
     fill: #FFFFFF;
     stroke: #3FAB6D;
     stroke-width: 0.2rem;
 }
 
-.add-button svg:hover text {
+.add-button svg text {
     stroke: #FFFFFF;
     fill: #FFFFFF;
+    stroke-width: 0.1rem;
 }
 
-.add-button svg:hover circle {
+.add-button svg circle {
     fill: #3FAB6D;
 }
 
