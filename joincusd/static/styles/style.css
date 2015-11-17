@@ -392,5 +392,20 @@ a {
     width: 100%;
 }
 
+.checkbox-icon path{
+    stroke-width: 15%;
+    fill: none;
+    stroke: #000000;
+}
 
+.checkbox-icon {
+    float: left;
+    height: 1rem;
+    border-radius: 20%;
+    border: 0.15rem solid black;
+}
+
+.checkbox-icon.unchecked path{
+    stroke: none;
+}
 /**************************************************************************************/

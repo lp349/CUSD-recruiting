@@ -77,20 +77,39 @@ input[type=file] {
     max-height: 10rem;
     overflow: scroll;
     background-color: #FFFFFF;
+    text-align: left;
 }
 
 
 .checkbox {
-    width: 45%;
     display: inline-block;
 }
 
+
+.checkbox .checkbox-icon path{
+    stroke: none;
+}
+
+
 .selected-checkbox {
-    border: 2px solid #76B2AA;
+    /*border: 2px solid #76B2AA;*/
     /*border: 2px solid #3FAB6D;*/
     /*background-color: #3FAB6D;*/
-    background-color: #76B2AA;
-    color: #FFFFFF;
+    /*background-color: #76B2AA;*/
+    /*color: #FFFFFF;*/
+
+    color: #76B2AA;
+    /*font-weight: bold;*/
+}
+
+.checkbox .checkbox-icon {
+    border-color:  #76B2AA;
+    height: 1.3rem;
+
+}
+
+.selected-checkbox .checkbox-icon path {
+    stroke: #76B2AA;
 }
 
 /**************************************Buttons**************************************/
@@ -116,7 +135,7 @@ ul {
 }
 
 li {
-    width: 30%;
+    width: 31%;
     min-width: 12rem;
     display: inline-block;
     margin: 0.5rem;
@@ -134,4 +153,6 @@ li label{
     border: 2px solid #FFFFFF;
     box-shadow: 1px 1px 1px 1px lightgray;
 }
+
+
 
