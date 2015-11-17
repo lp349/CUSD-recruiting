@@ -177,7 +177,7 @@ function _generateRoleTypeListing(posting) {
  */
 function _generateRoleListing(posting) {
     var r = "<div class='role elem' id='" + posting.id + "'>"
-        + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
+        + "<a class='elem-button remove button' href='remove_role/" + posting.id + "/'>"+ Icons.remove +"</a>"
         + "<span class='elem-name'>" + posting.title + "</span>"
         + "<a class='elem-button edit button' href='edit_role/" + posting.id + "/'>Edit</a>"
 
