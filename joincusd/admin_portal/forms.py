@@ -23,7 +23,7 @@ class PostingForm(forms.ModelForm):
         cleaned_data=super(PostingForm, self).clean()
         name=cleaned_data.get("name");
         tagline=cleaned_data.get("tagline");
-        desription=cleaned_data.get("description");
+        description=cleaned_data.get("description");
         #photos=cleaned_data.get("photos");
         openings=cleaned_data.get("openings");
         #also check the detail_icon_paht, list_thumbname_path

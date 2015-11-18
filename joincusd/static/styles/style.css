@@ -395,14 +395,14 @@ a {
 .checkbox-icon path{
     stroke-width: 15%;
     fill: none;
-    stroke: #000000;
+    stroke: #7A7A7A;
 }
 
 .checkbox-icon {
     float: left;
     height: 1rem;
     border-radius: 20%;
-    border: 0.15rem solid black;
+    border: 0.15rem solid #7A7A7A;
 }
 
 .checkbox-icon.unchecked path{

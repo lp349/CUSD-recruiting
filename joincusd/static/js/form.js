@@ -4,6 +4,9 @@ function validate() {
 }
 
 $(document).ready(function () {
+
+    $("#id_published").parent().parent().hide(); ///hide "published" field...
+
     $("input:checkbox").parent()
         .addClass("checkbox")
         .append(Icons.checkbox);
