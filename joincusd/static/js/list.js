@@ -54,9 +54,9 @@ var toggleElements = function() {
     }
 
     if ($(".expand-icon").is(":hidden")) {
-        $(".expand-icon").css("visibility", "visible");
+        $(".expand-icon").css("visibility", "visible").show();
     }else {
-        $(".expand-icon").css("visibility", "hidden");
+        $(".expand-icon").css("visibility", "hidden").hide();
     }
 
 };
