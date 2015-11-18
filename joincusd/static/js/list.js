@@ -62,6 +62,15 @@ var toggleElements = function() {
 };
 
 /**
+ * Hides the roles preview
+ */
+var hideAllQuickView = function() {
+    $(".roles-quick-view").slideUp();
+    $(".retract-icon").hide();
+    $(".expand-icon").show();
+};
+
+/**
  * Contains logic for toggling delete buttons
  */
 var activateDeleteHover = function () {
@@ -101,8 +110,8 @@ function _generateProjectListing(posting) {
         + Icons.drag
         + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
         + "<span class='elem-name'>" + posting.name + "</span>"
-        + "<a class='elem-button edit button' href='edit_project/" + posting.id + "/'>Edit</a>"
         + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
+        + "<a class='elem-button edit button' href='edit_project/" + posting.id + "/'>Edit</a>"
         + roles
         + Icons.expand
         + Icons.retract
@@ -133,8 +142,8 @@ function _generateRoleTypeListing(posting) {
     var rt = "<div class='role-type elem elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
         + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
         + "<span class='elem-name'>" + posting.name + "</span>"
-        + "<a class='elem-button edit button' href='edit_role_type/" + posting.id + "/'>Edit</a>"
         + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
+        + "<a class='elem-button edit button' href='edit_role_type/" + posting.id + "/'>Edit</a>"
         + roles
         + Icons.expand
         + Icons.retract
@@ -281,8 +290,7 @@ var isChangingRanks = function() {
 var displayProjectListHelper = function () {
 
     $(function () {
-        $('#sortable')
-            .sortable()
+        $('#sortable').sortable()
             .disableSelection()
             .sortable("disable");
 
@@ -296,6 +304,7 @@ var displayProjectListHelper = function () {
         $("#sortable").sortable("enable");
         $("#sortable li").css("cursor", "move");
         $(".drag-icon").show();
+        hideAllQuickView();
         toggleElements();
     });
 
@@ -369,7 +378,7 @@ var displayProjectList = function (data) {
 
     });
 
-    activateDeleteHover();
+    //activateDeleteHover();
 
     //set up and handle toggling
     displayProjectListHelper();
@@ -408,7 +417,7 @@ var displayRoleTypeList = function (data) {
         togglePublish("role_type", $(this).parent().attr("id"));
     });
 
-    activateDeleteHover();
+    //activateDeleteHover();
 
 };
 
@@ -433,7 +442,7 @@ var displayRoleList = function (data) {
         list_div.append(generateElem("Opening", posts[i]));
     }
 
-    activateDeleteHover();
+    //activateDeleteHover();
 };
 
 $(document).ready(function () {
@@ -472,9 +481,7 @@ $(document).ready(function () {
             if ($(this).children(".roles-quick-view").is(":hidden")) {
                 //listing was not expanded
                 //hide all previews first
-                $(".roles-quick-view").slideUp();
-                $(".retract-icon").hide();
-                $(".expand-icon").show();
+                hideAllQuickView();
 
                 //show the roles associated with clicked listing
                 $(this).children(".roles-quick-view").slideDown();
@@ -484,9 +491,7 @@ $(document).ready(function () {
             } else {
                 //clicked listing is already expanded,
                 // hide the roles associated with clicked listing
-                $(this).children(".roles-quick-view").slideUp();
-                $(this).children(".expand-icon").show();
-                $(this).children(".retract-icon").hide();
+                hideAllQuickView();
             }
         }
     });

@@ -154,6 +154,7 @@ a {
     margin: auto;
     background-color: #F2F3F3;
     padding: 2rem;
+    overflow: hidden;
 }
 
 .elem {
@@ -165,11 +166,12 @@ a {
     /*color: #3FAB6D;*/
     color: #7A7A7A;
     width: 90%;
+    min-width: 0;
     padding: 2%;
-    text-align: right;;
+    text-align: left;
     margin: auto;
     margin-bottom: 1rem;
-    /*cursor: pointer;*/
+    cursor: pointer;
     list-style: none;
     overflow: hidden;
 }
@@ -186,7 +188,7 @@ a {
 .elem-name {
     font-weight: normal;
     font-size: 1.2em;
-    float: left;
+    /*float: left;*/
     margin-bottom: 1rem;
     text-align: left;
 }
@@ -257,7 +259,7 @@ a {
 
 /*****Element (Listing) buttons*****/
 .elem-button {
-    /*float: right;*/
+    float: right;
     text-align: center;
     padding: 0.5rem;
     cursor: pointer;
@@ -355,13 +357,17 @@ a {
 
 /*******************************roles preview*******************************/
 .roles-quick-view {
+    margin: auto;
+    margin-top: 2rem;
     height: auto;
-    width: auto;
+    width: 98%;
     text-align: left;
 }
 
 .quick-view-elem {
-    text-align: left;
+    /*text-align: center;*/
+    width: 25%;
+    min-width: 18rem;
 }
 
 
@@ -386,7 +392,7 @@ a {
 }
 
 .expand-icon, .retract-icon {
-    height: 0.6rem;
+    height: 0.8rem;
     margin: auto;
     display: block;
     width: 100%;
