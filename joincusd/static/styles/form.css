@@ -83,6 +83,7 @@ input[type=file] {
 
 .checkbox {
     display: inline-block;
+    border: 0.1rem solid #E1E1E1;
 }
 
 
