@@ -26,6 +26,11 @@ $(document).ready(function () {
     });
 
     $("input:visible").prop('required',true);
+
+    if ($(".form-title").html().trim().indexOf("Edit")==0) {
+        $("input:file").prop('required',false);
+    }
+
     $("textarea").prop('required',true);
 
     $("input:text").blur(function() {
