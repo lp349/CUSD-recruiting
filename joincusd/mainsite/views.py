@@ -32,7 +32,7 @@ def posting(request, pk):
     'title': 'About',
     'projects': Posting.objects.filter(posting_type='project'),
     'role_types': Posting.objects.filter(posting_type='role_type'),
-    'type': posting.posting_type,
+    'posting_type': posting.posting_type,
     'name': posting.name,
     'colored_icon': posting.colored_icon,
     'uncolored_icon': posting.uncolored_icon,

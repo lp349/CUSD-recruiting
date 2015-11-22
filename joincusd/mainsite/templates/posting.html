@@ -3,18 +3,18 @@
 {% load staticfiles %}
 <section class="project-description">
     <div class="project-description__logo">
-        <div class= {% if type != role_type %}
+        <div class={% if posting_type != "role_type" %}
                      "medium-up icon icon--project-{{ short_name }} icon--project-{{ short_name }}--colored"
                     {% else %}
                     "medium-up icon icon--role-{{ short_name }}--role-page icon--role-{{ short_name }}--colored"
                     {% endif %}
              style="
                     background-image: url('{{ colored_icon.url }}');
-                    background-position: top center;
+                    background-position: top right;
                     background-repeat: no-repeat;
                 "
                 ></div>
-        <div class={% if type != "role_type" %}
+        <div class={% if posting_type != "role_type" %}
                     "small-only icon icon--project-{{ short_name }} icon--project-{{ short_name }}--colored-bg"
                     {% else %}
                     "small-only icon icon--role-{{ short_name }}--role-page icon--role-{{ short_name }}--colored-bg"
@@ -23,7 +23,7 @@
                     background-image: url('{{ uncolored_icon.url }}');
                     background-position: center center;
                     background-repeat: no-repeat;
-                    background-color: {{ project.icon_color }}
+                    background-color: {{ icon_color }}
                 "
                 ></div>
     </div>
