@@ -1,21 +1,11 @@
+{% include 'admin-common/header.html' %}
 {% load staticfiles %}
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'styles/common.css' %}">
+<script src ="{% static 'js/form.js' %}"></script>
 
-    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
-    <script src ="{% static 'js/form.js' %}"></script>
-    <script src ="{% static 'js/common.js' %}"></script>
-    <title>Add or Edit A Role</title>
-
-</head>
-<body>
-    <h1> {% if is_edit %} Edit {% else %} Add {% endif %} a Role </h1>
     <div class="form-content">
-    <form id="role_form" method="post" action="{{ form.form_submit_action_url }}">
+        <h1 class="form-title"> {% if is_edit %} Edit {% else %} Add {% endif %} a Role </h1>
+
+        <form id="role_form" method="post" action="{{ form.form_submit_action_url }}">
         {% csrf_token %}
         <span id="form_error">{{form.errors}}</span>
         <div class="field-wrapper">
@@ -35,5 +25,4 @@
       <input class="submit-button button" type="submit" name="submit" value="Save">
     </form>
         </div>
-</body>
-</html>
+{% include 'admin-common/footer.html' %}

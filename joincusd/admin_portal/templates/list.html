@@ -1,31 +1,7 @@
+{% include 'admin-common/header.html' %}
 {% load staticfiles %}
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{% static 'styles/common.css' %}">
-
-
-    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
-    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
-
-
-    <script src ="{% static 'js/common.js' %}"></script>
-    <script src ="{% static 'js/list.js' %}"></script>
-
-    <title>CUSD Admin Portal</title>
-</head>
-<body>
-    <div class="h">
-        <div class="site-logo">
-        <img class="site-logo__image" src="{% static 'images/CUSD-logo.svg' %}" />
-        <span class="site-logo__text">Cornell University<br>Sustainable Design</span>
-        </div>
-        <div id="logout" class=""><a href = "/admin/login/">Log Out</a></div><br>
-        <h3>Admin Portal</h3><br>
-        </div><br>
+<script src="{% static 'js/list.js' %}"></script>
 
 
     <section id="nav-bar">
@@ -34,13 +10,12 @@
         <div id="roles-tab" class="tab">Roles</div>
     </section> <br>
 
-
     <div class="add-button">
         <a class="add" href="/admin/add_project">
             <input type="submit" style="display: none;"/>
             <svg>
-                <circle  stroke-width="5px" cx="50%" cy="50%" r="1.7rem"></circle>
-                <text  x="50%" y="50%" text-anchor="middle" dominant-baseline="central">+</text>
+                <circle cx="50%" cy="50%" r="47%"></circle>
+                <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">+</text>
             </svg>
         </a>
     </div>
@@ -48,5 +23,4 @@
 
     </section>
 
-</body>
-</html>
+{% include 'admin-common/footer.html' %}

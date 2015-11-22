@@ -6,3 +6,6 @@
 joincusd/mainsite/migrations/
 
 joincusd/uploads/images/
+
+
+joincusd/static/CACHE/

@@ -9,32 +9,6 @@ var activeTab = "";
 //format = {[PROJECT ID/PK]:{originalRank: [ORIGINAL RANK], newRank: [NEW RANK]}, ...}
 var projectRankObj = {};
 
-/**
- * SVG Icons
- * @type {{drag: string, expand: string, retract: string, remove: string}}
- */
-var Icons = {
-
-    drag: '<svg class="drag-icon" viewBox="0 0 100 100"> ' +
-    '<path d="M 50 85 l 20 20 l -40 0 z" transform="rotate(180,50,85)"></path>' +
-    '<path d="M 50 15 l 20 20 l -40 0 z"></path>' +
-    '<rect width="15" height="45" x="42.5" y="30" fill="#000"></rect>' +
-    '</svg>',
-
-    expand: '<svg class="expand-icon" viewBox="0 0 100 100"> ' +
-    '<path d="M 50 75 l 50 50 l -100 0 z" transform="rotate(180,50,75)"></path>' +
-
-    '</svg>',
-
-    retract: '<svg class="retract-icon" viewBox="0 0 100 100"> ' +
-    '<path d="M 50 25 l 50 50 l -100 0 z"></path>' +
-    '</svg>',
-
-    remove:  '<svg class="remove-icon" viewBox="0 0 100 100"> ' +
-    '<circle stroke-width="5px" cx="50%" cy="50%" r="48%"></circle>' +
-    '<text  x="50%" y="50%" text-anchor="middle" dominant-baseline="central">x</text> ' +
-    '</svg>'
-};
 
 /**
  * Changes the link of the add button based on the active tab
@@ -60,12 +34,139 @@ var togglePublish = function(posting_type, pk) {
 
     $.get("ajax/toggle_publish/" + posting_type + "/" + pk + "/" , function() {
         if (posting_type === "project") {
-            $.get("/admin/ajax/"+ posting_type + "/", display_project_list);
+            $.get("/admin/ajax/"+ posting_type + "/", displayProjectList);
         }else if (posting_type === "role_type") {
-            $.get("/admin/ajax/"+ posting_type + "/", display_roletype_list);
+            $.get("/admin/ajax/"+ posting_type + "/", displayRoleTypeList);
         }
     });
 };
+
+
+/**
+ * Hides/Shows icons and buttons for rank change state
+ */
+var toggleElements = function() {
+    if ($(".elem-button").is(":hidden")) {
+        $(".elem-button").css("visibility", "visible").show();
+
+    }else {
+        $(".elem-button").css("visibility", "hidden").hide();
+    }
+
+    if ($(".expand-icon").is(":hidden")) {
+        $(".expand-icon").css("visibility", "visible").show();
+    }else {
+        $(".expand-icon").css("visibility", "hidden").hide();
+    }
+
+};
+
+/**
+ * Hides the roles preview
+ */
+var hideAllQuickView = function() {
+    $(".roles-quick-view").slideUp();
+    $(".retract-icon").hide();
+    $(".expand-icon").show();
+};
+
+/**
+ * Contains logic for toggling delete buttons
+ */
+var activateDeleteHover = function () {
+    $(".remove.button").css("visibility", "hidden");
+
+    $(".elem").hover(function () {
+        if (!isChangingRanks()) {
+            $(this).children(".remove.button").css("visibility", "visible");
+        }
+    }, function () {
+        $(this).children(".remove.button").css("visibility", "hidden");
+    });
+
+};
+
+/**
+ * Helper Method to generateElem()
+ * @param posting : project object
+ * @returns {string} project listing HTML to be displayed
+ * @private
+ */
+function _generateProjectListing(posting) {
+    var published = "Unpublish";
+    if (!posting.published) published = "Publish";
+
+    var roles = "<ul class='roles-quick-view'>";
+    for (var i = 0; i < posting.roles.length; i++) {
+        roles += "<li class='quick-view-elem'>" + posting.roles[i] + "</li>"
+    };
+
+    if (posting.roles.length === 0)
+        roles += "<li class='quick-view-elem'>This project is not hiring.</li>";
+
+    roles += "</ul>";
+
+    var p = "<li class='project elem ui-state-default elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
+        + Icons.drag
+        + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
+        + "<span class='elem-name'>" + posting.name + "</span>"
+        + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
+        + "<a class='elem-button edit button' href='edit_project/" + posting.id + "/'>Edit</a>"
+        + roles
+        + Icons.expand
+        + Icons.retract
+        + "</li>";
+    return p;
+}
+
+/**
+ * Helper Method to generateElem()
+ * @param posting : Role Type object
+ * @returns {string} : role type listing html to be displayed
+ * @private
+ */
+function _generateRoleTypeListing(posting) {
+    var published = "Unpublish";
+    if (!posting.published) published = "Publish";
+
+    var roles = "<ul class='roles-quick-view'>";
+    for (var i = 0; i < posting.roles.length; i++) {
+        roles += "<li class='quick-view-elem'>" + posting.roles[i] + "</li>"
+    };
+
+    if (posting.roles.length === 0)
+        roles += "<li class='quick-view-elem'>There are no roles under this category.</li>";
+
+    roles += "</ul>";
+
+    var rt = "<div class='role-type elem elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
+        + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
+        + "<span class='elem-name'>" + posting.name + "</span>"
+        + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
+        + "<a class='elem-button edit button' href='edit_role_type/" + posting.id + "/'>Edit</a>"
+        + roles
+        + Icons.expand
+        + Icons.retract
+        + "</div>";
+    return rt;
+}
+
+
+/**
+ * Helper Method to generateElem()
+ * @param posting : role object
+ * @returns {string} : role listing html to be displayed
+ * @private
+ */
+function _generateRoleListing(posting) {
+    var r = "<div class='role elem' id='" + posting.id + "'>"
+        + "<a class='elem-button remove button' href='remove_role/" + posting.id + "/'>"+ Icons.remove +"</a>"
+        + "<span class='elem-name'>" + posting.title + "</span>"
+        + "<a class='elem-button edit button' href='edit_role/" + posting.id + "/'>Edit</a>"
+
+        + "</div>";
+    return r;
+}
 
 
 /**
@@ -78,62 +179,12 @@ var togglePublish = function(posting_type, pk) {
  * @returns {string}: the html for the listing, to add to the page
  */
 function generateElem(typ, posting) {
-    var published = "Unpublish";
-    if (!posting.published) published = "Publish";
-
     if (typ === "Project") {
-
-        var roles = "<ul class='roles-quick-view'>";
-        for (var i = 0; i < posting.roles.length; i++) {
-            roles += "<li class='quick-view-elem'>" + posting.roles[i] + "</li>"
-        };
-
-        if (posting.roles.length === 0)
-            roles += "<li class='quick-view-elem'>This project is not hiring.</li>";
-
-        roles += "</ul>";
-
-        var p = "<li class='project elem ui-state-default elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
-            + Icons.drag
-            + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
-            + "<span class='elem-name'>" + posting.name + "</span>"
-            + "<a class='elem-button edit button' href='edit_project/" + posting.id + "/'>Edit</a>"
-            + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
-
-            + roles
-            + Icons.expand
-            + Icons.retract
-            + "</li>";
-        return p;
+        return _generateProjectListing(posting);
     } else if ((typ === "RoleType")) {
-        var roles = "<ul class='roles-quick-view'>";
-        for (var i = 0; i < posting.roles.length; i++) {
-            roles += "<li class='quick-view-elem'>" + posting.roles[i] + "</li>"
-        };
-
-        if (posting.roles.length === 0)
-            roles += "<li class='quick-view-elem'>There are no roles under this category.</li>";
-
-        roles += "</ul>";
-
-        var rt = "<div class='role-type elem elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
-            + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
-            + "<span class='elem-name'>" + posting.name + "</span>"
-            + "<a class='elem-button edit button' href='edit_role_type/" + posting.id + "/'>Edit</a>"
-            + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
-            + roles
-            + Icons.expand
-            + Icons.retract
-            + "</div>";
-        return rt;
+        return _generateRoleTypeListing(posting);
     } else if ((typ === "Opening")) {
-        var r = "<div class='role elem' id='" + posting.id + "'>"
-            + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
-            + "<span class='elem-name'>" + posting.title + "</span>"
-            + "<a class='elem-button edit button' href='edit_role/" + posting.id + "/'>Edit</a>"
-
-            + "</div>";
-        return r;
+        return _generateRoleListing(posting);
     }
 }
 
@@ -156,73 +207,6 @@ function getCookie(name) {
     return cookieValue;
 }
 
-/**
- * Hides/Shows icons and buttons for rank change state
- */
-var toggleElements = function() {
-    if ($(".elem-button").is(":hidden")) {
-        $(".elem-button").css("visibility", "visible");
-    }else {
-        $(".elem-button").css("visibility", "hidden");
-    }
-
-    if ($(".expand-icon").is(":hidden")) {
-        $(".expand-icon").css("visibility", "visible");
-    }else {
-        $(".expand-icon").css("visibility", "hidden");
-    }
-
-};
-
-/**
- * Toggles and handles sortable project list
- */
-var display_project_helper = function () {
-
-    $(function () {
-        $('#sortable').sortable();
-        $(".selector").on("sortstart", function (event, ui) {
-        });
-        $("#sortable").disableSelection();
-        $(".rank").hide();
-        $(".edit-rank").show();
-        $("#sortable").sortable("disable");
-
-    });
-
-    $(".edit-rank").click(function () {
-        $(".rank").show();
-        $(this).hide();
-        $("#sortable").sortable("enable");
-        $("#sortable li").css("cursor", "move");
-        $(".drag-icon").show();
-        toggleElements();
-    });
-
-
-    $(".cancel-rank").click(function () {
-        console.log(getNewRanks());
-        $.get("/admin/ajax/project/", display_project_list);
-
-    });
-
-    $(".save-rank").click(function () {
-        $(".elem-button").removeClass("button-disabled");
-        //console.log(JSON.stringify(getNewRanks()));
-        var rank_changes = JSON.stringify(getNewRanks());
-        var csrftoken = getCookie('csrftoken');
-        $.post("/admin/ajax/update_ranks", {csrfmiddlewaretoken: csrftoken, rank_string: rank_changes}, function () {
-            //$(".cancel-rank").hide();
-            //$(".save-rank").hide();
-            //$(".edit-rank").show();
-            //toggleElements();
-            //display_project_list();
-            $.get("/admin/ajax/project/", display_project_list);
-        });
-    });
-
-};
-
 
 /**
  *
@@ -243,6 +227,7 @@ var convertToDBRank = function (displayRank, numProjects) {
 var convertToDisplayRank = function (displayRank, numProjects) {
     return numProjects - displayRank;
 };
+
 
 /**
  * This method requires that:
@@ -290,32 +275,55 @@ var getNewRanks = function () {
 };
 
 
-var activateDeleteHover = function () {
-    $(".remove.button").css("visibility", "hidden");
-
-    $(".elem").hover(function () {
-        if (!isChangingRanks()) {
-            $(this).children(".remove.button").css("visibility", "visible");
-            $(".remove-icon").hover(function() {
-                console.log("svg hovered");
-                $(this).addClass("remove-svg-hover");
-                console.log($(this).hasClass("remove-svg-hover"))
-            })
-        }
-    }, function () {
-        $(this).children(".remove.button").css("visibility", "hidden");
-    });
-
-
-};
-
-
 /**
- * Determines whether sorting is enabled
+ * Determines whether sorting (project list) is enabled
  * @returns {boolean}
  */
 var isChangingRanks = function() {
     return !($("#sortable").hasClass("ui-sortable-disabled") || activeTab !== "projects-tab");
+};
+
+
+/**
+ * Toggles and handles sortable project list
+ */
+var displayProjectListHelper = function () {
+
+    $(function () {
+        $('#sortable').sortable()
+            .disableSelection()
+            .sortable("disable");
+
+        $(".rank").hide();
+        $(".edit-rank").show();
+    });
+
+    $(".edit-rank").click(function () {
+        $(".rank").show();
+        $(this).hide();
+        $("#sortable").sortable("enable");
+        $("#sortable li").css("cursor", "move");
+        $(".drag-icon").show();
+        hideAllQuickView();
+        toggleElements();
+    });
+
+
+    $(".cancel-rank").click(function () {
+        console.log(getNewRanks());
+        $.get("/admin/ajax/project/", displayProjectList);
+
+    });
+
+    $(".save-rank").click(function () {
+        $(".elem-button").removeClass("button-disabled");
+        var rank_changes = JSON.stringify(getNewRanks());
+        var csrftoken = getCookie('csrftoken');
+        $.post("/admin/ajax/update_ranks", {csrfmiddlewaretoken: csrftoken, rank_string: rank_changes}, function () {
+            $.get("/admin/ajax/project/", displayProjectList);
+        });
+    });
+
 };
 
 
@@ -327,7 +335,7 @@ var isChangingRanks = function() {
  * @param data : JSON representation of projects with relevant project info,
  *              retrieved from ajax call
  */
-var display_project_list = function (data) {
+var displayProjectList = function (data) {
     var posts = JSON.parse(data);
 
     //sort by rank before display
@@ -339,9 +347,6 @@ var display_project_list = function (data) {
     var list_div = $("#content");
     list_div.empty();
     projectRankObj = {};
-
-
-    var displayString = "";
 
     //add edit, save, cancel rank buttons
     list_div
@@ -361,13 +366,10 @@ var display_project_list = function (data) {
         projectRankObj[posts[i].id]["newRank"] = i;
     }
 
-
     //hide relevant buttons
     $(".roles-quick-view").hide();
     $(".drag-icon").hide();
     $(".retract-icon").hide();
-
-
 
 
     $(".publish.button").click( function() {
@@ -376,10 +378,10 @@ var display_project_list = function (data) {
 
     });
 
-    activateDeleteHover();
+    //activateDeleteHover();
 
     //set up and handle toggling
-    display_project_helper();
+    displayProjectListHelper();
 
 };
 
@@ -387,7 +389,7 @@ var display_project_list = function (data) {
  * Displays the role types on page given data from ajax call
  * @param data : JSON representation of roletype objects
  */
-var display_roletype_list = function (data) {
+var displayRoleTypeList = function (data) {
     var posts = JSON.parse(data);
 
     //sort alphabetically before display
@@ -415,7 +417,7 @@ var display_roletype_list = function (data) {
         togglePublish("role_type", $(this).parent().attr("id"));
     });
 
-    activateDeleteHover();
+    //activateDeleteHover();
 
 };
 
@@ -423,7 +425,7 @@ var display_roletype_list = function (data) {
  * Displays the roles on page given data from ajax call
  * @param data : JSON representation of roles objects
  */
-var display_role_list = function (data) {
+var displayRoleList = function (data) {
     var posts = JSON.parse(data);
 
     //sort roles alphabetically before display
@@ -440,7 +442,7 @@ var display_role_list = function (data) {
         list_div.append(generateElem("Opening", posts[i]));
     }
 
-    activateDeleteHover();
+    //activateDeleteHover();
 };
 
 $(document).ready(function () {
@@ -462,15 +464,15 @@ $(document).ready(function () {
 
     //render postings and roles elements
     $("#projects-tab").click(function () {
-        $.get("/admin/ajax/project/", display_project_list);
+        $.get("/admin/ajax/project/", displayProjectList);
     });
 
     $("#roles-tab").click(function () {
-        $.get("/admin/ajax/roles", display_role_list);
+        $.get("/admin/ajax/roles", displayRoleList);
     });
 
     $("#roletypes-tab").click(function () {
-        $.get("/admin/ajax/role_type", display_roletype_list);
+        $.get("/admin/ajax/role_type", displayRoleTypeList);
     });
 
     //toggle roles preview for projects and role types
@@ -479,9 +481,7 @@ $(document).ready(function () {
             if ($(this).children(".roles-quick-view").is(":hidden")) {
                 //listing was not expanded
                 //hide all previews first
-                $(".roles-quick-view").slideUp();
-                $(".retract-icon").hide();
-                $(".expand-icon").show();
+                hideAllQuickView();
 
                 //show the roles associated with clicked listing
                 $(this).children(".roles-quick-view").slideDown();
@@ -491,14 +491,10 @@ $(document).ready(function () {
             } else {
                 //clicked listing is already expanded,
                 // hide the roles associated with clicked listing
-                $(this).children(".roles-quick-view").slideUp();
-                $(this).children(".expand-icon").show();
-                $(this).children(".retract-icon").hide();
+                hideAllQuickView();
             }
         }
     });
-
-
 
     //go to last active tab (the tab that was last accessed, if any)
     if (sessionStorage['active']) {

@@ -12,7 +12,7 @@ display_posting_list = function(data){
 	    list_div.append('</ul>');
 };
 
-display_role_list = function(data){
+displayRoleList = function(data){
 	    roles = JSON.parse(data);
 	    list_div = $("#list_container");
 
