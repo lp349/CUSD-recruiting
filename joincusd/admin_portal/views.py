@@ -202,6 +202,7 @@ def add_posting_handler(request, posting_type):
             project.name = form.cleaned_data['name']
             project.short_name = generate_short_name(project.name)
             project.tagline = form.cleaned_data['tagline']
+            project.icon_color = form.cleaned_data['icon_color']
             #internally assigned to be the last!
             project.rank = len(Posting.objects.all())
 
@@ -294,8 +295,7 @@ def edit_posting_handler(request, posting_type, pk):
               project.short_name = generate_short_name(project.name)
               print project.short_name
             project.tagline = form.cleaned_data['tagline']
-            #NOTE A RANK IS NO LONGER CHANGED BY THE FORM
-            #project.rank = form.cleaned_data['rank']
+            project.icon_color = form.cleaned_data['icon_color']
 
             #since file uploads may be optional,
             #we have to check that they exist!

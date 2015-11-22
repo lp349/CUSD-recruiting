@@ -1,5 +1,6 @@
 from django import forms
 from mainsite.models import Opening, Posting
+from colorful.fields import RGBColorField
 
 class PostingForm(forms.ModelForm):
     name = forms.CharField(max_length=500, help_text="Name:")
@@ -14,6 +15,7 @@ class PostingForm(forms.ModelForm):
     photo_three = forms.ImageField(help_text="Photo 3:")
 
     detail_icon_path = forms.FileField(help_text="Detail Icon:")
+    icon_color = RGBColorField(help_text="Icon Color:")
     list_thumbnail_path = forms.FileField(help_text="Thumbnail Icon:")
 
     all_role_choices = [(role.pk, role.title) for role in Opening.objects.all()]
@@ -40,9 +42,9 @@ class PostingForm(forms.ModelForm):
         # Provide an association between the ModelForm and a model
         model = Posting
         fields = ('name', 'tagline', 'short_project_description', 'description',
-                  'additional_description', 'detail_icon_path', 'list_thumbnail_path',
-                  'role_multiselect', 'photo_one', 'photo_two', 'photo_three',
-                  'published')
+                  'additional_description', 'icon_color', 'detail_icon_path',
+                  'list_thumbnail_path', 'role_multiselect', 'photo_one',
+                  'photo_two', 'photo_three', 'published')
 
 
 class OpeningForm(forms.ModelForm):
