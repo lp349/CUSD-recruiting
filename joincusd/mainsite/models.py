@@ -15,6 +15,7 @@ class Posting(models.Model):
   posting_type = models.CharField(max_length=255, default="project")
 
   name = models.CharField(max_length=500)
+  short_name = models.CharField(max_length=100, default="")
   tagline = models.CharField(max_length=100)
   short_project_description = models.CharField(max_length=300, default="")
   description = models.TextField(default="")
