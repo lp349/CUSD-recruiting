@@ -1,18 +1,29 @@
 <!--<% content_for(:title, project.name) %>-->
 {% include 'common/header.html' %}
 {% load staticfiles %}
-<script type="text/javascript" src="{% static 'javascripts/icons.js' %}"></script>
 <section class="project-description">
     <div class="project-description__logo">
-        <div class="medium-up icon icon--project-{{ short_name }} icon--project-{{ short_name }}--colored"
+        <div class= {% if type == project %}
+                     "medium-up icon icon--project-{{ short_name }} icon--project-{{ short_name }}--colored"
+                    {% else %}
+                    "medium-up icon icon--role-{{ short_name }}--role-page icon--role-{{ short_name }}--colored"
+                    {% endif %}
              style="
-                    background: url('{{ colored_icon.url }}') top right no-repeat;
+                    background-image: url('{{ colored_icon.url }}');
+                    background-position: center center;
+                    background-repeat: no-repeat;
                 "
                 ></div>
-        <div class="small-only icon icon--project-{{ short_name }} icon--project-{{ short_name }}--colored-bg"
+        <div class={% if type == project %}
+                    "small-only icon icon--project-{{ short_name }} icon--project-{{ short_name }}--colored-bg"
+                    {% else %}
+                    "small-only icon icon--role-{{ short_name }}--role-page icon--role-{{ short_name }}--colored-bg"
+                    {% endif %}
              style="
-                    background: url('{{ uncolored_icon.url }}') center center no-repeat;
-                    background-color: {{ icon_color }}
+                    background-image: url('{{ uncolored_icon.url }}');
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-color: {{ project.icon_color }}
                 "
                 ></div>
     </div>
