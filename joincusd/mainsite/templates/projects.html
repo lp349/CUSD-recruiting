@@ -1,5 +1,6 @@
 {% include 'common/header.html' %}
 {% load staticfiles %}
+<script type="text/javascript" src="{% static 'javascripts/icons.js' %}"></script>
 <section class="main-content">
   <section class="current-projects">
     <h1>Current Projects</h1>
@@ -10,7 +11,6 @@
             <div class="icon icon--project-{{ project.short_name }} icon--project-{{ project.short_name }}--colored-bg"
                  style="
                     background: url('{{ project.uncolored_icon.url }}') center center no-repeat;
-                    background-size: 70%;
                     background-color: {{ project.icon_color }}
                 "></div>
             <h3>{{ project.name }}</h3>

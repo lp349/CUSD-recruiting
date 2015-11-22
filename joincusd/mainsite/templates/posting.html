@@ -1,69 +1,89 @@
 <!--<% content_for(:title, project.name) %>-->
 {% include 'common/header.html' %}
 {% load staticfiles %}
+<script type="text/javascript" src="{% static 'javascripts/icons.js' %}"></script>
 <section class="project-description">
-  <div class="project-description__logo">
-    <div class="medium-up icon icon--project-{{ short_name }} icon--project-{{ short_name }}--colored"></div>
-    <div class="small-only icon icon--project-{{ short_name }} icon--project-{{ short_name }}--colored-bg"></div>
-  </div>
-  <div class="project-description__main">
-    <h1>{{name}}</h1>
-    <h2>{{tagline}}</h2>
-    <div class="project-description__text">
-      <input type="checkbox" class="see-more__checkbox" id="seeMore">
-      {% for description in descriptions %}
-        <p class="lede">
-          {{description}}
-        </p>
-      {% endfor %}
-      {% for additional_description in additional_descriptions %}
-        <p>
-          {{additional_description}}
-        </p>
-      {% endfor %}
-      <label for="seeMore" class="see-more__label">Read <span class="see-more__label--closed">More</span><span  class="see-more__label--open">Less</span></label>
+    <div class="project-description__logo">
+        <div class="medium-up icon icon--project-{{ short_name }} icon--project-{{ short_name }}--colored"
+             style="
+                    background: url('{{ colored_icon.url }}') center center no-repeat;
+                "
+                ></div>
+        <div class="small-only icon icon--project-{{ short_name }} icon--project-{{ short_name }}--colored-bg"
+             style="
+                    background: url('{{ uncolored_icon.url }}') center center no-repeat;
+                    background-color: {{ icon_color }}
+                "
+                ></div>
     </div>
-    <ul class="project-description__gallery">
-      {% for photo in photos %}
-        <li>
-          <img src="{{ photo.url }}" />
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+    <div class="project-description__main">
+        <h1>{{name}}</h1>
+
+        <h2>{{tagline}}</h2>
+
+        <div class="project-description__text">
+            <input type="checkbox" class="see-more__checkbox" id="seeMore">
+            {% for description in descriptions %}
+            <p class="lede">
+                {{description}}
+            </p>
+            {% endfor %}
+            {% for additional_description in additional_descriptions %}
+            <p>
+                {{additional_description}}
+            </p>
+            {% endfor %}
+            <label for="seeMore" class="see-more__label">Read <span class="see-more__label--closed">More</span><span
+                    class="see-more__label--open">Less</span></label>
+        </div>
+        <ul class="project-description__gallery">
+            {% for photo in photos %}
+            <li>
+                <img src="{{ photo.url }}"/>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 
 </section>
 
 <section class="project-openings">
-  <div class="project-openings__wrapper">
-    <h3>What We're Looking For</h3>
-    <ul class="project-openings__list" data-equalizer data-equalizer-mq="medium-up">
-      {% if openings %}
-        {% for opening in openings %}
-          <li>
-            <div class="panel" data-equalizer-watch>
-              <h4>{{opening.title}}</h4>
-              <p>{{opening.description}}</p>
-              <a href='https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform' class='button'>Apply Now</a>
-            </div>
-          </li>
-        {% endfor %}
-        <li>
-          <div class="panel" data-equalizer-watch>
-            <h4>Missing Something?</h4>
-            <p>Don’t see that perfect fit? No worries, apply as a wildcard!</p>
-            <a href='https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform' class='button'>Apply Now</a>
-          </div>
-        </li>
-      {% else %}
-        <li class="project-openings__no-openings">
-          <div class="panel">
-            <h4>Nobody :'(</h4>
-            <p>We're not actively recruiting for this project right now. Feel free to <a href="mailto:cu.sustainabledesign@gmail.com">email us</a> and tell us why we should be though.</p>
-          </div>
-        </li>
-      {% endif %}
-    </ul>
-  </div>
+    <div class="project-openings__wrapper">
+        <h3>What We're Looking For</h3>
+        <ul class="project-openings__list" data-equalizer data-equalizer-mq="medium-up">
+            {% if openings %}
+            {% for opening in openings %}
+            <li>
+                <div class="panel" data-equalizer-watch>
+                    <h4>{{opening.title}}</h4>
+
+                    <p>{{opening.description}}</p>
+                    <a href='https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform'
+                       class='button'>Apply Now</a>
+                </div>
+            </li>
+            {% endfor %}
+            <li>
+                <div class="panel" data-equalizer-watch>
+                    <h4>Missing Something?</h4>
+
+                    <p>Don’t see that perfect fit? No worries, apply as a wildcard!</p>
+                    <a href='https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform'
+                       class='button'>Apply Now</a>
+                </div>
+            </li>
+            {% else %}
+            <li class="project-openings__no-openings">
+                <div class="panel">
+                    <h4>Nobody :'(</h4>
+
+                    <p>We're not actively recruiting for this project right now. Feel free to <a
+                            href="mailto:cu.sustainabledesign@gmail.com">email us</a> and tell us why we should be
+                        though.</p>
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
 </section>
 {% include 'common/footer.html' %}
