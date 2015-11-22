@@ -30,8 +30,8 @@ class Posting(models.Model):
 
   # Default color is CUSD Green
   icon_color = RGBColorField(default="#3FAB69")
-  detail_icon_path = models.FileField(upload_to="images/icons/")
-  list_thumbnail_path = models.FileField(upload_to="images/icons/")
+  colored_icon = models.FileField(upload_to="images/icons/")
+  uncolored_icon = models.FileField(upload_to="images/icons/")
 
   rank = models.IntegerField(default=0)
 

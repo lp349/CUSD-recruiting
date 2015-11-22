@@ -16,12 +16,12 @@
             {{ field.errors }}
             <div class="field-name">{{ field.help_text}}</div>
             
-            {% if field.name == "detail_icon_path" %}
-            <img src="{% static form.instance.detail_icon_path.url %}">
+            {% if field.name == "colored_icon" %}
+            <img src="{% static form.instance.colored_icon.url %}">
             {% endif %}
 
-            {% if field.name == "list_thumbnail_path" %}
-            <img src="{% static form.instance.list_thumbnail_path.url %}">
+            {% if field.name == "uncolored_icon" %}
+            <img src="{% static form.instance.uncolored_icon.url %}">
             {% endif %}
 
             {% if field.name == "photo_one" %}

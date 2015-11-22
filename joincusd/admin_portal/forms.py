@@ -14,9 +14,9 @@ class PostingForm(forms.ModelForm):
     photo_two = forms.ImageField(help_text="Photo 2:")
     photo_three = forms.ImageField(help_text="Photo 3:")
 
-    detail_icon_path = forms.FileField(help_text="Detail Icon:")
     icon_color = RGBColorField(help_text="Icon Color:")
-    list_thumbnail_path = forms.FileField(help_text="Thumbnail Icon:")
+    colored_icon = forms.FileField(help_text="Colored Icon:")
+    uncolored_icon = forms.FileField(help_text="Uncolored Icon:")
 
     all_role_choices = [(role.pk, role.title) for role in Opening.objects.all()]
     role_multiselect = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, help_text="Select Roles", choices = all_role_choices, required=False)
@@ -42,8 +42,8 @@ class PostingForm(forms.ModelForm):
         # Provide an association between the ModelForm and a model
         model = Posting
         fields = ('name', 'tagline', 'short_project_description', 'description',
-                  'additional_description', 'icon_color', 'detail_icon_path',
-                  'list_thumbnail_path', 'role_multiselect', 'photo_one',
+                  'additional_description', 'icon_color', 'colored_icon',
+                  'uncolored_icon', 'role_multiselect', 'photo_one',
                   'photo_two', 'photo_three', 'published')
 
 

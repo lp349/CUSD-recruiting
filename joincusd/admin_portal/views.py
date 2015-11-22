@@ -207,8 +207,8 @@ def add_posting_handler(request, posting_type):
             project.rank = len(Posting.objects.all())
 
             #passing validation guarantees existence of these files (their required attribute is set)
-            project.detail_icon_path = request.FILES['detail_icon_path']
-            project.list_thumbnail_path = request.FILES['list_thumbnail_path']
+            project.colored_icon = request.FILES['colored_icon']
+            project.uncolored_icon = request.FILES['uncolored_icon']
             project.photo_one = request.FILES['photo_one']
             project.photo_two = request.FILES['photo_two']
             project.photo_three = request.FILES['photo_three']
@@ -269,8 +269,8 @@ def edit_posting_handler(request, posting_type, pk):
 
         #since existing posting objects passed validation at time of creation,
         #image/file upload fields should be optional
-        form.fields['detail_icon_path'].required = False
-        form.fields['list_thumbnail_path'].required = False
+        form.fields['colored_icon'].required = False
+        form.fields['uncolored_icon'].required = False
         form.fields['photo_one'].required = False
         form.fields['photo_two'].required = False
         form.fields['photo_three'].required = False
@@ -299,10 +299,10 @@ def edit_posting_handler(request, posting_type, pk):
 
             #since file uploads may be optional,
             #we have to check that they exist!
-            if 'detail_icon_path' in request.FILES:
-                project.detail_icon_path = request.FILES['detail_icon_path']
-            if 'list_thumbnail_path' in request.FILES:
-                project.list_thumbnail_path = request.FILES['list_thumbnail_path']
+            if 'colored_icon' in request.FILES:
+                project.colored_icon = request.FILES['colored_icon']
+            if 'uncolored_icon' in request.FILES:
+                project.uncolored_icon = request.FILES['uncolored_icon']
             if 'photo_one' in request.FILES:
                 project.photo_one = request.FILES['photo_one']
             if 'photo_two' in request.FILES:
