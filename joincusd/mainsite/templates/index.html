@@ -56,7 +56,7 @@
     {% if role_type.published %}
       <article>
         <div class="homepage-callouts__panel">
-          <div class="icon icon--role-engineering--colored"></div>
+          <div class="icon icon--role-{{role_type.short_name}}--colored"></div>
           <h4>{{role_type.name}}</h4>
           <p>{{role_type.tagline}}</p>
           <a href="/postings/{{role_type.pk}}" class='button button--inverse'>See Openings</a>
