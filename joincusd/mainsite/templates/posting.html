@@ -3,7 +3,7 @@
 {% load staticfiles %}
 <section class="project-description">
     <div class="project-description__logo">
-        <div class= {% if type == project %}
+        <div class= {% if type != role_type %}
                      "medium-up icon icon--project-{{ short_name }} icon--project-{{ short_name }}--colored"
                     {% else %}
                     "medium-up icon icon--role-{{ short_name }}--role-page icon--role-{{ short_name }}--colored"
@@ -14,7 +14,7 @@
                     background-repeat: no-repeat;
                 "
                 ></div>
-        <div class={% if type == project %}
+        <div class={% if type != "role_type" %}
                     "small-only icon icon--project-{{ short_name }} icon--project-{{ short_name }}--colored-bg"
                     {% else %}
                     "small-only icon icon--role-{{ short_name }}--role-page icon--role-{{ short_name }}--colored-bg"
