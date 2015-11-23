@@ -13,7 +13,7 @@ def index(request):
 def projects(request):
   context = {
     'title': 'Projects',
-    'projects': Posting.objects.filter(posting_type='project'),
+    'projects': Posting.objects.filter(posting_type='project').order_by('-rank'),
     'role_types': Posting.objects.filter(posting_type='role_type')
   }
   return render_to_response('projects.html', context)
