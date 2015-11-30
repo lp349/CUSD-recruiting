@@ -13,10 +13,7 @@
 
 </head>
 <body>
-    <!--
     <h1> Application Part I </h1>
-    <iframe src="https://docs.google.com/a/cornell.edu/forms/d/1FpaQkbCqxwAwcvIrM1DO0Es6EquIyg8fhu2P0eBsTpk/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>-->
-    <h1> Application Part II </h1>
     <div class="form-content">
     <form id="application_form" enctype="multipart/form-data" method="post" >
         {% csrf_token %}
@@ -38,7 +35,7 @@
       Select Roles:
       {{form.role_multiselect}}
         </div>
-      <input class="submit-button button" type="submit" name="submit" value="Save">
+      <input class="submit-button button" type="submit" name="submit" value="Continue To Part II">
     </form>
         </div>
 </body>
