@@ -127,6 +127,7 @@ input[type=file] {
 }
 
 /**************************************Roles(List)**************************************/
+
 ul {
     list-style: none;
     padding: 0;
@@ -134,7 +135,7 @@ ul {
     /*background-color: #FFFFFF;*/
     /*border: 0.15rem solid lightgray;*/
     border-radius: 0.25rem;
-    text-align: center;
+    text-align: left;
 }
 
 li {
