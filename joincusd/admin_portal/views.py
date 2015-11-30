@@ -409,7 +409,7 @@ def remove_project(request,pk):
 
 '''
 function to remove a role type. The relationship between the role type and the roles that are linked to the project will
-be automatically deleted as well. (Essentially same as remove_project)
+be automatically deleted as well. (Essentially same as remove_project)23
   arguments:
     request - Django HttpRequest Object
     pk - a string containing the primary key of the postings object chosen for removal
@@ -434,7 +434,7 @@ def edit_role(request, pk):
     old_role=Opening.objects.get(pk=pk)
   if old_role:
     form = OpeningForm(instance=old_role)
-    form.form_submit_action_url = "/admin/edit_project/" + pk + "/"
+    form.form_submit_action_url = "/admin/edit_role/" + pk + "/"
 
     #additionally, since there is no direct mapping from
     #the model's openings set to the form's MultipleChoiceField,
