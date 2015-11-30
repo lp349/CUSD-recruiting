@@ -9,7 +9,6 @@ class PostingForm(forms.ModelForm):
     description = forms.CharField(widget=forms.Textarea(attrs={'cols': 50, 'rows': 10}), help_text="Starting Description:")
     additional_description = forms.CharField(widget=forms.Textarea(attrs={'cols': 50, 'rows': 10}), help_text="Additional Description:")
 
-    #TODO: three temporary photos for now
     photo_one = forms.ImageField(help_text="Photo 1:")
     photo_two = forms.ImageField(help_text="Photo 2:")
     photo_three = forms.ImageField(help_text="Photo 3:")
@@ -20,22 +19,6 @@ class PostingForm(forms.ModelForm):
 
     all_role_choices = [(role.pk, role.title) for role in Opening.objects.all()]
     role_multiselect = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, help_text="Select Roles", choices = all_role_choices, required=False)
-
-    '''def clean(self):
-        cleaned_data=super(PostingForm, self).clean()
-        name=cleaned_data.get("name");
-        tagline=cleaned_data.get("tagline");
-        description=cleaned_data.get("description");
-        #photos=cleaned_data.get("photos");
-        openings=cleaned_data.get("openings");
-        #also check the detail_icon_paht, list_thumbname_path
-        rank=cleaned_data.get("rank");
-        if name and tagline and description and rank:
-            if len(name)==0 or len(tagline)==0 or len(description)==0:
-                raise forms.ValidationError("At least one field is empty!");
-        else:
-            raise forms.ValidationError("At least one field is not completed correctly!");
-        return cleaned_data'''
 
     # An inline class to provide additional information on the form.
     class Meta:

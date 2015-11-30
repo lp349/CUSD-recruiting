@@ -3,9 +3,8 @@
 <script src ="{% static 'js/form.js' %}"></script>
 
     <div class="form-content">
+    <form id="role_form" method="post" action="{{ form.form_submit_action_url }}">
         <h1 class="form-title"> {% if is_edit %} Edit {% else %} Add {% endif %} a Role </h1>
-
-        <form id="role_form" method="post" action="{{ form.form_submit_action_url }}">
         {% csrf_token %}
         <span id="form_error">{{form.errors}}</span>
         <div class="field-wrapper">
