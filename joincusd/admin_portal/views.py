@@ -176,6 +176,9 @@ def generate_short_name(name):
   this function displays the website form on a page GET, and
   handles adding NEW postings for either projects or role types.
 
+  in the event of an invalid submitted form under a POST request,
+  redisplays form with filled in data and error list.
+
   arguments:
     request - Django HttpRequest Object
     posting_type - a string containing either the value "project" or "roletype"
@@ -241,7 +244,10 @@ def add_posting_handler(request, posting_type):
             return HttpResponseRedirect("/admin")
         else:
             print "add_posting_handler: invalid form"
-            return HttpResponseRedirect("/admin")
+            #form_url = "/admin/add_" + posting_type + "/"
+            #return HttpResponseRedirect(form_url)
+            form_submit_action_url = "/admin/add_" + posting_type + "/"
+            return render(request, 'add_posting.html', {'form': form, 'form_submit_action_url':form_submit_action_url, 'posting_type': posting_type})
     elif request.method == "GET":
         form = PostingForm()
 
@@ -257,6 +263,12 @@ def add_posting_handler(request, posting_type):
 '''
   this function displays the website form on a page GET, and
   handles editing EXISTING postings for either projects or role types.
+
+  in the case of an invalidated form for a POST request, the function
+  redisplays the submitted form and its errors. NOTE that potentially empty 
+  unrequired fields are merged from the existing database copy. 
+  ***THIS IS DONE BY FIRST DISPLAYING HTE FORM POPULATED BY request.POST, 
+  request.FILES, BUT SETTING ITS INSTANCE TO THE EXISTING DATABASE OBJECT.
 
   arguments:
     request - Django HttpRequest Object
@@ -293,7 +305,8 @@ def edit_posting_handler(request, posting_type, pk):
 
             if not project:
                 print "edit_posting_handler: primary key for editing project does not point to an existing project"
-                return HttpResponseRedirect("/admin")
+                return render(request, 'generic_error.html', {error_text: 'You have tried to edit a nonexistent posting.'})
+                #return HttpResponseRedirect("/admin")
 
             project.posting_type = posting_type
             project.name = form.cleaned_data['name']
@@ -342,8 +355,24 @@ def edit_posting_handler(request, posting_type, pk):
             return HttpResponseRedirect("/admin")
         else:
             print "edit_posting_handler: form was not valid"
-            print form.errors
-            return HttpResponseRedirect("/admin")
+            #print form.errors
+
+            #since the form is only created with request.POST and request.FILES
+            #any empty nonrequired fields must be filled in with the existing 
+            #object in the database before we redisplay it, else we get errors
+            #like nonattached files for nonedited photos
+            
+            posting = Posting.objects.get(pk=pk)
+
+            if not posting:
+                return render(request, 'generic_error.html', {error_text: 'You have tried to edit a nonexistent posting.'})
+
+            form.instance = posting    
+
+
+            form_submit_action_url = "/admin/edit_" + posting_type + "/" + pk + "/"
+            return render(request, 'edit_posting.html', {'form': form, 'form_submit_action_url':form_submit_action_url, 'posting_type': posting_type})
+
     elif request.method == "GET":
         posting_object = Posting.objects.get(pk=pk)
         if posting_object and posting_object.posting_type == posting_type:
@@ -369,7 +398,8 @@ def edit_posting_handler(request, posting_type, pk):
 
         else:
             print "edit_posting_handler: pk points to a nonexistent object"
-            return HttpResponseRedirect("/admin")
+            return render(request, 'generic_error.html', {error_text: 'You have tried to edit a nonexistent posting.'})
+            #return HttpResponseRedirect("/admin")
     else:
         #impossible case
         return HttpResponse(response)

@@ -1,9 +1,31 @@
 {% include 'admin-common/header.html' %}
 {% load staticfiles %}
-    <script src ="{% static 'js/form.js' %}"></script>
+   
+ <script src ="{% static 'js/form.js' %}"></script>
 
     <div class="form-content">
         <h1 class="form-title"> Add a {% if posting_type == "project" %} Project {% else %} Role Type {% endif %}</h1>
+
+	{{form.errors}}
+
+	<!--
+	{% for e in form.errors %}
+	    {{e}}
+	{% endfor %}
+	
+	{% if form.errors %}
+	    <ul class="errorlist">
+	      {% for field, errors in form.errors.items %}
+	          {% for e in errors %}
+	             <{{e}}
+	          {% endfor %}
+	      {% endfor %}
+	    </ul>
+	{% endif %} -->
+
+<!--	{% for e in form.non_field_errors %}
+	    {{e}}
+	{% endfor %}-->
 
         <form id="project_form" enctype="multipart/form-data" method="post" action="{{ form.form_submit_action_url }}" onsubmit="return confirmation();">
 
