@@ -213,6 +213,10 @@ def add_posting_handler(request, posting_type):
             project.photo_two = request.FILES['photo_two']
             project.photo_three = request.FILES['photo_three']
 
+            project.photo_one_alt_text = form.cleaned_data['photo_one_alt_text']
+            project.photo_two_alt_text = form.cleaned_data['photo_two_alt_text']
+            project.photo_three_alt_text = form.cleaned_data['photo_three_alt_text']
+
             project.description = form.cleaned_data['description']
             project.additional_description = form.cleaned_data['additional_description']
             if posting_type == "project":
@@ -268,12 +272,15 @@ def edit_posting_handler(request, posting_type, pk):
         form = PostingForm(request.POST, request.FILES)
 
         #since existing posting objects passed validation at time of creation,
-        #image/file upload fields should be optional
+        #image/file upload fields and their alt descriptions should be optional
         form.fields['colored_icon'].required = False
         form.fields['uncolored_icon'].required = False
         form.fields['photo_one'].required = False
         form.fields['photo_two'].required = False
         form.fields['photo_three'].required = False
+        form.fields['photo_one_alt_text'].required = False
+        form.fields['photo_two_alt_text'].required = False
+        form.fields['photo_three_alt_text'].required = False
 
         #although the field was deleted in the GET request,
         #it must be nonrequired to pass validation when adding a role type
@@ -309,6 +316,10 @@ def edit_posting_handler(request, posting_type, pk):
                 project.photo_two = request.FILES['photo_two']
             if 'photo_three' in request.FILES:
                 project.photo_three = request.FILES['photo_three']
+
+            project.photo_one_alt_text = form.cleaned_data['photo_one_alt_text']
+            project.photo_two_alt_text = form.cleaned_data['photo_two_alt_text']
+            project.photo_three_alt_text = form.cleaned_data['photo_three_alt_text']
 
             project.description = form.cleaned_data['description']
             project.additional_description = form.cleaned_data['additional_description']

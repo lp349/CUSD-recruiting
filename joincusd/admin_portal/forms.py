@@ -13,6 +13,10 @@ class PostingForm(forms.ModelForm):
     photo_two = forms.ImageField(help_text="Photo 2:")
     photo_three = forms.ImageField(help_text="Photo 3:")
 
+    photo_one_alt_text = forms.CharField(max_length=500, help_text="Photo 1 Alt Text:")
+    photo_two_alt_text = forms.CharField(max_length=500, help_text="Photo 2 Alt Text:")
+    photo_three_alt_text = forms.CharField(max_length=500, help_text="Photo 3 Alt Text:")
+
     icon_color = RGBColorField(help_text="Icon Color:")
     colored_icon = forms.FileField(help_text="Colored Icon:")
     uncolored_icon = forms.FileField(help_text="Uncolored Icon:")
@@ -27,7 +31,8 @@ class PostingForm(forms.ModelForm):
         fields = ('name', 'tagline', 'short_project_description', 'description',
                   'additional_description', 'icon_color', 'colored_icon',
                   'uncolored_icon', 'role_multiselect', 'photo_one',
-                  'photo_two', 'photo_three', 'published')
+                  'photo_two', 'photo_three', 'photo_one_alt_text',
+                  'photo_two_alt_text', 'photo_three_alt_text','published')
 
 
 class OpeningForm(forms.ModelForm):
