@@ -8,14 +8,26 @@ from forms import ApplicationForm
 
 
 import json
+
 #limit uploads to 1MB
 MAX_UPLOAD_SIZE= 1048576
 
 def index(request):
      return render(request, "add_application.html")
+
+
 #add a new application
+'''
+this function display the application form and save the completed form to database
+arguments:
+  request - Django HttpRequest Object
+once submitted, it will redirect to url /application/
+'''
+
 def add_application(request):
   # A HTTP POST?
+  size_error=False #boolean to indicate if the exceed max size
+  has_uploaded=True #boolean to indicate if the resume is uploaded or not
   if request.method == 'POST':
     form = ApplicationForm(request.POST, request.FILES)
     print request.FILES
@@ -37,6 +49,9 @@ def add_application(request):
             application.save()
           else:
             print "The size is too big!"
+            size_error=True
+        else:
+          has_uploaded=False  #boolean to indicate if the resume is uploaded or not
 
         for role_id in form.cleaned_data['role_multiselect']:
           role=Opening.objects.get(pk=role_id)
@@ -53,19 +68,17 @@ def add_application(request):
 
         application.save()
 
-        # Now call the index() view.
         # The user will be shown the homepage.
-        return HttpResponseRedirect("/application/") #add some pop up window for confirmation of save 
+        return HttpResponseRedirect("https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform?edit_requested=true") #add some pop up window for confirmation of save 
     else:
-        # The supplied form contained errors - just print them to the terminal.
-        print form.errors
+        # The supplied form contained errors - just print them to the terminal and redirect to application site 
+        print ('error is: %s' %form.errors)
+        #return HttpResponseRedirect("/application/add_application/")
 
   else:
       # If the request was not a POST, display the form to enter details.
       form = ApplicationForm()
-      #print form
-      form.form_submit_action_url = "/application/add_application/"
-  # Bad form (or form details), no form supplied...
+    
   # Render the form with error messages (if any).
   return render(request, 'add_application.html', {'form': form})
 
