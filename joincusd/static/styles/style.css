@@ -236,7 +236,8 @@ a {
     color: #fff;
     border-radius: 3px;
     border: 2px solid #3FAB6D;
-    width: 8rem;
+    /*width: 8rem;*/
+    width: auto;
     height: 2.5rem;
     cursor: pointer;
     font-size: 1em;
@@ -344,8 +345,13 @@ a {
 
 .remove svg text{
     stroke: #E04D25;
-    stroke-width: 0.5rem;
     fill: #E04D25;
+/**/
+    /*stroke: #7a7a7a;*/
+    /*fill: #7a7a7a;*/
+
+    stroke-width: 0.5rem;
+
 }
 
 .remove svg:hover circle{
@@ -356,6 +362,10 @@ a {
 .remove svg:hover text {
     stroke: #FFFFFF;
     fill: #FFFFFF;
+
+    /*stroke: #E04D25;*/
+    /*fill: #E04D25;*/
+
 }
 
 /*****rank buttons*****/
