@@ -1,14 +1,16 @@
 {% include 'common/header.html' %}
 {% load staticfiles %}
 <section class="main-content">
-  <section class="current-projects">
-    <h1>Current Projects</h1>
-    {% for project in projects %}
-      {% if project.published %}
+  {% for projects_section in display_projects %}
+    <section class="current-projects">
+      {% if forloop.counter0 == 0 %}
+        <h1>Current Projects</h1>
+      {% endif %}
+      {% for project in projects_section %}
         <article class="project">
           <a href='/postings/{{ project.pk }}/'>
             <div class="icon icon--project-{{ project.short_name }} icon--project-{{ project.short_name }}--colored-bg"
-                 style="
+                  style="
                     background-image: url('{{ project.uncolored_icon.url }}');
                     background-position: center center;
                     background-repeat: no-repeat;
@@ -20,9 +22,9 @@
             {{ project.short_project_description }}
           </p>
         </article>
-      {% endif %}
-    {% endfor %}
-  </section>
+      {% endfor %}
+    </section>
+  {% endfor %}
   <section class="past-projects">
     <h1>Past Projects</h1>
     <article class="project">
