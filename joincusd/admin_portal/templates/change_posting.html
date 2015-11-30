@@ -1,21 +1,11 @@
+{% include 'admin-common/header.html' %}
 {% load staticfiles %}
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'styles/common.css' %}">
+<script src ="{% static 'js/form.js' %}"></script>
 
-    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
-    <script src ="{% static 'js/form.js' %}"></script>
-    <script src ="{% static 'js/common.js' %}"></script>
-    <title></title>
-
-</head>
-<body>
-    <h1> {% if is_edit %} Edit {% else %} Add {% endif %} a {% if posting_type == "project" %} Project {% else %} Role Type {% endif %}</h1>
     <div class="form-content">
-    <form id="project_form" enctype="multipart/form-data" method="post" action="{{ form.form_submit_action_url }}">
+        <h1 class="form-title">  {% if is_edit %} Edit {% else %} Add {% endif %} a {% if posting_type == "project" %} Project {% else %} Role Type {% endif %}</h1>
+
+        <form id="project_form" enctype="multipart/form-data" method="post" action="{{ form.form_submit_action_url }}">
 
       {% csrf_token %}
       {% for hidden in form.hidden_fields %}
@@ -28,29 +18,29 @@
         <div class="field-wrapper">
 
             {%if field.name != "role_multiselect"%}
-            {{ field.errors }}
-            <div class="field-name">{{ field.help_text}}</div>
-            {% if field.name == "detail_icon_path" and is_edit == True %}
-            <img src="{% static form.instance.detail_icon_path.name %}">
-            {% endif %}
+                {{ field.errors }}
+                <div class="field-name">{{ field.help_text}}</div>
+                {% if field.name == "detail_icon_path" and is_edit == True %}
+                  <img src="{% static form.instance.detail_icon_path.name %}">
+                {% endif %}
 
-            {% if field.name == "list_thumbnail_path" and is_edit == True %}
-            <img src="{% static form.instance.list_thumbnail_path.url %}">
-            {% endif %}
+                {% if field.name == "list_thumbnail_path" and is_edit == True %}
+                  <img src="{% static form.instance.list_thumbnail_path.url %}">
+                {% endif %}
 
-            {% if field.name == "photo_one" and is_edit == True %}
-              <img src="{{ form.instance.photo_one.url }}" />
-            {% endif %}
+                {% if field.name == "photo_one" and is_edit == True %}
+                  <img src="{{ form.instance.photo_one.url }}" />
+                {% endif %}
 
-            {% if field.name == "photo_two" and is_edit == True %}
-              <img src="{{ form.instance.photo_two.url }}" />
-            {% endif %}
+                {% if field.name == "photo_two" and is_edit == True %}
+                  <img src="{{ form.instance.photo_two.url }}" />
+                {% endif %}
 
-            {% if field.name == "photo_three" and is_edit == True %}
-              <img src="{{ form.instance.photo_three.url }}" />
-            {% endif %}
+                {% if field.name == "photo_three" and is_edit == True %}
+                  <img src="{{ form.instance.photo_three.url }}" />
+                {% endif %}
 
-            <div class="field">{{ field }}</div>
+                <div class="field">{{ field }}</div>
             {% endif %}
 
         </div>
@@ -62,5 +52,5 @@
       <input type="submit" class="submit-button button" name="submit" value="Save">
     </form>
     </div>
-</body>
-</html>
+
+{% include 'admin-common/footer.html' %}

@@ -13,7 +13,7 @@ def index(request):
 def projects(request):
   context = {
     'title': 'Projects',
-    'projects': Posting.objects.filter(posting_type='project'),
+    'projects': Posting.objects.filter(posting_type='project').order_by('-rank'),
     'role_types': Posting.objects.filter(posting_type='role_type')
   }
   return render_to_response('projects.html', context)
@@ -24,7 +24,7 @@ def about(request):
     'projects': Posting.objects.filter(posting_type='project'),
     'role_types': Posting.objects.filter(posting_type='role_type')
   }
-  return render_to_response('about.html', {'title':'About'})
+  return render_to_response('about.html', context)
 
 def posting(request, pk):
   posting = Posting.objects.get(pk=pk)
@@ -32,8 +32,12 @@ def posting(request, pk):
     'title': 'About',
     'projects': Posting.objects.filter(posting_type='project'),
     'role_types': Posting.objects.filter(posting_type='role_type'),
-    'type': posting.posting_type,
+    'posting_type': posting.posting_type,
     'name': posting.name,
+    'colored_icon': posting.colored_icon,
+    'uncolored_icon': posting.uncolored_icon,
+    'icon_color': posting.icon_color,
+    'short_name': posting.short_name,
     'tagline': posting.tagline,
     'descriptions': posting.description.split('\n'),
     'additional_descriptions': posting.additional_description.split('\n'),

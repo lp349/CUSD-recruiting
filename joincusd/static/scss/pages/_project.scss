@@ -63,7 +63,7 @@
       &--project-gbmp {
         background-size: rem-calc(180);
       }
-      &--project-tech {
+      &--project-ct {
         background-size: rem-calc(190);
         @media #{$medium-up} {
           background-size: rem-calc(160);
@@ -75,7 +75,7 @@
           background-size: rem-calc(140);
         }
       }
-      &--project-futures {
+      &--project-cf {
         background-size: rem-calc(180);
         @media #{$medium-up} {
           background-size: rem-calc(100);

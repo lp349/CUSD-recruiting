@@ -7,7 +7,13 @@
       {% if project.published %}
         <article class="project">
           <a href='/postings/{{ project.pk }}/'>
-            <div class="icon icon--project-seg icon--project-seg--colored-bg"></div>
+            <div class="icon icon--project-{{ project.short_name }} icon--project-{{ project.short_name }}--colored-bg"
+                 style="
+                    background-image: url('{{ project.uncolored_icon.url }}');
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-color: {{ project.icon_color }}
+                "></div>
             <h3>{{ project.name }}</h3>
           </a>
           <p>

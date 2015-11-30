@@ -29,7 +29,9 @@
           <ul>
             {% if projects %}
               {% for project in projects %}
+                {% if project.published %}
                 <li><a href="/postings/{{project.pk}}">{{project.name}}</a></li>
+                {% endif %}
               {% endfor %}
             {% else %}
               <li>Sorry, we have no projects at this time.</li>

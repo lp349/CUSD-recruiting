@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head lang="en">
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'styles/common.css' %}">
+
+    <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+
+    <script src="{% static 'js/common.js' %}"></script>
+
+    <title>{% if title %} {{ title }} {% else %} CUSD Admin Portal {% endif %}</title>
+</head>
+
+<body>
+<div class="header">
+    <a class="site-logo" href="/">
+        <img class="site-logo__image" src="{% static 'images/CUSD-logo.svg' %}"/>
+        <span class="site-logo__text">Cornell University<br>Sustainable Design</span>
+    </a>
+
+    <div id="logout" class=""><a href="/admin/login/">Log Out</a></div>
+
+    <h3>Admin Portal</h3>
+</div>
+
+
+

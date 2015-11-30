@@ -9,7 +9,7 @@ from forms import PostingForm, OpeningForm
 import json
 
 '''
-function to handle admin log in. 
+function to handle admin log in.
 User will suplly username and password.
 If the user is able to authenticate, they will be directed to the admin page.
 If not, a error message will be displayed.
@@ -132,6 +132,46 @@ def role_list(request):
      response = json.dumps(result_list)
      return HttpResponse(response)
 
+def update_ranks(request):
+     print request.POST.get("rank_string", '')
+     object_list = json.loads(request.POST.get("rank_string", ''))
+
+     for obj in object_list:
+         posting = Posting.objects.get(pk = obj["projectId"])
+         posting.rank = obj["newRank"]
+         posting.save()
+
+     return HttpResponse()
+
+def generate_short_name(name):
+  # If the name is a single word - use full name lowercased as short_name
+  if len(name.split()) == 1:
+    return name.lower()
+
+  # Otherwise, generate an acronym based on that name for the shortname
+  short_name = filter(unicode.isupper, name.title()).lower()
+
+  short_names = Posting.objects.values_list('short_name', flat=True).filter(short_name__startswith=short_name)
+  if not short_names:
+    return short_name
+
+  # If the acronym is already taken, generate a new one
+  conflict = False
+  possible_postfix = 0
+  for s in short_names:
+    if s == short_name:
+      conflict = True
+    if s[len(short_name):]:
+      postfix = s[len(short_name):]
+      try:
+        possible_postfix = max(possible_postfix, int(postfix) + 1)
+      except ValueError:
+        pass
+  if conflict:
+    return short_name + str(possible_postfix)
+  else:
+    return short_name
+
 '''
   this function displays the website form on a page GET, and
   handles adding NEW postings for either projects or role types.
@@ -149,7 +189,7 @@ def add_posting_handler(request, posting_type):
     if request.method == "POST":
         form = PostingForm(request.POST, request.FILES)
 
-        #although the field was deleted in the GET request, 
+        #although the field was deleted in the GET request,
         #it must be nonrequired to pass validation when adding a role type
         if posting_type == "role_type":
             form.fields['short_project_description'].required = False
@@ -160,25 +200,26 @@ def add_posting_handler(request, posting_type):
 
             project.posting_type = posting_type
             project.name = form.cleaned_data['name']
+            project.short_name = generate_short_name(project.name)
             project.tagline = form.cleaned_data['tagline']
+            project.icon_color = form.cleaned_data['icon_color']
             #internally assigned to be the last!
             project.rank = len(Posting.objects.all())
 
             #passing validation guarantees existence of these files (their required attribute is set)
-            project.detail_icon_path = request.FILES['detail_icon_path']
-            project.list_thumbnail_path = request.FILES['list_thumbnail_path']
+            project.colored_icon = request.FILES['colored_icon']
+            project.uncolored_icon = request.FILES['uncolored_icon']
             project.photo_one = request.FILES['photo_one']
             project.photo_two = request.FILES['photo_two']
             project.photo_three = request.FILES['photo_three']
 
             project.description = form.cleaned_data['description']
-            project.additional_description = form.cleaned_data['additional_description']       
+            project.additional_description = form.cleaned_data['additional_description']
             if posting_type == "project":
                 project.short_project_description = form.cleaned_data['short_project_description']
             else:
                 project.short_project_description = ""
 
-            
             #because this is a new addition, we'll need to save the object first so that the many to many field can be used
             project.save()
 
@@ -228,13 +269,13 @@ def edit_posting_handler(request, posting_type, pk):
 
         #since existing posting objects passed validation at time of creation,
         #image/file upload fields should be optional
-        form.fields['detail_icon_path'].required = False
-        form.fields['list_thumbnail_path'].required = False
+        form.fields['colored_icon'].required = False
+        form.fields['uncolored_icon'].required = False
         form.fields['photo_one'].required = False
         form.fields['photo_two'].required = False
         form.fields['photo_three'].required = False
 
-        #although the field was deleted in the GET request, 
+        #although the field was deleted in the GET request,
         #it must be nonrequired to pass validation when adding a role type
         if posting_type == "role_type":
             form.fields['short_project_description'].required = False
@@ -249,16 +290,19 @@ def edit_posting_handler(request, posting_type, pk):
 
             project.posting_type = posting_type
             project.name = form.cleaned_data['name']
+            #TODO(lpei): Remove this, only for testing purposes
+            if not project.short_name:
+              project.short_name = generate_short_name(project.name)
+              print project.short_name
             project.tagline = form.cleaned_data['tagline']
-            #NOTE A RANK IS NO LONGER CHANGED BY THE FORM
-            #project.rank = form.cleaned_data['rank']
+            project.icon_color = form.cleaned_data['icon_color']
 
             #since file uploads may be optional,
             #we have to check that they exist!
-            if 'detail_icon_path' in request.FILES:
-                project.detail_icon_path = request.FILES['detail_icon_path']
-            if 'list_thumbnail_path' in request.FILES:
-                project.list_thumbnail_path = request.FILES['list_thumbnail_path']
+            if 'colored_icon' in request.FILES:
+                project.colored_icon = request.FILES['colored_icon']
+            if 'uncolored_icon' in request.FILES:
+                project.uncolored_icon = request.FILES['uncolored_icon']
             if 'photo_one' in request.FILES:
                 project.photo_one = request.FILES['photo_one']
             if 'photo_two' in request.FILES:
@@ -267,7 +311,7 @@ def edit_posting_handler(request, posting_type, pk):
                 project.photo_three = request.FILES['photo_three']
 
             project.description = form.cleaned_data['description']
-            project.additional_description = form.cleaned_data['additional_description']       
+            project.additional_description = form.cleaned_data['additional_description']
             if posting_type == "project":
                 project.short_project_description = form.cleaned_data['short_project_description']
             else:
@@ -322,7 +366,7 @@ def edit_posting_handler(request, posting_type, pk):
 '''
 Required: The user has logged in.
 This function displays a form that allows user to add a new role, and is also able to add this new role under role types and projects that has such role.
-argument: 
+argument:
     request - Django HttpRequest Object
 '''
 @login_required(login_url='/admin/login/')
@@ -375,7 +419,7 @@ def add_role(request):
 function to remove a role from the mainsite_openings database
 It will cascade the changes in the postings table. (The relationship between posting and this opening will be deleted)
 In otherwords, if a role is deleted, the projects that originally has this role will not display this role any more.
-In addition, this role will also not be displayed any more under any role typles. 
+In addition, this role will also not be displayed any more under any role typles.
   arguments:
     request - Django HttpRequest Object
     pk - a string containing the primary key of the postings object chosen for removal
@@ -389,10 +433,11 @@ def remove_role(request,pk):
     postings=Posting.objects.filter(openings=thisrole)
     #for each such posting, remove the relationship
     for anypost in postings:
-      anypost.openings.delete(thisrole)
+      anypost.openings.remove(thisrole)
     thisrole.delete()
   else:
     print "Cannot find this role"
+    print form.errors
   return HttpResponseRedirect("/admin/")
 
 '''
@@ -436,7 +481,7 @@ def edit_role(request, pk):
     form = OpeningForm(instance=old_role)
     form.form_submit_action_url = "/admin/edit_role/" + pk + "/"
 
-    #additionally, since there is no direct mapping from
+    #Additionally, since there is no direct mapping from
     #the model's openings set to the form's MultipleChoiceField,
     #we'll need to generate the initial checked choices
     initial_roletypes = []
@@ -452,7 +497,7 @@ def edit_role(request, pk):
         all_roletypes.append((posting.pk, posting.name))
       else:
         all_projects.append((posting.pk, posting.name))
-
+      # check if the old role is in this posting's opening
       if old_role in posting.openings.all():
         if posting.posting_type == "role_type":
           initial_roletypes.append(posting.pk)
@@ -474,20 +519,27 @@ def edit_role(request, pk):
         old_role.title=title
         old_role.description=description
         old_role.save()
-        postings=form.cleaned_data['selected_projects']
+        postings=map(int, form.cleaned_data['selected_projects'])
+        #deselect_id: the postings that were originally linked to the roles
+        #but not any more
         deselect_id=set(initial_projects)-set(postings)
+        #newselect_id: the postings that needed to be added to
+        #the relationship table in order to link to this role
         newselect_id=set(postings)-set(initial_projects)
-        updateselect_id=set(postings) & set(initial_projects)
-        print(deselect_id)
+        #updateselect_id: don't need to do anything for these category
+        #updateselect_id=set(postings) & set(initial_projects)
 
         for posting_id in deselect_id:
-          posting=Posting.objects.filter(pk=posting_id)
+          posting=Posting.objects.get(pk=posting_id)
           if posting:
-            posting.openings.delete(old_role)
+            #remove the relationship
+            posting.openings.remove(old_role)
         for posting_id in newselect_id:
-          posting=Posting.objects.filter(pk=posting_id)
+          posting=Posting.objects.get(pk=posting_id)
           if posting:
+            #add new relationship
             posting.openings.add(old_role)
+      return HttpResponseRedirect("/admin")
     else:
         # The supplied form contained errors - just print them to the terminal.
         print form.errors

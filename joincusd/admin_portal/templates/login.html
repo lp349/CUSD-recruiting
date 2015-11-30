@@ -1,21 +1,5 @@
+{% include 'admin-common/header.html' %}
 {% load staticfiles %}
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'styles/common.css' %}">
-    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
-    <script src ="{% static 'js/common.js' %}"></script>
-    <title>CUSD Admin Login</title>
-</head>
-<body>
-<div class="h">
-    <div class="site-logo">
-        <img class="site-logo__image" src="{% static "images/CUSD-logo.svg" %}" />
-        <span class="site-logo__text">Cornell University<br>Sustainable Design</span><br>
-    </div>
-</div><br>
 
 <div id="login">
     <div id="login-title"><h3>Admin Portal Login</h3></div>
@@ -41,5 +25,4 @@
   <span class="err-message">{{ message }}</span>
   </form>
 </div>
-</body>
-</html>
+{% include 'admin-common/footer.html' %}
