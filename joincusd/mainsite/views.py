@@ -47,7 +47,9 @@ def posting(request, pk):
     'tagline': posting.tagline,
     'descriptions': posting.description.split('\n'),
     'additional_descriptions': posting.additional_description.split('\n'),
-    'photos': [posting.photo_one, posting.photo_two, posting.photo_three],
+    'photo_alt_pair': [(posting.photo_one, posting.photo_one_alt_text), 
+                       (posting.photo_two, posting.photo_two_alt_text), 
+                       (posting.photo_three, posting.photo_three_alt_text)],
     'openings': posting.openings.all()
     }
   return render(request, 'posting.html', context)
