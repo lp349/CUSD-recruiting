@@ -48,9 +48,9 @@
                     class="see-more__label--open">Less</span></label>
         </div>
         <ul class="project-description__gallery">
-            {% for photo in photos %}
+            {% for photo, photo_alt_text in photo_alt_pair %}
             <li>
-                <img src="{{ photo.url }}"/>
+                <img src="{{ photo.url }}" alt="{{ photo_alt_text }}"/>
             </li>
             {% endfor %}
         </ul>
