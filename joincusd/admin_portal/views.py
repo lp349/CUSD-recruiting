@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template import RequestContext
 from mainsite.models import Posting, Opening
 from django import forms
@@ -301,8 +301,9 @@ def edit_posting_handler(request, posting_type, pk):
             #del form.fields['short_project_description']
 
         if form.is_valid():
-            project = Posting.objects.get(pk=pk)
+            project = get_object_or_404(Posting, pk=pk)
 
+            #TODO: Remove deprecated check
             if not project:
                 print "edit_posting_handler: primary key for editing project does not point to an existing project"
                 return render(request, 'generic_error.html', {error_text: 'You have tried to edit a nonexistent posting.'})
@@ -362,8 +363,9 @@ def edit_posting_handler(request, posting_type, pk):
             #object in the database before we redisplay it, else we get errors
             #like nonattached files for nonedited photos
             
-            posting = Posting.objects.get(pk=pk)
+            posting = get_object_or_404(Posting, pk=pk)
 
+            #TODO: remove deprecated check
             if not posting:
                 return render(request, 'generic_error.html', {error_text: 'You have tried to edit a nonexistent posting.'})
 
@@ -374,7 +376,8 @@ def edit_posting_handler(request, posting_type, pk):
             return render(request, 'edit_posting.html', {'form': form, 'form_submit_action_url':form_submit_action_url, 'posting_type': posting_type})
 
     elif request.method == "GET":
-        posting_object = Posting.objects.get(pk=pk)
+        posting_object = get_object_or_404(Posting, pk=pk)
+        #TODO: revise check condition
         if posting_object and posting_object.posting_type == posting_type:
             form = PostingForm(instance = posting_object)
 
