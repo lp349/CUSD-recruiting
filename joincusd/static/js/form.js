@@ -12,50 +12,66 @@ $(document).ready(function () {
 
     var formFieldsHelp = [
         {
-            className:"form-name"
+            className:"form-name",
+            content: ""
         },
         {
-            className: "form-tagline"
+            className: "form-tagline",
+            content: ""
         },
         {
-            className:"form-short-description"
+            className:"form-short-description",
+            content: ""
         },
         {
-            className: "form-long-description"
+            className: "form-long-description",
+            content: ""
         },
         {
-            className: "form-additional-description"
+            className: "form-additional-description",
+            content: ""
         },
         {
-            className:"form-icon-color"
+            className:"form-icon-color",
+            content: ""
         },
         {
-            className:"form-colored-icon"
+            className:"form-colored-icon",
+            content: ""
         },
         {
-            className: "form-uncolored-icon"
+            className: "form-uncolored-icon",
+            content: ""
         },
         {
-            className: "form-photo-one"
+            className: "form-photo-one",
+            content: ""
         },
         {
-            className: "form-photo-one-text"
+            className: "form-photo-one-text",
+            content: ""
         },
         {
-            className:  "form-photo-two"
+            className:  "form-photo-two",
+            content: ""
         },
         {
-            className: "form-photo-two-text"
+            className: "form-photo-two-text",
+            content: ""
         },
         {
-            className: "form-photo-three"
+            className: "form-photo-three",
+            content: ""
         },
         {
-            className: "form-photo-three-text"
+            className: "form-photo-three-text",
+            content: ""
         },
         {
-            className: "form-roles"
+            className: "form-roles",
+            content: ""
         }
+
     ];
 
 
@@ -63,19 +79,16 @@ $(document).ready(function () {
     $(".field-name").append("<div class=\"help-button\">");
 
     $.each(formFieldsHelp, function(index, field) {
-        $("." + field.className + " field-name help-button").prop("title", field.className);
-        console.log(("." + field.className + " .field-name .help-button"));
+        $("." + field.className + " .field-name .help-button").prop("title", field.className);
     });
 
 
     $(".help-button").tooltip({
         tooltipClass: "tooltip",
-        position: { my: "left+15 center", at: "right center" }
+        position: { my: "left+15 center", at: "right center", collision: 'none'},
+        hide: false
     })
-        .append(Icons.help)
         ;
-
-
 
     $("input:checkbox").parent()
         .addClass("checkbox")
@@ -111,7 +124,6 @@ $(document).ready(function () {
             $(this).removeClass("error-field").parent().children(".message").hide();
         }
     });
-
 
     $("textarea").blur(function() {
         var val = $(this).val().trim();
