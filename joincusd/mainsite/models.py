@@ -1,5 +1,5 @@
 from django.db import models
-from colorful.fields import RGBColorField
+from colorfield.fields import ColorField
 
 #from the data section on github, projects and roles are completely identical
 #in all fields, so our initial definition:
@@ -34,7 +34,7 @@ class Posting(models.Model):
   openings = models.ManyToManyField(Opening)
 
   # Default color is CUSD Green
-  icon_color = RGBColorField(default="#3FAB69")
+  icon_color = ColorField(default="#3FAB69")
   colored_icon = models.FileField(upload_to="images/icons/")
   uncolored_icon = models.FileField(upload_to="images/icons/")
 

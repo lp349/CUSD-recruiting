@@ -1,6 +1,6 @@
 from django import forms
 from mainsite.models import Opening, Posting
-from colorful.fields import RGBColorField
+from colorfield.fields import ColorField
 
 class PostingForm(forms.ModelForm):
     name = forms.CharField(max_length=500, help_text="Name:")
@@ -17,7 +17,7 @@ class PostingForm(forms.ModelForm):
     photo_two_alt_text = forms.CharField(max_length=500, help_text="Photo 2 Alt Text:")
     photo_three_alt_text = forms.CharField(max_length=500, help_text="Photo 3 Alt Text:")
 
-    icon_color = RGBColorField(help_text="Icon Color:")
+    icon_color = ColorField(help_text="Icon Color:")
     colored_icon = forms.FileField(help_text="Colored Icon:")
     uncolored_icon = forms.FileField(help_text="Uncolored Icon:")
 

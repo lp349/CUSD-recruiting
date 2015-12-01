@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'compressor',
     'djangobower',
-    'colorful',
+    'colorfield',
     'mainsite',
     'admin_portal',
     'application',
