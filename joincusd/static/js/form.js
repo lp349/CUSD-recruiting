@@ -3,11 +3,74 @@ function validate() {
     return false;
 }
 
+$(function() {
+    $( document ).tooltip();
+
+});
+
 $(document).ready(function () {
 
+    var formFieldsHelp = [
+        {
+            className:"form-name"
+        },
+        {
+            className: "form-tagline"
+        },
+        {
+            className:"form-short-description"
+        },
+        {
+            className: "form-long-description"
+        },
+        {
+            className: "form-additional-description"
+        },
+        {
+            className:"form-icon-color"
+        },
+        {
+            className:"form-colored-icon"
+        },
+        {
+            className: "form-uncolored-icon"
+        },
+        {
+            className: "form-photo-one"
+        },
+        {
+            className: "form-photo-one-text"
+        },
+        {
+            className:  "form-photo-two"
+        },
+        {
+            className: "form-photo-two-text"
+        },
+        {
+            className: "form-photo-three"
+        },
+        {
+            className: "form-photo-three-text"
+        },
+        {
+            className: "form-roles"
+        }
+    ];
+
+
+
+
+
     $("#id_published").parent().parent().hide(); ///hide "published" field...
-    $(".field-name").append("<div class=\"help-button\">");
-    $(".help-button").append(Icons.help);
+    $(".field-name").append("<div class=\"help-button\" title=\"this is a tooltip\">");
+
+    $(".help-button").tooltip({
+        tooltipClass: "tooltip",
+        position: { my: "left+15 center", at: "right center" }
+    })
+        .append(Icons.help)
+        ;
 
     $("input:checkbox").parent()
         .addClass("checkbox")

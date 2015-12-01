@@ -136,7 +136,7 @@ input[type=file] {
 .help-button svg {
     height: 1.5rem;
     width: 1.5rem;
-    font-size: 3em;
+    font-size: 3.2em;
 }
 
 .help-button svg circle {
@@ -147,7 +147,7 @@ input[type=file] {
     stroke: #00417B;
     fill: #00417B;
 
-    stroke-width: 0.5rem;
+    stroke-width: 0.35rem;
 
 }
 
@@ -205,3 +205,14 @@ li label{
 
 
 
+/**************************************Tooltips**************************************/
+.ui-tooltip {
+    float: right;
+    border: 2px solid lightgray;
+}
+
+.ui-tooltip-content {
+    padding: 1rem;
+    background-color: #FFFFFF;
+    color: #7A7A7A;
+}

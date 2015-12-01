@@ -13,37 +13,38 @@
       {% csrf_token %}
 
 
-      <div class="field-wrapper">
+      <div class="field-wrapper form-name">
 	<div class="field-name">{{form.name.help_text}}</div>
 	{{form.name}}
+
       </div>
 
-      <div class="field-wrapper">
+      <div class="field-wrapper form-tagline">
 	<div class="field-name">{{form.tagline.help_text}}</div>
 	{{form.tagline}}
       </div>
 
-      <div class="field-wrapper">
+      <div class="field-wrapper form-short-description">
 	<div class="field-name">{{form.short_project_description.help_text}}</div>
 	{{form.short_project_description}}
       </div>
 
-      <div class="field-wrapper">
+      <div class="field-wrapper form-long-description">
 	<div class="field-name">{{form.description.help_text}}</div>
 	{{form.description}}
       </div>
 
-      <div class="field-wrapper">
+      <div class="field-wrapper form-additional-description">
 	<div class="field-name">{{form.additional_description.help_text}}</div>
 	{{form.additional_description}}
       </div>
 
-      <div class="field-wrapper">
+      <div class="field-wrapper form-icon-color">
 	<div class="field-name">Icon Color:</div>
 	{{form.icon_color}}
       </div>
 
-      <div class="field-wrapper">
+      <div class="field-wrapper form-colored-icon">
 	<div class="field-name">{{form.colored_icon.help_text}}</div>
 	<div class="photo-container">
 	  <img src="{% static form.instance.colored_icon.url %}">
@@ -51,7 +52,7 @@
 	{{form.colored_icon}}
       </div>
 
-      <div class="field-wrapper">
+      <div class="field-wrapper form-uncolored-icon">
 	<div class="field-name">{{form.uncolored_icon.help_text}}</div>
 	<div class="photo-container">
 	  <img src="{% static form.instance.uncolored_icon.url %}">
@@ -59,7 +60,7 @@
 	{{form.uncolored_icon}}
       </div>
 
-      <div class="field-wrapper">
+      <div class="field-wrapper form-photo-one">
 	<div class="field-name">{{form.photo_one.help_text}}</div>
 	<div class="photo-container">
 	  <img src="{% static form.instance.photo_one.url %}">
@@ -67,12 +68,12 @@
 	{{form.photo_one}}
       </div>
 
-      <div class="field-wrapper">
+      <div class="field-wrapper form-photo-one-text">
 	<div class="field-name">{{form.photo_one_alt_text.help_text}}</div>
 	{{form.photo_one_alt_text}}
       </div>
 
-      <div class="field-wrapper">
+      <div class="field-wrapper form-photo-two">
 	<div class="field-name">{{form.photo_two.help_text}}</div>
 	<div class="photo-container">
 	  <img src="{% static form.instance.photo_two.url %}">
@@ -80,12 +81,12 @@
 	{{form.photo_two}}
       </div>
 
-      <div class="field-wrapper">
+      <div class="field-wrapper form-photo-two-text">
 	<div class="field-name">{{form.photo_two_alt_text.help_text}}</div>
 	{{form.photo_two_alt_text}}
       </div>
 
-      <div class="field-wrapper">
+      <div class="field-wrapper form-photo-three">
 	<div class="field-name">{{form.photo_three.help_text}}</div>
 	<div class="photo-container">
 	  <img src="{% static form.instance.photo_three.url %}">
@@ -93,12 +94,12 @@
 	{{form.photo_three}}
       </div>
 
-      <div class="field-wrapper">
+      <div class="field-wrapper form-photo-three-text">
 	<div class="field-name">{{form.photo_three_alt_text.help_text}}</div>
 	{{form.photo_three_alt_text}}
       </div>
 
-        <div class="field-wrapper">
+        <div class="field-wrapper form-roles">
         <div class="field-name">Select Roles</div>
             <div class="field">{{ form.role_multiselect }}</div>
             </div>
