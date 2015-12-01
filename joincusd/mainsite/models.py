@@ -26,9 +26,9 @@ class Posting(models.Model):
   photo_two = models.ImageField(upload_to="images/photos/")
   photo_three = models.ImageField(upload_to="images/photos/")
 
-  photo_one_alt_text = models.CharField(max_length=500)
-  photo_two_alt_text = models.CharField(max_length=500)
-  photo_three_alt_text = models.CharField(max_length=500)
+  photo_one_alt_text = models.CharField(max_length=500, default="")
+  photo_two_alt_text = models.CharField(max_length=500, default="")
+  photo_three_alt_text = models.CharField(max_length=500, default="")
 
 
   openings = models.ManyToManyField(Opening)
