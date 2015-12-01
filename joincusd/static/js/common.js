@@ -37,6 +37,11 @@ var Icons = {
     '<text  x="50%" y="50%" text-anchor="middle" dominant-baseline="central">x</text> ' +
     '</svg>',
 
+    help:  '<svg class="help-icon" viewBox="0 0 100 100"> ' +
+    '<circle stroke-width="5px" cx="50%" cy="50%" r="48%"></circle>' +
+    '<text  x="50%" y="50%" text-anchor="middle" dominant-baseline="central">?</text> ' +
+    '</svg>',
+
     checkbox: '<svg class="checkbox-icon" viewBox="0 0 100 100"> ' +
     '<path d="M 10 55 l 30 25 l 40 -70"></path>' +
     '</svg>',

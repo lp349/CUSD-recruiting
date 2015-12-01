@@ -6,6 +6,8 @@ function validate() {
 $(document).ready(function () {
 
     $("#id_published").parent().parent().hide(); ///hide "published" field...
+    $(".field-name").append("<div class=\"help-button\">");
+    $(".help-button").append(Icons.help);
 
     $("input:checkbox").parent()
         .addClass("checkbox")
