@@ -7,17 +7,17 @@
         <h1 class="form-title"> {% if is_edit %} Edit {% else %} Add {% endif %} a Role </h1>
         {% csrf_token %}
         <span id="form_error">{{form.errors}}</span>
-        <div class="field-wrapper">
+        <div class="field-wrapper form-role-name">
       Role Title: {{ form.title }}
         </div>
-        <div class="field-wrapper">
+        <div class="field-wrapper form-role-description">
       Role Description: {{form.description}}
         </div>
-        <div class="field-wrapper">
+        <div class="field-wrapper form-projects">
       Select Projects:
       {{form.selected_projects}}
         </div>
-        <div class="field-wrapper">
+        <div class="field-wrapper form-role-types">
       Select Role Types:
       {{form.selected_role_types}}
         </div>

@@ -4,8 +4,8 @@ function validate() {
 }
 
 $(function() {
-    $( document ).tooltip();
 
+    $( document ).tooltip();
 });
 
 $(document).ready(function () {
@@ -59,11 +59,14 @@ $(document).ready(function () {
     ];
 
 
-
-
-
     $("#id_published").parent().parent().hide(); ///hide "published" field...
-    $(".field-name").append("<div class=\"help-button\" title=\"this is a tooltip\">");
+    $(".field-name").append("<div class=\"help-button\">");
+
+    $.each(formFieldsHelp, function(index, field) {
+        $("." + field.className + " field-name help-button").prop("title", field.className);
+        console.log(("." + field.className + " .field-name .help-button"));
+    });
+
 
     $(".help-button").tooltip({
         tooltipClass: "tooltip",
@@ -71,6 +74,8 @@ $(document).ready(function () {
     })
         .append(Icons.help)
         ;
+
+
 
     $("input:checkbox").parent()
         .addClass("checkbox")

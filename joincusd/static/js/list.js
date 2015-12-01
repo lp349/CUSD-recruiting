@@ -110,6 +110,7 @@ function _generateProjectListing(posting) {
         + Icons.drag
         + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
         + "<span class='elem-name'>" + posting.name + "</span>"
+        + "<span class='elem-short-name'>(css selector: " + posting.short_name + ")</span>"
         + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
         + "<a class='elem-button edit button' href='edit_project/" + posting.id + "/'>Edit</a>"
         + roles
@@ -142,6 +143,7 @@ function _generateRoleTypeListing(posting) {
     var rt = "<div class='role-type elem elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
         + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
         + "<span class='elem-name'>" + posting.name + "</span>"
+        + "<span class='elem-short-name'>(css selector:" + posting.short_name + ")</span>"
         + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
         + "<a class='elem-button edit button' href='edit_role_type/" + posting.id + "/'>Edit</a>"
         + roles

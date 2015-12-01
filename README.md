@@ -8,7 +8,7 @@ To get the latest build working, run the following commands for dependencies:
     sudo pip install django_libsass
       (if compilation terminates here with a Python.h error, run this: sudo apt-get install python2.7-dev)
     sudo pip install django_bower
-    sudo pip install django-colorful
+    sudo pip install django-colorfield
 
     sudo apt-get install ruby-full or brew install ruby
     sudo gem install compass
@@ -39,6 +39,8 @@ To import fixtures
 
     python manage.py loaddata fixtures/[fixturename]
 
+To load staticfiles
+    python manage.py collectstatic
 
 
 

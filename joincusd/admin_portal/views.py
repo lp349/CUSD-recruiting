@@ -70,6 +70,7 @@ def posting_list(request, posting_type):
      for post in postings:
           post_object = {}
           post_object["name"] = post.name
+          post_object["short_name"] = post.short_name
           post_object["posting_type"] = post.posting_type
           post_object["id"] = post.id
           post_object["roles"] = [opening.title for opening in post.openings.all()]
