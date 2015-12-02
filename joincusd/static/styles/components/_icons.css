@@ -1,5 +1,33 @@
-/** General styling for icons **/
+/** General styling for icons, please include BEFORE buttons stylesheet**/
+/*****add icon*****/
+.add-icon {
+    height: 4rem;
+    width: 4rem;
+    font-size: 1.25em;
+    cursor: pointer;
+}
 
+.add-icon:hover text {
+    stroke: #3FAB6D;
+    stroke-width: 0.1rem;
+    fill: #3FAB6D;
+}
+
+.add-icon:hover circle {
+    fill: #FFFFFF;
+    stroke: #3FAB6D;
+    stroke-width: 0.2rem;
+}
+
+.add-icon text {
+    stroke: #FFFFFF;
+    fill: #FFFFFF;
+    stroke-width: 0.1rem;
+}
+
+.add-icon circle {
+    fill: #3FAB6D;
+}
 /*****remove icon*****/
 .remove-icon {
     height: 2rem;

@@ -70,6 +70,9 @@
 }
 
 /**********Text**********/
+a {
+    text-decoration: none;
+}
 
 #admin-home {
     display: inline-block;

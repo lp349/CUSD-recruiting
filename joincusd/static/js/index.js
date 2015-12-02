@@ -222,7 +222,7 @@ function getCookie(name) {
  * @param numProjects : number of projects
  * @return number: DB rank (higher the rank, the greater the priority)
  */
-var convertToDBRank = function (displayRank, numProjects) {
+var _convertToDBRank = function (displayRank, numProjects) {
     return numProjects - displayRank;
 };
 
@@ -232,7 +232,7 @@ var convertToDBRank = function (displayRank, numProjects) {
  * @param numProjects : number of projects
  * @return number : display rank ( project rank on page (lower "rank" = higher priority) )
  */
-var convertToDisplayRank = function (displayRank, numProjects) {
+var _convertToDisplayRank = function (displayRank, numProjects) {
     return numProjects - displayRank;
 };
 
@@ -274,7 +274,7 @@ var getNewRanks = function () {
             //add to array
             changes.push({
                 projectId: projectId,
-                newRank: convertToDBRank(newRank, Object.keys(projectRankObj).length)
+                newRank: _convertToDBRank(newRank, Object.keys(projectRankObj).length)
             });
         }
     });
