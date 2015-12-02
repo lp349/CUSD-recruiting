@@ -156,7 +156,7 @@ function _setErrorMessages() {
  * }
  */
 function init(fieldsData) {
-    $("#id_published").parent().parent().hide(); ///hide "published" field...
+    //$("#id_published").parent().parent().hide(); ///hide "published" field...
 
     //set up checkboxes
     $("input:checkbox").parent()
@@ -187,86 +187,103 @@ function init(fieldsData) {
 
 }
 
-
-
 $(document).ready(function () {
     var pictureRelLink = "/static/images/user_guide_picture/";
     var formFieldsHelp = [
         {
+            formType: "project",
             className:"form-name",
             content: _toImg(pictureRelLink + "project_name.jpg")
         },
         {
+            formType: "project",
             className: "form-tagline",
             content: _toImg(pictureRelLink + "project_tagline.jpg")
         },
         {
+            formType: "project",
             className:"form-short-description",
             content: _toImg(pictureRelLink + "project_short_description.jpg")
         },
         {
+            formType: "project",
             className: "form-long-description",
             content: _toImg(pictureRelLink + "project_starting_description.jpg")
         },
         {
+            formType: "project",
             className: "form-additional-description",
             content:  _toImg(pictureRelLink + "project_additional_description.jpg")
         },
         {
+            formType: "project",
             className:"form-icon-color",
             content: _toImg(pictureRelLink + "project_icon_color.jpg")
         },
         {
+            formType: "project",
             className:"form-colored-icon",
             content: _toParagraph("An SVG icon, in color")
         },
         {
+            formType: "project",
             className: "form-uncolored-icon",
             content: _toParagraph("An SVG icon, in white")
         },
         {
+            formType: "project",
             className: "form-photo-one",
             content: _toParagraph("A photo for this posting")
         },
         {
+            formType: "project",
             className: "form-photo-one-text",
             content: _toParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
+            formType: "project",
             className:  "form-photo-two",
             content: _toParagraph("A photo for this posting")
         },
         {
+            formType: "project",
             className: "form-photo-two-text",
             content: _toParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
+            formType: "project",
             className: "form-photo-three",
             content: _toParagraph("A photo for this posting")
         },
         {
+            formType: "project",
             className: "form-photo-three-text",
             content: _toParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
+            formType: "project",
             className: "form-roles",
             content: _toParagraph("Choose the roles to associate with this posting")
         },
 
         {
+            formType: "role",
             className: "form-projects",
             content: _toParagraph("Choose the projects to associate with this role")
         },
         {
+            formType: "role",
             className: "form-role-types",
             content: _toParagraph("Choose the role types to associate with this role")
         },
         {
+            formType: "role",
             className: "form-role-name",
             content: _toImg(pictureRelLink + "role_title.jpg")
         }
         ,
         {
+            formType: "role",
             className: "form-role-description",
             content: _toImg(pictureRelLink + "role_description.jpg")
         }
