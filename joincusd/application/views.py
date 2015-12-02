@@ -69,7 +69,8 @@ def add_application(request):
         application.save()
 
         # The user will be shown the homepage.
-        return HttpResponseRedirect("https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform?edit_requested=true") #add some pop up window for confirmation of save 
+        #return HttpResponseRedirect("https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform?edit_requested=true") #add some pop up window for confirmation of save 
+    	return HttpResponseRedirect("http://goo.gl/forms/W3J0WYUxEM")
     else:
         # The supplied form contained errors - just print them to the terminal and redirect to application site 
         print ('error is: %s' %form.errors)
