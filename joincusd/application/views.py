@@ -34,8 +34,8 @@ def add_application(request):
     #print request.FILES
     form.fields['netID'].required = True
     form.fields['resume'].required = True
-    form.fields['project_multiselect'].required=True
-    form.fields['role_multiselect'].required=True
+    form.fields['project_multiselect'].required=False
+    form.fields['role_multiselect'].required=False
     print (form.is_valid())
     # Have we been provided with a valid form?
     if form.is_valid():
@@ -81,7 +81,7 @@ def add_application(request):
       # If the request was not a POST, display the form to enter details.
     form = ApplicationForm()
     all_role_choices = [(role.pk, role.title) for role in Opening.objects.all()]
-    all_projects_choices = [(project.pk, project.name) for project in Posting.objects.filter(posting_type="project")]
+    all_projects_choices = [(project.pk, project.name) for project in Posting.objects.filter(posting_type="project", published=True)]
     
     form.fields['role_multiselect'].choices = all_role_choices
     form.fields['project_multiselect'].choices = all_projects_choices
