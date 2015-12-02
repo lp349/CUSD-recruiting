@@ -1,5 +1,11 @@
-@import url("reset.css");
-@import url("style.css");
-@import url("login.css");
-@import url("form.css");
-@import url("application.css");
+@import url("components/reset.css");
+@import url("components/icons.css");
+@import url("components/buttons.css");
+@import url("components/admin-common.css");
+@import url("components/admin-navbar.css");
+@import url("components/general.css");
+
+
+@import url("pages/login.css");
+@import url("pages/form.css");
+@import url("pages/application.css");

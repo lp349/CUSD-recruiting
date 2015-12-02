@@ -1,0 +1,154 @@
+/***********************************Buttons General*************************************/
+.button:hover {
+    background-color: white;
+    color: #3FAB6D;
+}
+
+.button {
+    font-family: inherit;
+    background-color: #3FAB6D;
+    color: #fff;
+    border-radius: 3px;
+    border: 2px solid #3FAB6D;
+    width: 8rem;
+    /*width: auto;*/
+    height: 2.5rem;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.button-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/***********************************Admin Home Buttons*************************************/
+
+/*****Add Button*****/
+.add-button {
+    padding: 0.1rem;
+    /*float: right;*/
+    font-size: 2em;
+    width: 90%;
+    text-align: right;
+}
+
+.add-button svg {
+    height: 4rem;
+    width: 4rem;
+    font-size: 1.25em;
+    cursor: pointer;
+}
+
+.add-button svg:hover text {
+    stroke: #3FAB6D;
+    stroke-width: 0.1rem;
+    fill: #3FAB6D;
+}
+
+.add-button svg:hover circle {
+    fill: #FFFFFF;
+    stroke: #3FAB6D;
+    stroke-width: 0.2rem;
+}
+
+.add-button svg text {
+    stroke: #FFFFFF;
+    fill: #FFFFFF;
+    stroke-width: 0.1rem;
+}
+
+.add-button svg circle {
+    fill: #3FAB6D;
+}
+
+
+/*****Element (Listing) buttons*****/
+.elem-button {
+    float: right;
+    text-align: center;
+    padding: 0.5rem;
+    cursor: pointer;
+    display: inline-block;
+    height: auto;
+    margin: 0.5rem;
+}
+
+.edit {
+    background-color: #69C26C;
+    border-color: #69C26C;
+}
+
+.edit:hover {
+    color: #69C26C;
+}
+
+.publish {
+    background-color: #3F9A8E;
+    border: 2px solid #3F9A8E;
+    color: #FFF;
+}
+
+.publish:hover {
+    color: #3F9A8E;
+}
+
+
+/*****remove buttons*****/
+.remove.button {
+    float: left;
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    background-color: transparent;
+    border: none;
+    height: auto;
+    width: auto;
+    margin: 0;
+    transform: translate(-1rem, -1rem);
+}
+
+/*****rank buttons*****/
+.rank {
+    background-color: #FFFFFF;
+    border: 2px solid #3FAB6D;
+    color: #3FAB6D;
+
+    text-align: center;
+    cursor: pointer;
+    width: 6rem;
+    height: 1rem;
+    padding: 0.5rem;
+    display: inline-block;
+    margin: 0.5rem 0.5rem 1rem 2.5rem;
+}
+
+.save-rank.rank {
+    background-color:#3FAB6D;
+    color: #FFF;
+}
+
+.rank:hover {
+    /*background-color: white;*/
+    /*color: #3F9A8E;*/
+}
+
+/***********************************Form Buttons*************************************/
+
+.submit-button {
+    float: right;
+    font-size: inherit;
+    font-weight: 300;
+    margin: 3rem;
+}
+
+.upload-button {
+    width: 8rem;
+    height: 1rem;
+}
+
+.help-button {
+    display: inline-block;
+    margin: 0 0.5rem 0 0.5rem;
+
+}
