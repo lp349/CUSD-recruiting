@@ -48,11 +48,11 @@ $(document).ready(function () {
         },
         {
             className:"form-colored-icon",
-            content: ""
+            content: toParagraph("An SVG icon, in color")
         },
         {
             className: "form-uncolored-icon",
-            content: ""
+            content: toParagraph("An SVG icon, in white")
         },
         {
             className: "form-photo-one",
