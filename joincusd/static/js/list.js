@@ -108,9 +108,9 @@ function _generateProjectListing(posting) {
 
     var p = "<li class='project elem ui-state-default elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
         + Icons.drag
-        + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/ "
+        + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/' "
         + "onclick=\"return confirm('Are you sure you want to delete this project?')\""
-        +"'>"+ Icons.remove +"</a>"
+        + "'>"+ Icons.remove +"</a>"
         + "<span class='elem-name'>" + posting.name + "</span>"
         + "<span class='elem-short-name'>(css selector: " + posting.short_name + ")</span>"
         + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
@@ -144,8 +144,8 @@ function _generateRoleTypeListing(posting) {
 
     var rt = "<div class='role-type elem elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
         + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/' "
-        +"onclick=\"return confirm('Are you sure you want to delete this role type?')\""
-        +">"+ Icons.remove +"</a>"
+        + "onclick=\"return confirm('Are you sure you want to delete this role type?')\""
+        + ">"+ Icons.remove +"</a>"
         + "<span class='elem-name'>" + posting.name + "</span>"
         + "<span class='elem-short-name'>(css selector:" + posting.short_name + ")</span>"
         + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
