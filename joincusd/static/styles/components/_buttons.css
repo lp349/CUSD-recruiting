@@ -152,3 +152,9 @@
     margin: 0 0.5rem 0 0.5rem;
 
 }
+
+.application-button {
+    width: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}

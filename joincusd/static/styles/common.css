@@ -1,11 +1,13 @@
-@import url("components/reset.css");
-@import url("components/icons.css");
-@import url("components/buttons.css");
-@import url("components/admin-common.css");
-@import url("components/admin-navbar.css");
-@import url("components/general.css");
+@import url("components/_reset.css");
+@import url("components/_icons.css");
+@import url("components/_buttons.css");
+@import url("components/_header.css");
+@import url("components/_footer.css");
+@import url("components/_navbar.css");
+@import url("components/_general.css");
 
 
-@import url("pages/login.css");
-@import url("pages/form.css");
-@import url("pages/application.css");
+@import url("pages/_login.css");
+@import url("pages/_home.css");
+@import url("pages/_form.css");
+@import url("pages/_application.css");
