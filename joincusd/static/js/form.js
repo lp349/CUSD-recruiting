@@ -7,6 +7,41 @@ $(function() {
     $( document ).tooltip();
 });
 
+/**
+ * Returns the type of form
+ * @returns {string} : can be "Project", "Role Type", "Role"
+ * @private
+ */
+function _getFormType() {
+    var formContentDivClass = ".form-content";
+    if ($(formContentDivClass).hasClass("project-form-content")) {
+        return "Project";
+    }
+    if ($(formContentDivClass).hasClass("role-type-form-content")) {
+        return "Project";
+    }
+    if ($(formContentDivClass).hasClass("role-form-content")) {
+        return "Role";
+    }
+
+    if($(formContentDivClass).hasClass("application-form-content")) {
+        return "Application";
+    }
+
+    return "Error: Cannot determine form type"
+}
+
+
+/**
+ * Returns whether it's an editing form or adding form
+ * @returns {string} "Add" or "Edit"
+ */
+function _getFormState() {
+    if ($(".form-title").html().trim().indexOf("Edit")==0) {
+        return "Edit";
+    }
+    return "Add";
+}
 
 function _toImg(link) {
     return "<img src='" + link + "'/>"
@@ -16,20 +51,47 @@ function _toParagraph(str) {
     return "<p>" + str + "</p>";
 }
 
-function _setRequiredFields() {
-    var setRequired = function(input) {
+function _setAdminRequiredFields() {
+    var setInputRequired = function(input) {
         $(input).prop('required',true)
             .closest(".field-wrapper")
             .children(".field-name").append("<span class=\"require\">*</span>");
 
     };
-    setRequired("input:visible");
-    setRequired("textarea");
 
-    if ($(".form-title").html().trim().indexOf("Edit")==0) {
-        $("input:file").prop('required',false);
+    var unSetRequired = function(input) {
+        $(input).prop('required',false)
+            .closest(".field-wrapper")
+            .children(".field-name span.require").remove();
+
+    };
+
+    setInputRequired("input:visible");
+    setInputRequired("textarea");
+
+    if (_getFormState() == "Edit") {
+        unSetRequired("input:file");
+    }
+
+    if (_getFormType() == "Role") {
+        $("input:checkbox")
+            .closest(".field-wrapper.form-projects")
+            .children(".field-name").append("<span class=\"require\">*</span>");
     }
 }
+
+
+function _setApplicationRequiredFields() {
+    var setInputRequired = function(input) {
+        $(input).prop('required',true)
+            .closest(".field-wrapper")
+            .children(".field-name").append("<span class=\"require\">*</span>");
+
+    };
+
+    setInputRequired("input:visible");
+}
+
 
 /***
  * Sets tool tips
@@ -114,12 +176,18 @@ function init(fieldsData) {
         }
     });
 
-    _setRequiredFields();
+    if (_getFormType() !== "Application") {
+        _setAdminRequiredFields();
+    } else {
+        _setApplicationRequiredFields();
+    }
+
     _setHelpTips(fieldsData);
     _setErrorMessages();
 
-
 }
+
+
 
 $(document).ready(function () {
     var pictureRelLink = "/static/images/user_guide_picture/";
