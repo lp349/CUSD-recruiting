@@ -214,7 +214,11 @@ li label{
 .ui-tooltip {
     float: right;
     border: 2px solid lightgray;
+    border-radius: 0.5rem;
+    overflow: hidden;
 }
+
+
 
 .ui-tooltip-content {
     padding: 1rem;
