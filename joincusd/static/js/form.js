@@ -13,7 +13,7 @@ $(document).ready(function () {
     var formFieldsHelp = [
         {
             className:"form-name",
-            content: ""
+            content: '<img src="static/images/icons/projects/cap.svg" />'
         },
         {
             className: "form-tagline",
@@ -70,6 +70,24 @@ $(document).ready(function () {
         {
             className: "form-roles",
             content: ""
+        },
+
+        {
+            className: "form-projects",
+            content: ""
+        },
+        {
+            className: "form-role-types",
+            content: ""
+        },
+        {
+            className: "form-role-name",
+            content: ""
+        }
+        ,
+        {
+            className: "form-role-description",
+            content: ""
         }
 
     ];
@@ -79,17 +97,24 @@ $(document).ready(function () {
     $(".field-name").append("<div class=\"help-button\">");
 
     $.each(formFieldsHelp, function(index, field) {
-        $("." + field.className + " .field-name .help-button").prop("title", field.className);
+        $("." + field.className + " .field-name .help-button")
+            .prop("title", field.className)
+            .tooltip({
+                tooltipClass: "tooltip",
+                content: "<img src='" + field.content + "'/>",
+                position: { my: "left+15 center", at: "right center", collision: 'none'},
+                hide: false
+            }).append(Icons.help);
     });
 
 
-    $(".help-button").tooltip({
-        tooltipClass: "tooltip",
-        position: { my: "left+15 center", at: "right center", collision: 'none'},
-        hide: false
-    })
-        ;
-
+    //$(".help-button").tooltip({
+    //    tooltipClass: "tooltip",
+    //    content: '<img src="static/images/icons/projects/cap.svg" />',
+    //    position: { my: "left+15 center", at: "right center", collision: 'none'},
+    //    hide: false
+    //}).append(Icons.help);
+    //
     $("input:checkbox").parent()
         .addClass("checkbox")
         .append(Icons.checkbox);
