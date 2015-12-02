@@ -8,32 +8,43 @@ $(function() {
     $( document ).tooltip();
 });
 
+
+function toImg(link) {
+    return "<img src='" + link + "'/>"
+}
+
+function toParagraph(str) {
+    return "<p>" + str + "</p>";
+}
+
 $(document).ready(function () {
+    var pictureRelLink = "/static/images/user_guide_picture/";
+
 
     var formFieldsHelp = [
         {
             className:"form-name",
-            content: '<img src="static/images/icons/projects/cap.svg" />'
+            content: toImg(pictureRelLink + "project_name.jpg")
         },
         {
             className: "form-tagline",
-            content: ""
+            content: toImg(pictureRelLink + "project_tagline.jpg")
         },
         {
             className:"form-short-description",
-            content: ""
+            content: toImg(pictureRelLink + "project_short_description.jpg")
         },
         {
             className: "form-long-description",
-            content: ""
+            content: toImg(pictureRelLink + "project_starting_description.jpg")
         },
         {
             className: "form-additional-description",
-            content: ""
+            content:  toImg(pictureRelLink + "project_additional_description.jpg")
         },
         {
             className:"form-icon-color",
-            content: ""
+            content: toImg(pictureRelLink + "project_icon_color.jpg")
         },
         {
             className:"form-colored-icon",
@@ -45,49 +56,49 @@ $(document).ready(function () {
         },
         {
             className: "form-photo-one",
-            content: ""
+            content: toParagraph("A photo for this posting")
         },
         {
             className: "form-photo-one-text",
-            content: ""
+            content: toParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
             className:  "form-photo-two",
-            content: ""
+            content: toParagraph("A photo for this posting")
         },
         {
             className: "form-photo-two-text",
-            content: ""
+            content: toParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
             className: "form-photo-three",
-            content: ""
+            content: toParagraph("A photo for this posting")
         },
         {
             className: "form-photo-three-text",
-            content: ""
+            content: toParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
             className: "form-roles",
-            content: ""
+            content: toParagraph("Choose the roles to associate with this posting")
         },
 
         {
             className: "form-projects",
-            content: ""
+            content: toParagraph("Choose the projects to associate with this role")
         },
         {
             className: "form-role-types",
-            content: ""
+            content: toParagraph("Choose the role types to associate with this role")
         },
         {
             className: "form-role-name",
-            content: ""
+            content: toImg(pictureRelLink + "role_title.jpg")
         }
         ,
         {
             className: "form-role-description",
-            content: ""
+            content: toImg(pictureRelLink + "role_description.jpg")
         }
 
     ];
@@ -101,7 +112,7 @@ $(document).ready(function () {
             .prop("title", field.className)
             .tooltip({
                 tooltipClass: "tooltip",
-                content: "<img src='" + field.content + "'/>",
+                content: field.content,
                 position: { my: "left+15 center", at: "right center", collision: 'none'},
                 hide: false
             }).append(Icons.help);
