@@ -142,6 +142,7 @@ input[type=file] {
 
 .help-button svg circle {
     fill: #FFFFFF;
+    stroke: #00417B;
 }
 
 .help-button svg text{
