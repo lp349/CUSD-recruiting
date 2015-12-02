@@ -30,7 +30,8 @@ def add_application(request):
   has_uploaded=True #boolean to indicate if the resume is uploaded or not
   if request.method == 'POST':
     form = ApplicationForm(request.POST, request.FILES)
-    print request.FILES
+    
+    #print request.FILES
     form.fields['netID'].required = True
     form.fields['resume'].required = True
     form.fields['project_multiselect'].required=True
@@ -78,7 +79,12 @@ def add_application(request):
 
   else:
       # If the request was not a POST, display the form to enter details.
-      form = ApplicationForm()
+    form = ApplicationForm()
+    all_role_choices = [(role.pk, role.title) for role in Opening.objects.all()]
+    all_projects_choices = [(project.pk, project.name) for project in Posting.objects.filter(posting_type="project")]
+    
+    form.fields['role_multiselect'].choices = all_role_choices
+    form.fields['project_multiselect'].choices = all_projects_choices
     
   # Render the form with error messages (if any).
   return render(request, 'add_application.html', {'form': form})
