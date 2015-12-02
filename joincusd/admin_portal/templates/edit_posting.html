@@ -24,10 +24,12 @@
 	{{form.tagline}}
       </div>
 
-      <div class="field-wrapper form-short-description">
-	<div class="field-name">{{form.short_project_description.help_text}}</div>
-	{{form.short_project_description}}
-      </div>
+            {% if posting_type == "project" %}
+            <div class="field-wrapper form-short-description">
+                <div class="field-name">{{form.short_project_description.help_text}}</div>
+                {{form.short_project_description}}
+            </div>
+            {% endif %}
 
       <div class="field-wrapper form-long-description">
 	<div class="field-name">{{form.description.help_text}}</div>

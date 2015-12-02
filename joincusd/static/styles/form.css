@@ -216,3 +216,5 @@ li label{
     background-color: #FFFFFF;
     color: #7A7A7A;
 }
+
+.ui-helper-hidden-accessible { display:none; }

@@ -18,19 +18,19 @@
     <div class="form-content">
     <form id="role_form" method="post" action="{{ form.form_submit_action_url }}">
         {% csrf_token %}
-        <div class="field-wrapper">
-      Role Title: {{ form.title }}
+        <div class="field-wrapper form-role-name">
+            Role Title: {{ form.title }}
         </div>
-        <div class="field-wrapper">
-      Role Description: {{form.description}}
+        <div class="field-wrapper form-role-description">
+            Role Description: {{form.description}}
         </div>
-        <div class="field-wrapper">
-      Select Projects:
-      {{form.selected_projects}}
+        <div class="field-wrapper form-projects">
+            Select Projects:
+            {{form.selected_projects}}
         </div>
-        <div class="field-wrapper">
-      Select Role Types:
-      {{form.selected_role_types}}
+        <div class="field-wrapper form-role-types">
+            Select Role Types:
+            {{form.selected_role_types}}
         </div>
       <input class="submit-button button" type="submit" name="submit" value="Save">
     </form>

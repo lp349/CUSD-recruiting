@@ -8,17 +8,21 @@
         {% csrf_token %}
         <span id="form_error">{{form.errors}}</span>
         <div class="field-wrapper form-role-name">
-      Role Title: {{ form.title }}
+            <div class="field-name">Role Title: </div>
+      {{ form.title }}
         </div>
         <div class="field-wrapper form-role-description">
-      Role Description: {{form.description}}
+            <div class="field-name">Role Description: </div>
+      {{form.description}}
         </div>
         <div class="field-wrapper form-projects">
-      Select Projects:
+            <div class="field-name">Select Projects:</div>
+
       {{form.selected_projects}}
         </div>
         <div class="field-wrapper form-role-types">
-      Select Role Types:
+            <div class="field-name">Select Role Types:</div>
+
       {{form.selected_role_types}}
         </div>
       <input class="submit-button button" type="submit" name="submit" value="Save">
