@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template import RequestContext
-from mainsite.models import Posting, Opening, Application
+from mainsite.models import Posting, Opening, Application, APIKey
 from django.conf import settings
 from django import forms
 from forms import PostingForm, OpeningForm
@@ -597,7 +597,18 @@ def edit_role(request, pk):
 
   return render(request, 'change_role.html', {'form': form, 'is_edit': True})
 
+def validate(request):
+  if request.user.is_authenticated():
+    return True
+  if (request.method == 'GET' and 'api_key' in request.GET and
+      APIKey.objects.filter(key=request.GET['api_key'])):
+      return True
+  return False
+
 def download_all(request):
+  if not validate(request):
+    return HttpResponse(status="403")
+
   files = [app.resume.url[1:] for app in Application.objects.all()]
 
   if not files:
@@ -620,3 +631,10 @@ def download_all(request):
   resp = HttpResponse(s.getvalue(), content_type = "application/x-zip-compressed")
   resp['Content-Dispostiion'] = 'attachment; filename=%s' %zip_filename
   return resp
+
+def delete_all(request):
+  if not validate(request):
+    return HttpResponse(status="403")
+
+  Application.objects.all().delete()
+  return HttpResponse(status="200")
