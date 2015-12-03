@@ -50,9 +50,9 @@ class Application(models.Model):
 
     resumes = Application.objects.values_list('resume', flat=True).filter(netID=short_name)
     if not resumes:
-      short_name = short_name+str(1)
+      short_name = short_name+'_'+str(1)
     else:
-      short_name = short_name+str(len(resumes)+1)
+      short_name = short_name+'_'+str(len(resumes)+1)
     path = "resumes/"
     ext = filename.split('.')[-1]
     filename = '{}.{}'.format(short_name, ext)
