@@ -108,7 +108,9 @@ function _generateProjectListing(posting) {
 
     var p = "<li class='project elem ui-state-default elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
         + Icons.drag
-        + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
+        + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/' "
+        + "onclick=\"return confirm('Are you sure you want to delete this project?')\""
+        + "'>"+ Icons.remove +"</a>"
         + "<span class='elem-name'>" + posting.name + "</span>"
         + "<span class='elem-short-name'>(css selector: " + posting.short_name + ")</span>"
         + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
@@ -141,7 +143,9 @@ function _generateRoleTypeListing(posting) {
     roles += "</ul>";
 
     var rt = "<div class='role-type elem elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
-        + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/'>"+ Icons.remove +"</a>"
+        + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/' "
+        + "onclick=\"return confirm('Are you sure you want to delete this role type?')\""
+        + ">"+ Icons.remove +"</a>"
         + "<span class='elem-name'>" + posting.name + "</span>"
         + "<span class='elem-short-name'>(css selector:" + posting.short_name + ")</span>"
         + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
@@ -162,7 +166,9 @@ function _generateRoleTypeListing(posting) {
  */
 function _generateRoleListing(posting) {
     var r = "<div class='role elem' id='" + posting.id + "'>"
-        + "<a class='elem-button remove button' href='remove_role/" + posting.id + "/'>"+ Icons.remove +"</a>"
+        + "<a class='elem-button remove button' href='remove_role/" + posting.id + "/' "
+        + "onclick=\"return confirm('Are you sure you want to delete this role?')\""
+        + ">"+ Icons.remove +"</a>"
         + "<span class='elem-name'>" + posting.title + "</span>"
         + "<a class='elem-button edit button' href='edit_role/" + posting.id + "/'>Edit</a>"
 
@@ -216,7 +222,7 @@ function getCookie(name) {
  * @param numProjects : number of projects
  * @return number: DB rank (higher the rank, the greater the priority)
  */
-var convertToDBRank = function (displayRank, numProjects) {
+var _convertToDBRank = function (displayRank, numProjects) {
     return numProjects - displayRank;
 };
 
@@ -226,7 +232,7 @@ var convertToDBRank = function (displayRank, numProjects) {
  * @param numProjects : number of projects
  * @return number : display rank ( project rank on page (lower "rank" = higher priority) )
  */
-var convertToDisplayRank = function (displayRank, numProjects) {
+var _convertToDisplayRank = function (displayRank, numProjects) {
     return numProjects - displayRank;
 };
 
@@ -268,7 +274,7 @@ var getNewRanks = function () {
             //add to array
             changes.push({
                 projectId: projectId,
-                newRank: convertToDBRank(newRank, Object.keys(projectRankObj).length)
+                newRank: _convertToDBRank(newRank, Object.keys(projectRankObj).length)
             });
         }
     });

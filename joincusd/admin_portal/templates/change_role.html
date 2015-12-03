@@ -1,10 +1,16 @@
 {% include 'admin-common/header.html' %}
 {% load staticfiles %}
 <script src ="{% static 'js/form.js' %}"></script>
+{% if is_edit %}
+<div class="form-content role-form-content edit-form-content">
+    <h1 class="form-title"> Edit a Role </h1>
+{% else %}
+<div class="form-content role-form-content add-form-content">
+    <h1 class="form-title"> Add a Role</h1>
+{% endif %}
 
-    <div class="form-content">
     <form id="role_form" method="post" action="{{ form.form_submit_action_url }}">
-        <h1 class="form-title"> {% if is_edit %} Edit {% else %} Add {% endif %} a Role </h1>
+
         {% csrf_token %}
         <span id="form_error">{{form.errors}}</span>
         <div class="field-wrapper form-role-name">

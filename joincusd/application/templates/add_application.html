@@ -14,26 +14,29 @@
 
 </head>
 <body>
-    <h1> Application Part I </h1>
-    <div class="form-content">
+
+    <div class="form-content application-form-content">
     <form id="application_form" enctype="multipart/form-data" method="post" >
+        <h1 class="form-title"> Application Part I </h1>
         {% csrf_token %}
        <div class="field-wrapper">
         {{form.netID.errors}}
-      netID: {{ form.netID }}
+           <div class="field-name">netID</div>
+           {{ form.netID }}
         </div>
         <div class="field-wrapper">
           {{form.resume.errors}}
-      Resume Upload: {{form.resume}}
+            <div class="field-name">Resume Upload</div>
+            {{form.resume}}
         </div>
         <div class="field-wrapper">
           {{form.project_multiselect.errors}}
-      Select Any Projects You Are Interested In:
+            <div class="field-name">Are you interested in any projects? (Select all that apply)</div>
       {{form.project_multiselect}}
         </div>
         <div class="field-wrapper">
           {{form.role_multiselect.errors}}
-      Select Any Roles You Are Interested In:
+            <div class="field-name">Are you interested in any roles? (Select all that apply)</div>
       {{form.role_multiselect}}
         </div>
       <input class="submit-button button application-button" type="submit" name="submit" value="Continue To Part II">
