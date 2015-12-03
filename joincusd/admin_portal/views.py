@@ -1,9 +1,13 @@
+import os
+import zipfile
+import StringIO
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template import RequestContext
-from mainsite.models import Posting, Opening
+from mainsite.models import Posting, Opening, Application
+from django.conf import settings
 from django import forms
 from forms import PostingForm, OpeningForm
 import json
@@ -266,9 +270,9 @@ def add_posting_handler(request, posting_type):
   handles editing EXISTING postings for either projects or role types.
 
   in the case of an invalidated form for a POST request, the function
-  redisplays the submitted form and its errors. NOTE that potentially empty 
-  unrequired fields are merged from the existing database copy. 
-  ***THIS IS DONE BY FIRST DISPLAYING HTE FORM POPULATED BY request.POST, 
+  redisplays the submitted form and its errors. NOTE that potentially empty
+  unrequired fields are merged from the existing database copy.
+  ***THIS IS DONE BY FIRST DISPLAYING HTE FORM POPULATED BY request.POST,
   request.FILES, BUT SETTING ITS INSTANCE TO THE EXISTING DATABASE OBJECT.
 
   arguments:
@@ -302,8 +306,9 @@ def edit_posting_handler(request, posting_type, pk):
             #del form.fields['short_project_description']
 
         if form.is_valid():
-            project = Posting.objects.get(pk=pk)
+            project = get_object_or_404(Posting, pk=pk)
 
+            #TODO: Remove deprecated check
             if not project:
                 print "edit_posting_handler: primary key for editing project does not point to an existing project"
                 return render(request, 'generic_error.html', {error_text: 'You have tried to edit a nonexistent posting.'})
@@ -359,23 +364,24 @@ def edit_posting_handler(request, posting_type, pk):
             #print form.errors
 
             #since the form is only created with request.POST and request.FILES
-            #any empty nonrequired fields must be filled in with the existing 
+            #any empty nonrequired fields must be filled in with the existing
             #object in the database before we redisplay it, else we get errors
             #like nonattached files for nonedited photos
-            
-            posting = Posting.objects.get(pk=pk)
+            posting = get_object_or_404(Posting, pk=pk)
 
+            #TODO: remove deprecated check
             if not posting:
                 return render(request, 'generic_error.html', {error_text: 'You have tried to edit a nonexistent posting.'})
 
-            form.instance = posting    
+            form.instance = posting
 
 
             form_submit_action_url = "/admin/edit_" + posting_type + "/" + pk + "/"
             return render(request, 'edit_posting.html', {'form': form, 'form_submit_action_url':form_submit_action_url, 'posting_type': posting_type})
 
     elif request.method == "GET":
-        posting_object = Posting.objects.get(pk=pk)
+        posting_object = get_object_or_404(Posting, pk=pk)
+        #TODO: revise check condition
         if posting_object and posting_object.posting_type == posting_type:
             form = PostingForm(instance = posting_object)
 
@@ -590,3 +596,27 @@ def edit_role(request, pk):
     return HttpResponseRedirect("/admin")
 
   return render(request, 'change_role.html', {'form': form, 'is_edit': True})
+
+def download_all(request):
+  files = [app.resume.url[1:] for app in Application.objects.all()]
+
+  if not files:
+    return HttpResponse(status="204")
+
+  zip_dir = "Resumes"
+  zip_filename = "%s.zip" %zip_dir
+
+  s = StringIO.StringIO()
+
+  zf = zipfile.ZipFile(s, "w")
+  for fpath in files:
+    _, fname = os.path.split(fpath)
+    zip_path = os.path.join(zip_dir, fname)
+
+    zf.write(fpath, zip_path)
+
+  zf.close()
+
+  resp = HttpResponse(s.getvalue(), content_type = "application/x-zip-compressed")
+  resp['Content-Dispostiion'] = 'attachment; filename=%s' %zip_filename
+  return resp

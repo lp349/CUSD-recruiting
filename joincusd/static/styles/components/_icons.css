@@ -1,0 +1,142 @@
+/** General styling for icons, please include BEFORE buttons stylesheet**/
+/*****add icon*****/
+.add-icon {
+    height: 4rem;
+    width: 4rem;
+    font-size: 1.25em;
+    cursor: pointer;
+}
+
+.add-icon:hover text {
+    stroke: #3FAB6D;
+    stroke-width: 0.1rem;
+    fill: #3FAB6D;
+}
+
+.add-icon:hover circle {
+    fill: #FFFFFF;
+    stroke: #3FAB6D;
+    stroke-width: 0.2rem;
+}
+
+.add-icon text {
+    stroke: #FFFFFF;
+    fill: #FFFFFF;
+    stroke-width: 0.1rem;
+}
+
+.add-icon circle {
+    fill: #3FAB6D;
+}
+/*****remove icon*****/
+.remove-icon {
+    height: 2rem;
+    width: 2rem;
+    font-size: 4em;
+}
+
+.remove-icon circle {
+    fill: #FFFFFF;
+}
+
+.remove svg text{
+    stroke: #E04D25;
+    fill: #E04D25;
+    /**/
+    /*stroke: #7a7a7a;*/
+    /*fill: #7a7a7a;*/
+
+    stroke-width: 0.5rem;
+
+}
+
+.remove-icon:hover circle{
+    fill: #E04D25;
+
+}
+
+.remove-icon:hover text {
+    stroke: #FFFFFF;
+    fill: #FFFFFF;
+
+    /*stroke: #E04D25;*/
+    /*fill: #E04D25;*/
+}
+
+/*****help icon*****/
+.help-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    font-size: 3.2em;
+}
+
+.help-icon circle {
+    fill: #FFFFFF;
+    stroke: #00417B;
+}
+
+.help-icon text{
+    stroke: #00417B;
+    fill: #00417B;
+
+    stroke-width: 0.35rem;
+
+}
+
+.help-icon:hover circle{
+    fill: #00417B;
+
+}
+
+.help-icon:hover text {
+    stroke: #FFFFFF;
+    fill: #FFFFFF;
+
+    /*stroke: #E04D25;*/
+    /*fill: #E04D25;*/
+
+}
+
+/******************************non-button svg icons*****************************/
+.drag-icon {
+    height: 1.2rem;
+    float: left;
+    padding: 0.25rem;
+    padding-left: 0;
+    margin-right: 0.7rem;
+
+    transform: translateY(10%);
+}
+
+.drag-icon rect, .drag-icon path{
+    fill: gray;
+}
+
+
+.expand-icon path, .retract-icon path{
+    fill: #A1A1A1;
+}
+
+.expand-icon, .retract-icon {
+    height: 0.8rem;
+    margin: auto;
+    display: block;
+    width: 100%;
+}
+
+.checkbox-icon path{
+    stroke-width: 15%;
+    fill: none;
+    stroke: #7A7A7A;
+}
+
+.checkbox-icon {
+    float: left;
+    height: 1rem;
+    border-radius: 20%;
+    border: 0.15rem solid #7A7A7A;
+}
+
+.checkbox-icon.unchecked path{
+    stroke: none;
+}
