@@ -47,3 +47,6 @@ class Application(models.Model):
   resume=models.FileField(upload_to="resumes/")
   roles=models.ManyToManyField(Opening)
   projects=models.ManyToManyField(Posting)
+
+class APIKey(models.Model):
+  key = models.CharField(max_length=32)
