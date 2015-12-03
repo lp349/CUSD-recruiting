@@ -30,11 +30,12 @@ def add_application(request):
   has_uploaded=True #boolean to indicate if the resume is uploaded or not
   if request.method == 'POST':
     form = ApplicationForm(request.POST, request.FILES)
-    print request.FILES
+    
+    #print request.FILES
     form.fields['netID'].required = True
     form.fields['resume'].required = True
-    form.fields['project_multiselect'].required=True
-    form.fields['role_multiselect'].required=True
+    form.fields['project_multiselect'].required=False
+    form.fields['role_multiselect'].required=False
     print (form.is_valid())
     # Have we been provided with a valid form?
     if form.is_valid():
@@ -69,7 +70,8 @@ def add_application(request):
         application.save()
 
         # The user will be shown the homepage.
-        return HttpResponseRedirect("https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform?edit_requested=true") #add some pop up window for confirmation of save 
+        #return HttpResponseRedirect("https://docs.google.com/forms/d/1z_U_r4fsO2PAWWIBkzUQ50Y92RjJwMxvXeMfGy4UO6Y/viewform?edit_requested=true") #add some pop up window for confirmation of save 
+    	return HttpResponseRedirect("http://goo.gl/forms/W3J0WYUxEM")
     else:
         # The supplied form contained errors - just print them to the terminal and redirect to application site 
         print ('error is: %s' %form.errors)
@@ -77,7 +79,12 @@ def add_application(request):
 
   else:
       # If the request was not a POST, display the form to enter details.
-      form = ApplicationForm()
+    form = ApplicationForm()
+    all_role_choices = [(role.pk, role.title) for role in Opening.objects.all()]
+    all_projects_choices = [(project.pk, project.name) for project in Posting.objects.filter(posting_type="project", published=True)]
+    
+    form.fields['role_multiselect'].choices = all_role_choices
+    form.fields['project_multiselect'].choices = all_projects_choices
     
   # Render the form with error messages (if any).
   return render(request, 'add_application.html', {'form': form})

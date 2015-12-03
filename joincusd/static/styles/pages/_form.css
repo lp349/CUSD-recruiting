@@ -23,9 +23,13 @@ h1 {
 }
 
 .field-name {
-    width: 30%;
+    margin: 0.5rem 0 0.25rem 0;
 }
 
+span.require {
+    color: #FF0033;
+    font-size: 1.2em;
+}
 
 .error-field {
     border: 2px solid #FF0033;
@@ -112,58 +116,7 @@ input[type=file] {
     stroke: #76B2AA;
 }
 
-/**************************************Buttons**************************************/
 
-.submit-button {
-    float: right;
-    font-size: inherit;
-    font-weight: 300;
-    margin: 3rem;
-}
-
-.upload-button {
-    width: 8rem;
-    height: 1rem;
-}
-
-.help-button {
-    display: inline-block;
-    margin: 0 0.5rem 0 0.5rem;
-
-}
-
-/*****help icon*****/
-.help-button svg {
-    height: 1.5rem;
-    width: 1.5rem;
-    font-size: 3.2em;
-}
-
-.help-button svg circle {
-    fill: #FFFFFF;
-}
-
-.help-button svg text{
-    stroke: #00417B;
-    fill: #00417B;
-
-    stroke-width: 0.35rem;
-
-}
-
-.help-button svg:hover circle{
-    fill: #00417B;
-
-}
-
-.help-button svg:hover text {
-    stroke: #FFFFFF;
-    fill: #FFFFFF;
-
-    /*stroke: #E04D25;*/
-    /*fill: #E04D25;*/
-
-}
 /**************************************Roles(List)**************************************/
 
 ul {
@@ -209,10 +162,16 @@ li label{
 .ui-tooltip {
     float: right;
     border: 2px solid lightgray;
+    border-radius: 0.5rem;
+    overflow: hidden;
 }
+
+
 
 .ui-tooltip-content {
     padding: 1rem;
     background-color: #FFFFFF;
     color: #7A7A7A;
 }
+
+.ui-helper-hidden-accessible { display:none; }

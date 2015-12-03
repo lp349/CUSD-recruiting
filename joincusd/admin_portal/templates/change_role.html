@@ -1,24 +1,34 @@
 {% include 'admin-common/header.html' %}
 {% load staticfiles %}
 <script src ="{% static 'js/form.js' %}"></script>
+{% if is_edit %}
+<div class="form-content role-form-content edit-form-content">
+    <h1 class="form-title"> Edit a Role </h1>
+{% else %}
+<div class="form-content role-form-content add-form-content">
+    <h1 class="form-title"> Add a Role</h1>
+{% endif %}
 
-    <div class="form-content">
     <form id="role_form" method="post" action="{{ form.form_submit_action_url }}">
-        <h1 class="form-title"> {% if is_edit %} Edit {% else %} Add {% endif %} a Role </h1>
+
         {% csrf_token %}
         <span id="form_error">{{form.errors}}</span>
-        <div class="field-wrapper">
-      Role Title: {{ form.title }}
+        <div class="field-wrapper form-role-name">
+            <div class="field-name">Role Title: </div>
+      {{ form.title }}
         </div>
-        <div class="field-wrapper">
-      Role Description: {{form.description}}
+        <div class="field-wrapper form-role-description">
+            <div class="field-name">Role Description: </div>
+      {{form.description}}
         </div>
-        <div class="field-wrapper">
-      Select Projects:
+        <div class="field-wrapper form-projects">
+            <div class="field-name">Select Projects:</div>
+
       {{form.selected_projects}}
         </div>
-        <div class="field-wrapper">
-      Select Role Types:
+        <div class="field-wrapper form-role-types">
+            <div class="field-name">Select Role Types:</div>
+
       {{form.selected_role_types}}
         </div>
       <input class="submit-button button" type="submit" name="submit" value="Save">

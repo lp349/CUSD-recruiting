@@ -1,0 +1,45 @@
+/******************************Tabs******************************/
+
+#nav-bar {
+    text-align: center;
+    width: 90%;
+    height: auto;
+    font-size: 1.3em;
+    list-style-type: none;
+    border-top: 3px solid #AAAAAA;
+    border-bottom: 3px solid #AAAAAA;
+    /*background-color: #f2f3f3;*/
+    background-color: #FFFFFF;
+    margin: auto;
+    color: #333333;
+
+}
+
+#projects-tab {
+    border-right: 2px solid white;
+}
+
+#roles-tab {
+    border-left: 2px solid white;
+}
+
+.tab {
+    text-align: center;
+    display: inline-block;
+    width: 28%;
+    padding: 1%;
+    /*border: 2px solid #1f628d;*/
+    color: #BFBFBF;
+    /*border: 2px solid #2ba0ed;*/
+    /*color: #333333;*/
+    cursor: pointer;
+    font-weight: 300;
+}
+
+.selected-tab {
+    /*background-color: #A1A1A1;*/
+    /*background-color:  #2ba0ed;*/
+    color: #2E897D;
+    /*text-decoration: underline;*/
+    font-weight: bold;
+}

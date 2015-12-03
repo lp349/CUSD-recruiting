@@ -9,3 +9,22 @@ joincusd/uploads/images/
 
 
 joincusd/static/CACHE/
+
+joincusd/static/modernizr/
+joincusd/static/fastclick/
+joincusd/static/colorfield/
+joincusd/static/foundation/
+joincusd/static/jquery-placeholder/
+joincusd/static/jquery.cookie/
+joincusd/static/jquery/
+joincusd/static/jquery*
+
+joincusd/static/images/icons/
+joincusd/static/images/favicon/
+joincusd/static/images/videos/
+joincusd/static/images/project-photos/
+joincusd/static/images/CUSD-logo.svg
+joincusd/static/images/role-photos/
+
+
+joincusd/static/admin/

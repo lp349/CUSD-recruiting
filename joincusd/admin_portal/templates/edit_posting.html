@@ -2,9 +2,13 @@
 {% load staticfiles %}
 
 <script src ="{% static 'js/form.js' %}"></script>
-
-    <div class="form-content">
-        <h1 class="form-title"> Edit a {% if posting_type == "project" %} Project {% else %} Role Type {% endif %}</h1>
+    {% if posting_type == "project" %}
+    <div class="form-content project-form-content edit-form-content">
+        <h1 class="form-title"> Edit a Project</h1>
+    {% else %}
+    <div class="form-content role-type-form-content edit-form-content">
+        <h1 class="form-title"> Edit a Role Type</h1>
+    {% endif %}
 
 	{{form.errors}}
 
@@ -24,10 +28,12 @@
 	{{form.tagline}}
       </div>
 
-      <div class="field-wrapper form-short-description">
-	<div class="field-name">{{form.short_project_description.help_text}}</div>
-	{{form.short_project_description}}
-      </div>
+            {% if posting_type == "project" %}
+            <div class="field-wrapper form-short-description">
+                <div class="field-name">{{form.short_project_description.help_text}}</div>
+                {{form.short_project_description}}
+            </div>
+            {% endif %}
 
       <div class="field-wrapper form-long-description">
 	<div class="field-name">{{form.description.help_text}}</div>
