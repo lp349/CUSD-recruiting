@@ -1,11 +1,18 @@
+
+
 /******************************Listing Elements***********************************/
 
-#content {
+#content, #buttons-section {
     width: 85%;
     margin: auto;
     background-color: #F2F3F3;
     padding: 2rem;
     overflow: hidden;
+}
+
+#buttons-section {
+    background-color: #FFFFFF;
+    padding: 0 2rem 0 2rem;
 }
 
 .elem {

@@ -1,5 +1,6 @@
 from django.db import models
 from colorfield.fields import ColorField
+import os
 
 #from the data section on github, projects and roles are completely identical
 #in all fields, so our initial definition:
@@ -43,7 +44,25 @@ class Posting(models.Model):
   published = models.BooleanField(default=False)
 
 class Application(models.Model):
+
+  def update_filename(instance, filename):
+    short_name = instance.netID.lower()
+
+    resumes = Application.objects.values_list('resume', flat=True).filter(netID=short_name)
+    if not resumes:
+      short_name = short_name+'_'+str(1)
+    else:
+      short_name = short_name+'_'+str(len(resumes)+1)
+    path = "resumes/"
+    ext = filename.split('.')[-1]
+    filename = '{}.{}'.format(short_name, ext)
+    #format = instance.userid + instance.transaction_uuid + instance.file_extension
+    return os.path.join(path, filename)
+
   netID=models.CharField(max_length=10)
-  resume=models.FileField(upload_to="resumes/")
+  resume=models.FileField(upload_to=update_filename)
   roles=models.ManyToManyField(Opening)
   projects=models.ManyToManyField(Posting)
+
+class APIKey(models.Model):
+  key = models.CharField(max_length=32)

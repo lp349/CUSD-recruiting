@@ -27,10 +27,30 @@
 /*****Add Button*****/
 .add-button {
     padding: 0.1rem;
-    /*float: right;*/
+    float: right;
     font-size: 2em;
-    width: 90%;
+    /*width: 45%;*/
+    display: inline-block;
     text-align: right;
+}
+
+/*****Verify Button*****/
+.verify-applications-button {
+    display: inline-block;
+    width: auto;
+    /*padding: 0 0.5rem 0 0.5rem;*/
+    background-color: #83C2BA;
+    border-color: #83C2BA;
+    text-align: center;
+    padding: 0.5rem;
+    cursor: pointer;
+    height: auto;
+    margin: 0.5rem;
+}
+
+.verify-applications-button:hover {
+    color: #83C2BA;
+    background-color: #FFFFFF;
 }
 
 /*****Element (Listing) buttons*****/
