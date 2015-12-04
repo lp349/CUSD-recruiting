@@ -8,8 +8,8 @@ var applicantElemClasses = elemSelector.substring(1) + " applicant-elem";
 function generateElem(applicantObject) {
     var netID = applicantObject.netID;
     var resume = applicantObject.resumeURL;
-    var projectList = applicantObject.projectList.toString();
-    var roleList = applicantObject.roleList.toString();
+    var projectList = applicantObject.projectList.toString().split(",").join(", ");
+    var roleList = applicantObject.roleList.toString().split(",").join(", ");
     var elemClass = applicantElemClasses;
     var netIDClass = netIDSelector.substring(1);
     var otherApplicantFields = "applicant-other-fields";
