@@ -46,6 +46,7 @@
     cursor: pointer;
     height: auto;
     margin: 0.5rem;
+    /*float: left;*/
 }
 
 .verify-applications-button:hover {

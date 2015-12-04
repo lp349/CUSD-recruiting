@@ -14,6 +14,15 @@
     overflow: hidden;
 }
 
+.header-links {
+    float: right;
+    margin: 1.3125rem 0 0 0;
+    line-height: 1.75rem;
+}
+
+.header .button {
+    margin: 1.3125rem 3rem 0 0;
+}
 /**********Logo**********/
 
 /*.site-logo {*/
@@ -75,9 +84,9 @@ a {
 }
 
 #admin-home {
-    display: inline-block;
-    margin: 1.3125rem 0 0 0;
-    width: 50%;
+    /*display: inline-block;*/
+    /*margin: 1.3125rem 0 0 0;*/
+    /*width: 50%;*/
     text-align: right;
     float: right;
     color: #3FAB6D;
@@ -90,9 +99,9 @@ a:hover {
 }
 
 #logout {
-    margin: 1.3125rem 0 0 0;
-    display: inline-block;
-    width: 50%;
+    /*margin: 1.3125rem 0 0 0;*/
+    /*display: inline-block;*/
+    /*width: 50%;*/
     text-align: right;
     float: right;
 
