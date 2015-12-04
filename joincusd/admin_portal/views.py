@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template import RequestContext
-from mainsite.models import Posting, Opening
+from mainsite.models import Posting, Opening, Application
 from django import forms
 from forms import PostingForm, OpeningForm
 import json
@@ -81,6 +81,43 @@ def posting_list(request, posting_type):
 
      response = json.dumps(result_list)
      return HttpResponse(response)
+
+# arguments:
+#
+# returns:
+#    a JSON object representing the following Python object
+#    [Application Object, ...]
+#    where an Application Object contains the following attributes:
+#    { 
+#         netID : "abcd123"
+#         resumeURL : "server url here"
+#         roleList : ["role name", "role name", ...]
+#         projectList : ["project name", "project name", ...]
+#    }
+@login_required(login_url='/admin/login/')
+def app_list(request):
+    result_list = []
+    
+    #applications = Application.objects.all()
+    
+    for app in Application.objects.all():
+      app_object = {}
+      app_object["netID"] = app.netID
+      app_object["resumeURL"] = app.resume.url
+      app_object["roleList"] = []
+      app_object["projectList"] = []
+
+      for role in app.roles.all():
+        app_object["roleList"].append(role.title)
+
+      for project in app.projects.all():
+        app_object["projectList"].append(project.name)
+
+      result_list.append(app_object)
+
+    response = json.dumps(result_list)
+    return HttpResponse(response)
+
 
 @login_required(login_url='/admin/login/')
 def posting(request):
