@@ -9,9 +9,10 @@
     padding: 1% 5% 1% 5%;
     height: auto;
     color: #3FAB6D;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     display: block;
     overflow: hidden;
+    border-bottom: 1px solid lightgray;
 }
 
 .header-links {

@@ -679,4 +679,4 @@ def delete_all(request):
     return HttpResponse(status="403")
 
   Application.objects.all().delete()
-  return HttpResponse(status="200")
+  return render(request, "application_list.html")
