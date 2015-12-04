@@ -4,7 +4,7 @@
     text-align: center;
     width: 90%;
     height: auto;
-    font-size: 1.3em;
+    font-size: 1.35em;
     list-style-type: none;
     border-top: 3px solid #AAAAAA;
     border-bottom: 3px solid #AAAAAA;
@@ -27,7 +27,7 @@
     text-align: center;
     display: inline-block;
     width: 28%;
-    padding: 1%;
+    padding: 0.65rem 0 0.65rem 0;
     /*border: 2px solid #1f628d;*/
     color: #BFBFBF;
     /*border: 2px solid #2ba0ed;*/

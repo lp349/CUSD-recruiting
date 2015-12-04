@@ -67,6 +67,10 @@ input[type=file] {
     /*height: 100%;*/
 }
 
+input[name=icon_color] {
+    color: #FFFFFF !important;
+}
+
 .form-content {
     width: 85%;
     padding: 2rem;
