@@ -4,18 +4,17 @@ var netIDSelector = ".netID";
 var applicantFieldClasses = "applicant-field";
 var applicantFieldNameClasses = "applicant-field-name";
 var applicantElemClasses = elemSelector.substring(1) + " applicant-elem";
+var otherApplicantFields = "applicant-other-fields";
 
 function generateElem(applicantObject) {
     var netID = applicantObject.netID;
     var resume = applicantObject.resumeURL;
     var projectList = applicantObject.projectList.toString().split(",").join(", ");
     var roleList = applicantObject.roleList.toString().split(",").join(", ");
-    var elemClass = applicantElemClasses;
     var netIDClass = netIDSelector.substring(1);
-    var otherApplicantFields = "applicant-other-fields";
 
     var elem = $("<div>")
-        .addClass(elemClass)
+        .addClass(applicantElemClasses)
         .appendTo(displaySelector);
 
     var netIDField = $("<p>")
@@ -75,26 +74,3 @@ $(document).ready(function () {
     $.get("/admin/ajax/app", displayApplicantData);
 
 });
-
-
-[{
-    "roleList": ["Architect", "Photographer", "Software Engineer", "Entrepreneurial Analyst"],
-    "projectList": ["Green Building Metrics Project", "Sustainable Education Ghana"],
-    "resumeURL": "/uploads/resumes/2534863669.pdf",
-    "netID": "dg522"
-}, {
-    "roleList": ["Landscape Architect", "Videographer", "Mobile Developer"],
-    "projectList": ["Sustainable Education Ghana"],
-    "resumeURL": "/uploads/resumes/2534863669_T7tmNA8.pdf",
-    "netID": "ah662"
-}, {
-    "roleList": ["UX/Product Designer", "Interior Designer", "Videographer", "Power Engineer"],
-    "projectList": ["Overlook Ridge Development", "Cornell Tech"],
-    "resumeURL": "/uploads/resumes/CS4780HW3Writeup_1.pdf",
-    "netID": "waffles"
-}, {
-    "roleList": ["Research Analyst (Cost)"],
-    "projectList": ["Overlook Ridge Development", "Climate Action Plan", "sustainable food systems"],
-    "resumeURL": "/uploads/resumes/2534863669_gsaAtFb.pdf",
-    "netID": "wfl"
-}]
