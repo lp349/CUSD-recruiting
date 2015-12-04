@@ -1,11 +1,15 @@
 {% include 'admin-common/header.html' %}
 {% load staticfiles %}
-<script src="{% static 'js/index.js' %}"></script>
+<section id="content">
+
+</section>
 
 <div>
 
-<button type="button" name="download">Download</button>
-<button type="button" name="clear">Clear All</button>
+<button class="download-button button" type="button" name="download"><a href="/admin/download_all">Download</a></button>
+
+<button type="clear-button button" name="clear"><a>Clear All</a></button>
+
 </div>
 
 {% include 'admin-common/footer.html' %}
