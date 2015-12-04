@@ -164,23 +164,26 @@
     /*margin: 0.5rem;*/
     font-size: inherit;
     font-weight: 300;
-    margin: 0 3rem 1rem 0;
 }
 
 .clear-button {
-    float: left;
-    background-color: #FF888B;
-    border-color: #FF888B;
+    float: right;
+    background-color:  #EE777A;
+    border-color:  #EE777A;
+    /*margin: 0 3rem 1rem 0;*/
+    margin:  0.5rem;
 }
 
 .clear-button:hover {
-    color: #FF888B;
+    color:  #EE777A;
 }
 
 .download-button {
     float: right;
     background-color: #3F9A8E;
     border-color: #3F9A8E;
+    /*margin: 0 0 1rem 3rem;*/
+    margin: 0.5rem
 }
 
 .download-button:hover {

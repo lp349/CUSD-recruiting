@@ -2,6 +2,31 @@
     cursor: default;
 }
 
+#pre-content {
+    width: 85%;
+    padding: 0 2rem 0 2rem;
+    text-align: center;
+    margin: auto;
+}
+
+.title {
+    /*text-align: center;*/
+    color: #7A7A7A;
+    display: inline-block;
+    width: auto;
+    margin-right: 4rem;
+    float: left;
+    padding: 0.5rem;
+}
+
+.buttons-wrapper {
+    float: right;
+    text-align: right;
+    display: inline-block;
+    min-width: 20rem;
+    width: 43%;
+}
+
 .netID {
     color: #333333;
     font-weight: bold;
