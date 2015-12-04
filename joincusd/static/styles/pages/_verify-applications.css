@@ -1,0 +1,26 @@
+.elem.applicant-elem {
+    cursor: default;
+}
+
+.netID {
+    color: #333333;
+    font-weight: bold;
+    font-size: 1.2em;
+    width: 30%;
+    min-width: 10rem;
+}
+
+.applicant-other-fields {
+    float: right;
+    display: block;
+    text-align: left;
+    width: 70%;
+}
+
+.applicant-field {
+    margin-bottom: 0.5rem;
+}
+
+.applicant-field-name {
+    font-weight: bolder;
+}

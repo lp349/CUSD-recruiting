@@ -37,7 +37,7 @@
 /*****Verify Button*****/
 .verify-applications-button {
     display: inline-block;
-    width: auto;
+    /*width: auto;*/
     /*padding: 0 0.5rem 0 0.5rem;*/
     background-color: #83C2BA;
     border-color: #83C2BA;
@@ -153,7 +153,7 @@
 /*** application verification  buttons***/
 .clear-button, .download-button {
     display: inline-block;
-    width: auto;
+    width: 10rem;
     /*padding: 0 0.5rem 0 0.5rem;*/
     /*background-color: #83C2BA;*/
     /*border-color: #83C2BA;*/
@@ -164,13 +164,25 @@
     /*margin: 0.5rem;*/
     font-size: inherit;
     font-weight: 300;
-    margin: 0 3rem 0 3rem;
+    margin: 0 3rem 1rem 0;
 }
 
 .clear-button {
     float: left;
+    background-color: #FF888B;
+    border-color: #FF888B;
+}
+
+.clear-button:hover {
+    color: #FF888B;
 }
 
 .download-button {
     float: right;
+    background-color: #3F9A8E;
+    border-color: #3F9A8E;
+}
+
+.download-button:hover {
+    color: #3F9A8E;
 }
