@@ -22,7 +22,8 @@ urlpatterns = [
     url(r'^remove_role/(?P<pk>[0-9]+)/$', views.remove_role),
     url(r'^remove_project/(?P<pk>[0-9]+)/$', views.remove_project),
     url(r'^download_all/$', views.download_all),
-    url(r'^delete_all/$', views.delete_all)
+    url(r'^delete_all/$', views.delete_all),
+    url(r'^verify_applications/$', views.verify_applications)
 ]
 
 

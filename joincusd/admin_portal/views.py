@@ -41,6 +41,11 @@ If logged in, the admin user sees the current project listings that are displaye
 def index(request):
      return render(request, "list.html")
 
+
+@login_required(login_url='/admin/verify_applications/')
+def verify_applications(request):
+     return render(request, "application_list.html")
+
 @login_required(login_url='/admin/login/')
 def toggle_publish(request, model_type, pk):
   model = None
