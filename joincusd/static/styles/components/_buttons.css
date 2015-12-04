@@ -148,3 +148,29 @@
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
+
+/*** application verification  buttons***/
+.clear-button, .download-button {
+    display: inline-block;
+    width: auto;
+    /*padding: 0 0.5rem 0 0.5rem;*/
+    /*background-color: #83C2BA;*/
+    /*border-color: #83C2BA;*/
+    text-align: center;
+    padding: 0.5rem;
+    cursor: pointer;
+    height: auto;
+    /*margin: 0.5rem;*/
+    font-size: inherit;
+    font-weight: 300;
+    margin: 0 3rem 0 3rem;
+}
+
+.clear-button {
+    float: left;
+}
+
+.download-button {
+    float: right;
+}

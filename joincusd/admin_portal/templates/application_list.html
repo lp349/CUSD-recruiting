@@ -1,15 +1,18 @@
 {% include 'admin-common/header.html' %}
 {% load staticfiles %}
-<section id="content">
+
+<script src="{% static 'js/verify-application.js' %}"></script>
+
+<section id="buttons-section">
+
+    <a href="/admin/download_all"><div class="download-button button"  name="download">Download All</div></a>
+
+    <a href="/admin/delete_all"><div class="clear-button button" name="clear">Clear All</div></a>
 
 </section>
 
-<div>
+<section id="content">
 
-<button class="download-button button" type="button" name="download"><a href="/admin/download_all">Download</a></button>
-
-<button type="clear-button button" name="clear"><a>Clear All</a></button>
-
-</div>
+</section>
 
 {% include 'admin-common/footer.html' %}
