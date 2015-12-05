@@ -446,10 +446,10 @@ var ajax = {
     },
     togglePublish: {
         projects: function (projectId) {
-            $.get("ajax/toggle_publish/project/" + projectId + "/", display.projects);
+            $.get("ajax/toggle_publish/project/" + projectId + "/", ajax.fetchAndDisplay.projects);
         },
         roleTypes: function (roleTypeId) {
-            $.get("ajax/toggle_publish/role_type/" + roleTypeId + "/", display.roleTypes);
+            $.get("ajax/toggle_publish/role_type/" + roleTypeId + "/", ajax.fetchAndDisplay.roleTypes);
         }
     },
     updateRanks: {
