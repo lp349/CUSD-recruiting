@@ -63,15 +63,19 @@
 .roles-quick-view {
     margin: auto;
     margin-top: 2rem;
+    margin-bottom: 1rem;
     /*height: auto;*/
     width: 98%;
     text-align: left;
 }
 
-.quick-view-elem {
+.roles-quick-view-elem {
     /*text-align: center;*/
     width: 25%;
     min-width: 18rem;
+    display: inline-block;
+    margin: 0.35rem;
+    line-height: 1rem;
 }
 
 /**************************************************************************************/
