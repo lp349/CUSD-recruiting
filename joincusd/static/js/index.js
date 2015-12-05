@@ -9,506 +9,573 @@ var activeTab = "";
 //format = {[PROJECT ID/PK]:{originalRank: [ORIGINAL RANK], newRank: [NEW RANK]}, ...}
 var projectRankObj = {};
 
-
 /**
- * Changes the link of the add button based on the active tab
+ * Hides the roles preview for all listings
  */
-var changeAddButtonLink = function (activeTab) {
-    if (activeTab === "projects-tab") {
-        $(".add").attr("href", "/admin/add_project/");
-    } else if (activeTab === "roletypes-tab") {
-        $(".add").attr("href", "/admin/add_role_type/");
-    } else if (activeTab === "roles-tab") {
-        $(".add").attr("href", "/admin/add_role/");
-    }
-};
-
-
-/**
- * Toggles publish/unpublish
- * @param posting_type : string, "project" or "role_type"
- * @param pk : number, posting id
- */
-var togglePublish = function(posting_type, pk) {
-    console.log("toggling publish");
-
-    $.get("ajax/toggle_publish/" + posting_type + "/" + pk + "/" , function() {
-        if (posting_type === "project") {
-            $.get("/admin/ajax/"+ posting_type + "/", displayProjectList);
-        }else if (posting_type === "role_type") {
-            $.get("/admin/ajax/"+ posting_type + "/", displayRoleTypeList);
-        }
-    });
-};
-
-
-/**
- * Hides/Shows icons and buttons for rank change state
- */
-var toggleElements = function() {
-    if ($(".elem-button").is(":hidden")) {
-        $(".elem-button").css("visibility", "visible").show();
-
-    }else {
-        $(".elem-button").css("visibility", "hidden").hide();
-    }
-
-    if ($(".expand-icon").is(":hidden")) {
-        $(".expand-icon").css("visibility", "visible").show();
-    }else {
-        $(".expand-icon").css("visibility", "hidden").hide();
-    }
-
-};
-
-/**
- * Hides the roles preview
- */
-var hideAllQuickView = function() {
+var hideAllQuickView = function () {
     $(".roles-quick-view").slideUp();
     $(".retract-icon").hide();
     $(".expand-icon").show();
 };
 
 /**
- * Contains logic for toggling delete buttons
+ * Shows the roles preview for exactly one listing
+ * @param listingElem -the listing element whose preview to show
  */
-var activateDeleteHover = function () {
-    $(".remove.button").css("visibility", "hidden");
-
-    $(".elem").hover(function () {
-        if (!isChangingRanks()) {
-            $(this).children(".remove.button").css("visibility", "visible");
-        }
-    }, function () {
-        $(this).children(".remove.button").css("visibility", "hidden");
-    });
-
+var showQuickView = function (listingElem) {
+    hideAllQuickView();
+    //show the roles associated with clicked listing
+    $(listingElem).children(".roles-quick-view").slideDown();
+    $(listingElem).children(".retract-icon").show();
+    $(listingElem).children(".expand-icon").hide();
 };
 
-/**
- * Helper Method to generateElem()
- * @param posting : project object
- * @returns {string} project listing HTML to be displayed
- * @private
- */
-function _generateProjectListing(posting) {
-    var published = "Unpublish";
-    if (!posting.published) published = "Publish";
-
-    var roles = "<ul class='roles-quick-view'>";
-    for (var i = 0; i < posting.roles.length; i++) {
-        roles += "<li class='quick-view-elem'>" + posting.roles[i] + "</li>"
-    };
-
-    if (posting.roles.length === 0)
-        roles += "<li class='quick-view-elem'>This project is not hiring.</li>";
-
-    roles += "</ul>";
-
-    var p = "<li class='project elem ui-state-default elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
-        + Icons.drag
-        + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/' "
-        + "onclick=\"return confirm('Are you sure you want to delete this project?')\""
-        + "'>"+ Icons.remove +"</a>"
-        + "<span class='elem-name'>" + posting.name + "</span>"
-        + "<span class='elem-short-name'>(css selector: " + posting.short_name + ")</span>"
-        + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
-        + "<a class='elem-button edit button' href='edit_project/" + posting.id + "/'>Edit</a>"
-        + roles
-        + Icons.expand
-        + Icons.retract
-        + "</li>";
-    return p;
-}
-
-/**
- * Helper Method to generateElem()
- * @param posting : Role Type object
- * @returns {string} : role type listing html to be displayed
- * @private
- */
-function _generateRoleTypeListing(posting) {
-    var published = "Unpublish";
-    if (!posting.published) published = "Publish";
-
-    var roles = "<ul class='roles-quick-view'>";
-    for (var i = 0; i < posting.roles.length; i++) {
-        roles += "<li class='quick-view-elem'>" + posting.roles[i] + "</li>"
-    };
-
-    if (posting.roles.length === 0)
-        roles += "<li class='quick-view-elem'>There are no roles under this category.</li>";
-
-    roles += "</ul>";
-
-    var rt = "<div class='role-type elem elem-"+published.toLowerCase()+ "' id='" + posting.id + "'>"
-        + "<a class='elem-button remove button' href='remove_project/" + posting.id + "/' "
-        + "onclick=\"return confirm('Are you sure you want to delete this role type?')\""
-        + ">"+ Icons.remove +"</a>"
-        + "<span class='elem-name'>" + posting.name + "</span>"
-        + "<span class='elem-short-name'>(css selector:" + posting.short_name + ")</span>"
-        + "<div class='elem-button publish "+ published.toLowerCase() +" button'>" + published + "</div>"
-        + "<a class='elem-button edit button' href='edit_role_type/" + posting.id + "/'>Edit</a>"
-        + roles
-        + Icons.expand
-        + Icons.retract
-        + "</div>";
-    return rt;
-}
-
-
-/**
- * Helper Method to generateElem()
- * @param posting : role object
- * @returns {string} : role listing html to be displayed
- * @private
- */
-function _generateRoleListing(posting) {
-    var r = "<div class='role elem' id='" + posting.id + "'>"
-        + "<a class='elem-button remove button' href='remove_role/" + posting.id + "/' "
-        + "onclick=\"return confirm('Are you sure you want to delete this role?')\""
-        + ">"+ Icons.remove +"</a>"
-        + "<span class='elem-name'>" + posting.title + "</span>"
-        + "<a class='elem-button edit button' href='edit_role/" + posting.id + "/'>Edit</a>"
-
-        + "</div>";
-    return r;
-}
-
-
-/**
- * Generate the listing html
- * @param typ : the type of listing (i.e. Project, RoleType, or Role)
- * @param posting : an object representation of the listing from the db,
- * containing an id and either
- *  1. a name (project or role type) or
- *  2. a title (role)
- * @returns {string}: the html for the listing, to add to the page
- */
-function generateElem(typ, posting) {
-    if (typ === "Project") {
-        return _generateProjectListing(posting);
-    } else if ((typ === "RoleType")) {
-        return _generateRoleTypeListing(posting);
-    } else if ((typ === "Opening")) {
-        return _generateRoleListing(posting);
+var toggleRolesPreview = function (elem) {
+    if ($(elem).children(".roles-quick-view").is(":hidden")) {
+        //show the roles associated with clicked listing
+        showQuickView(elem);
+    } else {
+        //clicked listing is already expanded,
+        // hide the roles associated with clicked listing
+        hideAllQuickView();
     }
-}
+};
 
 /*
  See: http://stackoverflow.com/questions/19333098/403-forbidden-error-when-making-an-ajax-post-request-in-django-framework
-*/
+ */
 function getCookie(name) {
-  var cookieValue = null;
-  if (document.cookie && document.cookie != '') {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = jQuery.trim(cookies[i]);
-        // Does this cookie string begin with the name we want?
-        if (cookie.substring(0, name.length + 1) == (name + '=')) {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
         }
     }
-  }
     return cookieValue;
 }
 
-
 /**
- *
- * @param displayRank : project rank on page (lower "rank" = higher priority)
- * @param numProjects : number of projects
- * @return number: DB rank (higher the rank, the greater the priority)
+ * Generate html for common elements (buttons, spans)
+ * @type {{button: Function, span: Function, rolesList: Function}}
  */
-var _convertToDBRank = function (displayRank, numProjects) {
-    return numProjects - displayRank;
-};
+var generate = {
+    button: function (opts) {
+        var button = (opts.confirmationMessage) ? $('<a' + opts.confirmationMessage + '>') : $('<a>');
 
+        button.addClass(opts.classes)
+            .attr("href", opts.href)
+            .html(opts.html)
+            .click(opts.clickFunction);
 
-/**
- * @param dbRank : project rank in db (higher the rank, the greater the priority)
- * @param numProjects : number of projects
- * @return number : display rank ( project rank on page (lower "rank" = higher priority) )
- */
-var _convertToDisplayRank = function (displayRank, numProjects) {
-    return numProjects - displayRank;
-};
+        if (opts.container) button.appendTo(opts.container);
+        if (opts.hide) button.hide();
+        return button;
+    },
+    span: function (opts) {
+        var span = $("<span>")
+            .addClass(opts.classes)
+            .html(opts.html);
 
+        if (opts.container) span.appendTo(opts.container);
 
-/**
- * This method requires that:
- * 1. project listings have unique integer ids
- * 2. projects tab is active (projects are being displayed and not roles or role types
- * If these requirements are satisfied, then the method will
- * fetch the current ranks of the projects on the page and populate
- * the new display ranks of the projectRankObj.
- */
-var populateProjectRanks = function () {
-    //get order of ids
-    var idOrder = $("#sortable").sortable("toArray");
-    $.each(idOrder, function (index, id) {
-        var prevNewRank = projectRankObj[id]["newRank"];
-        if (index !== prevNewRank) {
-            projectRankObj[id]["newRank"] = index;
+        if (opts.hide) span.hide();
+        return span;
+    },
+    rolesList: function (opts) {
+        var rolesList = $(opts.container);
+        for (var i = 0; i < opts.roles.length; i++) {
+            $("<li>").addClass(opts.classes).html(opts.roles[i]).appendTo(rolesList);
         }
-    });
+        var noRolesText = opts.emptyText ? opts.emptyText : "There are no roles under this category.";
+
+        if (opts.roles.length === 0)
+            $("<li>").addClass(opts.classes).html(noRolesText).appendTo(rolesList);
+
+        if (opts.hide) rolesList.hide();
+        return rolesList;
+    }
 };
 
+function appendProjectListing(container, posting) {
+    var published = "Unpublish";
+    if (!posting.published) published = "Publish";
+    var elem = $("<li>")
+        .addClass('project elem ui-state-default')
+        .addClass('elem-' + published.toLowerCase())
+        .click(function () {
+            if ($(".ui-sortable-disabled").length > 0) toggleRolesPreview(this);
+        })
+        .attr("id", posting.id)
+        .appendTo(container);
+    $(Icons.drag).appendTo(elem).hide();
+    var remove = generate.button({
+        confirmationMessage: " onclick=\"return confirm('Are you sure you want to delete this project?')\" ",
+        html: Icons.remove,
+        container: elem,
+        href: 'remove_project/' + posting.id + '/',
+        classes: "elem-button remove button"
+    });
+    var postingName = generate.span({
+        classes: "elem-name",
+        html: posting.name,
+        container: elem
+    });
+    var postingShortName = generate.span({
+        classes: "elem-short-name",
+        html: "(css selector: " + posting.short_name + ")",
+        container: elem
+    });
+
+    var buttonsWrapper = $("<section>").addClass("elem-button-wrapper").appendTo(elem);
+
+    var publishButton = generate.button({
+        classes: "elem-button publish " + published.toLowerCase() + " button",
+        clickFunction: function () {
+            $.get("ajax/toggle_publish/project/" + posting.id + "/", function () {
+                ajax.fetchAndDisplay.projects();
+            })
+        },
+        html: published,
+        container: buttonsWrapper
+    });
+    var editButton = generate.button({
+        classes: 'elem-button edit button',
+        href: 'edit_project/' + posting.id + '/',
+        html: "Edit",
+        container: buttonsWrapper
+    });
+    var rolesList = generate.rolesList({
+        container: $("<ul>").addClass('roles-quick-view'),
+        hide: true,
+        classes: "roles-quick-view-elem",
+        emptyText: "There are no roles under this project.",
+        roles: posting.roles
+    }).appendTo(elem);
+
+    $(Icons.expand).appendTo(elem);
+    $(Icons.retract).appendTo(elem).hide();
+}
+
+var appendRankButtons = function (mainContainer, sortableContainer) {
+    var buttonContainer = $("<div>").addClass("rank-buttons-section").prependTo(mainContainer);
+    var editRankButton = generate.button({
+        classes: ('rank edit-rank'),
+        html: ("Edit Rank"),
+        clickFunction: (function () {
+            //prepare for rank changing:
+            //show the other rank buttons
+            $(".rank").show();
+            $(this).hide();
+            //enable sorting (rank changing) and set cursor
+            $(sortableContainer).sortable("enable");
+            $(sortableContainer).children("li").css("cursor", "move");
+
+            //show the "move" or drag icon
+            $(".drag-icon").show();
+            //hide any open previews
+            hideAllQuickView();
+
+            //hide the buttons and expand icon
+            $(".elem-button").hide();
+            $(".expand-icon").hide();
+
+        }),
+        container: (buttonContainer)
+    });
+    var saveRankButton = generate.button({
+        classes: ('rank save-rank'),
+        html: ("Save"),
+        clickFunction: (function () {
+            //update the rankings and reload the page
+            ajax.updateRanks.projects();
+        }),
+        container: (buttonContainer),
+        hide: true
+    });
+    var cancelRankButton = generate.button({
+        classes: ('rank cancel-rank'),
+        html: ("Cancel"),
+        clickFunction: (function () {
+            //just reload the page
+            ajax.fetchAndDisplay.projects();
+        }),
+        container: (buttonContainer),
+        hide: true
+    })
+};
+
+function appendRoleTypeListing(container, posting) {
+    var published = "Unpublish";
+    if (!posting.published) published = "Publish";
+
+    var elem = $("<div>")
+        .addClass('role-type elem')
+        .addClass('elem-' + published.toLowerCase())
+        .click(function () {
+            toggleRolesPreview(this);
+        })
+        .attr("id", posting.id)
+        .appendTo(container);
+
+    var removeButton = generate.button({
+        confirmationMessage: " onclick=\"return confirm('Are you sure you want to delete this discipline?')\" ",
+        classes: "elem-button remove button",
+        href: 'remove_role_type/' + posting.id + '/',
+        html: (Icons.remove),
+        container: (elem)
+    });
+
+    var postingName = generate.span({
+        classes: ("elem-name"),
+        html: (posting.name),
+        container: (elem)
+    });
+
+    var postingShortName = generate.span({
+        classes: ("elem-short-name"),
+        html: ("(css selector: " + posting.short_name + ")"),
+        container: (elem)
+    });
+
+    var buttonsWrapper = $("<section>").addClass("elem-button-wrapper").appendTo(elem);
+
+    var publishButton = generate.button({
+        classes: ("elem-button publish " + published.toLowerCase() + " button"),
+        clickFunction: function () {
+            ajax.togglePublish.roleTypes(posting.id);
+        },
+        html: (published),
+        container: (buttonsWrapper)
+    });
+
+    var editButton = generate.button({
+        classes: ('elem-button edit button'),
+        href: ('edit_role_type/' + posting.id + '/'),
+        html: ("Edit"),
+        container: (buttonsWrapper)
+    });
+
+    var rolesList = generate.rolesList({
+        container: $("<ul>").addClass('roles-quick-view'),
+        hide: true,
+        classes: 'roles-quick-view-elem',
+        roles: posting.roles,
+        emptyText: "There are no roles under this discipline."
+    }).appendTo(elem);
+
+    $(Icons.expand).appendTo(elem);
+    $(Icons.retract).appendTo(elem).hide();
+}
+
+function appendRoleListing(container, posting) {
+    var elem = $("<div>").addClass("role elem").attr("id", posting.id).appendTo(container);
+    var removeConfirmation = " onclick=\"return confirm('Are you sure you want to delete this role?')\" ";
+    var removeButton = generate.button({
+        confirmationMessage: removeConfirmation,
+        classes: ("elem-button remove button"),
+        href: ('remove_role/' + posting.id + '/'),
+        html: (Icons.remove),
+        container: (elem)
+    });
+
+    var postingName = generate.span({
+        classes: ("elem-name"),
+        html: (posting.title),
+        container: (elem)
+    });
+    var editButton = generate.button({
+        classes: ('elem-button edit button'),
+        href: ('edit_role/' + posting.id + '/'),
+        html: ("Edit"),
+        container: (elem)
+    });
+}
+
 /**
- * Returns an array of objects of the following format:
- * {id: [projectId], rank: [newRank]}
- * where new_rank is a DB rank (higher rank = greater priority)
- * that correspond to objects with rank changes
+ * Description: Methods dealing with rendering/loading of the three posting types
+ * @type {{_container: string, _sortableContainerId: string, _posts: null, _generalSort: Function, _reverseSort: Function, _init: Function, projects: Function, roleTypes: Function, roles: Function, getRanksAsArray: Function}}
  */
-var getNewRanks = function () {
-    populateProjectRanks();
-    var changes = [];
-    //iterate through all projects
-    $.each(Object.keys(projectRankObj), function (index, projectId) {
-        var newRank = projectRankObj[projectId]["newRank"];
-        var originalRank = projectRankObj[projectId]["originalRank"];
-        //if rank changed
-        if (newRank !== originalRank) {
-            //add to array
-            changes.push({
-                projectId: projectId,
-                newRank: _convertToDBRank(newRank, Object.keys(projectRankObj).length)
-            });
+var display = {
+    _container: "#content",
+    _sortableContainerId: "sortable",
+    _posts: null,
+    /**
+     * Description: Smallest-first sort for array of objects
+     * @param posts : Array -the array of objects to sort
+     * @param commonKey : String -objects sorted by this key
+     * @returns {*|Array.<T>}
+     * @private
+     */
+    _generalSort: function (posts, commonKey) {
+        return posts.sort(function (post1, post2) {
+            if (post1[commonKey] < post2[commonKey]) return -1;
+            return post1[commonKey] > post2[commonKey];
+        });
+    },
+    /**
+     * Description: Largest-first sort for array of objects
+     * @param posts : Array -the array of objects to sort
+     * @param commonKey : String -objects sorted by this key
+     * @returns {*|Array.<T>}
+     * @private
+     */
+    _reverseSort: function (posts, commonKey) {
+        return posts.sort(function (post1, post2) {
+            if (post1[commonKey] > post2[commonKey]) return -1;
+            return post1[commonKey] < post2[commonKey];
+        });
+    },
+    /**
+     * Description: Common code to all three rendering methods,
+     * i.e. parsing the JSON data from ajax call
+     * and clearing the display area to add elements
+     * @param data : JSON data from jquery ajax call
+     * @returns {string} : the container
+     * @private
+     */
+    _init: function (data) {
+        this._posts = JSON.parse(data);
+        var $this = this;
+        $($this._container).empty();
+        return $this._container;
+    },
+    /**
+     * 1. Sorts the given projects by rank
+     * 2. Populates projectRankObj with ids and original rankings
+     * 3. Adds project listings as sortable "li" elements
+     * 4. Calls a helper method to toggle the sortable list
+     * @param data : JSON representation of projects with relevant project info,
+     *              retrieved from ajax call
+     */
+    projects: function (data) {
+        var $this = display; //because "this" refers to the object returned by jquery ajax
+        var list_div = $this._init(data);
+
+        //sort postings by rank
+        var posts = $this._reverseSort($this._posts, "rank");
+
+        //create and append the sortable ul (for jquery-ui sortable)
+        var sortable = $("<ul>").attr("id", $this._sortableContainerId)
+            .appendTo(list_div);
+
+        //keep track of project-rank mappings for changes in rankings
+        projectRankObj = {};
+
+        //add the project listings
+        for (var i = 0; i < posts.length; i++) {
+            appendProjectListing(sortable, posts[i]);
+
+            //populate projectRankObject with pks (project ids) and original ranks
+            projectRankObj[posts[i].id] = {};
+            projectRankObj[posts[i].id]["originalRank"] = i;
+            projectRankObj[posts[i].id]["newRank"] = i;
         }
-    });
 
-    return changes;
-};
-
-
-/**
- * Determines whether sorting (project list) is enabled
- * @returns {boolean}
- */
-var isChangingRanks = function() {
-    return !($("#sortable").hasClass("ui-sortable-disabled") || activeTab !== "projects-tab");
-};
-
-
-/**
- * Toggles and handles sortable project list
- */
-var displayProjectListHelper = function () {
-
-    $(function () {
-        $('#sortable').sortable()
+        //enable sortable (code must be here, because otherwise,
+        // ajax calls will result in jumping to the top of the page)
+        sortable.sortable()
             .disableSelection()
             .sortable("disable");
 
-        $(".rank").hide();
-        $(".edit-rank").show();
-    });
+        //prepend the rank buttons
+        appendRankButtons(list_div, sortable);
 
-    $(".edit-rank").click(function () {
-        $(".rank").show();
-        $(this).hide();
-        $("#sortable").sortable("enable");
-        $("#sortable li").css("cursor", "move");
-        $(".drag-icon").show();
-        hideAllQuickView();
-        toggleElements();
-    });
+        return $this;
+    },
+    /**
+     * Displays the role types on page given data from ajax call
+     * @param data : JSON representation of roletype objects
+     */
+    roleTypes: function (data) {
+        var $this = display;
+        var list_div = $this._init(data);
+        //regular lexical sort
+        var posts = $this._generalSort($this._posts, "name");
 
+        for (var i = 0; i < posts.length; i++) {
+            appendRoleTypeListing(list_div, posts[i]);
+        }
+        return this;
+    },
 
-    $(".cancel-rank").click(function () {
-        console.log(getNewRanks());
-        $.get("/admin/ajax/project/", displayProjectList);
+    /**
+     * Displays the roles on page given data from ajax call
+     * @param data : JSON representation of roles objects
+     */
+    roles: function (data) {
+        var $this = display;
+        var list_div = $this._init(data);
+        //regular lexical sort
+        var posts = $this._generalSort($this._posts, "title");
+        for (var i = 0; i < posts.length; i++) {
+            appendRoleListing(list_div, posts[i]);
+        }
+        return this;
+    },
+    /**
+     * Returns the current rankings, in order, as an array.
+     * @returns {*|jQuery}
+     */
+    getRanksAsArray: function () {
+        var $this = this;
+        return $("#" + $this._sortableContainerId).sortable("toArray");
+    }
+};
 
-    });
+/**
+ * Description: Methods dealing with ajax calls
+ * @type {{fetchAndDisplay: {projects: Function, roleTypes: Function, roles: Function}, togglePublish: {projects: Function, roleTypes: Function}, updateRanks: {_populateProjectRanks: Function, _getNewRanks: Function, projects: Function}}}
+ */
+var ajax = {
+    fetchAndDisplay: {
+        projects: function () {
+            $.get("/admin/ajax/project/", display.projects);
+        },
+        roleTypes: function () {
+            $.get("/admin/ajax/role_type", display.roleTypes);
+        },
+        roles: function () {
+            $.get("/admin/ajax/roles", display.roles);
+        }
+    },
+    togglePublish: {
+        projects: function (projectId) {
+            $.get("ajax/toggle_publish/project/" + projectId + "/", display.projects);
+        },
+        roleTypes: function (roleTypeId) {
+            $.get("ajax/toggle_publish/role_type/" + roleTypeId + "/", display.roleTypes);
+        }
+    },
+    updateRanks: {
+        /**
+         * This method requires that:
+         * 1. project listings have unique integer ids
+         * 2. projects tab is active (projects are being displayed and not roles or role types
+         * If these requirements are satisfied, then the method will
+         * fetch the current ranks of the projects on the page and populate
+         * the new display ranks of the projectRankObj.
+         */
+        _populateProjectRanks: function () {
+            //get order of ids
+            var idOrder = display.getRanksAsArray();
+            $.each(idOrder, function (index, id) {
+                var prevNewRank = projectRankObj[id]["newRank"];
+                if (index !== prevNewRank) {
+                    projectRankObj[id]["newRank"] = index;
+                }
+            });
+        },
+        /**
+         * Returns an array of objects of the following format:
+         * {id: [projectId], rank: [newRank]}
+         * where new_rank is a DB rank (higher rank = greater priority)
+         * that correspond to objects with rank changes
+         */
+        _getNewRanks: function () {
+            /**
+             * @param displayRank : project rank on page (lower "rank" = higher priority)
+             * @param numProjects : number of projects
+             * @return number: DB rank (higher the rank, the greater the priority)
+             */
+            var convertToDBRank = function (displayRank, numProjects) {
+                return numProjects - displayRank;
+            };
 
-    $(".save-rank").click(function () {
-        $(".elem-button").removeClass("button-disabled");
-        var rank_changes = JSON.stringify(getNewRanks());
-        var csrftoken = getCookie('csrftoken');
-        $.post("/admin/ajax/update_ranks", {csrfmiddlewaretoken: csrftoken, rank_string: rank_changes}, function () {
-            $.get("/admin/ajax/project/", displayProjectList);
+            //get the new ranks
+            this._populateProjectRanks();
+
+            var changes = [];
+            //iterate through all projects to find changes
+            $.each(Object.keys(projectRankObj), function (index, projectId) {
+                var newRank = projectRankObj[projectId]["newRank"];
+                var originalRank = projectRankObj[projectId]["originalRank"];
+                if (newRank !== originalRank) {
+                    changes.push({
+                        projectId: projectId,
+                        newRank: convertToDBRank(newRank, Object.keys(projectRankObj).length)
+                    });
+                }
+            });
+            return changes;
+        },
+        projects: function () {
+            var $this = this;
+            var rank_changes = JSON.stringify($this._getNewRanks());
+            var csrftoken = getCookie('csrftoken');
+            $.post("/admin/ajax/update_ranks", {
+                csrfmiddlewaretoken: csrftoken,
+                rank_string: rank_changes
+            }, function () {
+                ajax.fetchAndDisplay.projects();
+            });
+        }
+    }
+};
+
+var navigation = {
+    _projectsTab: "#projects-tab",
+    _rolesTab: "#roles-tab",
+    _roleTypesTab: "#roletypes-tab",
+    _selector: "#nav-bar",
+    _tabSelector: ".tab",
+    _addButtonSelector: '.add',
+    _activeTab: this._projectsTab, //default selected tab
+    init: function () {
+        var $this = this;
+
+        //set up click events for tabs and save links to respective add forms
+        $($this._projectsTab)
+            .data("addLink", "/admin/add_project/")
+            .click(function () {
+                ajax.fetchAndDisplay.projects();
+            });
+
+        $($this._rolesTab)
+            .data("addLink", "/admin/add_role/")
+            .click(function () {
+                ajax.fetchAndDisplay.roles();
+            });
+
+        $($this._roleTypesTab)
+            .data("addLink", "/admin/add_role_type/").click(function () {
+                ajax.fetchAndDisplay.roleTypes();
+            });
+
+        //handle general tab styling and recording of tab
+        $($this._selector).on('click', $this._tabSelector, function () {
+
+            //tab click styling
+            $($this._tabSelector).removeClass('selected-tab');
+            $(this).addClass('selected-tab');
+
+            //save activetab ->
+            // this tab will be active the next time this page is accessed
+            activeTab = "#" + $(this).attr("id");
+            sessionStorage['active'] = activeTab;
+
+            //set add button link
+            $($this._addButtonSelector).attr("href", $(this).data("addLink"));
+
         });
-    });
 
-};
+        //now that tabs events are set,
+        // go to last active tab (the tab that was last accessed, if any)
+        if (sessionStorage['active']) {
+            $this._activeTab = sessionStorage['active']
+        }
+        ;
+        $($this._activeTab).trigger("click");
 
 
-/**
- * 1. Sorts the given projects by rank
- * 2. Populates projectRankObj with ids and original rankings
- * 3. Adds project listings as sortable "li" elements
- * 4. Calls a helper method to toggle the sortable list
- * @param data : JSON representation of projects with relevant project info,
- *              retrieved from ajax call
- */
-var displayProjectList = function (data) {
-    var posts = JSON.parse(data);
-
-    //sort by rank before display
-    posts.sort(function (post1, post2) {
-        if (post1.rank > post2.rank) return -1;
-        return post1.rank < post2.rank;
-    });
-
-    var list_div = $("#content");
-    list_div.empty();
-    projectRankObj = {};
-
-    //add edit, save, cancel rank buttons
-    list_div
-        .append("<div class='rank edit-rank'>Edit Rank</div>")
-        .append("<div class='rank save-rank'>Save</div>")
-        .append("<div class='rank cancel-rank'>Cancel</div>")
-        .append("<ul id='sortable'>");
-
-    //add the project listings
-    for (var i = 0; i < posts.length; i++) {
-        //list_div.append(generateElem("Project", posts[i]));
-        $("#sortable").append(generateElem("Project", posts[i]));
-
-        //populate projectRankObject with pks (project ids) and original ranks
-        projectRankObj[posts[i].id] = {};
-        projectRankObj[posts[i].id]["originalRank"] = i;
-        projectRankObj[posts[i].id]["newRank"] = i;
     }
-
-    //hide relevant buttons
-    $(".roles-quick-view").hide();
-    $(".drag-icon").hide();
-    $(".retract-icon").hide();
-
-
-    $(".publish.button").click( function() {
-        console.log($(this).parent().attr("id"));
-        togglePublish("project", $(this).parent().attr("id"));
-
-    });
-
-    //activateDeleteHover();
-
-    //set up and handle toggling
-    displayProjectListHelper();
-
-};
-
-/**
- * Displays the role types on page given data from ajax call
- * @param data : JSON representation of roletype objects
- */
-var displayRoleTypeList = function (data) {
-    var posts = JSON.parse(data);
-
-    //sort alphabetically before display
-    posts.sort(function (post1, post2) {
-        if (post1.name < post2.name) return -1;
-        return post1.name > post2.name;
-    });
-
-    var list_div = $("#content");
-    list_div.empty();
-
-    for (var i = 0; i < posts.length; i++) {
-        //add role type
-        list_div.append(generateElem("RoleType", posts[i]));
-    }
-
-    //hide relevant buttons
-    $(".roles-quick-view").hide();
-    $(".drag-icon").hide();
-    $(".retract-icon").hide();
-
-
-    $(".publish.button").click( function() {
-        console.log($(this).parent().attr("id"));
-        togglePublish("role_type", $(this).parent().attr("id"));
-    });
-
-    //activateDeleteHover();
-
-};
-
-/**
- * Displays the roles on page given data from ajax call
- * @param data : JSON representation of roles objects
- */
-var displayRoleList = function (data) {
-    var posts = JSON.parse(data);
-
-    //sort roles alphabetically before display
-    posts.sort(function (post1, post2) {
-        if (post1.title < post2.title) return -1;
-        return post1.title > post2.title;
-    });
-
-    var list_div = $("#content");
-    list_div.empty();
-
-    //display roles on page
-    for (var i = 0; i < posts.length; i++) {
-        list_div.append(generateElem("Opening", posts[i]));
-    }
-
-    //activateDeleteHover();
 };
 
 $(document).ready(function () {
-
-    //handle navigation bar
-    $('#nav-bar').on('click', '.tab', function () {
-        //tab click styling
-        $('.tab').removeClass('selected-tab');
-        $(this).addClass('selected-tab');
-
-        //save activetab ->
-        // this tab will be active the next time this page is accessed
-        activeTab = $(this).attr("id");
-        sessionStorage['active'] = activeTab;
-
-        //set link for add button
-        changeAddButtonLink(activeTab);
-    });
-
-    //render postings and roles elements
-    $("#projects-tab").click(function () {
-        $.get("/admin/ajax/project/", displayProjectList);
-    });
-
-    $("#roles-tab").click(function () {
-        $.get("/admin/ajax/roles", displayRoleList);
-    });
-
-    $("#roletypes-tab").click(function () {
-        $.get("/admin/ajax/role_type", displayRoleTypeList);
-    });
-
-    //toggle roles preview for projects and role types
-    $('#content').on('click', '.elem', function () {
-        if (!isChangingRanks()) {
-            if ($(this).children(".roles-quick-view").is(":hidden")) {
-                //listing was not expanded
-                //hide all previews first
-                hideAllQuickView();
-
-                //show the roles associated with clicked listing
-                $(this).children(".roles-quick-view").slideDown();
-                $(this).children(".retract-icon").show();
-                $(this).children(".expand-icon").hide();
-
-            } else {
-                //clicked listing is already expanded,
-                // hide the roles associated with clicked listing
-                hideAllQuickView();
-            }
-        }
-    });
-
-    //go to last active tab (the tab that was last accessed, if any)
-    if (sessionStorage['active']) {
-        $("#" + sessionStorage['active']).trigger("click");
-    } else {
-        $("#projects-tab").trigger("click");
-    }
-
+    navigation.init();
 });

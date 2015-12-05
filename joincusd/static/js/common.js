@@ -1,16 +1,23 @@
-$(window).resize( function() {
-    if (window.outerWidth < 720) {
-        $(".site-logo__text").hide();
-    } else $(".site-logo__text").show();
-});
+(function(windowSize) {
+    var resize = function() {
+        if ($(window).width() < windowSize) {
+            $(".site-logo__text").hide();
+            $(".site-logo").css("width", "auto");
+            $("body").addClass("body-smaller");
+            $("#verify").show();
+            $(".verify-applications-button").hide();
+        } else {
+            $(".site-logo__text").show();
+            $("body").removeClass("body-smaller");
+            $("#verify").hide();
+            $(".verify-applications-button").show();
 
-$(window).load(function() {
-    if (window.outerWidth < 720) {
-        $(".site-logo__text").hide();
-    } else $(".site-logo__text").show();
-});
+        }
+    };
+    $(window).resize(resize);
+    $(window).load(resize);
 
-
+})(690);
 
 /**
  * SVG Icons
@@ -44,6 +51,6 @@ var Icons = {
 
     checkbox: '<svg class="checkbox-icon" viewBox="0 0 100 100"> ' +
     '<path d="M 10 55 l 30 25 l 40 -70"></path>' +
-    '</svg>',
+    '</svg>'
 
 };

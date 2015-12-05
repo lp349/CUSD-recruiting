@@ -10,6 +10,7 @@
 
     <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/jquery.ui.touch-punch.min.js' %}"></script>
 
     <script src="{% static 'colorfield/jscolor/jscolor.js' %}"></script>
     <script src="{% static 'js/common.js' %}"></script>
@@ -30,7 +31,10 @@
 
     <section class="header-links">
     <div id="logout"><a href="/admin/login/">Log Out</a></div><br>
-    <a id="admin-home" href="/admin/"><h3>Admin Portal</h3></a>
+
+    <a id="admin-home" href="/admin/"><h3>Admin Portal</h3></a><br>
+        <a id="verify" href="/admin/verify_applications" class="header-link">Verify Applicant Submissions</a>
+
     </section>
 </div>
 

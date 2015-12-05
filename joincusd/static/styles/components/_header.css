@@ -112,3 +112,9 @@ a:hover {
 #logout a {
     width: auto;
 }
+
+#verify {
+    display: none;
+    float: right;
+    text-align: right;
+}

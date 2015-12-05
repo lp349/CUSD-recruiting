@@ -49,6 +49,8 @@
     /*float: left;*/
     margin-bottom: 1rem;
     text-align: left;
+    max-width: 10rem;
+    overflow: hidden;
 }
 
 .elem-short-name {
@@ -60,7 +62,7 @@
 /*******************************roles preview*******************************/
 .roles-quick-view {
     margin: auto;
-    margin-top: 2rem;
+    margin-top: 3.4rem;
     height: auto;
     width: 98%;
     text-align: left;
@@ -71,6 +73,5 @@
     width: 25%;
     min-width: 18rem;
 }
-
 
 /**************************************************************************************/

@@ -42,7 +42,7 @@ def index(request):
      return render(request, "list.html")
 
 
-@login_required(login_url='/admin/verify_applications/')
+
 def verify_applications(request):
      return render(request, "application_list.html")
 
