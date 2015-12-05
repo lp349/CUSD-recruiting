@@ -2,7 +2,7 @@
 
 #nav-bar {
     text-align: center;
-    width: 90%;
+    width: 92%;
     height: auto;
     font-size: 1.35em;
     list-style-type: none;
@@ -17,24 +17,16 @@
 
 }
 
-#projects-tab {
-    border-right: 2px solid white;
-}
-
-#roles-tab {
-    border-left: 2px solid white;
-}
-
 .tab {
     text-align: center;
     display: inline-block;
-    width: 30%;
+    width: 31%;
     padding: 0.65rem 0 0.65rem 0;
     /*border: 2px solid #1f628d;*/
     color: #BFBFBF;
     /*border: 2px solid #2ba0ed;*/
     /*color: #333333;*/
-    min-width: 5rem;
+    min-width: 5.5rem;
     cursor: pointer;
     font-weight: 300;
     border-bottom: 1px solid #BFBFBF;
