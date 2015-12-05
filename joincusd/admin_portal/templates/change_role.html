@@ -15,21 +15,21 @@
         <span id="form_error">{{form.errors}}</span>
         <div class="field-wrapper form-role-name">
             <div class="field-name">Role Title: </div>
-      {{ form.title }}
+            <div class="field">{{ form.title }}</div>
         </div>
         <div class="field-wrapper form-role-description">
             <div class="field-name">Role Description: </div>
-      {{form.description}}
+            <div class="field">{{form.description}}</div>
         </div>
         <div class="field-wrapper form-projects">
             <div class="field-name">Select Projects:</div>
 
-      {{form.selected_projects}}
+            <div class="field">{{form.selected_projects}}</div>
         </div>
         <div class="field-wrapper form-role-types">
             <div class="field-name">Select Role Types:</div>
 
-      {{form.selected_role_types}}
+            <div class="field">{{form.selected_role_types}}</div>
         </div>
       <input class="submit-button button" type="submit" name="submit" value="Save">
     </form>

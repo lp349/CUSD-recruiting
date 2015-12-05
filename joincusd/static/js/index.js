@@ -64,6 +64,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
+
 /**
  * Generate html for common elements (buttons, spans)
  * @type {{button: Function, span: Function, rolesList: Function}}
@@ -531,7 +532,7 @@ var navigation = {
     _selector: "#nav-bar",
     _tabSelector: ".tab",
     _addButtonSelector: '.add',
-    _activeTab: this._projectsTab, //default selected tab
+    _activeTab: "#projects-tab", //default selected tab
     init: function () {
         var $this = this;
 
@@ -563,7 +564,8 @@ var navigation = {
             //save activetab ->
             // this tab will be active the next time this page is accessed
             activeTab = "#" + $(this).attr("id");
-            sessionStorage['active'] = activeTab;
+            //createCookie("active",activeTab, 1);
+            sessionStorage["active"] = activeTab;
 
             //set add button link
             $($this._addButtonSelector).attr("href", $(this).data("addLink"));
@@ -572,10 +574,11 @@ var navigation = {
 
         //now that tabs events are set,
         // go to last active tab (the tab that was last accessed, if any)
-        if (sessionStorage['active']) {
-            $this._activeTab = sessionStorage['active']
+        var prevActiveTab = sessionStorage["active"];
+        if (prevActiveTab) {
+            $this._activeTab = prevActiveTab;
         }
-        ;
+
         $($this._activeTab).trigger("click");
 
 

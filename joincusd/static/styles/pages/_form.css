@@ -123,7 +123,7 @@ input[name=icon_color] {
 
 /**************************************Roles(List)**************************************/
 
-ul {
+.field ul {
     list-style: none;
     padding: 0;
     margin-top: 1rem;
@@ -133,31 +133,28 @@ ul {
     text-align: left;
 }
 
-li {
-    width: 30%;
+.field ul li {
+    width: 31%;
     min-width: 18rem;
     display: inline-block;
     margin: 0.35rem;
+    line-height: 1rem;
 }
 
-li label{
+.field ul li label{
     text-align: left;
     display: inline-block;
     vertical-align: middle;
-    width: 94%;
+    width: 97%;
     font-size: 0.95em;
     border-radius: 0.25rem;
 
     cursor: pointer;
     padding: 0.7rem;
 
-
-    /*border: 2px solid #F1F1F1;*/
-
-    /*text-align: center;*/
     background-color: #FFFFFF;
     border: 2px solid #FFFFFF;
-    /*box-shadow: 1px 1px 1px 1px lightgray;*/
+
 }
 
 

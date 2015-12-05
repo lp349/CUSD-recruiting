@@ -55,7 +55,8 @@ function _setAdminRequiredFields() {
     var setInputRequired = function(input) {
         $(input).prop('required',true)
             .closest(".field-wrapper")
-            .children(".field-name").append("<span class=\"require\">*</span>");
+            .children(".field-name")
+            .append("<span class=\"require\">*</span>");
 
     };
 
@@ -161,7 +162,7 @@ function init(fieldsData) {
     //set up checkboxes
     $("input:checkbox").parent()
         .addClass("checkbox")
-        .append(Icons.checkbox);
+        .prepend(Icons.checkbox);
 
     $("input:checkbox:checked").parent().addClass("selected-checkbox");
 
