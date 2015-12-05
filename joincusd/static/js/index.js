@@ -30,6 +30,10 @@ var showQuickView = function (listingElem) {
     $(listingElem).children(".expand-icon").hide();
 };
 
+/**
+ *
+ * @param elem
+ */
 var toggleRolesPreview = function (elem) {
     if ($(elem).children(".roles-quick-view").is(":hidden")) {
         //show the roles associated with clicked listing
@@ -103,23 +107,25 @@ var generate = {
 };
 
 function appendProjectListing(container, posting) {
-    var published = "Unpublish";
-    if (!posting.published) published = "Publish";
+    var publishedStr = "Unpublish";
+    if (!posting.published) publishedStr = "Publish";
     var elem = $("<li>")
         .addClass('project elem ui-state-default')
-        .addClass('elem-' + published.toLowerCase())
+        .addClass('elem-published-' + posting.published)
         .click(function () {
             if ($(".ui-sortable-disabled").length > 0) toggleRolesPreview(this);
         })
         .attr("id", posting.id)
         .appendTo(container);
-    $(Icons.drag).appendTo(elem).hide();
-    var remove = generate.button({
+
+    var dragIcon = $(Icons.drag).appendTo(elem).hide();
+
+    var removeButton = generate.button({
         confirmationMessage: " onclick=\"return confirm('Are you sure you want to delete this project?')\" ",
         html: Icons.remove,
         container: elem,
         href: 'remove_project/' + posting.id + '/',
-        classes: "elem-button remove button"
+        classes: "elem-button remove-button button"
     });
     var postingName = generate.span({
         classes: "elem-name",
@@ -135,17 +141,17 @@ function appendProjectListing(container, posting) {
     var buttonsWrapper = $("<section>").addClass("elem-button-wrapper").appendTo(elem);
 
     var publishButton = generate.button({
-        classes: "elem-button publish " + published.toLowerCase() + " button",
+        classes: "elem-button published-" + posting.published + " publish-button button",
         clickFunction: function () {
             $.get("ajax/toggle_publish/project/" + posting.id + "/", function () {
                 ajax.fetchAndDisplay.projects();
             })
         },
-        html: published,
+        html: publishedStr,
         container: buttonsWrapper
     });
     var editButton = generate.button({
-        classes: 'elem-button edit button',
+        classes: 'elem-button edit-button button',
         href: 'edit_project/' + posting.id + '/',
         html: "Edit",
         container: buttonsWrapper
@@ -158,8 +164,8 @@ function appendProjectListing(container, posting) {
         roles: posting.roles
     }).appendTo(elem);
 
-    $(Icons.expand).appendTo(elem);
-    $(Icons.retract).appendTo(elem).hide();
+    var expandIcon = $(Icons.expand).appendTo(elem);
+    var retractIcon = $(Icons.retract).appendTo(elem).hide();
 }
 
 var appendRankButtons = function (mainContainer, sortableContainer) {
@@ -211,12 +217,12 @@ var appendRankButtons = function (mainContainer, sortableContainer) {
 };
 
 function appendRoleTypeListing(container, posting) {
-    var published = "Unpublish";
-    if (!posting.published) published = "Publish";
+    var publishedStr = "Unpublish";
+    if (!posting.published) publishedStr = "Publish";
 
     var elem = $("<div>")
         .addClass('role-type elem')
-        .addClass('elem-' + published.toLowerCase())
+        .addClass('elem-published-' + posting.published)
         .click(function () {
             toggleRolesPreview(this);
         })
@@ -225,7 +231,7 @@ function appendRoleTypeListing(container, posting) {
 
     var removeButton = generate.button({
         confirmationMessage: " onclick=\"return confirm('Are you sure you want to delete this discipline?')\" ",
-        classes: "elem-button remove button",
+        classes: "elem-button remove-button button",
         href: 'remove_role_type/' + posting.id + '/',
         html: (Icons.remove),
         container: (elem)
@@ -246,16 +252,16 @@ function appendRoleTypeListing(container, posting) {
     var buttonsWrapper = $("<section>").addClass("elem-button-wrapper").appendTo(elem);
 
     var publishButton = generate.button({
-        classes: ("elem-button publish " + published.toLowerCase() + " button"),
+        classes: ("elem-button published-" + posting.published + " publish-button button"),
         clickFunction: function () {
             ajax.togglePublish.roleTypes(posting.id);
         },
-        html: (published),
+        html: (publishedStr),
         container: (buttonsWrapper)
     });
 
     var editButton = generate.button({
-        classes: ('elem-button edit button'),
+        classes: ('elem-button edit-button button'),
         href: ('edit_role_type/' + posting.id + '/'),
         html: ("Edit"),
         container: (buttonsWrapper)
@@ -278,7 +284,7 @@ function appendRoleListing(container, posting) {
     var removeConfirmation = " onclick=\"return confirm('Are you sure you want to delete this role?')\" ";
     var removeButton = generate.button({
         confirmationMessage: removeConfirmation,
-        classes: ("elem-button remove button"),
+        classes: ("elem-button remove-button button"),
         href: ('remove_role/' + posting.id + '/'),
         html: (Icons.remove),
         container: (elem)
@@ -290,7 +296,7 @@ function appendRoleListing(container, posting) {
         container: (elem)
     });
     var editButton = generate.button({
-        classes: ('elem-button edit button'),
+        classes: ('elem-button edit-button button'),
         href: ('edit_role/' + posting.id + '/'),
         html: ("Edit"),
         container: (elem)

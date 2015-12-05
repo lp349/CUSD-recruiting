@@ -62,8 +62,8 @@
 /*******************************roles preview*******************************/
 .roles-quick-view {
     margin: auto;
-    margin-top: 3.4rem;
-    height: auto;
+    margin-top: 2rem;
+    /*height: auto;*/
     width: 98%;
     text-align: left;
 }
@@ -75,3 +75,7 @@
 }
 
 /**************************************************************************************/
+.elem-button-wrapper {
+    height: auto;
+    overflow: hidden;
+}

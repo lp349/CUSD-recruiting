@@ -65,29 +65,29 @@
     margin: 0.5rem;
 }
 
-.edit {
+.edit-button {
     background-color: #69C26C;
     border-color: #69C26C;
 }
 
-.edit:hover {
+.edit-button:hover {
     color: #69C26C;
 }
 
-.publish {
+.publish-button {
 
     background-color: #3F9A8E;
     border: 2px solid #3F9A8E;
     color: #FFF;
 }
 
-.publish:hover {
+.publish-button:hover {
     color: #3F9A8E;
 }
 
 
 /*****remove buttons*****/
-.remove.button {
+.remove-button {
     float: left;
     position: relative;
     display: inline-block;
