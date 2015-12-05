@@ -160,7 +160,8 @@ function init(fieldsData) {
     //$("#id_published").parent().parent().hide(); ///hide "published" field...
 
     //set up checkboxes
-    $("input:checkbox").parent()
+    $("input:checkbox")
+        .parent()
         .addClass("checkbox")
         .prepend(Icons.checkbox);
 
