@@ -3,6 +3,7 @@
 /******************************Listing Elements***********************************/
 
 #content, #buttons-section {
+    max-width: 80rem;
     width: 85%;
     margin: auto;
     background-color: #F2F3F3;

@@ -1,6 +1,7 @@
 /******************************Tabs******************************/
 
 #nav-bar {
+    max-width: 80rem;
     text-align: center;
     width: 92%;
     height: auto;

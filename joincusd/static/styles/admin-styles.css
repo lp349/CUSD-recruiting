@@ -5,6 +5,7 @@
 @import url("components/_footer.css");
 @import url("components/_navbar.css");
 @import url("components/_typography.css");
+@import url("components/_common.css");
 
 
 @import url("pages/_login.css");

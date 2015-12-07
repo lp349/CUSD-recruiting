@@ -3,12 +3,14 @@
 /********************General********************/
 
 .admin-header {
+    max-width: 80rem;
     text-align: right;
     width: 90%;
     /*padding: 2rem 2rem 0.5rem 2rem;*/
     padding: 1% 5% 1% 5%;
     height: auto;
     color: #3FAB6D;
+    margin: auto;
     margin-bottom: 2rem;
     display: block;
     overflow: hidden;
