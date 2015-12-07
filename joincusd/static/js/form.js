@@ -84,14 +84,16 @@ function _setPhotosAndIcons() {
     $.map(photoFields, function (photo, index) {
         unSetRequired(photo);
         var caption = photo.data("caption");
-        unSetRequired(caption);
-        if (photo.val()) {
+        var preview = photo.data("preview");
+
+        if (preview.attr("src") && preview.attr("src").length() > 0) {
             setInputRequired(caption);
             caption.prop("disabled", false);
         } else {
             unSetRequired(caption);
             caption.prop("disabled", true);
         }
+
         photo.change(function () {
             if (photo.val()) {
                 setInputRequired(caption);
@@ -450,6 +452,6 @@ $(document).ready(function () {
         init(roleTypeFieldsHelp);
     } else if (_getFormType() === "Role") {
         init(roleFieldsHelp);
-    }
+    } else init([]);
 
 });

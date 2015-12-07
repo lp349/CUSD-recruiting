@@ -25,6 +25,8 @@ once submitted, it will redirect to url /application/
 '''
 
 def add_application(request):
+  context = {}
+
   # A HTTP POST?
   size_error=False #boolean to indicate if the exceed max size
   has_uploaded=True #boolean to indicate if the resume is uploaded or not
@@ -85,9 +87,13 @@ def add_application(request):
     
     form.fields['role_multiselect'].choices = all_role_choices
     form.fields['project_multiselect'].choices = all_projects_choices
-    
+
+  context = {
+      'form': form,
+      'projects': Posting.objects.filter(posting_type='project', published=True).order_by('-rank'),
+      'role_types': Posting.objects.filter(posting_type='role_type', published=True)
+  }
+
   # Render the form with error messages (if any).
-  return render(request, 'add_application.html', {'form': form})
-
-
+  return render(request, 'add_application.html', context)
 
