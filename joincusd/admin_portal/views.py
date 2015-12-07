@@ -41,11 +41,6 @@ If logged in, the admin user sees the current project listings that are displaye
 def index(request):
      return render(request, "list.html")
 
-
-
-def verify_applications(request):
-     return render(request, "application_list.html")
-
 @login_required(login_url='/admin/login/')
 def toggle_publish(request, model_type, pk):
   model = None
@@ -679,4 +674,10 @@ def delete_all(request):
     return HttpResponse(status="403")
 
   Application.objects.all().delete()
+  return render(request, "application_list.html")
+
+
+def verify_applications(request):
+  if not validate(request):
+      return HttpResponse(status="403")
   return render(request, "application_list.html")
