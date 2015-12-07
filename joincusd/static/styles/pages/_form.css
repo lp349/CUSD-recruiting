@@ -157,6 +157,14 @@ input[name=icon_color] {
 
 }
 
+.photo-container {
+    overflow: hidden;
+}
+
+.photo-container img {
+    max-height: 15rem;
+    width: auto;
+}
 
 
 /**************************************Tooltips**************************************/
