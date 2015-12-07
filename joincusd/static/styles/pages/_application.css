@@ -1,0 +1,16 @@
+.application-form-content form .field-wrapper .field ul {
+}
+
+.application-form-content form .field-wrapper .field ul li{
+   margin: 0.35rem 0 0.35rem 0;
+}
+
+.application-form-content form .field-wrapper .field ul li label {
+    width: 97%;
+    font-size: 0.9em;
+}
+
+
+.application-form-content {
+    max-width: 67rem;
+}

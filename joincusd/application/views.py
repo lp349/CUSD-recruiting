@@ -9,8 +9,8 @@ from forms import ApplicationForm
 
 import json
 
-#limit uploads to 1MB
-MAX_UPLOAD_SIZE= 1048576
+#limit uploads to 4MB
+MAX_UPLOAD_SIZE= 4194304
 
 def index(request):
      return render(request, "add_application.html")
