@@ -27,8 +27,11 @@
         </div>
         <div class="field-wrapper">
           {{form.resume.errors}}
-            <div class="field-name">Resume Upload (max size 4MB)</div>
+            <div class="field-name">Resume Upload</div>
+            <span class="field-additional-info">Maximum Upload Size: <strong class="underline">4MB</strong><br>
+                Accepted Extensions: .pdf, .rtf, .doc, .docx, .html, .txt</span>
             <div class="field">{{form.resume}}</div>
+
         </div>
         <div class="field-wrapper">
           {{form.project_multiselect.errors}}

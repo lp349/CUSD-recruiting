@@ -18,7 +18,7 @@ h1 {
 }
 
 .field {
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
     /*width: 90%;*/
 }
 
@@ -31,6 +31,13 @@ span.require {
     font-size: 1.2em;
 }
 
+.field-additional-info {
+    display: block;
+    font-size: 0.8em;
+    margin: 0.55rem 0 0.5rem 0;
+    line-height: 1.5rem;
+    opacity: 0.8;
+}
 .error-field {
     border: 2px solid #FF0033;
 }

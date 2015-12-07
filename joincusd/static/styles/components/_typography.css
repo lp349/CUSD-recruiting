@@ -19,7 +19,17 @@
     font-weight: bold;
     font-style: normal; }
 
+strong {
+    font-weight: bold;
+}
 
+.underline {
+    text-decoration: underline;
+}
+
+.smaller {
+    font-size: 80%;
+}
 
 body {
     /*font-family: "Open Sans", "sans-serif";*/
