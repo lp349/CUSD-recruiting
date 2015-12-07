@@ -14,8 +14,8 @@ var projectRankObj = {};
  */
 var hideAllQuickView = function () {
     $(".roles-quick-view").slideUp();
-    $(".retract-icon").hide();
-    $(".expand-icon").show();
+    $(".retract-icon-wrapper").hide();
+    $(".expand-icon-wrapper").show();
 };
 
 /**
@@ -26,8 +26,8 @@ var showQuickView = function (listingElem) {
     hideAllQuickView();
     //show the roles associated with clicked listing
     $(listingElem).children(".roles-quick-view").slideDown();
-    $(listingElem).children(".retract-icon").show();
-    $(listingElem).children(".expand-icon").hide();
+    $(listingElem).children(".retract-icon-wrapper").show();
+    $(listingElem).children(".expand-icon-wrapper").hide();
 };
 
 /**
@@ -165,8 +165,8 @@ function appendProjectListing(container, posting) {
         roles: posting.roles
     }).appendTo(elem);
 
-    var expandIcon = $(Icons.expand).appendTo(elem);
-    var retractIcon = $(Icons.retract).appendTo(elem).hide();
+    var expandIcon = $("<div>").addClass("expand-icon-wrapper").append($(Icons.expand)).appendTo(elem);
+    var retractIcon = $("<div>").addClass("retract-icon-wrapper").append($(Icons.retract)).appendTo(elem).hide();
 }
 
 var appendRankButtons = function (mainContainer, sortableContainer) {
@@ -190,7 +190,7 @@ var appendRankButtons = function (mainContainer, sortableContainer) {
 
             //hide the buttons and expand icon
             $(".elem-button").hide();
-            $(".expand-icon").hide();
+            $(".expand-icon-wrapper").hide();
 
         }),
         container: (buttonContainer)
@@ -276,8 +276,8 @@ function appendRoleTypeListing(container, posting) {
         emptyText: "There are no roles under this discipline."
     }).appendTo(elem);
 
-    $(Icons.expand).appendTo(elem);
-    $(Icons.retract).appendTo(elem).hide();
+    var expandIcon = $("<div>").addClass("expand-icon-wrapper").append($(Icons.expand)).appendTo(elem);
+    var retractIcon = $("<div>").addClass("retract-icon-wrapper").append($(Icons.retract)).appendTo(elem).hide();
 }
 
 function appendRoleListing(container, posting) {

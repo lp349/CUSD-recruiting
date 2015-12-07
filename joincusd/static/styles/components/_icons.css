@@ -112,15 +112,18 @@
 }
 
 
-.expand-icon path, .retract-icon path{
+.expand-icon path, .retract-icon path, .expand-icon-text, .retract-icon-text {
     fill: #A1A1A1;
 }
 
 .expand-icon, .retract-icon {
     height: 0.8rem;
-    margin: auto;
-    display: block;
-    width: 100%;
+    display: inline-block;
+}
+
+.expand-icon-text, .retract-icon-text {
+    width: 8em;
+    font-size: 0.9em;
 }
 
 .checkbox-icon path{

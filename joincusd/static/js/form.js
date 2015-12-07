@@ -1,8 +1,3 @@
-function validate() {
-    //@todo
-    return false;
-}
-
 $(function() {
     $( document ).tooltip();
 });
@@ -32,6 +27,8 @@ function _getFormType() {
 }
 
 
+
+
 /**
  * Returns whether it's an editing form or adding form
  * @returns {string} "Add" or "Edit"
@@ -43,12 +40,21 @@ function _getFormState() {
     return "Add";
 }
 
-function _toImg(link) {
+function toImg(link) {
     return "<img src='" + link + "'/>"
 }
 
-function _toParagraph(str) {
+function toParagraph(str) {
     return "<p>" + str + "</p>";
+}
+
+function getClassName(input) {
+    return $(input).closest(".field-wrapper").children("input");
+
+}
+
+function getInput(className) {
+    return $(className).children("input");
 }
 
 function _setAdminRequiredFields() {
@@ -63,9 +69,42 @@ function _setAdminRequiredFields() {
     var unSetRequired = function(input) {
         $(input).prop('required',false)
             .closest(".field-wrapper")
-            .children(".field-name span.require").remove();
-
+            .children(".field-name")
+            .children("span.require")
+            .remove();
     };
+
+    function _formPhotoToggle() {
+        var photo1 = $(".form-photo-one").children("input:file")
+            .data("caption", $(".form-photo-one-text").children("input"));
+        var photo2 = $(".form-photo-two").children("input:file")
+            .data("caption", $(".form-photo-two-text").children("input"));
+        var photo3 = $(".form-photo-three").children("input:file")
+            .data("caption", $(".form-photo-three-text").children("input"));
+
+        $.map([photo1, photo2, photo3], function(photo, index) {
+            unSetRequired(photo);
+            var caption = photo.data("caption");
+            unSetRequired(caption);
+            if (photo.val()) {
+                setInputRequired(caption);
+                caption.prop("disabled", false);
+            } else {
+                unSetRequired(caption);
+                caption.prop("disabled", true);
+            }
+            photo.change(function() {
+                if (photo.val()) {
+                    setInputRequired(caption);
+                    caption.prop("disabled", false);
+                } else {
+                    unSetRequired(caption);
+                    caption.prop("disabled", true);
+                }
+            });
+        });
+
+    }
 
     setInputRequired("input:visible");
     setInputRequired("textarea");
@@ -79,6 +118,8 @@ function _setAdminRequiredFields() {
             .closest(".field-wrapper.form-projects")
             .children(".field-name").append("<span class=\"require\">*</span>");
     }
+
+    _formPhotoToggle();
 }
 
 
@@ -171,6 +212,7 @@ function init(fieldsData) {
         // Toggle the checkbox
         var wrapper = $(this);
         $(this).children("input").prop("checked", !$(this).children("input").prop("checked"));
+
         if ($(this).children("input").prop("checked")) {
             $(wrapper).addClass("selected-checkbox");
         } else {
@@ -190,104 +232,105 @@ function init(fieldsData) {
 }
 
 $(document).ready(function () {
+    //relative location of images
     var pictureRelLink = "/static/images/user_guide_picture/";
     var formFieldsHelp = [
         {
             formType: "project",
             className:"form-name",
-            content: _toImg(pictureRelLink + "project_name.jpg")
+            content: toImg(pictureRelLink + "project_name.jpg")
         },
         {
             formType: "project",
             className: "form-tagline",
-            content: _toImg(pictureRelLink + "project_tagline.jpg")
+            content: toImg(pictureRelLink + "project_tagline.jpg")
         },
         {
             formType: "project",
             className:"form-short-description",
-            content: _toImg(pictureRelLink + "project_short_description.jpg")
+            content: toImg(pictureRelLink + "project_short_description.jpg")
         },
         {
             formType: "project",
             className: "form-long-description",
-            content: _toImg(pictureRelLink + "project_starting_description.jpg")
+            content: toImg(pictureRelLink + "project_starting_description.jpg")
         },
         {
             formType: "project",
             className: "form-additional-description",
-            content:  _toImg(pictureRelLink + "project_additional_description.jpg")
+            content:  toImg(pictureRelLink + "project_additional_description.jpg")
         },
         {
             formType: "project",
             className:"form-icon-color",
-            content: _toImg(pictureRelLink + "project_icon_color.jpg")
+            content: toImg(pictureRelLink + "project_icon_color.jpg")
         },
         {
             formType: "project",
             className:"form-colored-icon",
-            content: _toParagraph("An SVG icon, in color")
+            content: toParagraph("An SVG icon, in color")
         },
         {
             formType: "project",
             className: "form-uncolored-icon",
-            content: _toParagraph("An SVG icon, in white")
+            content: toParagraph("An SVG icon, in white")
         },
         {
             formType: "project",
             className: "form-photo-one",
-            content: _toParagraph("A photo for this posting")
+            content: toParagraph("A photo for this posting")
         },
         {
             formType: "project",
             className: "form-photo-one-text",
-            content: _toParagraph("A text description of the photo above,<br> for accessibility purposes")
+            content: toParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
             formType: "project",
             className:  "form-photo-two",
-            content: _toParagraph("A photo for this posting")
+            content: toParagraph("A photo for this posting")
         },
         {
             formType: "project",
             className: "form-photo-two-text",
-            content: _toParagraph("A text description of the photo above,<br> for accessibility purposes")
+            content: toParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
             formType: "project",
             className: "form-photo-three",
-            content: _toParagraph("A photo for this posting")
+            content: toParagraph("A photo for this posting")
         },
         {
             formType: "project",
             className: "form-photo-three-text",
-            content: _toParagraph("A text description of the photo above,<br> for accessibility purposes")
+            content: toParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
             formType: "project",
             className: "form-roles",
-            content: _toParagraph("Choose the roles to associate with this posting")
+            content: toParagraph("Choose the roles to associate with this posting")
         },
 
         {
             formType: "role",
             className: "form-projects",
-            content: _toParagraph("Choose the projects to associate with this role")
+            content: toParagraph("Choose the projects to associate with this role")
         },
         {
             formType: "role",
             className: "form-role-types",
-            content: _toParagraph("Choose the role types to associate with this role")
+            content: toParagraph("Choose the role types to associate with this role")
         },
         {
             formType: "role",
             className: "form-role-name",
-            content: _toImg(pictureRelLink + "role_title.jpg")
+            content: toImg(pictureRelLink + "role_title.jpg")
         }
         ,
         {
             formType: "role",
             className: "form-role-description",
-            content: _toImg(pictureRelLink + "role_description.jpg")
+            content: toImg(pictureRelLink + "role_description.jpg")
         }
 
     ];

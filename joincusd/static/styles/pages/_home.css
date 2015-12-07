@@ -83,3 +83,10 @@
     height: auto;
     overflow: hidden;
 }
+
+.expand-icon-wrapper, .retract-icon-wrapper {
+    display: block;
+    margin: auto;
+    text-align: center;
+    opacity: 0.8;
+}
