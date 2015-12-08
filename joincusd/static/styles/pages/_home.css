@@ -68,6 +68,7 @@
     /*height: auto;*/
     width: 98%;
     text-align: left;
+    float: right;
 }
 
 .roles-quick-view-elem {
@@ -81,8 +82,11 @@
 
 /**************************************************************************************/
 .elem-button-wrapper {
-    height: auto;
+    float: right;
     overflow: hidden;
+    width: 60%;
+    min-width: 12rem;
+    display: inline-block;
 }
 
 .expand-icon-wrapper, .retract-icon-wrapper {
@@ -90,4 +94,7 @@
     margin: auto;
     text-align: center;
     opacity: 0.8;
+    padding-top: 0.5rem;
+    width: 100%;
+    float: right; /*Force it to go under buttons*/
 }

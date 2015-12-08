@@ -24,9 +24,11 @@
     border: 2px solid #3FAB6D;
     width: 8rem;
     /*width: auto;*/
-    height: 2.5rem;
     cursor: pointer;
     font-size: 1em;
+    height: auto;
+    padding: 0.5rem;
+    text-align: center;
 }
 
 
@@ -86,7 +88,6 @@
 }
 
 .publish-button {
-
     background-color: #3F9A8E;
     border: 2px solid #3F9A8E;
     color: #FFF;
@@ -112,7 +113,7 @@
 }
 
 /*****rank buttons*****/
-.rank {
+.rank-button {
     background-color: #FFFFFF;
     border: 2px solid #3FAB6D;
     color: #3FAB6D;
@@ -124,14 +125,15 @@
     padding: 0.5rem;
     display: inline-block;
     margin: 0.5rem 0.5rem 1rem 2.5rem;
+    margin-left: 3%;
 }
 
-.save-rank.rank {
+.save-rank-button{
     background-color:#3FAB6D;
     color: #FFF;
 }
 
-.rank:hover {
+.rank-button:hover {
     /*background-color: white;*/
     /*color: #3F9A8E;*/
 }

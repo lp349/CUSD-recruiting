@@ -110,6 +110,9 @@ var generate = {
 function appendProjectListing(container, posting) {
     var publishedStr = "Unpublish";
     if (!posting.published) publishedStr = "Publish";
+
+    var commonButtonClasses = " elem-button admin-button ";
+
     var elem = $("<li>")
         .addClass('project elem ui-state-default')
         .addClass('elem-published-' + posting.published)
@@ -126,7 +129,7 @@ function appendProjectListing(container, posting) {
         html: Icons.remove,
         container: elem,
         href: 'remove_project/' + posting.id + '/',
-        classes: "elem-button remove-button admin-button"
+        classes: commonButtonClasses + "remove-button"
     });
     var postingName = generate.span({
         classes: "elem-name",
@@ -142,7 +145,7 @@ function appendProjectListing(container, posting) {
     var buttonsWrapper = $("<section>").addClass("elem-button-wrapper").appendTo(elem);
 
     var publishButton = generate.button({
-        classes: "elem-button published-" + posting.published + " publish-button admin-button",
+        classes: commonButtonClasses + "published-" + posting.published + " publish-button",
         clickFunction: function () {
             $.get("ajax/toggle_publish/project/" + posting.id + "/", function () {
                 ajax.fetchAndDisplay.projects();
@@ -152,7 +155,7 @@ function appendProjectListing(container, posting) {
         container: buttonsWrapper
     });
     var editButton = generate.button({
-        classes: 'elem-button edit-button admin-button',
+        classes: commonButtonClasses + 'edit-button',
         href: 'edit_project/' + posting.id + '/',
         html: "Edit",
         container: buttonsWrapper
@@ -169,57 +172,84 @@ function appendProjectListing(container, posting) {
     var retractIcon = $("<div>").addClass("retract-icon-wrapper").append($(Icons.retract)).appendTo(elem).hide();
 }
 
-var appendRankButtons = function (mainContainer, sortableContainer) {
+var activateRankButtonsRankDisabled = function() {
+    $(".rank-button").hide();
+    $(".edit-rank-button").show();
+};
+
+var activateRankButtonsRankEnabled = function() {
+    //prepare for rank changing:
+    //show the other rank buttons
+    $(".rank-button").show();
+    $(".edit-rank-button").hide();
+
+    //show the "move" or drag icon
+    $(".drag-icon").show();
+    //hide any open previews
+    hideAllQuickView();
+
+    //hide the buttons and expand icon
+    $(".elem-button").hide();
+    $(".expand-icon-wrapper").hide();
+};
+
+var deactivateAllRankButtons = function() {
+    $(".rank-button").hide();
+};
+
+var activateRankings = function (sortableContainer) {
+    var editRankButton = $(".edit-rank-button").click(function () {
+        //enable sorting (rank changing) and set cursor
+        $(sortableContainer).sortable("enable");
+        $(sortableContainer).children("li").css("cursor", "move");
+
+        activateRankButtonsRankEnabled();
+
+    });
+    var saveRankButton = $(".save-rank-button").click(function () {
+        //update the rankings and reload the page
+        ajax.updateRanks.projects();
+        activateRankButtonsRankDisabled();
+    });
+    var cancelRankButton = $(".cancel-rank-button").click(function () {
+        //just reload the page
+        ajax.fetchAndDisplay.projects();
+        activateRankButtonsRankDisabled();
+    });
+
+    activateRankButtonsRankDisabled();
+};
+
+
+var appendRankButtons = function (mainContainer) {
     var buttonContainer = $("<div>").addClass("rank-buttons-section").prependTo(mainContainer);
+    var commonClasses = ' rank-button admin-button ';
     var editRankButton = generate.button({
-        classes: ('rank edit-rank'),
+        classes: (commonClasses + 'edit-rank-button'),
         html: ("Edit Rank"),
-        clickFunction: (function () {
-            //prepare for rank changing:
-            //show the other rank buttons
-            $(".rank").show();
-            $(this).hide();
-            //enable sorting (rank changing) and set cursor
-            $(sortableContainer).sortable("enable");
-            $(sortableContainer).children("li").css("cursor", "move");
-
-            //show the "move" or drag icon
-            $(".drag-icon").show();
-            //hide any open previews
-            hideAllQuickView();
-
-            //hide the buttons and expand icon
-            $(".elem-button").hide();
-            $(".expand-icon-wrapper").hide();
-
-        }),
-        container: (buttonContainer)
+        container: (buttonContainer),
+        hide: true
     });
     var saveRankButton = generate.button({
-        classes: ('rank save-rank'),
+        classes: (commonClasses + 'save-rank-button'),
         html: ("Save"),
-        clickFunction: (function () {
-            //update the rankings and reload the page
-            ajax.updateRanks.projects();
-        }),
         container: (buttonContainer),
         hide: true
     });
     var cancelRankButton = generate.button({
-        classes: ('rank cancel-rank'),
+        classes: (commonClasses + 'cancel-rank-button'),
         html: ("Cancel"),
-        clickFunction: (function () {
-            //just reload the page
-            ajax.fetchAndDisplay.projects();
-        }),
         container: (buttonContainer),
         hide: true
     })
 };
 
+
 function appendRoleTypeListing(container, posting) {
     var publishedStr = "Unpublish";
     if (!posting.published) publishedStr = "Publish";
+
+    var commonButtonClasses = " elem-button admin-button ";
 
     var elem = $("<div>")
         .addClass('role-type elem')
@@ -232,7 +262,7 @@ function appendRoleTypeListing(container, posting) {
 
     var removeButton = generate.button({
         confirmationMessage: " onclick=\"return confirm('Are you sure you want to delete this discipline?')\" ",
-        classes: "elem-button remove-button admin-button",
+        classes: commonButtonClasses + "remove-button",
         href: 'remove_role_type/' + posting.id + '/',
         html: (Icons.remove),
         container: (elem)
@@ -253,7 +283,7 @@ function appendRoleTypeListing(container, posting) {
     var buttonsWrapper = $("<section>").addClass("elem-button-wrapper").appendTo(elem);
 
     var publishButton = generate.button({
-        classes: ("elem-button published-" + posting.published + " publish-button admin-button"),
+        classes: (commonButtonClasses +  "published-" + posting.published + " publish-button"),
         clickFunction: function () {
             ajax.togglePublish.roleTypes(posting.id);
         },
@@ -262,7 +292,7 @@ function appendRoleTypeListing(container, posting) {
     });
 
     var editButton = generate.button({
-        classes: ('elem-button edit-button admin-button'),
+        classes: (commonButtonClasses + 'edit-button'),
         href: ('edit_role_type/' + posting.id + '/'),
         html: ("Edit"),
         container: (buttonsWrapper)
@@ -283,9 +313,10 @@ function appendRoleTypeListing(container, posting) {
 function appendRoleListing(container, posting) {
     var elem = $("<div>").addClass("role elem").attr("id", posting.id).appendTo(container);
     var removeConfirmation = " onclick=\"return confirm('Are you sure you want to delete this role?')\" ";
+    var commonButtonClasses = " elem-button admin-button ";
     var removeButton = generate.button({
         confirmationMessage: removeConfirmation,
-        classes: ("elem-button remove-button admin-button"),
+        classes: (commonButtonClasses + "remove-button"),
         href: ('remove_role/' + posting.id + '/'),
         html: (Icons.remove),
         container: (elem)
@@ -297,7 +328,7 @@ function appendRoleListing(container, posting) {
         container: (elem)
     });
     var editButton = generate.button({
-        classes: ('elem-button edit-button admin-button'),
+        classes: (commonButtonClasses + 'edit-button'),
         href: ('edit_role/' + posting.id + '/'),
         html: ("Edit"),
         container: (elem)
@@ -350,6 +381,7 @@ var display = {
         this._posts = JSON.parse(data);
         var $this = this;
         $($this._container).empty();
+        deactivateAllRankButtons();
         return $this._container;
     },
     /**
@@ -363,6 +395,7 @@ var display = {
     projects: function (data) {
         var $this = display; //because "this" refers to the object returned by jquery ajax
         var list_div = $this._init(data);
+        appendRankButtons($this._container);
 
         //sort postings by rank
         var posts = $this._reverseSort($this._posts, "rank");
@@ -391,7 +424,8 @@ var display = {
             .sortable("disable");
 
         //prepend the rank buttons
-        appendRankButtons(list_div, sortable);
+        //appendRankButtons(list_div, sortable);
+        activateRankings("#" + $this._sortableContainerId);
 
         return $this;
     },
@@ -402,6 +436,7 @@ var display = {
     roleTypes: function (data) {
         var $this = display;
         var list_div = $this._init(data);
+
         //regular lexical sort
         var posts = $this._generalSort($this._posts, "name");
 
@@ -418,6 +453,7 @@ var display = {
     roles: function (data) {
         var $this = display;
         var list_div = $this._init(data);
+
         //regular lexical sort
         var posts = $this._generalSort($this._posts, "title");
         for (var i = 0; i < posts.length; i++) {

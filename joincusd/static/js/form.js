@@ -159,17 +159,20 @@ function _setAdminRequiredFields() {
         unSetRequired("input:file");
     }
 
+    //need to do some custom logic for role vs posting forms
     if (_getFormType() == "Role") {
         //selecting projects is required for role form
         //but role types isn't required
         $("input:checkbox")
             .closest(".field-wrapper.form-projects")
             .children(".field-name").append("<span class=\"require\">*</span>");
+    } else {
+        //not a role form, which means there are photos
+        //set up photos and icons previews
+        // and toggle caption requirement for photos
+        _setPhotosAndIcons();
     }
 
-    //set up photos and icons previews
-    // and toggle caption requirement for photos
-    _setPhotosAndIcons();
 }
 
 
