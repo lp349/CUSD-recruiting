@@ -439,7 +439,9 @@ append.roleListing = function (container, posting) {
  *      roleTypes(data) : role types given data
  *      roles(data) :  display roles given data
  *      getRanksAsArray(): returns the new ranks for the projects
- * @type {{_container: string, _sortableContainerId: string, _posts: null, _generalSort: Function, _reverseSort: Function, _init: Function, projects: Function, roleTypes: Function, roles: Function, getRanksAsArray: Function}}
+ * @type {{_container: string, _sortableContainerId: string, _posts: null, _generalSort: Function,
+  * _reverseSort: Function, _init: Function, projects: Function, roleTypes: Function, roles: Function,
+   * getRanksAsArray: Function}}
  */
 var display = {
     _container: "#content",
@@ -487,10 +489,15 @@ var display = {
         return $this._container;
     },
     /**
+     * Description:
      * 1. Sorts the given projects by rank
      * 2. Populates projectRankObj with ids and original rankings
      * 3. Adds project listings as sortable "li" elements
      * 4. Calls a helper method to toggle the sortable list
+     *
+     * Note: sortable-related methods are all here, so if you need to change the
+     * sortable interface, here's where you do it.
+     *
      * @param data : JSON representation of projects with relevant project info,
      *              retrieved from ajax call
      */
@@ -576,12 +583,16 @@ var display = {
 
 /**
  * Description: Deals with ajax calls
- * @type {{fetchAndDisplay: {projects: Function, roleTypes: Function, roles: Function}, togglePublish: {projects: Function, roleTypes: Function}, updateRanks: {_populateProjectRanks: Function, _getNewRanks: Function, projects: Function}}}
+ * @type {
+ * {fetchAndDisplay: {projects: Function, roleTypes: Function, roles: Function},
+  * togglePublish: {projects: Function, roleTypes: Function},
+  * updateRanks: {_populateProjectRanks: Function, _getNewRanks: Function, projects: Function}}
+  * }
  */
 var ajax = {
     /**
      * Description: Makes an ajax call to get data for the postings,
-     * and calls the relevent display method to display the postings
+     * and calls the relevant display method to display the postings
      */
     fetchAndDisplay: {
         projects: function () {
@@ -684,7 +695,9 @@ var ajax = {
  *      init() : you must call this to initialize the admin home page,
  *              as it sets up the tab events
  *
- * @type {{_projectsTab: string, _rolesTab: string, _roleTypesTab: string, _selector: string, _tabSelector: string, _addButtonSelector: string, _activeTab: string, init: Function}}
+ * @type {{_projectsTab: string, _rolesTab: string,
+  * _roleTypesTab: string, _selector: string, _tabSelector: string,
+   * _addButtonSelector: string, _activeTab: string, init: Function}}
  */
 var navigation = {
     _projectsTab: "#projects-tab",
