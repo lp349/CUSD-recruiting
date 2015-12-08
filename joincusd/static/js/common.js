@@ -1,13 +1,13 @@
 (function(windowSize) {
     var resize = function() {
         if ($(window).width() < windowSize) {
-            $(".site-logo__text").hide();
-            $(".site-logo").css("width", "auto");
+            $(".admin-header .site-logo .site-logo__text").hide();
+            $(".admin-header .site-logo").css("width", "auto");
             $("body").addClass("body-smaller");
             $("#verify").show();
             $(".verify-applications-button").hide();
         } else {
-            $(".site-logo__text").show();
+            $(".admin-header .site-logo .site-logo__text").show();
             $("body").removeClass("body-smaller");
             $("#verify").hide();
             $(".verify-applications-button").show();
