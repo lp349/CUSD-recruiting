@@ -144,7 +144,8 @@
     float: right;
     font-size: inherit;
     font-weight: 300;
-    margin: 3rem;
+    margin: 2rem;
+    margin-right: 4%;
 }
 
 .upload-button {

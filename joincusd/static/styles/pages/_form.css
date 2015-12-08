@@ -184,6 +184,16 @@ input[name=icon_color] {
 }
 
 
+.ui-tooltip-img {
+    max-width: 30rem;
+    width: auto;
+    min-width: 15rem;
+
+}
+
+.ui-tooltip-text {
+    max-width: 20rem;
+}
 
 .ui-tooltip-content {
     padding: 1rem;

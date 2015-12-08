@@ -37,12 +37,12 @@ function _getFormState() {
     return "Add";
 }
 
-function toImg(link) {
-    return "<img src='" + link + "'/>"
+function toTooltipImg(link) {
+    return "<img class=\"ui-tooltip-img\" src='" + link + "'/>";
 }
 
-function toParagraph(str) {
-    return "<p>" + str + "</p>";
+function toTooltipParagraph(str) {
+    return "<p class=\"ui-tooltip-text\" >" + str + "</p>";
 }
 
 var addInputRequired  = function(input) {
@@ -295,175 +295,175 @@ $(document).ready(function () {
         {
             formType: "project",
             className: "form-name",
-            content: toImg(pictureRelLink + "project_name.jpg")
+            content: toTooltipImg(pictureRelLink + "project_name.jpg")
         },
         {
             formType: "project",
             className: "form-tagline",
-            content: toImg(pictureRelLink + "project_tagline.jpg")
+            content: toTooltipImg(pictureRelLink + "project_tagline.jpg")
         },
         {
             formType: "project",
             className: "form-short-description",
-            content: toImg(pictureRelLink + "project_short_description.jpg")
+            content: toTooltipImg(pictureRelLink + "project_short_description.jpg")
         },
         {
             formType: "project",
             className: "form-long-description",
-            content: toImg(pictureRelLink + "project_starting_description.jpg")
+            content: toTooltipImg(pictureRelLink + "project_starting_description.jpg")
         },
         {
             formType: "project",
             className: "form-additional-description",
-            content: toImg(pictureRelLink + "project_additional_description.jpg")
+            content: toTooltipImg(pictureRelLink + "project_additional_description.jpg")
         },
         {
             formType: "project",
             className: "form-icon-color",
-            content: toImg(pictureRelLink + "project_icon_color.jpg")
+            content: toTooltipImg(pictureRelLink + "project_icon_color.jpg")
         },
         {
             formType: "project",
             className: "form-colored-icon",
-            content: toParagraph("An SVG icon, in color")
+            content: toTooltipParagraph("An SVG icon, in color")
         },
         {
             formType: "project",
             className: "form-uncolored-icon",
-            content: toParagraph("An SVG icon, in white")
+            content: toTooltipParagraph("An SVG icon, in white")
         },
         {
             formType: "project",
             className: "form-photo-one",
-            content: toParagraph("A photo for this posting")
+            content: toTooltipParagraph("A photo for this posting")
         },
         {
             formType: "project",
             className: "form-photo-one-text",
-            content: toParagraph("A text description of the photo above,<br> for accessibility purposes")
+            content: toTooltipParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
             formType: "project",
             className: "form-photo-two",
-            content: toParagraph("A photo for this posting")
+            content: toTooltipParagraph("A photo for this posting")
         },
         {
             formType: "project",
             className: "form-photo-two-text",
-            content: toParagraph("A text description of the photo above,<br> for accessibility purposes")
+            content: toTooltipParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
             formType: "project",
             className: "form-photo-three",
-            content: toParagraph("A photo for this posting")
+            content: toTooltipParagraph("A photo for this posting")
         },
         {
             formType: "project",
             className: "form-photo-three-text",
-            content: toParagraph("A text description of the photo above,<br> for accessibility purposes")
+            content: toTooltipParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
             formType: "project",
             className: "form-roles",
-            content: toParagraph("Choose the roles to associate with this posting")
+            content: toTooltipParagraph("Choose the roles to associate with this posting")
         }];
     var roleTypeFieldsHelp = [
         {
             formType: "roleType",
             className: "form-name",
-            content: toImg(pictureRelLink + "role_name.jpg")
+            content: toTooltipImg(pictureRelLink + "role_name.jpg")
         },
         {
             formType: "roleType",
             className: "form-tagline",
-            content: toImg(pictureRelLink + "role_tagline.jpg")
+            content: toTooltipImg(pictureRelLink + "role_tagline.jpg")
         },
         {
             formType: "roleType",
             className: "form-short-description",
-            content: toImg(pictureRelLink + "role_short_description.jpg")
+            content: toTooltipImg(pictureRelLink + "role_short_description.jpg")
         },
         {
             formType: "roleType",
             className: "form-long-description",
-            content: toImg(pictureRelLink + "role_starting_description.jpg")
+            content: toTooltipImg(pictureRelLink + "role_starting_description.jpg")
         },
         {
             formType: "roleType",
             className: "form-additional-description",
-            content: toImg(pictureRelLink + "role_additional_description.jpg")
+            content: toTooltipImg(pictureRelLink + "role_additional_description.jpg")
         },
         {
             formType: "roleType",
             className: "form-icon-color",
-            content: toImg(pictureRelLink + "project_icon_color.jpg")
+            content: toTooltipImg(pictureRelLink + "project_icon_color.jpg")
         },
         {
             formType: "roleType",
             className: "form-colored-icon",
-            content: toParagraph("An SVG icon, in color")
+            content: toTooltipParagraph("An SVG icon, in color")
         },
         {
             formType: "roleType",
             className: "form-uncolored-icon",
-            content: toParagraph("An SVG icon, in white")
+            content: toTooltipParagraph("An SVG icon, in white")
         },
         {
             formType: "roleType",
             className: "form-photo-one",
-            content: toParagraph("A photo for this posting")
+            content: toTooltipParagraph("A photo for this posting")
         },
         {
             formType: "roleType",
             className: "form-photo-one-text",
-            content: toParagraph("A text description of the photo above,<br> for accessibility purposes")
+            content: toTooltipParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
             formType: "roleType",
             className: "form-photo-two",
-            content: toParagraph("A photo for this posting")
+            content: toTooltipParagraph("A photo for this posting")
         },
         {
             formType: "roleType",
             className: "form-photo-two-text",
-            content: toParagraph("A text description of the photo above,<br> for accessibility purposes")
+            content: toTooltipParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
             formType: "roleType",
             className: "form-photo-three",
-            content: toParagraph("A photo for this posting")
+            content: toTooltipParagraph("A photo for this posting")
         },
         {
             formType: "roleType",
             className: "form-photo-three-text",
-            content: toParagraph("A text description of the photo above,<br> for accessibility purposes")
+            content: toTooltipParagraph("A text description of the photo above,<br> for accessibility purposes")
         },
         {
             formType: "roleType",
             className: "form-roles",
-            content: toParagraph("Choose the roles to associate with this posting")
+            content: toTooltipParagraph("Choose the roles to associate with this posting")
         }];
     var roleFieldsHelp = [
         {
             formType: "role",
             className: "form-projects",
-            content: toParagraph("Choose the projects to associate with this role")
+            content: toTooltipParagraph("Choose the projects to associate with this role")
         },
         {
             formType: "role",
             className: "form-role-types",
-            content: toParagraph("Choose the role types to associate with this role")
+            content: toTooltipParagraph("Choose the role types to associate with this role")
         },
         {
             formType: "role",
             className: "form-role-name",
-            content: toImg(pictureRelLink + "role_title.jpg")
+            content: toTooltipImg(pictureRelLink + "role_title.jpg")
         }
         ,
         {
             formType: "role",
             className: "form-role-description",
-            content: toImg(pictureRelLink + "role_description.jpg")
+            content: toTooltipImg(pictureRelLink + "role_description.jpg")
         }
 
     ];
