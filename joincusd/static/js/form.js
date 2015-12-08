@@ -276,11 +276,10 @@ function init(fieldsData) {
 
     if (_getFormType() !== "Application") {
         _setAdminRequiredFields();
+        _setHelpTips(fieldsData);
     } else {
         _setApplicationRequiredFields();
     }
-
-    _setHelpTips(fieldsData);
     _setErrorMessages();
 
 }
@@ -472,6 +471,6 @@ $(document).ready(function () {
         init(roleTypeFieldsHelp);
     } else if (_getFormType() === "Role") {
         init(roleFieldsHelp);
-    } else init([]);
+    } else init([]); //in application form
 
 });

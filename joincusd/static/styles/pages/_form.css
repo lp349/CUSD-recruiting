@@ -79,6 +79,7 @@ input[name=icon_color] {
 }
 
 .form-content {
+    max-width: 80rem;
     width: 85%;
     padding: 2rem;
     background-color: #f2f3f3;
