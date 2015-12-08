@@ -308,7 +308,7 @@ var activateRankings = function (sortableContainer) {
  * Description: Appends rank buttons to the container,
  * but does not set up click events
  *
- * @param mainContainer: {string} a valid selector
+ * @param mainContainer : {string} a valid selector
  */
 var appendRankButtons = function (mainContainer) {
     var buttonContainer = $("<div>").addClass("rank-buttons-section").prependTo(mainContainer);

@@ -324,7 +324,8 @@ function init(fieldsData) {
 
 $(document).ready(function () {
     //relative location of images
-    var pictureRelLink = "/static/images/user_guide_picture/";
+    if (! staticDir)  var staticDir = "/static";
+    var pictureRelLink = staticDir + "/images/user_guide_picture/";
 
     var projectFieldsHelp = [
         {
