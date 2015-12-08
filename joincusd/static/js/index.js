@@ -5,9 +5,6 @@
 
 /******************************************* Globals *********************************************/
 
-//the active tab (i.e. projects-tab, roletypes-tab...)
-var activeTab = "";
-
 //maps project ids to the original and new rankings
 //format = {[PROJECT ID/PK]:{originalRank: [ORIGINAL RANK], newRank: [NEW RANK]}, ...}
 var projectRankObj = {};
@@ -727,9 +724,9 @@ var navigation = {
 
             //save activetab ->
             // this tab will be active the next time this page is accessed
-            activeTab = "#" + $(this).attr("id");
+            this._activeTab = "#" + $(this).attr("id");
             //createCookie("active",activeTab, 1);
-            sessionStorage["active"] = activeTab;
+            sessionStorage["active-tab"] = this._activeTab;
 
             //set add button link
             $($this._addButtonSelector).attr("href", $(this).data("addLink"));
@@ -738,7 +735,7 @@ var navigation = {
 
         //now that tabs events are set,
         // go to last active tab (the tab that was last accessed, if any)
-        var prevActiveTab = sessionStorage["active"];
+        var prevActiveTab = sessionStorage["active-tab"];
         if (prevActiveTab) {
             $this._activeTab = prevActiveTab;
         }
