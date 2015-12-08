@@ -45,11 +45,22 @@ function toParagraph(str) {
     return "<p>" + str + "</p>";
 }
 
-var setInputRequired = function (input) {
+var addInputRequired  = function(input) {
     $(input).prop('required', true)
         .closest(".field-wrapper")
         .children(".field-name")
         .append("<span class=\"require\">*</span>");
+}
+
+
+
+var setInputRequired = function (input) {
+    $(input).prop('required', true)
+        .closest(".field-wrapper")
+        .children(".field-name")
+        .children("span.require")
+        .show();
+
 
 };
 
@@ -58,68 +69,78 @@ var unSetRequired = function (input) {
         .closest(".field-wrapper")
         .children(".field-name")
         .children("span.require")
-        .remove();
+        .hide();
 };
 
 function _setPhotosAndIcons() {
-    //bind preview and captions to photos for easier manipulation
+    //bind previews, original images (if any), and captions to photos for easier manipulation
     var photo1 = $(".form-photo-one").children("input:file")
         .data("preview", $(".form-photo-one").children(".photo-container").children("img"))
+        .data("original-picture", $(".form-photo-one").children(".photo-container").children("img").attr("src"))
         .data("caption", $(".form-photo-one-text").children("input"));
     var photo2 = $(".form-photo-two").children("input:file")
         .data("preview", $(".form-photo-two").children(".photo-container").children("img"))
+        .data("original-picture", $(".form-photo-two").children(".photo-container").children("img").attr("src"))
         .data("caption", $(".form-photo-two-text").children("input"));
     var photo3 = $(".form-photo-three").children("input:file")
         .data("preview", $(".form-photo-three").children(".photo-container").children("img"))
+        .data("original-picture", $(".form-photo-three").children(".photo-container").children("img").attr("src"))
         .data("caption", $(".form-photo-three-text").children("input"));
 
     var iconColored = $(".form-colored-icon").children("input:file")
-        .data("preview", $(".form-colored-icon").children(".photo-container").children("img"));
+        .data("preview", $(".form-colored-icon").children(".photo-container").children("img"))
+        .data("original-picture", $(".form-colored-icon").children(".photo-container").children("img").attr("src"));
     var iconUncolored = $(".form-uncolored-icon").children("input:file")
-        .data("preview", $(".form-uncolored-icon").children(".photo-container").children("img"));
+        .data("preview", $(".form-uncolored-icon").children(".photo-container").children("img"))
+        .data("original-picture", $(".form-uncolored-icon").children(".photo-container").children("img").attr("src"));
 
     var iconFields = [iconColored, iconUncolored];
     var photoFields = [photo1, photo2, photo3];
 
+
+    //set up previews for uploaded images
+    $.map(iconFields.concat(photoFields), function (field, index) {
+        field.change(function () {
+            if ($(this).val()) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(field).data("preview").attr('src', e.target.result);
+                };
+                reader.readAsDataURL(this.files[0]);
+            } else {
+                $(field).data("preview").attr('src', field.data("original-picture"));
+            }
+        });
+    });
+
     $.map(photoFields, function (photo, index) {
+        //photos not required by default
         unSetRequired(photo);
         var caption = photo.data("caption");
         var preview = photo.data("preview");
+        var originalPic = photo.data("original-picture");
 
-        if (preview.attr("src") && preview.attr("src").length() > 0) {
-            setInputRequired(caption);
-            caption.prop("disabled", false);
-        } else {
+        //set up:
+        // if no photos are bound to field,
+        // captions are neither required nor enabled
+        if (!preview.attr("src")) {
             unSetRequired(caption);
             caption.prop("disabled", true);
         }
 
+        //if photos are uploaded,
+        //make captions for that photo required
         photo.change(function () {
             if (photo.val()) {
                 setInputRequired(caption);
                 caption.prop("disabled", false);
-            } else {
+            } else if (!originalPic){
+                //fresh application, not editing
                 unSetRequired(caption);
                 caption.prop("disabled", true);
             }
         });
     });
-
-    $.map(iconFields.concat(photoFields), function (field, index) {
-        field.change(function () {
-            if ($(this).val()) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $(field).data("preview").attr('src', e.target.result);
-                };
-
-                reader.readAsDataURL(this.files[0]);
-            }
-        });
-    });
-
-
 }
 
 /**
@@ -129,8 +150,8 @@ function _setPhotosAndIcons() {
 function _setAdminRequiredFields() {
 
     //generally, all input is required
-    setInputRequired("input:visible");
-    setInputRequired("textarea");
+    addInputRequired("input:visible");
+    addInputRequired("textarea");
 
     //there are exceptions, which we deal with here
     if (_getFormState() == "Edit") {
@@ -232,7 +253,6 @@ function _setErrorMessages() {
  * }
  */
 function init(fieldsData) {
-    //$("#id_published").parent().parent().hide(); ///hide "published" field...
 
     //set up checkboxes
     $("input:checkbox")

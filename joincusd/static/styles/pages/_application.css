@@ -13,3 +13,9 @@
 .application-form-content {
     max-width: 67rem;
 }
+
+
+.application-contact-link {
+    float: right;
+    margin-bottom: 2rem;
+}
