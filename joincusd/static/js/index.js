@@ -2,6 +2,9 @@
  * This file contains the scripts for list.html
  */
 
+
+/******************************************* Globals *********************************************/
+
 //the active tab (i.e. projects-tab, roletypes-tab...)
 var activeTab = "";
 
@@ -9,8 +12,12 @@ var activeTab = "";
 //format = {[PROJECT ID/PK]:{originalRank: [ORIGINAL RANK], newRank: [NEW RANK]}, ...}
 var projectRankObj = {};
 
+
+/******************************************* Handy Toggling Methods *********************************************/
+
+
 /**
- * Hides the roles preview for all listings
+ * Description: Hides the roles preview for all listings
  */
 var hideAllQuickView = function () {
     $(".roles-quick-view").slideUp();
@@ -19,8 +26,8 @@ var hideAllQuickView = function () {
 };
 
 /**
- * Shows the roles preview for exactly one listing
- * @param listingElem -the listing element whose preview to show
+ * Description: Shows the roles preview for exactly one listing
+ * @param listingElem {string} the listing element whose preview to show
  */
 var showQuickView = function (listingElem) {
     hideAllQuickView();
@@ -31,8 +38,8 @@ var showQuickView = function (listingElem) {
 };
 
 /**
- *
- * @param elem
+ * Description: Toggles the role preview, given the listing element
+ * @param elem : {string} the listing element (generally has a class ".elem")
  */
 var toggleRolesPreview = function (elem) {
     if ($(elem).children(".roles-quick-view").is(":hidden")) {
@@ -45,8 +52,49 @@ var toggleRolesPreview = function (elem) {
     }
 };
 
+
+/**
+ * Description: shows only the edit button
+ */
+var activateRankButtonsRankDisabled = function () {
+    $(".rank-button").hide();
+    $(".edit-rank-button").show();
+};
+
+/**
+ * Description: Prepares buttons and icons for rank changing
+ */
+var activateRankButtonsRankEnabled = function () {
+    //prepare for rank changing:
+    //show the other rank buttons
+    $(".rank-button").show();
+    $(".edit-rank-button").hide();
+
+    //show the "move" or drag icon
+    $(".drag-icon").show();
+    //hide any open previews
+    hideAllQuickView();
+
+    //hide the buttons and expand icon
+    $(".elem-button").hide();
+    $(".expand-icon-wrapper").hide();
+};
+
+/**
+ * Description: Hides all rank buttons
+ */
+var deactivateAllRankButtons = function () {
+    $(".rank-button").hide();
+};
+
+
 /*
  See: http://stackoverflow.com/questions/19333098/403-forbidden-error-when-making-an-ajax-post-request-in-django-framework
+ */
+/**
+ * Description: Gets a cookie
+ * @param name
+ * @returns {*}
  */
 function getCookie(name) {
     var cookieValue = null;
@@ -65,8 +113,39 @@ function getCookie(name) {
 }
 
 
+/******************************************* All Other Methods *********************************************/
+
 /**
- * Generate html for common elements (buttons, spans)
+ * Description: Generates html for common elements (buttons, spans)
+ * and appends the generated html to a container (if provided)
+ *
+ * Methods Provided:
+ *      button(opts): Creates a button as an "<a>" element,
+ *                          takes in an opts object that may contain:
+ *
+ *              confirmationMessage : should be of form " onclick = .... "
+ *              classes : the class names to give to the button
+ *              href : the link (if any)
+ *              clickFunction : the function for the click event
+ *              container : the parent container for the button
+ *              hide : whether to hide the button
+ *
+ *     span(opts): Creates a span element,
+ *                          takes in an opts object that may contain:
+ *
+ *              classes : the class names to give to the span
+ *              container : the parent container for the span
+ *              hide : whether to hide the span
+ *
+ *      rolesList(opts): Creates a role preview
+ *                          takes in an opts object that may contain:
+ *
+ *              roles: the array of role names
+ *              classes : the class names to give to each individual role
+ *              container : the parent container for the roles
+ *              hide : whether to hide the roles (the parent container)
+ *              emptyText: text to display if there are no roles
+ *
  * @type {{button: Function, span: Function, rolesList: Function}}
  */
 var generate = {
@@ -107,7 +186,31 @@ var generate = {
     }
 };
 
-function appendProjectListing(container, posting) {
+
+/**
+ * Description: Deals with lower level displaying of the three posting types.
+ *              More specifically, it contains all methods that involve adding
+ *              a single listing to the page, and is called by the methods in the
+ *              display object
+ *
+ * Methods provided:
+ *      projectListing(container, posting)
+ *      roleTypeListing(container, posting)
+ *      roleListing(container, posting)
+ *
+ *      where container is the html element to append the listing to
+ *      and posting is the data of the listing/posting
+ * @type {{}}
+ */
+var append = {};
+
+
+/**
+ * Description: Appends a single listing to the container
+ * @param container : {string} a valid selector
+ * @param posting : {object} the data for the posting
+ */
+append.projectListing = function (container, posting) {
     var publishedStr = "Unpublish";
     if (!posting.published) publishedStr = "Publish";
 
@@ -170,33 +273,13 @@ function appendProjectListing(container, posting) {
 
     var expandIcon = $("<div>").addClass("expand-icon-wrapper").append($(Icons.expand)).appendTo(elem);
     var retractIcon = $("<div>").addClass("retract-icon-wrapper").append($(Icons.retract)).appendTo(elem).hide();
-}
-
-var activateRankButtonsRankDisabled = function() {
-    $(".rank-button").hide();
-    $(".edit-rank-button").show();
 };
 
-var activateRankButtonsRankEnabled = function() {
-    //prepare for rank changing:
-    //show the other rank buttons
-    $(".rank-button").show();
-    $(".edit-rank-button").hide();
 
-    //show the "move" or drag icon
-    $(".drag-icon").show();
-    //hide any open previews
-    hideAllQuickView();
-
-    //hide the buttons and expand icon
-    $(".elem-button").hide();
-    $(".expand-icon-wrapper").hide();
-};
-
-var deactivateAllRankButtons = function() {
-    $(".rank-button").hide();
-};
-
+/**
+ * Description: Sets up click events for rank buttons
+ * @param sortableContainer
+ */
 var activateRankings = function (sortableContainer) {
     var editRankButton = $(".edit-rank-button").click(function () {
         //enable sorting (rank changing) and set cursor
@@ -221,6 +304,12 @@ var activateRankings = function (sortableContainer) {
 };
 
 
+/**
+ * Description: Appends rank buttons to the container,
+ * but does not set up click events
+ *
+ * @param mainContainer: {string} a valid selector
+ */
 var appendRankButtons = function (mainContainer) {
     var buttonContainer = $("<div>").addClass("rank-buttons-section").prependTo(mainContainer);
     var commonClasses = ' rank-button admin-button ';
@@ -244,8 +333,12 @@ var appendRankButtons = function (mainContainer) {
     })
 };
 
-
-function appendRoleTypeListing(container, posting) {
+/**
+ * Appends a single listing to the container
+ * @param container : {string} a valid selector
+ * @param posting : {object} the data for the posting
+ */
+append.roleTypeListing = function (container, posting) {
     var publishedStr = "Unpublish";
     if (!posting.published) publishedStr = "Publish";
 
@@ -283,7 +376,7 @@ function appendRoleTypeListing(container, posting) {
     var buttonsWrapper = $("<section>").addClass("elem-button-wrapper").appendTo(elem);
 
     var publishButton = generate.button({
-        classes: (commonButtonClasses +  "published-" + posting.published + " publish-button"),
+        classes: (commonButtonClasses + "published-" + posting.published + " publish-button"),
         clickFunction: function () {
             ajax.togglePublish.roleTypes(posting.id);
         },
@@ -308,9 +401,15 @@ function appendRoleTypeListing(container, posting) {
 
     var expandIcon = $("<div>").addClass("expand-icon-wrapper").append($(Icons.expand)).appendTo(elem);
     var retractIcon = $("<div>").addClass("retract-icon-wrapper").append($(Icons.retract)).appendTo(elem).hide();
-}
+};
 
-function appendRoleListing(container, posting) {
+
+/**
+ * Description: Appends a single listing to the container
+ * @param container : {string} a valid selector
+ * @param posting : {object} the data for the posting
+ */
+append.roleListing = function (container, posting) {
     var elem = $("<div>").addClass("role elem").attr("id", posting.id).appendTo(container);
     var removeConfirmation = " onclick=\"return confirm('Are you sure you want to delete this role?')\" ";
     var commonButtonClasses = " elem-button admin-button ";
@@ -336,7 +435,13 @@ function appendRoleListing(container, posting) {
 }
 
 /**
- * Description: Methods dealing with rendering/loading of the three posting types
+ * Description: Deals with higher level rendering/loading of the three posting types
+ *
+ * Methods provided:
+ *      projects(data) : display projects given data
+ *      roleTypes(data) : role types given data
+ *      roles(data) :  display roles given data
+ *      getRanksAsArray(): returns the new ranks for the projects
  * @type {{_container: string, _sortableContainerId: string, _posts: null, _generalSort: Function, _reverseSort: Function, _init: Function, projects: Function, roleTypes: Function, roles: Function, getRanksAsArray: Function}}
  */
 var display = {
@@ -409,7 +514,7 @@ var display = {
 
         //add the project listings
         for (var i = 0; i < posts.length; i++) {
-            appendProjectListing(sortable, posts[i]);
+            append.projectListing(sortable, posts[i]);
 
             //populate projectRankObject with pks (project ids) and original ranks
             projectRankObj[posts[i].id] = {};
@@ -430,7 +535,7 @@ var display = {
         return $this;
     },
     /**
-     * Displays the role types on page given data from ajax call
+     * Description: Displays the role types on page given data from ajax call
      * @param data : JSON representation of roletype objects
      */
     roleTypes: function (data) {
@@ -441,13 +546,13 @@ var display = {
         var posts = $this._generalSort($this._posts, "name");
 
         for (var i = 0; i < posts.length; i++) {
-            appendRoleTypeListing(list_div, posts[i]);
+            append.roleTypeListing(list_div, posts[i]);
         }
         return this;
     },
 
     /**
-     * Displays the roles on page given data from ajax call
+     * Description: Displays the roles on page given data from ajax call
      * @param data : JSON representation of roles objects
      */
     roles: function (data) {
@@ -457,12 +562,12 @@ var display = {
         //regular lexical sort
         var posts = $this._generalSort($this._posts, "title");
         for (var i = 0; i < posts.length; i++) {
-            appendRoleListing(list_div, posts[i]);
+            append.roleListing(list_div, posts[i]);
         }
         return this;
     },
     /**
-     * Returns the current rankings, in order, as an array.
+     * Description: Returns the current rankings, in order, as an array.
      * @returns {*|jQuery}
      */
     getRanksAsArray: function () {
@@ -471,11 +576,16 @@ var display = {
     }
 };
 
+
 /**
- * Description: Methods dealing with ajax calls
+ * Description: Deals with ajax calls
  * @type {{fetchAndDisplay: {projects: Function, roleTypes: Function, roles: Function}, togglePublish: {projects: Function, roleTypes: Function}, updateRanks: {_populateProjectRanks: Function, _getNewRanks: Function, projects: Function}}}
  */
 var ajax = {
+    /**
+     * Description: Makes an ajax call to get data for the postings,
+     * and calls the relevent display method to display the postings
+     */
     fetchAndDisplay: {
         projects: function () {
             $.get("/admin/ajax/project/", display.projects);
@@ -487,6 +597,9 @@ var ajax = {
             $.get("/admin/ajax/roles", display.roles);
         }
     },
+    /**
+     * Description: Makes an ajax call to toggle the publishing of projects and role types
+     */
     togglePublish: {
         projects: function (projectId) {
             $.get("ajax/toggle_publish/project/" + projectId + "/", ajax.fetchAndDisplay.projects);
@@ -495,14 +608,19 @@ var ajax = {
             $.get("ajax/toggle_publish/role_type/" + roleTypeId + "/", ajax.fetchAndDisplay.roleTypes);
         }
     },
+    /**
+     * Description: Gets the new rankings for projects,
+     *              Finds the changes in rankings,
+     *              Makes an ajax call to update db with new rankings,
+     *              Finally, re-displays with new project rankings
+     */
     updateRanks: {
-        /**
+        /** Description: If these requirements below are satisfied, then the method will
+         *              fetch the current ranks of the projects on the page and populate
+         *              the new display ranks of the projectRankObj.
          * This method requires that:
          * 1. project listings have unique integer ids
          * 2. projects tab is active (projects are being displayed and not roles or role types
-         * If these requirements are satisfied, then the method will
-         * fetch the current ranks of the projects on the page and populate
-         * the new display ranks of the projectRankObj.
          */
         _populateProjectRanks: function () {
             //get order of ids
@@ -515,7 +633,7 @@ var ajax = {
             });
         },
         /**
-         * Returns an array of objects of the following format:
+         * Description: Returns an array of objects of the following format:
          * {id: [projectId], rank: [newRank]}
          * where new_rank is a DB rank (higher rank = greater priority)
          * that correspond to objects with rank changes
@@ -561,6 +679,16 @@ var ajax = {
     }
 };
 
+
+/**
+ * Description; Deals with all logic involving the navigation bar
+ *
+ * Methods provided:
+ *      init() : you must call this to initialize the admin home page,
+ *              as it sets up the tab events
+ *
+ * @type {{_projectsTab: string, _rolesTab: string, _roleTypesTab: string, _selector: string, _tabSelector: string, _addButtonSelector: string, _activeTab: string, init: Function}}
+ */
 var navigation = {
     _projectsTab: "#projects-tab",
     _rolesTab: "#roles-tab",
@@ -616,8 +744,6 @@ var navigation = {
         }
 
         $($this._activeTab).trigger("click");
-
-
     }
 };
 

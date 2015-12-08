@@ -1,9 +1,9 @@
 $(function () {
-    $(document).tooltip();
+    $(document).tooltip(); //activate tooltips
 });
 
 /**
- * Returns the type of form
+ * Description: Returns the type of form
  * @returns {string} : can be "Project", "Role Type", "Role"
  * @private
  */
@@ -27,7 +27,7 @@ function _getFormType() {
 }
 
 /**
- * Returns whether it's an editing form or adding form
+ * Description: Returns whether it's an editing form or adding form
  * @returns {string} "Add" or "Edit"
  */
 function _getFormState() {
@@ -45,15 +45,26 @@ function toTooltipParagraph(str) {
     return "<p class=\"ui-tooltip-text\" >" + str + "</p>";
 }
 
+/**
+ * Description: given an input field,
+ *              sets the input to required
+ *              and adds an asterisk at the end of the field label
+ * @param input
+ */
 var addInputRequired  = function(input) {
     $(input).prop('required', true)
         .closest(".field-wrapper")
         .children(".field-name")
         .append("<span class=\"require\">*</span>");
-}
+};
 
 
-
+/**
+ * Description: given an input field,
+ *              sets the input to required
+ *              and shows asterisk at the end of the field label
+ * @param input
+ */
 var setInputRequired = function (input) {
     $(input).prop('required', true)
         .closest(".field-wrapper")
@@ -64,6 +75,12 @@ var setInputRequired = function (input) {
 
 };
 
+/**
+ * Description: given an input field,
+ *              removes the 'required' property
+ *              and hides asterisk at the end of the field label
+ * @param input
+ */
 var unSetRequired = function (input) {
     $(input).prop('required', false)
         .closest(".field-wrapper")
@@ -72,7 +89,18 @@ var unSetRequired = function (input) {
         .hide();
 };
 
+/**
+ * Description: sets up photo and icon toggling based on the following requirements/assumptions:
+ *              1. Photos are not required (at least when adding),
+ *                  but their alt texts are required if a photo is provided
+ *              2. When editing, if a photo is chosen, then subsequently removed,
+ *                  the preview should show the original photo
+ *              3. Photos and Icons should have previews even when adding a posting
+ *
+ * @private
+ */
 function _setPhotosAndIcons() {
+
     //bind previews, original images (if any), and captions to photos for easier manipulation
     var photo1 = $(".form-photo-one").children("input:file")
         .data("preview", $(".form-photo-one").children(".photo-container").children("img"))
@@ -113,6 +141,7 @@ function _setPhotosAndIcons() {
         });
     });
 
+    //deal with caption-photo logic
     $.map(photoFields, function (photo, index) {
         //photos not required by default
         unSetRequired(photo);
@@ -144,7 +173,11 @@ function _setPhotosAndIcons() {
 }
 
 /**
- * Set up required fields for admin forms
+ * Description: Set up required fields for admin forms
+ *              All fields (except checkboxes) are required by default except:
+ *                     1. if the form type is role : selecting projects is required for roles
+ *                     2. if the form type is projects or role type:
+ *                              there are special logic/requirements for photos and icons
  * @private
  */
 function _setAdminRequiredFields() {
@@ -177,7 +210,7 @@ function _setAdminRequiredFields() {
 
 
 /**
- * Set up required fields for applicant form
+ * Description Set up required fields for applicant form (add/edit roles, projects, role types)
  * @private
  */
 function _setApplicationRequiredFields() {
@@ -193,7 +226,8 @@ function _setApplicationRequiredFields() {
 
 
 /***
- * Sets tool tips
+ * Description: Sets tool tips (the help tips that display when you hover over a help icon)
+ *
  * @param fieldsData : Object (array) of objects each with form
  * {
  * className:
@@ -219,7 +253,7 @@ function _setHelpTips(fieldsData) {
 }
 
 /**
- * Sets up Error Messages display and events for forms
+ * Description: Sets up (appends) error messages and their events for forms
  */
 function _setErrorMessages() {
     $("input:text").blur(function () {
@@ -246,8 +280,9 @@ function _setErrorMessages() {
 }
 
 /**
- * Initiates form
- * @param fieldsData : Object (array) of objects each with form
+ * Description: Initiates form given an array of tooltip data
+ *
+ * @param fieldsData : Object (array) of objects each in the format
  * {
  * className:
  *      [CLASS NAME OF WRAPPER ELEMENT],
@@ -320,12 +355,12 @@ $(document).ready(function () {
         {
             formType: "project",
             className: "form-icon-color",
-            content: toTooltipImg(pictureRelLink + "project_icon_color.jpg")
+            content: toTooltipParagraph("The color of the icon for this posting")
         },
         {
             formType: "project",
             className: "form-colored-icon",
-            content: toTooltipParagraph("An SVG icon, in color")
+            content: toTooltipParagraph("An SVG icon, in the color above")
         },
         {
             formType: "project",
@@ -396,12 +431,12 @@ $(document).ready(function () {
         {
             formType: "roleType",
             className: "form-icon-color",
-            content: toTooltipImg(pictureRelLink + "project_icon_color.jpg")
+            content: toTooltipParagraph("The color of the icon for this posting")
         },
         {
             formType: "roleType",
             className: "form-colored-icon",
-            content: toTooltipParagraph("An SVG icon, in color")
+            content: toTooltipParagraph("An SVG icon, in the color above")
         },
         {
             formType: "roleType",
