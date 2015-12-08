@@ -1,36 +1,30 @@
 #username, #password {
-    width: 15rem;
-    height: 1.5rem;
+    height: 2rem;
     color: #333333;
+    width: 98%;
+    border: 0.1rem solid #D2D3D3;
+    padding: 1%;
+    border-radius: 0.2rem;
 }
 
-.control-group {
-    margin: 1rem;
-    margin-bottom: 0;
-}
-
-.controls input {
-    font-size: 1em;
-    border-radius: 3%;
-    border: 1px solid #D2D3D3;
-}
-
-#login-button {
-    font-size: 1em;
-    margin: auto;
+.admin-login {
+    min-width: 15rem;
 }
 
 #login {
+    max-width: 18rem;
     background: white;
     padding: 1rem;
     margin: auto;
     margin-top: 1rem;
-    width: auto;
     text-align: center;
     border-radius: 5%;
+    width: auto;
+    overflow: hidden;
 }
 
 #login-title {
     color: #3FAB6D;
-    font-size: 1.2em;
+    font-size: 1.4em;
+    margin-bottom: 1.5rem;
 }

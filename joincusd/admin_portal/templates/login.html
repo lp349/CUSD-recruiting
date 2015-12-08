@@ -2,27 +2,27 @@
 {% load staticfiles %}
 
 <div id="login">
-    <div id="login-title"><h3>Admin Portal Login</h3></div>
+    <div id="login-title" class="admin-login"><h3>Admin Portal Login</h3></div>
   <form class="form-horizontal" name="LoginForm" action="/admin/login/" method="post">
   {% csrf_token %}
   <div class="control-group">
       <!--<label class="control-label" for="username">Username</label>-->
       <div class="controls">
-          <input type="text" id="username" name="username"  placeholder="Username">
+          <input class="admin-login" type="text" id="username" name="username"  placeholder="Username">
       </div>
   </div><br>
   <div class="control-group">
       <!--<label class="control-label" for="password">Password</label>-->
       <div class="controls">
-          <input type="password" name="password" id="password" placeholder="Password">
+          <input class="admin-login" type="password" name="password" id="password" placeholder="Password">
       </div>
   </div> <br>
   <div class="control-group">
       <div class="controls">
-          <button id="login-button" class="admin-button" type="submit" class="button">Login</button>
+          <button id="admin-login-button" class="admin-login admin-button login-button" type="submit" class="button">Login</button>
       </div>
   </div><br>
-  <span class="err-message">{{ message }}</span>
+  <span class="admin-login err-message">{{ message }}</span>
   </form>
 </div>
 {% include 'admin-common/footer.html' %}
