@@ -18,7 +18,7 @@ h1 {
 }
 
 .field {
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
     /*width: 90%;*/
 }
 
@@ -31,6 +31,13 @@ span.require {
     font-size: 1.2em;
 }
 
+.field-additional-info {
+    display: block;
+    font-size: 0.8em;
+    margin: 0.55rem 0 0.5rem 0;
+    line-height: 1.5rem;
+    opacity: 0.8;
+}
 .error-field {
     border: 2px solid #FF0033;
 }
@@ -72,6 +79,7 @@ input[name=icon_color] {
 }
 
 .form-content {
+    max-width: 80rem;
     width: 85%;
     padding: 2rem;
     background-color: #f2f3f3;
@@ -123,7 +131,7 @@ input[name=icon_color] {
 
 /**************************************Roles(List)**************************************/
 
-ul {
+.field ul {
     list-style: none;
     padding: 0;
     margin-top: 1rem;
@@ -133,14 +141,15 @@ ul {
     text-align: left;
 }
 
-li {
-    width: 30%;
+.field ul li {
+    width: 31%;
     min-width: 18rem;
     display: inline-block;
     margin: 0.35rem;
+    line-height: 1rem;
 }
 
-li label{
+.field ul li label{
     text-align: left;
     display: inline-block;
     vertical-align: middle;
@@ -151,15 +160,19 @@ li label{
     cursor: pointer;
     padding: 0.7rem;
 
-
-    /*border: 2px solid #F1F1F1;*/
-
-    /*text-align: center;*/
     background-color: #FFFFFF;
     border: 2px solid #FFFFFF;
-    /*box-shadow: 1px 1px 1px 1px lightgray;*/
+
 }
 
+.photo-container {
+    overflow: hidden;
+}
+
+.photo-container img {
+    max-height: 15rem;
+    width: auto;
+}
 
 
 /**************************************Tooltips**************************************/
@@ -171,6 +184,16 @@ li label{
 }
 
 
+.ui-tooltip-img {
+    max-width: 30rem;
+    width: auto;
+    min-width: 15rem;
+
+}
+
+.ui-tooltip-text {
+    max-width: 20rem;
+}
 
 .ui-tooltip-content {
     padding: 1rem;

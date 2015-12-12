@@ -1,39 +1,36 @@
 /******************************Tabs******************************/
 
 #nav-bar {
+    max-width: 80rem;
     text-align: center;
-    width: 90%;
+    width: 92%;
     height: auto;
     font-size: 1.35em;
     list-style-type: none;
-    border-top: 3px solid #AAAAAA;
-    border-bottom: 3px solid #AAAAAA;
+    /*border-top: 3px solid #AAAAAA;*/
+    /*border-bottom: 3px solid #AAAAAA;*/
+    /*border-bottom: 1px solid lightgray;*/
     /*background-color: #f2f3f3;*/
     background-color: #FFFFFF;
     margin: auto;
+    margin-top: 1rem;
     color: #333333;
 
-}
-
-#projects-tab {
-    border-right: 2px solid white;
-}
-
-#roles-tab {
-    border-left: 2px solid white;
 }
 
 .tab {
     text-align: center;
     display: inline-block;
-    width: 28%;
+    width: 31%;
     padding: 0.65rem 0 0.65rem 0;
     /*border: 2px solid #1f628d;*/
     color: #BFBFBF;
     /*border: 2px solid #2ba0ed;*/
     /*color: #333333;*/
+    min-width: 5.5rem;
     cursor: pointer;
     font-weight: 300;
+    border-bottom: 1px solid #BFBFBF;
 }
 
 .selected-tab {
@@ -42,4 +39,5 @@
     color: #2E897D;
     /*text-decoration: underline;*/
     font-weight: bold;
+    border-bottom-color:#2E897D;
 }

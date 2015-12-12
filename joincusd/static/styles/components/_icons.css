@@ -9,20 +9,19 @@
 
 .add-icon:hover text {
     stroke: #3FAB6D;
-    stroke-width: 0.1rem;
     fill: #3FAB6D;
 }
 
 .add-icon:hover circle {
     fill: #FFFFFF;
     stroke: #3FAB6D;
-    stroke-width: 0.2rem;
+    stroke-width: 5%;
 }
 
 .add-icon text {
     stroke: #FFFFFF;
     fill: #FFFFFF;
-    stroke-width: 0.1rem;
+    stroke-width: 2%;
 }
 
 .add-icon circle {
@@ -39,14 +38,14 @@
     fill: #FFFFFF;
 }
 
-.remove svg text{
+.remove-icon text{
     stroke: #E04D25;
     fill: #E04D25;
     /**/
     /*stroke: #7a7a7a;*/
     /*fill: #7a7a7a;*/
 
-    stroke-width: 0.5rem;
+    stroke-width: 10%;
 
 }
 
@@ -113,15 +112,18 @@
 }
 
 
-.expand-icon path, .retract-icon path{
-    fill: #A1A1A1;
+.expand-icon path, .retract-icon path, .expand-icon-text, .retract-icon-text {
+    fill: #919191;
 }
 
 .expand-icon, .retract-icon {
     height: 0.8rem;
-    margin: auto;
-    display: block;
-    width: 100%;
+    display: inline-block;
+}
+
+.expand-icon-text, .retract-icon-text {
+    width: 8em;
+    font-size: 0.9em;
 }
 
 .checkbox-icon path{

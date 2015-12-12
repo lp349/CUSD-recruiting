@@ -19,6 +19,12 @@ var getRemBase = function(baseElem) {
     return px.substring(0,px.indexOf("px"));
 };
 
+
+/**
+ * Converts pixel value to rem
+ * @param px
+ * @returns {string}
+ */
 var pixelsToRem = function(px) {
     var remBase = getRemBase();
     var expand = Math.pow(10, 8);
@@ -26,6 +32,12 @@ var pixelsToRem = function(px) {
 };
 
 //y optional
+/**
+ * Converts pixel values to rem
+ * @param x : {number} - first pixel value
+ * @param y : {number} - optional second pixel value
+ * @returns {string}
+ */
 var remCalc = function(x, y) {
     var px1 =  pixelsToRem(x);
     var px2 =  "";
@@ -45,6 +57,9 @@ $(document).ready(function() {
     /**
      * //EXAMPLE USAGE//
     //temp: hardcode project icon sizes
+
+     //object mapping short names
+     //(which can be found on admin home as the "css selector" next to posting titles)
     var roleTypesHomePage = {
         engineering: {
             default: remCalc(157,122)
@@ -114,7 +129,7 @@ $(document).ready(function() {
 
     var cf = remCalc(180);
 
-    //home page//this is a problem...
+    //home page
     $.each(Object.keys(roleTypesHomePage), function(index, rt) {
         console.log(".icon--role-" + rt);
         $(".icon--role-" + rt).css("background-size", roleTypesHomePage[rt].default);

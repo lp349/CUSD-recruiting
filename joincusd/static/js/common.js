@@ -1,16 +1,23 @@
-$(window).resize( function() {
-    if (window.outerWidth < 720) {
-        $(".site-logo__text").hide();
-    } else $(".site-logo__text").show();
-});
+(function(windowSize) {
+    var resize = function() {
+        if ($(window).width() < windowSize) {
+            $(".admin-header .site-logo .site-logo__text").hide();
+            $(".admin-header .site-logo").css("width", "auto");
+            $("body").addClass("body-smaller");
+            $("#verify").show();
+            $(".verify-applications-button").hide();
+        } else {
+            $(".admin-header .site-logo .site-logo__text").show();
+            $("body").removeClass("body-smaller");
+            $("#verify").hide();
+            $(".verify-applications-button").show();
 
-$(window).load(function() {
-    if (window.outerWidth < 720) {
-        $(".site-logo__text").hide();
-    } else $(".site-logo__text").show();
-});
+        }
+    };
+    $(window).resize(resize);
+    $(window).load(resize);
 
-
+})(690);
 
 /**
  * SVG Icons
@@ -23,12 +30,15 @@ var Icons = {
     '<rect width="15" height="45" x="42.5" y="30" fill="#000"></rect>' +
     '</svg>',
 
-    expand: '<svg class="expand-icon" viewBox="0 0 100 100"> ' +
+    expand:
+    '<svg class="expand-icon expand-icon-text"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle">View Roles</text></svg>' +
+    '<svg class="expand-icon" viewBox="0 0 100 100"> ' +
     '<path d="M 50 75 l 50 50 l -100 0 z" transform="rotate(180,50,75)"></path>' +
-
     '</svg>',
 
-    retract: '<svg class="retract-icon" viewBox="0 0 100 100"> ' +
+    retract:
+    '<svg class="retract-icon retract-icon-text"><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle">Hide Roles</text></svg>' +
+    '<svg class="retract-icon" viewBox="0 0 100 100"> ' +
     '<path d="M 50 25 l 50 50 l -100 0 z"></path>' +
     '</svg>',
 
@@ -44,6 +54,6 @@ var Icons = {
 
     checkbox: '<svg class="checkbox-icon" viewBox="0 0 100 100"> ' +
     '<path d="M 10 55 l 30 25 l 40 -70"></path>' +
-    '</svg>',
+    '</svg>'
 
 };

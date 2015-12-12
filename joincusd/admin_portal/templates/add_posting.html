@@ -37,29 +37,29 @@
       {% csrf_token %}
 
             <div class="field-wrapper form-name">
-                <div class="field-name">{{form.name.help_text}}</div>
+                <div class="field-name">Name</div>
                 {{form.name}}
             </div>
 
             <div class="field-wrapper form-tagline">
-                <div class="field-name">{{form.tagline.help_text}}</div>
+                <div class="field-name">Tagline</div>
                 {{form.tagline}}
             </div>
 
             {% if posting_type == "project" %}
             <div class="field-wrapper form-short-description">
-                <div class="field-name">{{form.short_project_description.help_text}}</div>
+                <div class="field-name">Short Project Description</div>
                 {{form.short_project_description}}
             </div>
             {% endif %}
 
             <div class="field-wrapper form-long-description">
-                <div class="field-name">{{form.description.help_text}}</div>
+                <div class="field-name">Starting Description</div>
                 {{form.description}}
             </div>
 
             <div class="field-wrapper form-additional-description">
-                <div class="field-name">{{form.additional_description.help_text}}</div>
+                <div class="field-name">Additional Description</div>
                 {{form.additional_description}}
             </div>
 
@@ -69,42 +69,57 @@
             </div>
 
             <div class="field-wrapper form-colored-icon">
-                <div class="field-name">{{form.colored_icon.help_text}}</div>
+                <div class="field-name">Icon (in Color)</div>
+                <div class="photo-container">
+                    <img/>
+                </div>
                 {{form.colored_icon}}
             </div>
 
             <div class="field-wrapper form-uncolored-icon">
-                <div class="field-name">{{form.uncolored_icon.help_text}}</div>
+                <div class="field-name">Icon (in White)</div>
+                <div class="photo-container">
+                    <img/>
+                </div>
                 {{form.uncolored_icon}}
             </div>
 
             <div class="field-wrapper form-photo-one">
-                <div class="field-name">{{form.photo_one.help_text}}</div>
+                <div class="field-name">Photo 1</div>
+                <div class="photo-container">
+                    <img/>
+                </div>
                 {{form.photo_one}}
             </div>
 
             <div class="field-wrapper form-photo-one-text">
-                <div class="field-name">{{form.photo_one_alt_text.help_text}}</div>
+                <div class="field-name">Photo 1 Caption</div>
                 {{form.photo_one_alt_text}}
             </div>
 
             <div class="field-wrapper form-photo-two">
-                <div class="field-name">{{form.photo_two.help_text}}</div>
+                <div class="field-name">Photo 2</div>
+                <div class="photo-container">
+                    <img/>
+                </div>
                 {{form.photo_two}}
             </div>
 
             <div class="field-wrapper form-photo-two-text">
-                <div class="field-name">{{form.photo_two_alt_text.help_text}}</div>
+                <div class="field-name">Photo 2 Caption</div>
                 {{form.photo_two_alt_text}}
             </div>
 
             <div class="field-wrapper form-photo-three">
-                <div class="field-name">{{form.photo_three.help_text}}</div>
+                <div class="field-name">Photo 3</div>
+                <div class="photo-container">
+                    <img/>
+                </div>
                 {{form.photo_three}}
             </div>
 
             <div class="field-wrapper form-photo-three-text">
-                <div class="field-name">{{form.photo_three_alt_text.help_text}}</div>
+                <div class="field-name">Photo 3 Caption</div>
                 {{form.photo_three_alt_text}}
             </div>
 
@@ -113,7 +128,7 @@
                 <div class="field">{{ form.role_multiselect }}</div>
             </div>
 
-      <input type="submit" class="submit-button button" name="submit" value="Save">
+      <input type="submit" class="submit-button admin-button" name="submit" value="Save">
     </form>
     </div>
 {% include 'admin-common/footer.html' %}

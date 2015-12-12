@@ -3,14 +3,17 @@
 }
 
 #pre-content {
+    max-width: 80rem;
     width: 85%;
-    padding: 0 2rem 0 2rem;
+    height: auto;
+    overflow: hidden;
+    padding: 0 2rem 1.5rem 2rem;
     text-align: center;
     margin: auto;
+    display: block;
 }
 
 .title {
-    /*text-align: center;*/
     color: #7A7A7A;
     display: inline-block;
     width: auto;

@@ -1,10 +1,22 @@
 /***********************************Buttons General*************************************/
-.button:hover {
+.admin-button:hover {
     background-color: white;
     color: #3FAB6D;
 }
 
-.button {
+/*.button {*/
+    /*font-family: inherit;*/
+    /*background-color: #3FAB6D;*/
+    /*color: #fff;*/
+    /*border-radius: 3px;*/
+    /*border: 2px solid #3FAB6D;*/
+    /*min-width: 8rem;*/
+    /*height: 2.5rem;*/
+    /*cursor: pointer;*/
+    /*font-size: 1em;*/
+/*}*/
+
+.admin-button {
     font-family: inherit;
     background-color: #3FAB6D;
     color: #fff;
@@ -12,14 +24,24 @@
     border: 2px solid #3FAB6D;
     width: 8rem;
     /*width: auto;*/
-    height: 2.5rem;
     cursor: pointer;
     font-size: 1em;
+    height: auto;
+    padding: 0.5rem;
+    text-align: center;
 }
+
 
 .button-disabled {
     opacity: 0.5;
     pointer-events: none;
+}
+
+/***********************************Login Page Buttons*************************************/
+
+.login-button {
+    width: 100%;
+    margin-top: 0.75rem;
 }
 
 /***********************************Admin Home Buttons*************************************/
@@ -36,9 +58,8 @@
 
 /*****Verify Button*****/
 .verify-applications-button {
+    width: 8rem;
     display: inline-block;
-    /*width: auto;*/
-    /*padding: 0 0.5rem 0 0.5rem;*/
     background-color: #83C2BA;
     border-color: #83C2BA;
     text-align: center;
@@ -46,7 +67,6 @@
     cursor: pointer;
     height: auto;
     margin: 0.5rem;
-    /*float: left;*/
 }
 
 .verify-applications-button:hover {
@@ -65,28 +85,28 @@
     margin: 0.5rem;
 }
 
-.edit {
+.edit-button {
     background-color: #69C26C;
     border-color: #69C26C;
 }
 
-.edit:hover {
+.edit-button:hover {
     color: #69C26C;
 }
 
-.publish {
+.publish-button {
     background-color: #3F9A8E;
     border: 2px solid #3F9A8E;
     color: #FFF;
 }
 
-.publish:hover {
+.publish-button:hover {
     color: #3F9A8E;
 }
 
 
 /*****remove buttons*****/
-.remove.button {
+.remove-button {
     float: left;
     position: relative;
     display: inline-block;
@@ -100,7 +120,7 @@
 }
 
 /*****rank buttons*****/
-.rank {
+.rank-button {
     background-color: #FFFFFF;
     border: 2px solid #3FAB6D;
     color: #3FAB6D;
@@ -112,14 +132,15 @@
     padding: 0.5rem;
     display: inline-block;
     margin: 0.5rem 0.5rem 1rem 2.5rem;
+    margin-left: 3%;
 }
 
-.save-rank.rank {
+.save-rank-button{
     background-color:#3FAB6D;
     color: #FFF;
 }
 
-.rank:hover {
+.rank-button:hover {
     /*background-color: white;*/
     /*color: #3F9A8E;*/
 }
@@ -130,7 +151,8 @@
     float: right;
     font-size: inherit;
     font-weight: 300;
-    margin: 3rem;
+    margin: 2rem;
+    margin-right: 4%;
 }
 
 .upload-button {

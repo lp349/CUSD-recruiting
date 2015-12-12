@@ -1,8 +1,10 @@
 /******************************Footer******************************/
 
 /********************General********************/
-.footer {
-    height: 2rem;
+.header-footer {
+    height: 5rem;
+    margin-top: 2rem;
     width: 90%;
     padding: 1% 5% 1% 5%;
+    /*background-color: #83C2BA;*/
 }

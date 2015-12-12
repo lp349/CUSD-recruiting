@@ -2,25 +2,28 @@
 
 /********************General********************/
 
-.header {
+.admin-header {
+    max-width: 80rem;
     text-align: right;
     width: 90%;
     /*padding: 2rem 2rem 0.5rem 2rem;*/
     padding: 1% 5% 1% 5%;
     height: auto;
     color: #3FAB6D;
-    margin-bottom: 1rem;
+    margin: auto;
+    margin-bottom: 2rem;
     display: block;
     overflow: hidden;
+    border-bottom: 1px solid lightgray;
 }
 
-.header-links {
+.admin-header .header-links {
     float: right;
     margin: 1.3125rem 0 0 0;
     line-height: 1.75rem;
 }
 
-.header .button {
+.admin-header .admin-button {
     margin: 1.3125rem 3rem 0 0;
 }
 /**********Logo**********/
@@ -50,7 +53,7 @@
 /**/
 /*}*/
 
-.site-logo {
+.admin-header .site-logo {
     padding-left: 0.625rem;
     padding-right: 0.625rem;
     width: 41.66667%;
@@ -58,7 +61,7 @@
     text-align: left;
 }
 
-.site-logo__image {
+.admin-header .site-logo .site-logo__image {
     float: left;
     max-height: 3.625rem;
     margin: 1.3125rem 0;
@@ -67,7 +70,7 @@
 }
 
 
-.site-logo__text {
+.admin-header .site-logo .site-logo__text {
     float: left;
     margin: 1.375rem 0 1.375rem 0.625rem;
     font-size: 1.4375rem;
@@ -104,10 +107,14 @@ a:hover {
     /*width: 50%;*/
     text-align: right;
     float: right;
-
-
 }
 
 #logout a {
     width: auto;
+}
+
+#verify {
+    display: none;
+    float: right;
+    text-align: right;
 }

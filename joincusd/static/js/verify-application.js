@@ -66,11 +66,8 @@ function displayApplicantData(data) {
     $.each(data, function(index, applicant) {
         generateElem(applicant);
     })
-
-
 }
 
 $(document).ready(function () {
     $.get("/admin/ajax/app", displayApplicantData);
-
 });

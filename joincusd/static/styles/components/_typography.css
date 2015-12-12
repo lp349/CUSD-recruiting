@@ -19,17 +19,17 @@
     font-weight: bold;
     font-style: normal; }
 
-
-
-body {
-    /*font-family: "Open Sans", "sans-serif";*/
-    font-family: "glober", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-    color: #7A7A7A;
-    margin: auto;
-    font-size: 18px;
-
+strong {
+    font-weight: bold;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
+.smaller {
+    font-size: 80%;
+}
 
 
 

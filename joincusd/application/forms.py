@@ -4,13 +4,19 @@ from django.core import validators
 from django.forms.util import ErrorList, ErrorDict 
 from django.utils.translation import gettext as _
 
-MAX_UPLOAD_SIZE= 1048576
+MAX_UPLOAD_SIZE= 4194304
 
 class ApplicationForm(forms.ModelForm):
 
     #this function check for valid upload file type
     def validate_file_extensions(value):
-      if not (value.name.endswith('.pdf') or value.name.endswith('.doc') or value.name.endswith('.docx')):
+      #- pdf, rtf, doc, docx, html, txt
+      allowed_extensions = ['.pdf', '.doc', '.docx', '.rtf', '.html', '.txt']
+      valid = False
+      for extension in allowed_extensions:
+          valid = valid or (value.name.endswith(extension))
+      print valid
+      if not valid:
         raise forms.ValidationError(u'Invalid file extension')
     #this function check for valid upload file size
     def validate_file_size(value):

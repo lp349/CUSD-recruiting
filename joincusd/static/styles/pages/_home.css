@@ -1,8 +1,11 @@
-
+/**
+Styles for admin portal home page
+**/
 
 /******************************Listing Elements***********************************/
 
 #content, #buttons-section {
+    max-width: 80rem;
     width: 85%;
     margin: auto;
     background-color: #F2F3F3;
@@ -34,7 +37,7 @@
     overflow: hidden;
 }
 
-.elem-publish {
+.elem-published-false {
     opacity: 0.5;
 }
 
@@ -49,6 +52,8 @@
     /*float: left;*/
     margin-bottom: 1rem;
     text-align: left;
+    max-width: 10rem;
+    overflow: hidden;
 }
 
 .elem-short-name {
@@ -60,17 +65,38 @@
 /*******************************roles preview*******************************/
 .roles-quick-view {
     margin: auto;
-    margin-top: 2rem;
-    height: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    /*height: auto;*/
     width: 98%;
     text-align: left;
+    float: right;
 }
 
-.quick-view-elem {
+.roles-quick-view-elem {
     /*text-align: center;*/
     width: 25%;
     min-width: 18rem;
+    display: inline-block;
+    margin: 0.35rem;
+    line-height: 1rem;
 }
 
-
 /**************************************************************************************/
+.elem-button-wrapper {
+    float: right;
+    overflow: hidden;
+    width: 60%;
+    min-width: 20rem;
+    display: inline-block;
+}
+
+.expand-icon-wrapper, .retract-icon-wrapper {
+    display: block;
+    margin: auto;
+    text-align: center;
+    opacity: 0.8;
+    padding-top: 0.5rem;
+    width: 100%;
+    float: right; /*Force it to go under buttons*/
+}
