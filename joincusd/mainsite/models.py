@@ -9,6 +9,20 @@ import os
 # 2) Photo and Opening are separate tables
 # 3) both Photo and Opening have many-to-many relationships to a given Posting
 
+def update_filename(instance, filename):
+  short_name = instance.netID.lower()
+
+  resumes = Application.objects.values_list('resume', flat=True).filter(netID=short_name)
+  if not resumes:
+    short_name = short_name+'_'+str(1)
+  else:
+    short_name = short_name+'_'+str(len(resumes)+1)
+  path = "resumes/"
+  ext = filename.split('.')[-1]
+  filename = '{}.{}'.format(short_name, ext)
+  #format = instance.userid + instance.transaction_uuid + instance.file_extension
+  return os.path.join(path, filename)
+
 class Opening(models.Model):
   title = models.CharField(max_length=500)
   description = models.TextField()
@@ -21,7 +35,6 @@ class Posting(models.Model):
   tagline = models.CharField(max_length=100)
   short_project_description = models.CharField(max_length=300, default="")
   description = models.TextField(default="")
-  additional_description = models.TextField(default="")
 
   photo_one = models.ImageField(upload_to="images/photos/")
   photo_two = models.ImageField(upload_to="images/photos/")
@@ -34,8 +47,8 @@ class Posting(models.Model):
 
   openings = models.ManyToManyField(Opening)
 
-  # Default color is CUSD Green
-  icon_color = ColorField(default="#3FAB69")
+  # Default color is CUSD Futures
+  icon_color = ColorField(default="#FCD83F")
   colored_icon = models.FileField(upload_to="images/icons/")
   uncolored_icon = models.FileField(upload_to="images/icons/")
 
@@ -44,20 +57,6 @@ class Posting(models.Model):
   published = models.BooleanField(default=False)
 
 class Application(models.Model):
-
-  def update_filename(instance, filename):
-    short_name = instance.netID.lower()
-
-    resumes = Application.objects.values_list('resume', flat=True).filter(netID=short_name)
-    if not resumes:
-      short_name = short_name+'_'+str(1)
-    else:
-      short_name = short_name+'_'+str(len(resumes)+1)
-    path = "resumes/"
-    ext = filename.split('.')[-1]
-    filename = '{}.{}'.format(short_name, ext)
-    #format = instance.userid + instance.transaction_uuid + instance.file_extension
-    return os.path.join(path, filename)
 
   netID=models.CharField(max_length=10)
   resume=models.FileField(upload_to=update_filename)

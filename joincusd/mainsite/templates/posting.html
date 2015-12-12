@@ -35,14 +35,13 @@
         <div class="project-description__text">
             <input type="checkbox" class="see-more__checkbox" id="seeMore">
             {% for description in descriptions %}
-            <p class="lede">
-                {{description}}
-            </p>
-            {% endfor %}
-            {% for additional_description in additional_descriptions %}
-            <p>
-                {{additional_description}}
-            </p>
+                {% if forloop.counter0 == 0 %}
+                    <p class="lede">
+                {% else %}
+                    <p>
+                {% endif %}
+                        {{description}}
+                </p>
             {% endfor %}
             <label for="seeMore" class="see-more__label">Read <span class="see-more__label--closed">More</span><span
                     class="see-more__label--open">Less</span></label>

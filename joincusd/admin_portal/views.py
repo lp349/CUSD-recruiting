@@ -97,7 +97,7 @@ def posting_list(request, posting_type):
 #    a JSON object representing the following Python object
 #    [Application Object, ...]
 #    where an Application Object contains the following attributes:
-#    { 
+#    {
 #         netID : "abcd123"
 #         resumeURL : "server url here"
 #         roleList : ["role name", "role name", ...]
@@ -106,9 +106,9 @@ def posting_list(request, posting_type):
 @login_required(login_url='/admin/login/')
 def app_list(request):
     result_list = []
-    
+
     #applications = Application.objects.all()
-    
+
     for app in Application.objects.all():
       app_object = {}
       app_object["netID"] = app.netID
@@ -268,7 +268,6 @@ def add_posting_handler(request, posting_type):
             project.photo_three_alt_text = form.cleaned_data['photo_three_alt_text']
 
             project.description = form.cleaned_data['description']
-            project.additional_description = form.cleaned_data['additional_description']
             if posting_type == "project":
                 project.short_project_description = form.cleaned_data['short_project_description']
             else:
@@ -383,7 +382,6 @@ def edit_posting_handler(request, posting_type, pk):
             project.photo_three_alt_text = form.cleaned_data['photo_three_alt_text']
 
             project.description = form.cleaned_data['description']
-            project.additional_description = form.cleaned_data['additional_description']
             if posting_type == "project":
                 project.short_project_description = form.cleaned_data['short_project_description']
             else:

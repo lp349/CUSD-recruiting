@@ -7,7 +7,6 @@ class PostingForm(forms.ModelForm):
     tagline = forms.CharField(max_length=100, help_text="Tagline:")
     short_project_description = forms.CharField(max_length=300, help_text="Short Project Description:")
     description = forms.CharField(widget=forms.Textarea(attrs={'cols': 50, 'rows': 10}), help_text="Starting Description:")
-    additional_description = forms.CharField(widget=forms.Textarea(attrs={'cols': 50, 'rows': 10}), help_text="Additional Description:")
 
     photo_one = forms.ImageField(help_text="Photo 1:")
     photo_two = forms.ImageField(help_text="Photo 2:")
@@ -29,10 +28,10 @@ class PostingForm(forms.ModelForm):
         # Provide an association between the ModelForm and a model
         model = Posting
         fields = ('name', 'tagline', 'short_project_description', 'description',
-                  'additional_description', 'icon_color', 'colored_icon',
-                  'uncolored_icon', 'role_multiselect', 'photo_one',
-                  'photo_two', 'photo_three', 'photo_one_alt_text',
-                  'photo_two_alt_text', 'photo_three_alt_text','published')
+                  'icon_color', 'colored_icon', 'uncolored_icon',
+                  'role_multiselect', 'photo_one', 'photo_two',
+                  'photo_three', 'photo_one_alt_text', 'photo_two_alt_text',
+                  'photo_three_alt_text','published')
 
 
 class OpeningForm(forms.ModelForm):

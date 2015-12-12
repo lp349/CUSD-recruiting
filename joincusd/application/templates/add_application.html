@@ -20,6 +20,10 @@
         <h1 class="form-title"> Application Part I </h1>
         {% csrf_token %}
        <div class="field-wrapper">
+        <p>
+          Questions about the application? Contact us at 
+          <a href="mailto:cu.sustainabledesign@gmail.com">cu.sustainabledesign@gmail.com</a>
+        </p>
         {{form.netID.errors}}
            <div class="field-name">netID</div>
            {{ form.netID }}
